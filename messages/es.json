@@ -6,7 +6,7 @@
     },
     "navigation": {
       "home": "Inicio",
-      "services": "Productos/Servicios",
+      "services": "Servicios",
       "formation": "Formación",
       "start": "Empieza Ahora",
       "darkMode": "Cambiar a modo oscuro",
@@ -20,7 +20,11 @@
       "userMenu": "Menú de usuario",
       "adminDashboard": "Panel de Administración",
       "profile": "Perfil",
-      "blog": "Blog"
+      "blog": "Blog",
+      "about": "Nosotros",
+      "contact": "Contacto",
+      "refer": "Recomienda y gana",
+      "faqs": "FAQs"
     },
     "hero": {
       "title": "AUTOMATIZA",

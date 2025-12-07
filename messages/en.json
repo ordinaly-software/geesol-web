@@ -20,7 +20,11 @@
       "userMenu": "User menu",
       "adminDashboard": "Admin Dashboard",
       "profile": "Profile",
-      "blog": "Blog"
+      "blog": "Blog",
+      "about": "About us",
+      "contact": "Contact",
+      "refer": "Refer & earn",
+      "faqs": "FAQs"
     },
     "hero": {
       "title": "AUTOMATE",

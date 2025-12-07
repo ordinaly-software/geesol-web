@@ -28,9 +28,11 @@ interface NavItemsProps {
   items: {
     name: string;
     link: string;
+    showWhenCollapsed?: boolean;
   }[];
   className?: string;
   onItemClick?: () => void;
+  visible?: boolean;
 }
 
 interface MobileNavProps {
@@ -92,7 +94,7 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
         boxShadow: visible
           ? "0 0 24px rgba(34, 42, 53, 0.06), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.04), 0 0 4px rgba(34, 42, 53, 0.08), 0 16px 68px rgba(47, 48, 55, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1) inset"
           : "0 0 24px rgba(34, 42, 53, 0.06), 0 1px 1px rgba(0, 0, 0, 0.05)",
-        width: visible ? "40%" : "100%",
+        width: visible ? "max-content" : "100%",
         borderRadius: visible ? "9999px" : "0px",
         y: visible ? 20 : 0,
       }}
@@ -101,49 +103,59 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
         stiffness: 200,
         damping: 50,
       }}
-      style={{
-        minWidth: "800px",
-      }}
       className={cn(
-        "relative z-[60] mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start bg-white/80 px-4 py-2 lg:flex dark:bg-neutral-950/80",
+        "relative z-[60] mx-auto hidden w-full max-w-full flex-row items-center justify-between gap-4 self-start bg-white/80 px-4 py-2 lg:flex dark:bg-neutral-950/80",
         className,
       )}
     >
-      {React.Children.map(children, (child, idx) => {
-        // Hide the theme switcher button when navbar is contracted (visible=true)
-        // The buttons div is typically the 3rd child (index 2)
-        if (visible && idx === 2 && React.isValidElement(child)) {
-          const childProps = child.props as any;
-          // Only hide the first child of the button container (theme switcher)
-          return React.cloneElement(
-            child as React.ReactElement<any>,
-            {},
-            React.Children.toArray(childProps.children).filter((_, childIdx) => childIdx !== 0)
-          );
-        }
-        return child;
-      })}
+        {React.Children.map(children, (child, idx) => {
+          if (!React.isValidElement(child)) return child;
+
+          const isNavItems = child.type === NavItems;
+
+          // Hide the theme switcher button when navbar is contracted (visible=true)
+          // The buttons div is typically the 3rd child (index 2)
+          if (visible && idx === 2) {
+            const childProps = child.props as any;
+            return React.cloneElement(
+              child,
+              {},
+              React.Children.toArray(childProps.children).filter((_, childIdx) => childIdx !== 0),
+            );
+          }
+
+          if (isNavItems) {
+            return React.cloneElement(child as React.ReactElement<{ visible?: boolean }>, { visible });
+          }
+
+          return child;
+        })}
     </motion.div>
   );
 };
 
-export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
+export const NavItems = ({ items, className, onItemClick, visible }: NavItemsProps) => {
   const [hovered, setHovered] = useState<number | null>(null);
+
+  const displayedItems = visible
+    ? items.filter((item) => item.showWhenCollapsed)
+    : items;
 
   return (
     <motion.div
       onMouseLeave={() => setHovered(null)}
       className={cn(
-        "pointer-events-none absolute inset-0 hidden flex-1 flex-row items-center justify-center space-x-2 text-sm font-medium text-zinc-600 transition duration-200 hover:text-zinc-800 lg:flex lg:space-x-2",
+        "relative hidden min-w-0 flex-row items-center justify-start gap-1 text-base font-medium text-zinc-700 transition duration-200 lg:flex",
+        visible ? "flex-none" : "flex-1",
         className,
       )}
     >
-      {items.map((item, idx) => (
+      {displayedItems.map((item, idx) => (
         <Link
           onMouseEnter={() => setHovered(idx)}
           onClick={onItemClick}
-          className="pointer-events-auto relative px-4 py-2 text-neutral-600 dark:text-neutral-300"
-          key={`link-${idx}`}
+          className="relative whitespace-nowrap rounded-full px-4 py-2 text-neutral-700 transition hover:text-neutral-900 dark:text-neutral-200 dark:hover:text-neutral-50"
+          key={`link-${item.link}-${idx}`}
           href={item.link}
         >
           {hovered === idx && (
@@ -167,11 +179,11 @@ export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
         boxShadow: visible
           ? "0 0 24px rgba(34, 42, 53, 0.06), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.04), 0 0 4px rgba(34, 42, 53, 0.08), 0 16px 68px rgba(47, 48, 55, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1) inset"
           : "0 0 24px rgba(34, 42, 53, 0.06), 0 1px 1px rgba(0, 0, 0, 0.05)",
-        width: visible ? "calc(100% - 24px)" : "100%",
-        marginLeft: visible ? "12px" : "0px",
-        marginRight: visible ? "12px" : "0px",
-        paddingRight: visible ? "12px" : "0px",
-        paddingLeft: visible ? "12px" : "0px",
+        width: visible ? "calc(100% - 32px)" : "100%",
+        marginLeft: visible ? "16px" : "0px",
+        marginRight: visible ? "16px" : "0px",
+        paddingRight: "12px",
+        paddingLeft:"12px",
         borderRadius: visible ? "4px" : "0px",
         y: visible ? 20 : 0,
       }}

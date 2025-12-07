@@ -58,7 +58,7 @@ const Logo = ({ href }: { href: string }) => {
     >
       <Image
         src={isDark ? "/logo_2_dark.webp" : "/logo_2.webp"}
-        alt="Ordinaly"
+        alt="GEESOL"
         width={120}
         height={40}
         className="h-10 w-auto"
@@ -79,21 +79,25 @@ export default function Navbar() {
 
   const navItems = [
     { name: t("home"), link: buildHref("/") },
+    { name: t("services"), link: buildHref("/services"), showWhenCollapsed: true },
+    { name: t("about"), link: buildHref("/nosotros") },
+    { name: t("refer"), link: buildHref("/recomienda-y-gana"), showWhenCollapsed: true },
+    { name: t("faqs"), link: buildHref("/faqs") },
     { name: t("blog"), link: buildHref("/blog") },
   ];
 
-  const ctaHref = buildHref("/#contact");
+  const ctaHref = buildHref("/contacto");
 
   const handleNavItemClick = () => setIsMobileOpen(false);
 
   return (
     <ResizableNavbar className="top-0">
       <NavBody className="px-4 lg:px-6" visible={undefined}>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 flex-shrink-0">
           <Logo href={buildHref("/")} />
         </div>
         <NavItems items={navItems} onItemClick={handleNavItemClick} />
-        <div className="hidden items-center gap-3 lg:flex">
+        <div className="hidden items-center gap-3 lg:flex flex-shrink-0">
           <ThemeToggleButton
             isDark={isDark}
             onClick={toggleTheme}
@@ -141,20 +145,11 @@ export default function Navbar() {
           <div className="mt-4 flex w-full flex-col gap-3 border-t border-gray-200 pt-4 dark:border-gray-800">
             <Button
               asChild
-              className="bg-gradient-to-r from-[#22A60D] via-[#46B1C9] to-[#623CEA] text-white shadow-lg shadow-[#22A60D]/20 border border-white/20"
             >
               <Link href={ctaHref} onClick={handleNavItemClick}>
                 {t("start")}
               </Link>
             </Button>
-            <div className="flex items-center justify-between rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-gray-700 dark:border-gray-800 dark:bg-neutral-900 dark:text-gray-200">
-              <span>{isDark ? t("lightMode") : t("darkMode")}</span>
-              <ThemeToggleButton
-                isDark={isDark}
-                onClick={toggleTheme}
-                size="compact"
-              />
-            </div>
           </div>
         </MobileNavMenu>
       </MobileNav>

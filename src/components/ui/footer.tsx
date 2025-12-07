@@ -2,15 +2,29 @@
 
 import { useTranslations } from "next-intl";
 import { useTheme } from "@/contexts/theme-context";
-import Image from 'next/image';
+import Image from "next/image";
 import Link from "next/link";
+import { Moon, Sun } from "lucide-react";
+import LocaleSwitcher from "./locale-switcher";
 
 const Footer = () => {
   const t = useTranslations("home");
-  const { isDark } = useTheme();
+  const { isDark, toggleTheme } = useTheme();
+
+  const ThemeToggleButton = () => (
+    <button
+      type="button"
+      onClick={toggleTheme}
+      className="flex h-11 items-center gap-2 rounded-full border border-white/40 bg-white/80 px-4 text-sm font-semibold text-[#0c3b52] shadow-md backdrop-blur transition hover:-translate-y-0.5 hover:shadow-lg dark:border-white/15 dark:bg-[#0b1220]/80 text-white"
+      aria-label={isDark ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}
+    >
+      {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+      <span>{isDark ? "Claro" : "Oscuro"}</span>
+    </button>
+  );
 
   return (
-    <footer className="relative overflow-hidden">
+    <footer className="relative overflow-hidden text-slate-900 text-white">
       {/* Background with overlay */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -20,7 +34,7 @@ const Footer = () => {
           className="object-cover"
           priority={false}
         />
-        <div className="absolute inset-0 bg-black/50"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-white/65 via-white/55 to-black/35 from-black/60 via-black/70 to-black/80"></div>
       </div>
 
       {/* Diagonal lines overlay */}
@@ -36,8 +50,8 @@ const Footer = () => {
       </div>
 
       {/* Pill-shaped container */}
-      <div className="relative z-10 mx-auto max-w-[1400px] my-8 px-4">
-        <div className="bg-gradient-to-br from-blue-900/40 via-gray-800/60 to-gray-900/40 backdrop-blur-sm rounded-[80px] shadow-2xl border border-white/10 px-8 sm:px-12 py-12 sm:py-16">
+      <div className="relative z-10 mx-auto my-8 max-w-[1400px] px-4">
+        <div className="rounded-[80px] border border-white/40 bg-gradient-to-br from-white/95 via-slate-100/95 to-white/90 px-8 py-12 shadow-2xl backdrop-blur-sm border-white/10 from-blue-900/40 via-gray-800/60 to-gray-900/40 sm:px-12 sm:py-16">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
             {/* Logo Section */}
             <div className="lg:col-span-3 flex items-start justify-center lg:justify-start">
@@ -67,30 +81,30 @@ const Footer = () => {
             </div>
 
             {/* Contact Information */}
-            <div className="lg:col-span-5 space-y-3 text-white text-base">
+            <div className="lg:col-span-5 space-y-3 text-base text-slate-900 text-white">
               <div className="flex items-center gap-3">
                 <svg className="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
                 </svg>
-                <a href="tel:955737322" className="hover:text-blue-300 transition-colors font-medium">955 73 73 22</a>
+                <a href="tel:955737322" className="font-semibold transition-colors hover:text-[#c83c3e] hover:text-blue-300">955 73 73 22</a>
               </div>
               <div className="flex items-center gap-3">
                 <svg className="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
                 </svg>
-                <a href="tel:622226349" className="hover:text-blue-300 transition-colors font-medium">622 22 63 49</a>
+                <a href="tel:622226349" className="font-semibold transition-colors hover:text-[#c83c3e] hover:text-blue-300">622 22 63 49</a>
               </div>
               <div className="flex items-center gap-3">
                 <svg className="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
                 </svg>
-                <a href="tel:678999111" className="hover:text-blue-300 transition-colors font-medium">678 99 91 11</a>
+                <a href="tel:678999111" className="font-semibold transition-colors hover:text-[#c83c3e] hover:text-blue-300">678 99 91 11</a>
               </div>
               <div className="flex items-center gap-3">
                 <svg className="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                 </svg>
-                <a href="mailto:info@geesol.com" className="hover:text-blue-300 transition-colors font-medium">info@geesol.com</a>
+                <a href="mailto:info@geesol.com" className="font-semibold transition-colors hover:text-[#c83c3e] hover:text-blue-300">info@geesol.com</a>
               </div>
               <div className="flex items-start gap-3 pt-3">
                 <svg className="w-5 h-5 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
@@ -98,7 +112,7 @@ const Footer = () => {
                 </svg>
                 <div>
                   <p className="font-bold">Delegación Andalucía:</p>
-                  <p className="text-sm">C/ Mansíos, 5. 41900. Camas (Sevilla)</p>
+                  <p className="text-sm text-slate-800 text-gray-200">C/ Mansíos, 5. 41900. Camas (Sevilla)</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
@@ -107,48 +121,48 @@ const Footer = () => {
                 </svg>
                 <div>
                   <p className="font-bold">Delegación Madrid:</p>
-                  <p className="text-sm">C/ Tormes, 7, 28840. Mejorada del Campo (Madrid)</p>
+                  <p className="text-sm text-slate-800 text-gray-200">C/ Tormes, 7, 28840. Mejorada del Campo (Madrid)</p>
                 </div>
               </div>
             </div>
 
             {/* Services Menu */}
-            <div className="lg:col-span-4 space-y-2 text-white text-base text-left lg:text-right">
-              <Link href="#" className="block hover:text-blue-300 transition-colors font-bold">
+            <div className="lg:col-span-4 space-y-2 text-base text-left text-slate-900 text-white lg:text-right">
+              <Link href="#" className="block font-bold transition-colors hover:text-[#c83c3e] hover:text-blue-300">
                 Instalaciones fotovoltaicas
               </Link>
-              <Link href="#" className="block hover:text-blue-300 transition-colors font-bold">
+              <Link href="#" className="block font-bold transition-colors hover:text-[#c83c3e] hover:text-blue-300">
                 Autoconsumo fotovoltaico
               </Link>
-              <Link href="#" className="block hover:text-blue-300 transition-colors font-bold">
+              <Link href="#" className="block font-bold transition-colors hover:text-[#c83c3e] hover:text-blue-300">
                 Mantenimiento de instalaciones
               </Link>
-              <Link href="#" className="block hover:text-blue-300 transition-colors font-bold">
+              <Link href="#" className="block font-bold transition-colors hover:text-[#c83c3e] hover:text-blue-300">
                 Instalaciones aisladas
               </Link>
-              <Link href="#" className="block hover:text-blue-300 transition-colors font-bold">
+              <Link href="#" className="block font-bold transition-colors hover:text-[#c83c3e] hover:text-blue-300">
                 Nuestros instaladores
               </Link>
-              <Link href="#" className="block hover:text-blue-300 transition-colors font-bold">
+              <Link href="#" className="block font-bold transition-colors hover:text-[#c83c3e] hover:text-blue-300">
                 Canal de denuncias
               </Link>
-              <Link href="#" className="block hover:text-blue-300 transition-colors font-bold">
+              <Link href="#" className="block font-bold transition-colors hover:text-[#c83c3e] hover:text-blue-300">
                 Mapa web
               </Link>
             </div>
           </div>
 
           {/* Legal Links */}
-          <div className="text-center text-white text-sm mt-12 space-x-2 tracking-wide">
-            <Link href="/legal?tab=terms" className="hover:text-blue-300 transition-colors uppercase">
+          <div className="mt-12 space-x-2 text-center text-sm tracking-wide text-slate-800 text-white">
+            <Link href="/legal?tab=terms" className="uppercase transition-colors hover:text-[#c83c3e] hover:text-blue-300">
               Aviso Legal
             </Link>
-            <span className="text-white/60">-</span>
-            <Link href="/legal?tab=cookies" className="hover:text-blue-300 transition-colors uppercase">
+            <span className="text-slate-500 text-white/60">-</span>
+            <Link href="/legal?tab=cookies" className="uppercase transition-colors hover:text-[#c83c3e] hover:text-blue-300">
               Política de Cookies
             </Link>
-            <span className="text-white/60">-</span>
-            <Link href="/legal?tab=privacy" className="hover:text-blue-300 transition-colors uppercase">
+            <span className="text-slate-500 text-white/60">-</span>
+            <Link href="/legal?tab=privacy" className="uppercase transition-colors hover:text-[#c83c3e] hover:text-blue-300">
               Política de Privacidad
             </Link>
           </div>
@@ -156,14 +170,18 @@ const Footer = () => {
       </div>
 
       {/* Bottom Bar - Outside the pill */}
-      <div className="relative z-10 bg-gradient-to-r from-gray-900 to-black py-6 px-8">
-        <div className="max-w-[1400px] mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="text-white text-sm">
-            © 2025 Instalaciones Fotovoltaicas.
+      <div className="relative z-10 bg-gradient-to-r from-gray-100 to-gray-200 py-6 px-8 text-slate-900 dark:from-gray-900 dark:to-black dark:text-white">
+        <div className="mx-auto flex max-w-[1400px] flex-col items-center justify-between gap-4 md:flex-row">
+          <div className="text-sm">
+            © 2025 GEESOL RENOVABLES SL - Instalaciones Fotovoltaicas.
+          </div>
+          <div className="flex items-center gap-3">
+            <ThemeToggleButton />
+            <LocaleSwitcher />
           </div>
           <div className="flex gap-3">
             <a
-              href="https://www.linkedin.com/company/ordinalysoftware/"
+              href="https://www.linkedin.com/company/geesol-renovables/"
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 bg-red-600 hover:bg-red-700 rounded flex items-center justify-center transition-colors shadow-lg"
@@ -173,17 +191,7 @@ const Footer = () => {
               </svg>
             </a>
             <a
-              href="https://www.tiktok.com/@ordinaly.ai"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-10 h-10 bg-red-600 hover:bg-red-700 rounded flex items-center justify-center transition-colors shadow-lg"
-            >
-              <svg className="w-5 h-5" fill="white" viewBox="0 0 24 24">
-                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
-              </svg>
-            </a>
-            <a
-              href="https://www.instagram.com/ordinaly.ai/"
+              href="https://www.instagram.com/geesol_es/"
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 bg-red-600 hover:bg-red-700 rounded flex items-center justify-center transition-colors shadow-lg"
@@ -193,13 +201,23 @@ const Footer = () => {
               </svg>
             </a>
             <a
-              href="https://www.youtube.com/@ordinaly"
+              href="https://x.com/GeesolRenovable"
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 bg-red-600 hover:bg-red-700 rounded flex items-center justify-center transition-colors shadow-lg"
             >
               <svg className="w-5 h-5" fill="white" viewBox="0 0 24 24">
                 <path d="M10 15l5.19-3L10 9v6m11.56-7.83c.13.47.22 1.1.28 1.9.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 4.83-.25.9-.83 1.48-1.73 1.73-.47.13-1.33.22-2.65.28-1.3.07-2.49.1-3.59.1L12 19c-4.19 0-6.8-.16-7.83-.44-.9-.25-1.48-.83-1.73-1.73-.13-.47-.22-1.1-.28-1.9-.07-.8-.1-1.49-.1-2.09L2 12c0-2.19.16-3.8.44-4.83.25-.9.83-1.48 1.73-1.73.47-.13 1.33-.22 2.65-.28 1.3-.07 2.49-.1 3.59-.1L12 5c4.19 0 6.8.16 7.83.44.9.25 1.48.83 1.73 1.73z"/>
+              </svg>
+            </a>
+            <a
+              href="https://www.facebook.com/geesolrenovables/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 bg-red-600 hover:bg-red-700 rounded flex items-center justify-center transition-colors shadow-lg"
+            >
+              <svg className="w-5 h-5" fill="white" viewBox="0 0 24 24">
+                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
               </svg>
             </a>
           </div>
