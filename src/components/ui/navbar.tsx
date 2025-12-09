@@ -86,20 +86,19 @@ export default function Navbar() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const basePath = locale === routing.defaultLocale ? "" : `/${locale}`;
-  const buildHref = (path: string) => `${basePath}${path}`;
-
+  // Note: Link component from @/i18n/navigation automatically prepends locale,
+  // so we pass paths without locale prefix here
   const navItems = [
-    { name: t("home"), link: buildHref("/") },
-    { name: t("services"), link: buildHref("/services"), showWhenCollapsed: true },
-    { name: t("about"), link: buildHref("/nosotros") },
-    { name: t("refer"), link: buildHref("/recomienda-y-gana"), showWhenCollapsed: true },
-    { name: t("faqs"), link: buildHref("/faqs") },
-    { name: t("contact"), link: buildHref("/contacto") },
-    { name: t("blog"), link: buildHref("/blog") },
+    { name: t("home"), link: "/" },
+    { name: t("services"), link: "/services", showWhenCollapsed: true },
+    { name: t("about"), link: "/nosotros" },
+    { name: t("refer"), link: "/recomienda-y-gana", showWhenCollapsed: true },
+    { name: t("faqs"), link: "/faqs" },
+    { name: t("contact"), link: "/contacto" },
+    { name: t("blog"), link: "/blog" },
   ];
 
-  const ctaHref = buildHref("/contacto");
+  const ctaHref = "/contacto";
 
   const handleNavItemClick = () => setIsMobileOpen(false);
 
@@ -107,7 +106,7 @@ export default function Navbar() {
     <ResizableNavbar className="top-0">
       <NavBody className="px-4 lg:px-6" visible={undefined} isCompact={isCompact}>
         <div className="flex items-center gap-3 flex-shrink-0">
-          <Logo href={buildHref("/")} />
+          <Logo href="/" />
         </div>
         <NavItems items={navItems} onItemClick={handleNavItemClick} isCompact={isCompact} />
         <div className={cn("hidden items-center gap-3 lg:flex flex-shrink-0", isCompact && "hidden")}>
@@ -125,7 +124,7 @@ export default function Navbar() {
 
       <MobileNav className="px-4" isCompact={isCompact}>
         <MobileNavHeader>
-          <Logo href={buildHref("/")} />
+          <Logo href="/" />
           <div className="flex items-center gap-3">
             <Button asChild size="sm">
               <Link href={ctaHref}>{t("start")}</Link>

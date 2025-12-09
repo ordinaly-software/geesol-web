@@ -19,7 +19,12 @@ export default function LocaleSwitcher() {
 
   const handleLocaleChange = (value: string) => {
     startTransition(() => {
-      router.push(pathname, { locale: value });
+      // Remove current locale prefix from pathname before pushing with new locale
+      const pathWithoutLocale = pathname.startsWith(`/${currentLocale}`)
+        ? pathname.replace(`/${currentLocale}`, '')
+        : pathname;
+      const finalPath = pathWithoutLocale || '/';
+      router.push(finalPath, { locale: value });
     });
   };
 
