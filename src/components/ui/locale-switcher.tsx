@@ -1,7 +1,7 @@
 'use client';
 
 import { useLocale } from "next-intl";
-import { useRouter, usePathname } from "@/i18n/routing";
+import { useRouter, usePathname } from "@/i18n/navigation";
 import { useTransition } from "react";
 import { Globe } from "lucide-react";
 import { Dropdown, DropdownOption } from "@/components/ui/dropdown";
@@ -32,7 +32,8 @@ export default function LocaleSwitcher() {
         disabled={isPending}
         minWidth="150px"
         direction="up"
-        buttonClassName="flex h-11 items-center gap-2 rounded-full border border-white/40 bg-white/80 px-4 text-sm font-semibold text-[#0c3b52] shadow-md backdrop-blur transition hover:-translate-y-0.5 hover:shadow-lg dark:border-white/15 dark:bg-[#0b1220]/80 dark:text-white"
+        theme="default"
+        buttonClassName="flex h-11 items-center gap-2 rounded-full border border-white/40 bg-white/80 px-4 text-sm font-semibold shadow-md backdrop-blur transition hover:-translate-y-0.5 hover:shadow-lg dark:border-white/15 dark:bg-[#0b1220]/80 dark:text-white"
         dropdownClassName="rounded-2xl border border-white/30 bg-white/95 shadow-2xl backdrop-blur dark:bg-[#0b1220]/95 dark:border-white/15"
       />
     </div>

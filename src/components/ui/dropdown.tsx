@@ -72,11 +72,11 @@ export const Dropdown = ({
   // Theme configuration
   const themes: Record<string, DropdownTheme> = {
     default: {
-      accent: 'text-[#22A60D]',
-      hoverBg: 'hover:bg-gray-50 dark:hover:bg-gray-600',
-      selectedBg: 'bg-[#22A60D]/10 text-[#22A60D] dark:bg-[#22A60D]/20',
-      focusBorder: 'focus:border-[#22A60D] dark:focus:border-[#22A60D]',
-      focusRing: 'focus:ring-[#22A60D]/20'
+      accent: 'text-[#c83c3e]',
+      hoverBg: 'hover:bg-[#c83c3e]/10 dark:hover:bg-[#c83c3e]/20',
+      selectedBg: 'bg-[#c83c3e]/10 text-[#c83c3e] dark:bg-[#c83c3e]/20 dark:text-[#c83c3e]',
+      focusBorder: 'focus:border-[#c83c3e]',
+      focusRing: 'focus:ring-[#c83c3e]/20'
     },
     orange: {
       accent: 'text-orange-500',
@@ -223,7 +223,7 @@ export const Dropdown = ({
                   className={cn(
                     "w-full px-4 py-3 text-left transition-all duration-150 flex items-center justify-between",
                     value === option.value 
-                      ? "bg-[#22A60D]/10 text-[#22A60D] dark:bg-[#22A60D]/20 dark:text-[#22A60D]"
+                      ? currentTheme.selectedBg
                       : "text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-white/5"
                   )}
                 >
@@ -232,7 +232,7 @@ export const Dropdown = ({
                     <span className="font-medium">{option.label}</span>
                   </div>
                   {value === option.value && (
-                    <Check className="h-4 w-4 text-[#22A60D]" />
+                    <Check className={cn("h-4 w-4", currentTheme.accent)} />
                   )}
                 </button>
               );

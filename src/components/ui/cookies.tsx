@@ -17,13 +17,40 @@ const CookieConsent = () => {
   const [isMounted, setIsMounted] = useState(false);
   const [cookiePreferences, setCookiePreferences] = useState({
     necessary: true,
-    functional: true,
     analytics: false,
-    marketing: false
   });
 
   useEffect(() => {
     setIsMounted(true);
+  }, []);
+
+  // Listen to external preference changes (from other components) and open requests
+  useEffect(() => {
+    const onPreferencesChanged = (e: Event) => {
+      try {
+        // custom event with detail object
+        // @ts-ignore
+        const detail = e?.detail;
+        if (detail && typeof detail === 'object') {
+          setCookiePreferences(prev => ({ ...prev, ...detail }));
+        }
+      } catch (err) {
+        // ignore
+      }
+    };
+
+    const onOpenPopup = () => {
+      setShowPopup(true);
+      setShowBubble(true);
+    };
+
+    window.addEventListener('cookie-preferences-changed', onPreferencesChanged as EventListener);
+    window.addEventListener('open-cookie-popup', onOpenPopup as EventListener);
+
+    return () => {
+      window.removeEventListener('cookie-preferences-changed', onPreferencesChanged as EventListener);
+      window.removeEventListener('open-cookie-popup', onOpenPopup as EventListener);
+    };
   }, []);
 
   useEffect(() => {
@@ -64,9 +91,7 @@ const CookieConsent = () => {
   const handleAcceptAll = () => {
     const preferences = {
       necessary: true,
-      functional: true,
       analytics: true,
-      marketing: true
     };
     setCookiePreferences(preferences);
     localStorage.setItem('cookie-consent', 'accepted');
@@ -79,9 +104,7 @@ const CookieConsent = () => {
   const handleRejectAll = () => {
     const preferences = {
       necessary: true,
-      functional: false,
       analytics: false,
-      marketing: false
     };
     setCookiePreferences(preferences);
     localStorage.setItem('cookie-consent', 'rejected');
@@ -99,11 +122,11 @@ const CookieConsent = () => {
     setShowSettings(false);
   };
 
-  const handlePreferenceChange = (type: 'necessary' | 'functional' | 'analytics' | 'marketing') => {
+  const handlePreferenceChange = (type: 'necessary' | 'analytics') => {
     if (type === 'necessary') return;
     setCookiePreferences(prev => ({
       ...prev,
-      [type]: !prev[type]
+      [type]: !prev[type as 'analytics']
     }));
   };
 
@@ -121,9 +144,9 @@ const CookieConsent = () => {
       <div className="bg-card text-card-foreground rounded-2xl shadow-2xl w-[95vw] max-w-2xl min-h-[200px] max-h-[85vh] overflow-y-auto border border-border transform transition-all duration-300 scale-100 opacity-100 mx-auto my-auto">
         {/* Header */}
         <div className="flex justify-between items-center p-6 border-b border-border">
-          <div className="flex items-center space-x-3">
-            <div className="bg-[#623CEA] rounded-full p-2">
-              <Cookie className="text-white" size={24} />
+            <div className="flex items-center space-x-3">
+            <div className="bg-gradient-to-r from-amber-400 to-orange-500 rounded-full p-2">
+              <Cookie className="text-black" size={24} />
             </div>
             <h2 className="text-2xl font-bold text-foreground">
               {t('title')}
@@ -155,22 +178,22 @@ const CookieConsent = () => {
               <div className="flex flex-col sm:flex-row gap-3 mb-4">
                 <Button
                   onClick={handleAcceptAll}
-                  className="flex-1 bg-[#623CEA] text-white"
+                  className="flex-1 bg-gradient-to-r from-amber-400 to-orange-500 text-black"
                 >
                   {t('acceptAll')}
                 </Button>
                 <Button
                   onClick={handleRejectAll}
-                  className="flex-1 bg-secondary text-secondary-foreground border border-border"
+                  className="flex-1 bg-white text-black border border-border"
                 >
                   {t('rejectAll')}
                 </Button>
               </div>
 
-              <div className="w-full p-[2px] bg-[#623CEA] rounded-lg">
+              <div className="w-full p-[2px] bg-gradient-to-r from-amber-400 to-orange-500 rounded-lg">
                 <button
                   onClick={() => setShowSettings(true)}
-                  className="w-full bg-card text-card-foreground font-semibold py-3 px-6 rounded-lg hover:bg-accent transition-all duration-300 flex items-center justify-center space-x-2"
+                  className="w-full bg-card text-card-foreground font-semibold py-3 px-6 rounded-lg hover:bg-accent transition-all duration-200 flex items-center justify-center space-x-2"
                 >
                   <Settings size={20} />
                   <span>{t('customize')}</span>
@@ -200,25 +223,11 @@ const CookieConsent = () => {
                       note: t('necessaryAlways')
                     },
                     {
-                      key: 'functional',
-                      icon: <Settings className="text-[#46B1C9]" size={20} />,
-                      enabled: cookiePreferences.functional,
-                      toggle: true,
-                      note: t('functionalExamples')
-                    },
-                    {
                       key: 'analytics',
                       icon: <BarChart3 className="text-[hsl(var(--color-dark-blue))]" size={20} />,
                       enabled: cookiePreferences.analytics,
                       toggle: true,
                       note: t('analyticsExamples')
-                    },
-                    {
-                      key: 'marketing',
-                      icon: <Target className="text-[#E4572E]" size={20} />,
-                      enabled: cookiePreferences.marketing,
-                      toggle: true,
-                      note: t('marketingExamples')
                     }
                   ].map(({ key, icon, enabled, toggle, note }) => (
                     <div key={key} className="border border-border rounded-lg p-4 bg-card">
@@ -227,10 +236,10 @@ const CookieConsent = () => {
                           {icon}
                           <h4 className="font-semibold text-foreground">{t(`${key}`)}</h4>
                         </div>
-                        {toggle ? (
+                          {toggle ? (
                           <Slider
                             checked={enabled}
-                            onChange={() => handlePreferenceChange(key as 'necessary' | 'functional' | 'analytics' | 'marketing')}
+                            onChange={() => handlePreferenceChange(key as 'necessary' | 'analytics')}
                           />
                         ) : (
                           <div className="bg-[#22A60D] rounded-full w-6 h-6 flex items-center justify-center">
@@ -286,7 +295,7 @@ const CookieConsent = () => {
         <div className="fixed bottom-6 left-6 z-[9998]">
           <button
             onClick={openPopup}
-            className="bg-[#623CEA] hover:bg-purple-700 text-white rounded-full p-4 shadow-2xl transition-all duration-300 hover:scale-110 ring-4 ring-[#623CEA]/20"
+            className="bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-500 hover:to-orange-600 text-black rounded-full p-4 shadow-2xl transition-all duration-200 hover:scale-110 ring-4 ring-amber-400/20"
             aria-label={t('openCookieSettings')}
           >
             <Cookie size={24} aria-hidden="true" />

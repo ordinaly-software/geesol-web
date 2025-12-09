@@ -8,9 +8,9 @@ import {
   useMotionValueEvent,
 } from "motion/react";
 
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 
-import { Link } from "@/i18n/routing";
+import { Link } from "@/i18n/navigation";
 
 
 interface NavbarProps {
@@ -22,6 +22,7 @@ interface NavBodyProps {
   children: React.ReactNode;
   className?: string;
   visible?: boolean;
+  isCompact?: boolean;
 }
 
 interface NavItemsProps {
@@ -33,12 +34,14 @@ interface NavItemsProps {
   className?: string;
   onItemClick?: () => void;
   visible?: boolean;
+  isCompact?: boolean;
 }
 
 interface MobileNavProps {
   children: React.ReactNode;
   className?: string;
   visible?: boolean;
+  isCompact?: boolean;
 }
 
 interface MobileNavHeaderProps {
@@ -60,6 +63,7 @@ export const Navbar = ({ children, className }: NavbarProps) => {
     offset: ["start start", "end start"],
   });
   const [visible, setVisible] = useState<boolean>(false);
+  const [isCompact, setIsCompact] = useState<boolean>(false);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     if (latest > 100) {
@@ -69,6 +73,18 @@ export const Navbar = ({ children, className }: NavbarProps) => {
     }
   });
 
+  useEffect(() => {
+    const handleResize = () => {
+      // Show hamburger menu when viewport is between lg (1024px) and xl (1280px)
+      // This prevents text overlap at intermediate sizes
+      setIsCompact(window.innerWidth < 1280);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <motion.div
       ref={ref}
@@ -77,8 +93,8 @@ export const Navbar = ({ children, className }: NavbarProps) => {
       {React.Children.map(children, (child) =>
         React.isValidElement(child)
           ? React.cloneElement(
-              child as React.ReactElement<{ visible?: boolean }>,
-              { visible },
+              child as React.ReactElement<{ visible?: boolean; isCompact?: boolean }>,
+              { visible, isCompact },
             )
           : child,
       )}
@@ -86,7 +102,7 @@ export const Navbar = ({ children, className }: NavbarProps) => {
   );
 };
 
-export const NavBody = ({ children, className, visible }: NavBodyProps) => {
+export const NavBody = ({ children, className, visible, isCompact }: NavBodyProps) => {
   return (
     <motion.div
       animate={{
@@ -100,11 +116,12 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
       }}
       transition={{
         type: "spring",
-        stiffness: 200,
-        damping: 50,
+        stiffness: 400,
+        damping: 60,
       }}
       className={cn(
         "relative z-[60] mx-auto hidden w-full max-w-full flex-row items-center justify-between gap-4 self-start bg-white/80 px-4 py-2 lg:flex dark:bg-neutral-950/80",
+        isCompact && "xl:flex",
         className,
       )}
     >
@@ -125,7 +142,7 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
           }
 
           if (isNavItems) {
-            return React.cloneElement(child as React.ReactElement<{ visible?: boolean }>, { visible });
+            return React.cloneElement(child as React.ReactElement<{ visible?: boolean; isCompact?: boolean }>, { visible, isCompact });
           }
 
           return child;
@@ -134,10 +151,10 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
   );
 };
 
-export const NavItems = ({ items, className, onItemClick, visible }: NavItemsProps) => {
+export const NavItems = ({ items, className, onItemClick, visible, isCompact }: NavItemsProps) => {
   const [hovered, setHovered] = useState<number | null>(null);
 
-  const displayedItems = visible
+  const displayedItems = visible || isCompact
     ? items.filter((item) => item.showWhenCollapsed)
     : items;
 
@@ -145,8 +162,8 @@ export const NavItems = ({ items, className, onItemClick, visible }: NavItemsPro
     <motion.div
       onMouseLeave={() => setHovered(null)}
       className={cn(
-        "relative hidden min-w-0 flex-row items-center justify-start gap-1 text-base font-medium text-zinc-700 transition duration-200 lg:flex",
-        visible ? "flex-none" : "flex-1",
+        "relative hidden min-w-0 flex-row items-center justify-start gap-1 text-base font-medium text-zinc-700 transition duration-100 lg:flex",
+        visible || isCompact ? "flex-none" : "flex-1",
         className,
       )}
     >
@@ -160,9 +177,10 @@ export const NavItems = ({ items, className, onItemClick, visible }: NavItemsPro
         >
           {hovered === idx && (
             <motion.div
-              layoutId="hovered"
-              className="absolute inset-0 h-full w-full rounded-full bg-gray-100 dark:bg-neutral-800"
-            />
+                layoutId="hovered"
+                transition={{ type: "spring", stiffness: 400, damping: 60 }}
+                className="absolute inset-0 h-full w-full rounded-full bg-gray-100 dark:bg-neutral-800"
+              />
           )}
           <span className="relative z-20">{item.name}</span>
         </Link>
@@ -171,7 +189,7 @@ export const NavItems = ({ items, className, onItemClick, visible }: NavItemsPro
   );
 };
 
-export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
+export const MobileNav = ({ children, className, visible, isCompact }: MobileNavProps) => {
   return (
     <motion.div
       animate={{
@@ -189,11 +207,12 @@ export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
       }}
       transition={{
         type: "spring",
-        stiffness: 200,
-        damping: 50,
+        stiffness: 400,
+        damping: 60,
       }}
       className={cn(
         "relative z-50 mx-auto flex w-screen flex-col items-center justify-between bg-white/80 px-4 py-2 lg:hidden dark:bg-neutral-950/80",
+        isCompact && "xl:flex",
         className,
       )}
     >
@@ -231,6 +250,7 @@ export const MobileNavMenu = ({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
+          transition={{ duration: 0.12 }}
           className={cn(
             "absolute inset-x-0 top-16 z-50 flex w-full flex-col items-start justify-start gap-4 rounded-lg bg-white px-4 py-8 shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] dark:bg-neutral-950",
             className,
@@ -257,7 +277,7 @@ export const MobileNavToggle = ({
       type="button"
       onClick={onClick}
       aria-label={label}
-      className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 bg-white text-black shadow-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-gray-800 dark:bg-neutral-900 dark:text-white"
+      className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 bg-white text-black shadow-sm transition-transform duration-100 ease-out hover:-translate-y-0.5 hover:shadow-md dark:border-gray-800 dark:bg-neutral-900 dark:text-white"
     >
       {isOpen ? (
         <IconX className="text-black dark:text-white" />
@@ -303,7 +323,7 @@ export const NavbarButton = ({
   | React.ComponentPropsWithoutRef<"button">
 )) => {
   const baseStyles =
-    "px-4 py-2 rounded-md bg-white button bg-white text-black text-sm font-bold relative cursor-pointer hover:-translate-y-0.5 transition duration-200 inline-block text-center";
+    "px-4 py-2 rounded-md bg-white button bg-white text-black text-sm font-bold relative cursor-pointer hover:-translate-y-0.5 transition-transform duration-100 ease-out inline-block text-center";
 
   const variantStyles = {
     primary:
