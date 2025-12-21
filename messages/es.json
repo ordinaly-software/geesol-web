@@ -59,5 +59,31 @@
     "privacy": "Política de privacidad",
     "cookies": "Política de cookies",
     "openCookieSettings": "Abrir ajustes de cookies"
+  },
+  "testimonials": {
+    "title": "La satisfaccion de nuestros clientes, nuestro mejor aval",
+    "googleSource": "Resena verificada",
+    "googleSummary": "{rating} sobre 5 en Google ({count} resenas)",
+    "googleLink": "Ver en Google",
+    "googleWrite": "Escribir resena",
+    "googleLoading": "Cargando resenas de Google...",
+    "googleUnavailable": "Resenas no disponibles por ahora",
+    "items": [
+      {
+        "name": "Ana Garcia",
+        "role": "Propietaria residencial",
+        "quote": "Gestionaron ayudas y la instalacion fue rapidisima. Ya noto el ahorro."
+      },
+      {
+        "name": "Jose Martinez",
+        "role": "Responsable de energia",
+        "quote": "Equipo cercano y profesional. Optimizamos el autoconsumo en tiempo record."
+      },
+      {
+        "name": "Laura Ruiz",
+        "role": "Agricultora",
+        "quote": "El bombeo solar redujo costes y el soporte tecnico es excelente."
+      }
+    ]
   }
 }

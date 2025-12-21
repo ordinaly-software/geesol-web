@@ -1,12 +1,12 @@
 import {NextResponse} from 'next/server'
-import { SanityLive } from '@/lib/sanity'
+import {client} from '@/lib/sanity'
 import {listPosts} from '@/lib/queries'
 
 export const revalidate = 600
 
 export async function GET() {
   const base = process.env.NEXT_PUBLIC_BASE_URL!
-  const posts = await SanityLive.fetch(listPosts, {}, {next:{tags:['blog']}})
+  const posts = await client.fetch(listPosts, {}, {next:{tags:['blog']}})
   type Post = {
     title: string;
     slug: string;
@@ -24,9 +24,9 @@ export async function GET() {
     </item>`).join('')
   const xml = `<?xml version="1.0" encoding="UTF-8" ?>
   <rss version="2.0"><channel>
-  <title>Geesol Blog</title>
+  <title>Ordinaly — Blog de automatización e IA (Ordinaly, Sevilla)</title>
   <link>${base}/blog</link>
-  <description>Updates & Articles</description>
+  <description>Noticias, guías y casos de éxito sobre automatización empresarial con IA en Sevilla.</description>
   ${items}
   </channel></rss>`
   return new NextResponse(xml, { headers: { 'Content-Type': 'application/rss+xml' } })

@@ -59,5 +59,31 @@
     "privacy": "Privacy Policy",
     "cookies": "Cookies Policy",
     "openCookieSettings": "Open cookie settings"
+  },
+  "testimonials": {
+    "title": "Our customers' satisfaction is our best proof",
+    "googleSource": "Verified review",
+    "googleSummary": "{rating} out of 5 on Google ({count} reviews)",
+    "googleLink": "View on Google",
+    "googleWrite": "Write a review",
+    "googleLoading": "Loading Google reviews...",
+    "googleUnavailable": "Reviews unavailable right now",
+    "items": [
+      {
+        "name": "Ana Garcia",
+        "role": "Homeowner",
+        "quote": "They handled the subsidies and the install was fast. Savings show immediately."
+      },
+      {
+        "name": "Jose Martinez",
+        "role": "Energy manager",
+        "quote": "Professional, close team. We optimized self-consumption quickly."
+      },
+      {
+        "name": "Laura Ruiz",
+        "role": "Farmer",
+        "quote": "Solar pumping cut costs and the technical support is excellent."
+      }
+    ]
   }
 }

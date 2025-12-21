@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { routing } from "@/i18n/routing";
 
-const SITE_NAME = "Geesol Renovables - Instalaciones Fotovoltaicas";
+const SITE_NAME = "GEESOL";
 const FALLBACK_BASE_URL = "https://geesol.com";
 const baseUrl = (process.env.NEXT_PUBLIC_BASE_URL || FALLBACK_BASE_URL).replace(/\/$/, "");
 
@@ -11,8 +11,8 @@ export const localeHrefLangs: Record<string, string> = {
 };
 
 const brandContextByLocale: Record<string, string> = {
-  es: "Automatización empresarial con IA en Sevilla",
-  en: "AI business automation in Seville",
+  es: "Instalaciones fotovoltaicas y autoconsumo",
+  en: "Solar installations and self-consumption",
 };
 
 export const getBrandContext = (locale?: string) => {
@@ -35,7 +35,7 @@ const ogLocales: Record<string, string> = {
 };
 
 const defaultDescription =
-  "Transformamos empresas con soluciones de automatización inteligente en Sevilla, España y Europa.";
+  "Instalaciones fotovoltaicas y soluciones de autoconsumo para hogares, empresas e industria en Espana.";
 
 type OpenGraphType =
   | "website"
