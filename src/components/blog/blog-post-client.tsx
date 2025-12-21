@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import Footer from '@/components/ui/footer';
 import BackToTopButton from '@/components/ui/back-to-top-button';
 import { useTranslations } from 'next-intl';
 import { PortableText } from '@portabletext/react';
@@ -125,7 +124,6 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
           </div>
         )}
       </div>
-      <Footer />
       <BackToTopButton />
     </div>
   );

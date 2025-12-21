@@ -36,7 +36,7 @@ export default function ContactoPage({ locale }: { locale: string }) {
         backgroundImage="/static/footer_background.webp"
       />
 
-      <section className="-mt-12 px-4 pb-12 md:-mt-16">
+      <section className="px-4 py-12">
         <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="rounded-[28px] bg-white p-8 shadow-[0_16px_45px_rgba(12,59,82,0.12)] dark:bg-[#0f172a] dark:shadow-[0_16px_45px_rgba(0,0,0,0.35)]">
             <h3 className="text-2xl font-bold text-[#0c3b52] dark:text-white">Formulario de contacto</h3>

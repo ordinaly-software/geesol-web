@@ -86,4 +86,63 @@
       }
     ]
   }
+  ,
+  "services": {
+    "productsAndServicesTitle": "Productos y servicios",
+    "productsAndServicesDescription": "Explora nuestras soluciones de autoconsumo y productos destacados.",
+    "searchPlaceholder": "Buscar productos y servicios...",
+    "filters": {
+      "all": "Todos",
+      "featured": "Destacados",
+      "service": "Servicios",
+      "product": "Productos"
+    },
+    "featured": "Destacado",
+    "details": "Detalles",
+    "duration": "Duración",
+    "durationDay": "1 día",
+    "durationDays": "{count} días",
+    "price": "Precio",
+    "contactForQuote": "Solicitar presupuesto",
+    "learnMore": "Más información",
+    "noResults": {
+      "title": "Sin resultados",
+      "description": "No hemos encontrado coincidencias. Prueba con otra búsqueda o filtro."
+    },
+    "productsSectionTitle": "Productos",
+    "servicesSectionTitle": "Servicios"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Descubre nuestras últimas noticias, artículos y novedades.",
+    "searchPlaceholder": "Buscar artículos del blog...",
+    "filters": {
+      "all": "Todas las categorías",
+      "category": "Categoría"
+    },
+    "sort": {
+      "newest": "Más nuevos primero",
+      "oldest": "Más antiguos primero",
+      "label": "Ordenar por fecha"
+    },
+    "errors": {
+      "loadPosts": "No se pudieron cargar las publicaciones."
+    },
+    "loading": "Cargando publicaciones...",
+    "pagination": {
+      "prev": "Anterior",
+      "page": "Página",
+      "of": "de",
+      "next": "Siguiente",
+      "first": "Primera",
+      "last": "Última"
+    },
+    "noResults": {
+      "title": "No se han encontrado publicaciones.",
+      "description": "Vuelve pronto para nuevos artículos y actualizaciones."
+    },
+    "backToBlog": "Volver al blog",
+    "postCategories": "Categorías",
+    "shareLabel": "Compartir"
+  }
 }

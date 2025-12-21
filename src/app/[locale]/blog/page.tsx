@@ -19,7 +19,7 @@ export async function generateMetadata({
   return createPageMetadata({
     locale,
     path: "/blog",
-    title: isEs ? "Blog solar | GEESOL" : "Solar blog | GEESOL",
+    title: isEs ? "Blog solar" : "Solar blog",
     description: isEs
       ? "Noticias y guias sobre energia solar, autoconsumo y ayudas disponibles."
       : "News and guides on solar energy, self-consumption, and incentives.",

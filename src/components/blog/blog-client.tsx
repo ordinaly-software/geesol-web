@@ -1,6 +1,5 @@
 "use client";
 
-import Footer from '@/components/ui/footer';
 import BackToTopButton from '@/components/ui/back-to-top-button';
 import { useTranslations, useLocale } from 'next-intl';
 import { BlogCard } from './blog-card';
@@ -344,7 +343,6 @@ export default function BlogClient({ posts: initialPosts, total: initialTotal, p
         </div>
       </section>
 
-      <Footer />
       <BackToTopButton />
     </div>
   );

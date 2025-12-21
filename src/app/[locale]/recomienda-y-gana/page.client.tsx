@@ -30,7 +30,7 @@ export default function RecomiendaYGanaPage({ locale }: { locale: string }) {
         backgroundImage="/static/freepik__candid-photography-with-natural-textures-and-highl__86639.jpeg"
       />
 
-      <section className="-mt-12 px-4 pb-12 md:-mt-16">
+      <section className="px-4 py-12">
         <div className="mx-auto grid max-w-6xl gap-6 md:grid-cols-3">
           {["Invita", "Haz seguimiento", "Cobra"].map((title, idx) => (
             <div

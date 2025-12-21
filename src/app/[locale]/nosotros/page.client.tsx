@@ -1,36 +1,45 @@
+import Image from "next/image";
 import Banner from "@/components/ui/banner";
 import { Button } from "@/components/ui/button";
-import BackToTopButton from "@/components/ui/back-to-top-button";
 import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 
-const team = [
-  { name: "Equipo de ingeniería", role: "Diseño y cálculo", focus: "Dimensionamiento, legalización y selección de componentes" },
-  { name: "Equipo de instalación", role: "Montaje y puesta en marcha", focus: "Ejecución en cubierta, pruebas eléctricas y seguridad" },
-  { name: "Atención al cliente", role: "Acompañamiento", focus: "Gestión de ayudas, soporte y monitorización" },
+const teamRoles = [
+  "Director técnico",
+  "Técnicos instaladores",
+  "Comerciales",
+  "Atención al cliente",
+  "Marketing",
+  "Community manager",
+  "Informático",
+];
+
+const stats = [
+  {
+    value: "+5.000",
+    label: "instalaciones realizadas",
+  },
+  {
+    value: "2017",
+    label: "año de inicio",
+  },
+  {
+    value: "Andalucía + Madrid",
+    label: "cobertura actual",
+  },
 ];
 
 const partners = [
-  "Paneles Tier 1",
-  "Inversores premium",
-  "Baterías LiFePO4",
-  "Estructuras certificadas",
-  "Variadores para bombeo",
-];
-
-const values = [
-  {
-    title: "Transparencia",
-    description: "Informamos con claridad de plazos, costes y producción estimada." ,
-  },
-  {
-    title: "Seguridad",
-    description: "Cumplimos normativa y aplicamos protocolos de PRL en cada proyecto." ,
-  },
-  {
-    title: "Proximidad",
-    description: "Equipos locales que te acompañan antes, durante y después de la instalación." ,
-  },
+  "Kostal",
+  "REC",
+  "Schneider Electric",
+  "Enphase",
+  "Siemens",
+  "SunPower",
+  "Victron Energy",
+  "Exiom Group",
+  "UNEF",
+  "CESUR",
 ];
 
 export default function NosotrosPage({ locale }: { locale: string }) {
@@ -40,35 +49,77 @@ export default function NosotrosPage({ locale }: { locale: string }) {
     <div className="min-h-screen bg-[#f7f8fb] text-[#0c1f2d] dark:bg-[#0b1220] dark:text-gray-100">
       <Banner
         title="Quiénes somos"
-        subtitle="Un equipo especializado en fotovoltaica, mantenimiento y soluciones solares avanzadas para hogares, industria y agricultura."
+        subtitle="Energía solar para hogares, empresas e industria con un equipo propio que te acompaña de principio a fin."
         backgroundImage="/static/28128.jpg"
       />
 
-      <section className="-mt-12 px-4 pb-12 md:-mt-16">
-        <div className="mx-auto max-w-6xl rounded-[28px] bg-white/90 p-8 shadow-[0_16px_45px_rgba(12,59,82,0.12)] backdrop-blur dark:bg-[#0f172a]/90 dark:shadow-[0_16px_45px_rgba(0,0,0,0.35)]">
-          <div className="grid gap-10 md:grid-cols-2">
-            <div className="space-y-4">
-              <p className="text-sm font-semibold uppercase tracking-[0.15em] text-[#c81618]">Nuestra misión</p>
-              <h2 className="text-3xl font-black text-[#0c3b52] dark:text-white">Acompañarte en todo el ciclo de la energía solar</h2>
-              <p className="text-gray-700 dark:text-gray-300">
-                Desde el estudio de viabilidad hasta la monitorización continua, gestionamos cada paso con equipos propios y partners de confianza. Creamos proyectos que producen más, duran más y requieren menos incidencias.
+      <section className="px-4 py-12">
+        <div className="mx-auto grid max-w-6xl gap-8 rounded-[28px] bg-white/90 p-8 shadow-[0_16px_45px_rgba(12,59,82,0.12)] backdrop-blur dark:bg-[#0f172a]/90 dark:shadow-[0_16px_45px_rgba(0,0,0,0.35)] lg:grid-cols-[1.15fr_0.85fr]">
+          <div className="space-y-5">
+            <p className="text-sm font-semibold uppercase tracking-[0.15em] text-[#c81618]">
+              Nuestra historia
+            </p>
+            <h2 className="text-3xl font-black text-[#0c3b52] dark:text-white">
+              Energía limpia con equipos propios desde 2017
+            </h2>
+            <p className="text-gray-700 dark:text-gray-300">
+              Impulsados por trabajar en beneficio del medio ambiente y ofrecer una energía alternativa a todos los públicos,
+              en 2017 nació Geesol Renovables, S.L. como heredera de una firma familiar dedicada al sector eléctrico.
+            </p>
+            <p className="text-gray-700 dark:text-gray-300">
+              Hoy contamos con un equipo humano especializado que cubre todas las fases: estudio, diseño, instalación,
+              legalización y monitorización continua.
+            </p>
+            <div className="space-y-3">
+              <p className="text-sm font-semibold text-[#0c3b52] dark:text-gray-100">
+                Equipo humano
               </p>
               <div className="flex flex-wrap gap-3">
-                <span className="rounded-full bg-[#f7f8fb] px-4 py-2 text-sm font-semibold text-[#0c3b52] dark:bg-[#0b1220] dark:text-gray-100">Instalaciones llave en mano</span>
-                <span className="rounded-full bg-[#f7f8fb] px-4 py-2 text-sm font-semibold text-[#0c3b52] dark:bg-[#0b1220] dark:text-gray-100">Servicio técnico propio</span>
-                <span className="rounded-full bg-[#f7f8fb] px-4 py-2 text-sm font-semibold text-[#0c3b52] dark:bg-[#0b1220] dark:text-gray-100">Monitorización 24/7</span>
+                {teamRoles.map((role) => (
+                  <span
+                    key={role}
+                    className="rounded-full bg-[#0c3b52] px-4 py-2 text-sm font-semibold text-white shadow-sm dark:bg-[#c83c3e]"
+                  >
+                    {role}
+                  </span>
+                ))}
               </div>
             </div>
-            <div className="grid gap-4 sm:grid-cols-2">
-              {values.map((value) => (
+            <div className="grid gap-4 pt-4 sm:grid-cols-3">
+              {stats.map((stat) => (
                 <div
-                  key={value.title}
-                  className="rounded-[20px] bg-[#f7f8fb] p-5 shadow-[0_12px_32px_rgba(12,59,82,0.12)] dark:bg-[#0b1220] dark:shadow-[0_12px_32px_rgba(0,0,0,0.35)]"
+                  key={stat.value}
+                  className="rounded-[18px] bg-[#f7f8fb] px-4 py-4 text-center shadow-[0_12px_32px_rgba(12,59,82,0.12)] dark:bg-[#0b1220] dark:shadow-[0_12px_32px_rgba(0,0,0,0.35)]"
                 >
-                  <h4 className="text-lg font-semibold text-[#0c3b52] dark:text-white">{value.title}</h4>
-                  <p className="mt-2 text-sm text-gray-700 dark:text-gray-300">{value.description}</p>
+                  <div className="text-2xl font-black text-[#0c3b52] dark:text-white">
+                    {stat.value}
+                  </div>
+                  <div className="text-xs font-semibold uppercase tracking-wide text-gray-600 dark:text-gray-300">
+                    {stat.label}
+                  </div>
                 </div>
               ))}
+            </div>
+            <div className="flex flex-wrap gap-3 pt-2">
+              <Button asChild className="px-6 py-3">
+                <Link href={`${basePath}/contacto`}>Solicita tu estudio gratis</Link>
+              </Button>
+              <Button asChild variant="outline" className="px-6 py-3">
+                <Link href={`${basePath}/services`}>Ver servicios</Link>
+              </Button>
+            </div>
+          </div>
+          <div className="relative min-h-[360px] overflow-hidden rounded-[24px] shadow-[0_16px_45px_rgba(12,59,82,0.2)]">
+            <Image
+              src="/static/main_home_ilustration.webp"
+              alt="Equipo GEESOL en instalaciones fotovoltaicas"
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 40vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
+            <div className="absolute bottom-6 left-6 right-6 rounded-[18px] bg-white/90 p-4 text-sm text-[#0c3b52] shadow-lg backdrop-blur">
+              Más de 5.000 instalaciones realizadas en Andalucía y Madrid.
             </div>
           </div>
         </div>
@@ -77,19 +128,20 @@ export default function NosotrosPage({ locale }: { locale: string }) {
       <section className="bg-white px-4 py-16 dark:bg-[#0b1220]">
         <div className="mx-auto max-w-6xl space-y-8">
           <div className="text-center">
-            <h3 className="text-2xl font-bold text-[#0c3b52] dark:text-white">Nuestro equipo</h3>
-            <p className="mt-2 text-gray-700 dark:text-gray-300">Especialistas en ingeniería, instalación y soporte para que tu proyecto funcione desde el primer día.</p>
+            <p className="text-sm font-semibold uppercase tracking-[0.15em] text-[#c81618]">
+              Partners y certificaciones
+            </p>
+            <h3 className="text-2xl font-bold text-[#0c3b52] dark:text-white">
+              Trabajamos con marcas líderes del sector
+            </h3>
           </div>
-          <div className="grid gap-6 md:grid-cols-3">
-            {team.map((member) => (
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+            {partners.map((partner) => (
               <div
-                key={member.name}
-                className="rounded-[22px] bg-[#f7f8fb] p-6 text-left shadow-[0_10px_30px_rgba(12,59,82,0.12)] dark:bg-[#0f172a] dark:shadow-[0_10px_30px_rgba(0,0,0,0.35)]"
+                key={partner}
+                className="flex items-center justify-center rounded-[18px] border border-gray-200 bg-[#f7f8fb] px-4 py-6 text-sm font-semibold text-[#0c3b52] shadow-sm dark:border-gray-700 dark:bg-[#0f172a] dark:text-gray-100"
               >
-                <div className="mb-4 h-32 rounded-[18px] bg-gradient-to-br from-gray-200 to-white dark:from-neutral-800 dark:to-neutral-900" />
-                <h4 className="text-lg font-semibold text-[#0c3b52] dark:text-white">{member.name}</h4>
-                <p className="text-sm text-[#c81618] font-semibold">{member.role}</p>
-                <p className="mt-2 text-sm text-gray-700 dark:text-gray-300">{member.focus}</p>
+                {partner}
               </div>
             ))}
           </div>
@@ -98,42 +150,73 @@ export default function NosotrosPage({ locale }: { locale: string }) {
 
       <section className="bg-[#f7f8fb] px-4 py-16 dark:bg-[#0f172a]">
         <div className="mx-auto max-w-6xl rounded-[28px] bg-white p-8 shadow-[0_16px_45px_rgba(12,59,82,0.12)] dark:bg-[#0b1220] dark:shadow-[0_16px_45px_rgba(0,0,0,0.35)]">
-          <div className="grid gap-8 lg:grid-cols-[1fr_1fr]">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.15em] text-[#c81618]">Partners</p>
-              <h3 className="text-2xl font-bold text-[#0c3b52] dark:text-white">Fabricantes y colaboradores</h3>
-              <p className="mt-2 text-gray-700 dark:text-gray-300">Trabajamos con proveedores que garantizan rendimiento, soporte y disponibilidad de repuestos.</p>
+          <div className="grid gap-8 lg:grid-cols-[0.7fr_1.3fr]">
+            <div className="space-y-4">
+              <p className="text-sm font-semibold uppercase tracking-[0.15em] text-[#c81618]">Dónde estamos</p>
+              <h3 className="text-2xl font-bold text-[#0c3b52] dark:text-white">
+                Oficinas centrales en Camas (Sevilla)
+              </h3>
+              <p className="text-gray-700 dark:text-gray-300">
+                C/ Mansíos, 5. Polígono Parque Plata, 41900, Camas (Sevilla).
+              </p>
+              <div className="rounded-[18px] bg-[#f7f8fb] px-4 py-3 text-sm font-semibold text-[#0c3b52] dark:bg-[#0f172a] dark:text-gray-100">
+                Atención en Sevilla, Córdoba, Huelva, Cádiz, Málaga y Comunidad de Madrid.
+              </div>
+              <Button asChild className="mt-2 w-fit">
+                <Link href={`${basePath}/contacto`}>Coordinar visita</Link>
+              </Button>
             </div>
-            <div className="grid gap-3 sm:grid-cols-2">
-              {partners.map((partner) => (
-                <div
-                  key={partner}
-                  className="rounded-[18px] bg-[#f7f8fb] px-4 py-3 text-sm font-semibold text-[#0c3b52] shadow-sm dark:bg-[#0f172a] dark:text-gray-100"
-                >
-                  {partner}
-                </div>
-              ))}
+            <div className="relative h-80 overflow-hidden rounded-[22px] bg-white shadow-[0_12px_32px_rgba(12,59,82,0.12)] dark:bg-[#0b1220] dark:shadow-[0_12px_32px_rgba(0,0,0,0.35)]">
+              <iframe
+                title="Mapa de Geesol Instalaciones Fotovoltaicas"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3168.7608713633613!2d-6.0375458244239395!3d37.41912663256748!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd126945841445eb%3A0xcf8feb3db1c424cc!2sGeesol%20Instalaciones%20Fotovoltaicas!5e0!3m2!1ses!2ses!4v1766347986698!5m2!1ses!2ses"
+                width="100%"
+                height="100%"
+                className="h-full w-full border-0"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
             </div>
           </div>
         </div>
       </section>
 
       <section className="bg-white px-4 py-16 dark:bg-[#0b1220]">
-        <div className="mx-auto flex max-w-5xl flex-col items-center gap-6 text-center">
-          <h3 className="text-3xl font-black text-[#0c3b52] dark:text-white">¿Quieres trabajar con nosotros?</h3>
-          <p className="max-w-3xl text-lg text-gray-700 dark:text-gray-300">Buscamos instaladores certificados, técnicos PRL y perfiles de soporte que compartan nuestra visión de calidad y servicio.</p>
-          <div className="flex flex-wrap justify-center gap-3">
-            <Button asChild className="px-8 py-3 text-lg uppercase">
-              <Link href={`${basePath}/contacto`}>Envíanos tu perfil</Link>
-            </Button>
-            <Button asChild variant="outline" className="px-8 py-3 text-lg">
-              <Link href={`${basePath}/blog`}>Ver novedades</Link>
-            </Button>
+        <div className="mx-auto max-w-6xl">
+          <div className="rounded-[28px] bg-[#0c3b52] px-6 py-10 text-center text-white shadow-[0_16px_45px_rgba(12,59,82,0.2)] dark:bg-[#060a14]">
+            <h3 className="text-2xl font-bold">Descubre la magia del sol</h3>
+            <p className="mt-2 text-sm text-[#e9eef2]">
+              Video corporativo sobre nuestras instalaciones y el ahorro real que conseguimos.
+            </p>
+            <div className="mt-6 overflow-hidden rounded-[20px] bg-black/40">
+              <div className="aspect-video w-full">
+                <iframe
+                  title="Descubre la magia del sol"
+                  src="https://www.youtube.com/embed/8KZRSF5x7hw"
+                  className="h-full w-full border-0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  loading="lazy"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <BackToTopButton />
+      <section className="bg-[#f7f8fb] px-4 py-16 dark:bg-[#0f172a]">
+        <div className="mx-auto flex max-w-4xl flex-col items-center gap-4 text-center">
+          <h3 className="text-3xl font-black text-[#0c3b52] dark:text-white">
+            ¿Tienes alguna duda o quieres más información?
+          </h3>
+          <p className="text-lg text-gray-700 dark:text-gray-300">
+            Cuéntanos tu proyecto y te preparamos un estudio gratuito en menos de 24 horas.
+          </p>
+          <Button asChild className="px-8 py-3 text-lg uppercase">
+            <Link href={`${basePath}/contacto`}>Solicitar estudio gratis</Link>
+          </Button>
+        </div>
+      </section>
     </div>
   );
 }

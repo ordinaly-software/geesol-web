@@ -107,7 +107,7 @@ export const ServiceTemplate = ({
       </section>
 
       {/* Highlights */}
-      <section className="-mt-12 px-4 pb-12 md:-mt-16">
+      <section className="px-4 py-12">
         <div className="mx-auto grid max-w-6xl gap-6 md:grid-cols-3">
           {highlights.map((item) => (
             <GradientCard key={item.title}>

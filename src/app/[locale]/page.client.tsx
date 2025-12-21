@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/button";
 import { TestimonialsSection } from "@/components/home/testimonials-section";
+import { HeroHighlight, Highlight } from "@/components/ui/hero-highlight";
 const highlights = [
   {
     title: "Tranquilidad garantizada",
@@ -144,41 +145,63 @@ const stats = [
 
 const Hero = () => {
   return (
-    <section className="relative isolate overflow-hidden bg-[#0c3b52] text-white dark:bg-[#060a14]">
-      <div className="absolute inset-0">
-        <Image
-          src="/static/main_home_ilustration.webp"
-          alt="Instalación fotovoltaica sobre tejado"
-          fill
-          className="object-cover opacity-80"
-          priority
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0c3b52]/60 via-[#0c3b52]/80 to-[#0c3b52] dark:from-black/60 dark:via-[#060a14]/90 dark:to-[#060a14]" />
-      </div>
-      <div className="relative mx-auto flex max-w-6xl flex-col gap-6 px-4 pb-20 pt-28 text-center md:pb-28 md:pt-32">
-        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#f7f2ec]">
-          Energía solar a tu medida
-        </p>
-        <h1 className="text-4xl font-black leading-tight md:text-5xl lg:text-6xl">
-          El poder del sol en tu mano
-        </h1>
-        <p className="mx-auto max-w-3xl text-lg md:text-xl text-[#e9eef2]">
-          Disfruta tu propia energía en tu hogar o negocio con la última
-          tecnología en fotovoltaica. Te conseguimos subvenciones y gestionamos
-          todo el proceso de principio a fin.
-        </p>
-        <div className="flex flex-col items-center justify-center gap-4 md:flex-row md:gap-6">
-          <span className="text-base font-semibold text-[#f7f2ec]">
-            Ahora hasta el 80% en el coste de tu instalación con subvenciones y
-            bonificaciones disponibles.
-          </span>
-          <Button asChild className="text-lg px-8 py-3 uppercase">
-            <Link href="#cta">Solicitar estudio gratis</Link>
-          </Button>
+    <HeroHighlight containerClassName="min-h-[70vh] bg-[#f7f8fb] dark:bg-[#0b1220]">
+      <div className="relative mx-auto flex w-full max-w-6xl flex-col gap-10 px-4 py-20 lg:flex-row lg:items-center">
+        <div className="absolute -left-24 -top-24 h-56 w-56 rounded-full bg-[#22A60D]/15 blur-3xl" />
+        <div className="absolute -bottom-24 right-0 h-56 w-56 rounded-full bg-[#46B1C9]/20 blur-3xl" />
+
+        <div className="relative z-10 flex-1 space-y-6 text-left">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#0c3b52] dark:text-[#e9eef2]">
+            Energía solar a tu medida
+          </p>
+          <h1 className="text-4xl font-black leading-tight text-[#0c3b52] dark:text-white md:text-5xl lg:text-6xl">
+            El poder del <Highlight className="from-[#22A60D] to-[#46B1C9] text-[#0c3b52]">sol</Highlight>{" "}
+            en tu mano
+          </h1>
+          <p className="max-w-2xl text-lg text-gray-700 dark:text-gray-300 md:text-xl">
+            Disfruta tu propia energía en tu hogar o negocio con la última tecnología en fotovoltaica.
+            Gestionamos ayudas, legalización y puesta en marcha para que ahorres desde el primer mes.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            {["Estudio en 24h", "Gestión integral", "Monitorización 24/7"].map((tag) => (
+              <span
+                key={tag}
+                className="rounded-full bg-white px-4 py-2 text-sm font-semibold text-[#0c3b52] shadow-sm dark:bg-[#0f172a] dark:text-gray-100"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+            <Button asChild className="text-lg px-8 py-3 uppercase">
+              <Link href="#cta">Solicitar estudio gratis</Link>
+            </Button>
+            <span className="text-sm font-semibold text-gray-600 dark:text-gray-300">
+              Hasta el 80% en subvenciones y bonificaciones disponibles.
+            </span>
+          </div>
+        </div>
+
+        <div className="relative z-10 flex-1">
+          <div className="relative overflow-hidden rounded-[32px] bg-white shadow-[0_20px_60px_rgba(12,59,82,0.25)] dark:bg-[#0f172a]">
+            <div className="absolute inset-0 bg-gradient-to-br from-[#0c3b52]/10 via-transparent to-[#22A60D]/10" />
+            <Image
+              src="/static/main_home_ilustration.webp"
+              alt="Instalación fotovoltaica sobre tejado"
+              width={1200}
+              height={900}
+              className="h-full w-full object-cover"
+              priority
+              sizes="(min-width: 1024px) 50vw, 100vw"
+            />
+            <div className="absolute bottom-0 left-0 right-0 flex items-center justify-between gap-4 bg-white/90 px-6 py-4 text-sm font-semibold text-[#0c3b52] backdrop-blur dark:bg-[#0b1220]/90 dark:text-gray-100">
+              <span>Más de 5.000 instalaciones</span>
+              <span>Garantía hasta 25 años</span>
+            </div>
+          </div>
         </div>
       </div>
-    </section>
+    </HeroHighlight>
   );
 };
 

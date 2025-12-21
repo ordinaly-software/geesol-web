@@ -26,7 +26,7 @@ const Footer = () => {
   return (
     <footer className="relative overflow-visible text-white">
       {/* Top band that shows page background above the rounded top */}
-      <div className={`h-10 w-full ${isDark ? "bg-[#0b1220]" : "bg-white"}`} />
+      <div className={`h-10 w-full ${isDark ? "bg-[#0b1220]" : "bg-[#f7f8fb]"}`} />
 
       {/* Pill container (rounded top only) - overlaps the top band slightly */}
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 -mt-6">
@@ -198,7 +198,7 @@ const Footer = () => {
 
       {/* Bottom Bar */}
        {/* Bottom Bar - Outside the pill */}
-      <div className="relative z-10 bg-gradient-to-r from-gray-100 to-gray-200 py-6 px-8 text-slate-900 dark:from-gray-900 dark:to-black dark:text-white">
+      <div className="relative z-10 bg-[#f7f8fb] py-6 px-8 text-slate-900 dark:bg-black dark:text-white">
         <div className="mx-auto flex max-w-[1400px] flex-col items-center justify-between gap-4 md:flex-row">
           <div className="text-sm">
             © 2025 GEESOL RENOVABLES SL - Instalaciones Fotovoltaicas.

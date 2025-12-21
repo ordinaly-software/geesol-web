@@ -86,4 +86,63 @@
       }
     ]
   }
+  ,
+  "services": {
+    "productsAndServicesTitle": "Products and Services",
+    "productsAndServicesDescription": "Explore our self-consumption solutions and featured products.",
+    "searchPlaceholder": "Search products and services...",
+    "filters": {
+      "all": "All",
+      "featured": "Featured",
+      "service": "Services",
+      "product": "Products"
+    },
+    "featured": "Featured",
+    "details": "Details",
+    "duration": "Duration",
+    "durationDay": "1 day",
+    "durationDays": "{count} days",
+    "price": "Price",
+    "contactForQuote": "Contact for quote",
+    "learnMore": "Learn more",
+    "noResults": {
+      "title": "No results",
+      "description": "We couldn't find matches. Try another search or filter."
+    },
+    "productsSectionTitle": "Products",
+    "servicesSectionTitle": "Services"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Discover our latest news, articles, and updates.",
+    "searchPlaceholder": "Search blog posts...",
+    "filters": {
+      "all": "All Categories",
+      "category": "Category"
+    },
+    "sort": {
+      "newest": "Newest first",
+      "oldest": "Oldest first",
+      "label": "Sort by date"
+    },
+    "errors": {
+      "loadPosts": "Failed to load posts."
+    },
+    "loading": "Loading posts...",
+    "pagination": {
+      "prev": "Previous",
+      "page": "Page",
+      "of": "of",
+      "next": "Next",
+      "first": "First",
+      "last": "Last"
+    },
+    "noResults": {
+      "title": "No blog posts found.",
+      "description": "Check back soon for new articles and updates."
+    },
+    "backToBlog": "Back to blog",
+    "postCategories": "Categories",
+    "shareLabel": "Share"
+  }
 }
