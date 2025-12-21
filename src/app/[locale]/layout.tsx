@@ -1,6 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import { Montserrat } from "next/font/google"
 import "../globals.css"
 import {notFound} from 'next/navigation';
 import {Locale, routing} from '@/i18n/routing';
@@ -11,10 +11,10 @@ import BackToTopButton from '@/components/ui/back-to-top-button';
 import { ThemeProvider } from '@/contexts/theme-context';
 import { NextIntlClientProvider } from 'next-intl';
 
-const inter = Inter({
+const montserrat = Montserrat({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-inter",
+  variable: "--font-montserrat",
 })
 
 export const metadata: Metadata = {
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
       "Ahorra ahora hasta el 80% en tu instalación de paneles solares. ¡Y fináncialas desde solo 35€/mes!",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "GEESOL - Instalaciones fotovoltaicas y soluciones de autoconsumo",
@@ -118,7 +118,7 @@ export default async function RootLayout({ children, params } :
   }
 
   return (
-    <html lang={locale} className={inter.variable} suppressHydrationWarning>
+    <html lang={locale} className={montserrat.variable} suppressHydrationWarning>
       <head>
         {/* Web Font from onlinewebfonts.com - preconnect for faster loading */}
         <link rel="preconnect" href="https://db.onlinewebfonts.com" crossOrigin="anonymous" />
@@ -137,12 +137,12 @@ export default async function RootLayout({ children, params } :
         {/* Open Graph & Twitter Card for link previews */}
         <meta property="og:title" content="Ordinaly - Automatiza tu negocio con IA" />
         <meta property="og:description" content="Transformamos empresas con soluciones de automatización inteligente. Chatbots, workflows y más para liderar la innovación en España y Europa." />
-        <meta property="og:image" content="https://geesol.com/og-image.jpg" />
+        <meta property="og:image" content="https://geesol.com/og-image.png" />
         <meta property="og:url" content="https://geesol.com/" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Ordinaly - Automatiza tu negocio con IA" />
         <meta name="twitter:description" content="Transformamos empresas con soluciones de automatización inteligente. Chatbots, workflows y más para liderar la innovación en España y Europa." />
-        <meta name="twitter:image" content="https://geesol.com/og-image.jpg" />
+        <meta name="twitter:image" content="https://geesol.com/og-image.png" />
         {/* DNS prefetch and preconnect for critical domains */}
         <link rel="dns-prefetch" href="//wa.me" />
         
@@ -280,7 +280,7 @@ export default async function RootLayout({ children, params } :
         />
       </head>
       <body
-        className={`${inter.className} antialiased min-h-screen bg-[#f7f8fb] text-[#0c1f2d] transition-colors duration-200 dark:bg-[#0b1220] dark:text-gray-100`}
+        className={`${montserrat.className} antialiased min-h-screen bg-[#f7f8fb] text-[#0c1f2d] transition-colors duration-200 dark:bg-[#0b1220] dark:text-gray-100`}
         suppressHydrationWarning
       >
         <NextIntlClientProvider>

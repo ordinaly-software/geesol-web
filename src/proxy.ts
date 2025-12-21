@@ -1,17 +1,13 @@
-import createMiddleware from 'next-intl/middleware';
-import { routing } from './i18n/routing';
-import { NextRequest } from 'next/server';
+import createMiddleware from "next-intl/middleware";
+import { routing } from "./i18n/routing";
 
-const intlMiddleware = createMiddleware({
-  localePrefix: 'always',
+export default createMiddleware({
+  localePrefix: "always",
+  localeDetection: true,
   locales: routing.locales,
   defaultLocale: routing.defaultLocale,
 });
 
-export function proxy(request: NextRequest) {
-  return intlMiddleware(request);
-}
-
 export const config = {
-  matcher: ['/((?!api|studio|trpc|_next|_vercel|.*\\..*).*)'],
+  matcher: ["/((?!api|studio|trpc|_next|_vercel|.*\\..*).*)"],
 };

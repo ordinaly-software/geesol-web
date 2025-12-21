@@ -27,6 +27,44 @@ export default function StudioPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [, setAlert] = useState<{ type: string; message: string } | null>(null);
 
+  useEffect(() => {
+    const checkAdminAccess = async () => {
+      const token = localStorage.getItem("authToken");
+      if (!token) {
+        router.push("/auth/signin");
+        return;
+      }
+      try {
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL || "https://api.ordinaly.ai";
+        const response = await fetch(`${apiUrl}/api/users/profile/`, {
+          headers: {
+            Authorization: `Token ${token}`,
+            "Content-Type": "application/json",
+          },
+        });
+        if (response.ok) {
+          const user: User = await response.json();
+          if (user.is_staff || user.is_superuser) {
+            setIsAuthorized(true);
+            // Optionally fetchStats(token);
+          } else {
+            setAlert({ type: "error", message: "Access denied. Admin privileges required." });
+            setTimeout(() => router.push("/"), 3000);
+          }
+        } else {
+          setAlert({ type: "error", message: "Failed to verify admin status. Please try signing in again." });
+          setTimeout(() => router.push("/auth/signin"), 3000);
+        }
+      } catch {
+        setAlert({ type: "error", message: "Authentication error. Please sign in again." });
+        setTimeout(() => router.push("/auth/signin"), 3000);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    checkAdminAccess();
+  }, [router]);
+
   if (isLoading) {
     return <div className="flex items-center justify-center min-h-screen">Cargando...</div>;
   }

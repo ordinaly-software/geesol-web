@@ -1,277 +1,131 @@
 <p align="center">
-    <img src="frontend/public/logo.webp" align="center" width="30%">
-</p>
-<p align="center"><h1 align="center">ORDINALY</h1></p>
-<p align="center">
-    <em>Esta es la página principal de Ordinaly. El software de Ordinaly tiene como misión ayudar a las empresas a agilizar y mejorar sus procesos con ayuda de la IA.</em>
+  <img src="public/logo_2.webp" align="center" width="30%" alt="GEESOL logo" />
 </p>
 <p align="center">
-<p align="center">Hecho con las tecnologías de:</p>
-<p align="center">
-    <img src="https://img.shields.io/badge/npm-CB3837.svg?style=default&logo=npm&logoColor=white" alt="npm">
-    <img src="https://img.shields.io/badge/HTML5-E34F26.svg?style=default&logo=HTML5&logoColor=white" alt="HTML5">
-    <img src="https://img.shields.io/badge/JavaScript-F7DF1E.svg?style=default&logo=JavaScript&logoColor=black" alt="JavaScript">
-    <img src="https://img.shields.io/badge/GNU%20Bash-4EAA25.svg?style=default&logo=GNU-Bash&logoColor=white" alt="GNU%20Bash">
-    <br>
-    <img src="https://img.shields.io/badge/Python-3776AB.svg?style=default&logo=Python&logoColor=white" alt="Python">
-    <img src="https://img.shields.io/badge/TypeScript-3178C6.svg?style=default&logo=TypeScript&logoColor=white" alt="TypeScript">
-    <img src="https://img.shields.io/badge/ESLint-4B32C3.svg?style=default&logo=ESLint&logoColor=white" alt="ESLint">
+  <em>Web corporativa de GEESOL - Servicios de instalaciones fotovoltaicas, autoconsumo y soluciones energéticas.</em>
 </p>
-<br>
 
-## Índice
+## Indice
 
-- [Índice](#índice)
-- [Visión general](#visión-general)
+- [Indice](#indice)
+- [Vision general](#vision-general)
+- [Caracteristicas principales](#caracteristicas-principales)
+- [Stack tecnológico](#stack-tecnológico)
 - [Estructura del proyecto](#estructura-del-proyecto)
-  - [Índice del proyecto](#índice-del-proyecto)
-- [Características principales](#características-principales)
-- [Primeros pasos](#primeros-pasos)
-  - [Requisitos previos](#requisitos-previos)
-  - [Instalación y ejecución](#instalación-y-ejecución)
-- [Dependencias principales](#dependencias-principales)
-  - [Backend (Django)](#backend-django)
-  - [Frontend (Next.js)](#frontend-nextjs)
+- [Configuracion](#configuracion)
+  - [Requisitos](#requisitos)
+  - [Variables de entorno](#variables-de-entorno)
+  - [Instalacion y ejecucion](#instalacion-y-ejecucion)
 - [Testing](#testing)
-  - [Ejecutar tests y obtener cobertura:](#ejecutar-tests-y-obtener-cobertura)
 - [Contribuir](#contribuir)
 - [Licencia](#licencia)
 - [Reconocimientos](#reconocimientos)
 
 ---
 
-## Visión general
+## Vision general
 
-🚀 **AUTOMATIZA TU NEGOCIO CON IA**  
-Transformamos empresas con automatizaciones inteligentes. Desde chatbots hasta flujos de trabajo avanzados, te ayudamos a modernizar tu empresa y a ser más eficiente.
+Este repositorio contiene la nueva web de GEESOL. La aplicacion esta construida con Next.js (App Router) y Tailwind CSS, con contenido dinamico desde Sanity, soporte multidioma con next-intl y una base SEO completa (sitemap, robots y metadatos).
 
-🤖 **Chatbots Inteligentes**  
-Automatiza la atención al cliente 24/7 con IA conversacional avanzada.
+---
 
-🔄 **Workflows Automatizados**  
-Integración con Odoo, Slack y herramientas empresariales.
+## Caracteristicas principales
 
-📱 **WhatsApp Business**  
-Automatización de ventas y soporte vía WhatsApp Business API.
+- Sitio corporativo orientado a conversion con secciones de servicios y contacto.
+- Blog y contenido editorial gestionado desde Sanity.
+- Internacionalizacion con rutas localizadas.
+- Formularios de leads integrados con n8n.
+- Integracion con Google Maps para testimonios y valoraciones.
+- PWA con service worker y manifest.
 
-🌐 **Integración Global**  
-Conectamos todos tus sistemas en una plataforma unificada.
+---
 
-📊 **Consultoría Personalizada**  
-Análisis y estrategia de automatización adaptada a tu negocio.
+## Stack tecnológico
 
-⚙️ **Optimización Continua**  
-Monitoreo y mejora constante de tus procesos automatizados.
+- Next.js 16 (App Router) + React 19
+- TypeScript
+- Tailwind CSS
+- next-intl para i18n
+- Sanity CMS (Studio en /studio)
 
 ---
 
 ## Estructura del proyecto
 
 ```sh
-ordinaly/
-├── LICENSE
-├── README.md
-├── backend/
-│   ├── manage.py
-│   ├── requirements.txt
-│   ├── config/           # Configuración Django
-│   ├── api/              # API REST principal
-│   ├── users/            # Gestión de usuarios
-│   ├── courses/          # Cursos y formación
-│   ├── services/         # Servicios empresariales
-│   ├── terms/            # Términos legales
-│   └── ...
-└── frontend/
-    ├── package.json
-    ├── public/
-    ├── src/
-    │   ├── components/
-    │   ├── hooks/
-    │   ├── i18n/
-    │   ├── lib/
-    │   └── ...
-    ├── messages/         # Archivos de traducción (es, en, ca, eu, gl)
-    └── ...
+geesol-web/
+├── public/               # Assets publicos, manifest, robots y verificaciones
+├── messages/             # Mensajes de i18n
+├── src/
+│   ├── app/              # Rutas y layout (App Router)
+│   ├── components/       # Componentes UI y features
+│   ├── contexts/         # Contextos (tema, etc.)
+│   ├── i18n/             # Configuracion de locales
+│   ├── lib/              # Helpers y clientes (Sanity)
+│   └── utils/            # Utilidades varias
+├── sanity.config.ts      # Configuracion de Sanity Studio
+└── next.config.ts        # Configuracion de Next.js
 ```
 
-
-###  Índice del proyecto
-<details open>
-        <summary><b>backend</b></summary>
-        <blockquote>
-            <b>Apps principales (Django):</b>
-            <ul>
-                <li><b>api/</b> — API REST principal
-                    <ul>
-                        <li>models.py, serializers.py, views.py, urls.py, admin.py, tests.py</li>
-                        <li>management/commands/ — Comandos personalizados</li>
-                    </ul>
-                </li>
-                <li><b>users/</b> — Gestión de usuarios y autenticación
-                    <ul>
-                        <li>models.py, serializers.py, views.py, urls.py, admin.py, authentication.py, tests.py</li>
-                    </ul>
-                </li>
-                <li><b>courses/</b> — Cursos y formación
-                    <ul>
-                        <li>models.py, serializers.py, views.py, urls.py, admin.py, tests.py</li>
-                    </ul>
-                </li>
-                <li><b>services/</b> — Servicios empresariales
-                    <ul>
-                        <li>models.py, serializers.py, views.py, urls.py, admin.py, tests.py</li>
-                    </ul>
-                </li>
-                <li><b>terms/</b> — Términos legales y documentos
-                    <ul>
-                        <li>models.py, serializers.py, views.py, urls.py, admin.py, tests.py</li>
-                    </ul>
-                </li>
-                <li><b>config/</b> — Configuración global del proyecto
-                    <ul>
-                        <li>settings.py, urls.py, wsgi.py, asgi.py, __init__.py</li>
-                    </ul>
-                </li>
-            </ul>
-            <b>Otros:</b>
-            <ul>
-                <li><b>manage.py</b> — Script principal de gestión Django</li>
-                <li><b>requirements.txt</b> — Dependencias del backend</li>
-                <li><b>media/</b> — Archivos subidos (imágenes, PDFs, etc.)</li>
-                <li><b>staticfiles/</b> — Archivos estáticos recolectados</li>
-            </ul>
-        </blockquote>
-    <summary><b><code>ORDINALY/</code></b></summary>
-        <summary><b>frontend</b></summary>
-        <blockquote>
-            <b>Páginas principales (Next.js App Router):</b>
-            <ul>
-                <li><code>/[locale]/page.tsx</code> — Home</li>
-                <li><code>/[locale]/services/page.tsx</code> — Servicios</li>
-                <li><code>/[locale]/formation/page.tsx</code> — Cursos y formación</li>
-                <li><code>/[locale]/legal/page.tsx</code> — Documentación legal</li>
-                <li><code>/[locale]/profile/page.tsx</code> — Perfil de usuario</li>
-                <li><code>/[locale]/admin/page.tsx</code> — Panel de administración</li>
-                <li><code>/[locale]/auth/signin/page.tsx</code> — Iniciar sesión</li>
-                <li><code>/[locale]/auth/signup/page.tsx</code> — Registro</li>
-            </ul>
-            <b>Componentes principales:</b>
-            <ul>
-                <li><b>Admin:</b> admin-course-card, admin-course-modal, admin-courses-tab, admin-service-card, admin-service-edit-modal, admin-services-tab, admin-terms-tab, admin-users-tab</li>
-                <li><b>Formation:</b> course-card, course-details-modal, add-to-calendar-buttons, bonification-info, enrollment-confirmation-modal, enrollment-cancellation-modal</li>
-                <li><b>Home:</b> courses-showcase, demo-modal, pricing-plans, service-showcase, whatsapp-bubble</li>
-                <li><b>Services:</b> service-details-modal</li>
-                <li><b>UI:</b> admin-tabs, alert, back-to-top-button, badge, button, card, colourful-text, cookies, delete-account-modal, delete-confirmation-modal, dropdown, footer, icon-select, input, label, lazy-image, locale-switcher, logout-modal, markdown-renderer, modal-close-button, modal, navbar, slider, styled-button, textarea</li>
-                <li><b>Auth:</b> auth-modal, google-signin-button</li>
-            </ul>
-            <b>Utilidades y hooks:</b>
-            <ul>
-                <li>useCourses, useServices, usePreloadResources, useIntersectionObserver</li>
-            </ul>
-            <b>Internacionalización:</b>
-            <ul>
-                <li>Archivos de mensajes en <code>/frontend/messages/</code> (es, en, ca, eu, gl)</li>
-                <li>Soporte para next-intl y rutas localizadas</li>
-            </ul>
-        </blockquote>
-    </details>
-</details>
-
 ---
 
+## Configuracion
 
-## Características principales
+### Requisitos
 
-- **Backend Django REST:** API robusta para cursos, usuarios, servicios y términos legales.
-- **Frontend Next.js:** UI moderna, responsive, con soporte para dark mode y animaciones.
-- **Internacionalización (i18n):** Traducciones completas (es, en, ca, eu, gl) usando next-intl.
-- **Gestión de cursos:** Horarios complejos, inscripciones, exportación a calendario (.ics, Google, Outlook).
-- **Panel de administración:** Gestión avanzada de usuarios, cursos, servicios y términos.
-- **Integración con WhatsApp y Odoo:** Automatización de ventas y flujos empresariales.
-- **Accesibilidad y SEO:** Buenas prácticas, sitemap, robots.txt, imágenes optimizadas.
+- Node.js 18+
+- npm
 
+### Variables de entorno
 
----
+Crea un archivo `.env.local` con los valores necesarios. Puedes partir de `.env.example`:
 
-##  Primeros pasos
+```sh
+cp .env.example .env.local
+```
 
-###  Requisitos previos
+Variables relevantes:
 
-Antes de comenzar con Ordinaly, asegúrate de tener instalado:
+- `NEXT_PUBLIC_BASE_URL`
+- `NEXT_PUBLIC_SANITY_PROJECT_ID`
+- `NEXT_PUBLIC_SANITY_DATASET`
+- `REVALIDATE_SECRET`
+- `NEXT_PUBLIC_GA_ID` (si se usa Google Analytics)
+- `N8N_WEBHOOK_URL` y `N8N_WEBHOOK_TOKEN`
+- `GOOGLE_MAPS_API_KEY` y `GOOGLE_PLACE_ID`
 
-- **Python 3.10+** y **pip** (para el backend)
-- **Node.js 18+** y **npm** (para el frontend)
+### Instalacion y ejecucion
 
-
-
-### Instalación y ejecución
-
-1. Clona el repositorio:
-    ```sh
-    git clone https://github.com/ordinaly-software/ordinaly.git
-    cd ordinaly
-    ```
-
-2. Instala dependencias del backend (Django):
-    ```sh
-    cd backend
-    python3 -m venv venv
-    source venv/bin/activate
-    pip install -r requirements.txt
-    # Copia y configura .env proporcionada (DJANGO_SECRET_KEY, GOOGLE_OAUTH2_CLIENT_ID, GOOGLE_OAUTH2_CLIENT_SECRET, y ORDINALY_TEST_PASSWORD)
-    # Migraciones iniciales
-    python manage.py migrate
-    # (Opcional) Crea superusuario
-    python manage.py createsuperuser
-    # (Opcional) Crea datos de prueba para ver cómo quedaría la web
-    python manage.py populate_db
-    ````
-
-    [!WARNING]
-    NO usar bajo ningún concepto este último comando con la opción `--clear` en el entorno de producción ya que borraría todos los usuarios del sistema.
-
-    ```sh
-    # Ejecuta el servidor
-    python manage.py runserver
-    ```
-
-3. Instala dependencias del frontend (Next.js):
-    ```sh
-    cd ../frontend
-    Copia y configura .env.local proporcionada (se puede encontrar la plantilla en .env.example)
-    npm install
-    npm run dev
-    ```
-
-
+```sh
+npm install
+npm run dev
+```
 
 ---
-
-
-
-##  Dependencias principales
-
-### Backend (Django)
-- Django, djangorestframework, django-cors-headers, Pillow, gunicorn, whitenoise, dotenv, markdown, reportlab
-
-### Frontend (Next.js)
-- next, react, next-intl, tailwindcss, lucide-react, styled-components, react-markdown, framer-motion, jspdf
-
----
-
 
 ## Testing
 
-Para asegurar la calidad del backend, es obligatorio mantener al menos un 80% de cobertura de tests.
+Basta con probar el *linting* y la sintaxis de Typescript y JS con los siguientes comando:
 
-### Ejecutar tests y obtener cobertura:
-
-```sh
-coverage run --source='.' --omit='*/migrations/*,*/tests.py,api/*,config/*,manage.py,*__init__.py' manage.py test
-coverage report -m
+```
+npx eslint --ext .ts,.tsx src public --no-error-on-unmatched-pattern || true
+npm run build
 ```
 
-> **Nota:** El proyecto no se considerará válido si la cobertura es inferior al 80%.
+Y para comprobar el rendimiento, SEO, medidas de accesibilidad y buenas prácticas de cada página, haz:
+
+- Primero, ejecuta la *build* de producción:
+ ```sh
+    cd ../frontend
+    npm run build
+    npm run start -- -p 3000
+```
+
+- Después, ejectuta:
+```
+npx lighthouse http://localhost:3000/es --form-factor=mobile --view
+# Se puede probar /es, /es/services o cualquier otra ruta
+```
 
 ---
 

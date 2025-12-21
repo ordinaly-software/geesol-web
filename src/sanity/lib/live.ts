@@ -1,6 +1,6 @@
 // Querying with "sanityFetch" will keep content automatically updated
-// Note: next-sanity v11.x doesn't have defineLive API
-// Using a manual wrapper implementation instead
+// Before using it, import and render "<SanityLive />" in your layout, see
+// https://github.com/sanity-io/next-sanity#live-content-api for more information.
 import { client } from './client'
 
 // Manual implementation for next-sanity v11.x compatibility
