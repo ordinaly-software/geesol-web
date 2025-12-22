@@ -15,11 +15,11 @@ interface SectionProps {
 const MAX_TESTIMONIALS = 5;
 const avatarGradients = [
   "from-amber-400 to-orange-500",
-  "from-emerald-400 to-teal-600",
+  "from-[#D01B17] to-[#D01B17]",
   "from-blue-500 to-indigo-600",
   "from-rose-400 to-pink-500",
   "from-sky-400 to-cyan-600",
-  "from-lime-400 to-emerald-500",
+  "from-[#D01B17] to-[#D01B17]",
 ];
 
 const localTestimonials = [
@@ -28,7 +28,7 @@ const localTestimonials = [
     nameKey: "testimonials.items.0.name",
     roleKey: "testimonials.items.0.role",
     quoteKey: "testimonials.items.0.quote",
-    color: "from-green-400 to-green-600",
+    color: "from-[#D01B17] to-[#D01B17]",
   },
   {
     initials: "JM",

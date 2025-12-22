@@ -11,6 +11,23 @@ import Banner from '@/components/ui/banner';
 import type { BlogPost, MediaItem, Category } from './types';
 import SharePostButtons from './share-post-buttons';
 
+const tagStyles = [
+  "bg-[#D01B17]/10 text-[#D01B17] hover:bg-[#D01B17]/20",
+  "bg-[#0c3b52]/10 text-[#0c3b52] hover:bg-[#0c3b52]/20",
+  "bg-[#46B1C9]/10 text-[#146b7b] hover:bg-[#46B1C9]/20",
+  "bg-[#f6c343]/20 text-[#a16207] hover:bg-[#f6c343]/30",
+  "bg-[#623CEA]/10 text-[#623CEA] hover:bg-[#623CEA]/20",
+  "bg-[#c81618]/10 text-[#c81618] hover:bg-[#c81618]/20",
+];
+
+const getTagStyle = (key: string) => {
+  let hash = 0;
+  for (let i = 0; i < key.length; i += 1) {
+    hash = (hash * 31 + key.charCodeAt(i)) % 100000;
+  }
+  return tagStyles[Math.abs(hash) % tagStyles.length];
+};
+
 export default function BlogPostClient({ post }: { post: BlogPost }) {
   const t = useTranslations('blog');
   if (!post) return null;
@@ -38,7 +55,7 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
         {/* Header row: back link | share buttons | date (responsive) */}
         <div className="mb-6 grid grid-cols-1 md:grid-cols-3 items-center gap-6">
           <div className="flex md:justify-start justify-center">
-            <Link href="/blog" className="inline-flex items-center gap-2 text-green-700 dark:text-green-400 hover:underline">
+            <Link href="/blog" className="inline-flex items-center gap-2 text-[#D01B17] dark:text-[#D01B17] hover:underline">
               <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7" /></svg>
               {t("backToBlog")}
             </Link>
@@ -103,7 +120,9 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
                       <Link
                         key={cat.slug}
                         href={`/blog?category=${cat.title}`}
-                        className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#2BCB5C]/10 text-[#2BCB5C] text-sm font-medium hover:bg-[#2BCB5C]/20 transition w-fit"
+                        className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium transition w-fit ${getTagStyle(
+                          cat.slug || cat.title
+                        )}`}
                       >
                         {cat.title}
                       </Link>

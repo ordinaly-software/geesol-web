@@ -16,6 +16,21 @@ export interface BlogCardProps {
 
 export const BlogCard: React.FC<BlogCardProps> = ({ post, onCategoryClick }) => {
   const categories = Array.isArray(post.categories) ? post.categories : [];
+  const tagStyles = [
+    "bg-[#D01B17]/10 text-[#D01B17] hover:bg-[#D01B17]/20",
+    "bg-[#0c3b52]/10 text-[#0c3b52] hover:bg-[#0c3b52]/20",
+    "bg-[#46B1C9]/10 text-[#146b7b] hover:bg-[#46B1C9]/20",
+    "bg-[#f6c343]/20 text-[#a16207] hover:bg-[#f6c343]/30",
+    "bg-[#623CEA]/10 text-[#623CEA] hover:bg-[#623CEA]/20",
+    "bg-[#c81618]/10 text-[#c81618] hover:bg-[#c81618]/20",
+  ];
+  const getTagStyle = (key: string) => {
+    let hash = 0;
+    for (let i = 0; i < key.length; i += 1) {
+      hash = (hash * 31 + key.charCodeAt(i)) % 100000;
+    }
+    return tagStyles[Math.abs(hash) % tagStyles.length];
+  };
 
   return (
     <div
@@ -27,8 +42,8 @@ export const BlogCard: React.FC<BlogCardProps> = ({ post, onCategoryClick }) => 
         transition-all duration-300
         w-full max-w-4xl mx-auto
         flex flex-col md:flex-row
-        hover:border-[#1F8A0D] dark:hover:border-[#7CFC00]
-        hover:shadow-2xl hover:shadow-[#1F8A0D]/10
+        hover:border-[#D01B17] dark:hover:border-[#D01B17]
+        hover:shadow-2xl hover:shadow-[#D01B17]/10
         hover:-translate-y-2
       "
     >
@@ -62,15 +77,9 @@ export const BlogCard: React.FC<BlogCardProps> = ({ post, onCategoryClick }) => 
                   key={cat.slug}
                   type="button"
                   onClick={() => onCategoryClick(cat.slug || cat.title)}
-                  className="
-                    px-2 py-0.5
-                    md:px-3 md:py-1
-                    rounded-full
-                    bg-[#2BCB5C]/10 text-[#2BCB5C]
-                    text-xs md:text-sm
-                    font-medium
-                    hover:bg-[#2BCB5C]/20 transition
-                  "
+                  className={`px-2 py-0.5 md:px-3 md:py-1 rounded-full text-xs md:text-sm font-medium transition ${getTagStyle(
+                    cat.slug || cat.title
+                  )}`}
                 >
                   {cat.title}
                 </button>
@@ -78,15 +87,9 @@ export const BlogCard: React.FC<BlogCardProps> = ({ post, onCategoryClick }) => 
                 <Link
                   key={cat.slug}
                   href={`/blog?category=${cat.slug}`}
-                  className="
-                    px-2 py-0.5
-                    md:px-3 md:py-1
-                    rounded-full
-                    bg-[#2BCB5C]/10 text-[#2BCB5C]
-                    text-xs md:text-sm
-                    font-medium
-                    hover:bg-[#2BCB5C]/20 transition
-                  "
+                  className={`px-2 py-0.5 md:px-3 md:py-1 rounded-full text-xs md:text-sm font-medium transition ${getTagStyle(
+                    cat.slug || cat.title
+                  )}`}
                 >
                   {cat.title}
                 </Link>
@@ -102,7 +105,7 @@ export const BlogCard: React.FC<BlogCardProps> = ({ post, onCategoryClick }) => 
             text-lg md:text-2xl
             leading-snug
             mb-1
-            md:group-hover:text-[#1F8A0D] dark:hover:text-[#7CFC00]
+            md:group-hover:text-[#D01B17] dark:hover:text-[#D01B17]
             transition-colors
             line-clamp-2
           "

@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import BackToTopButton from "@/components/ui/back-to-top-button";
 import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
+import { IconBrandAppstore, IconBrandGooglePlay } from "@tabler/icons-react";
 
 const steps = [
   {
@@ -66,11 +67,13 @@ export default function RecomiendaYGanaPage({ locale }: { locale: string }) {
             <div className="flex flex-wrap gap-3">
               <Button asChild className="px-6 py-3">
                 <Link href="https://apps.apple.com" target="_blank">
+                  <IconBrandAppstore/>
                   App Store
                 </Link>
               </Button>
               <Button asChild variant="outline" className="px-6 py-3">
                 <Link href="https://play.google.com" target="_blank">
+                  <IconBrandGooglePlay/>
                   Google Play
                 </Link>
               </Button>

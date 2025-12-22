@@ -1,4 +1,4 @@
-import { ServiceTemplate } from "../_components/service-template";
+import { ServiceTemplate } from "../../../../components/services/service-template";
 
 export default function BombeoSolarPage({ locale }: { locale: string }) {
 
