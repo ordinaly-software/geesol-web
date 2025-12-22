@@ -1,14 +1,14 @@
-import {NextResponse} from 'next/server'
+import {NextRequest, NextResponse} from 'next/server'
 import {client} from '@/lib/sanity'
 import {listPosts} from '@/lib/queries'
 
 export const revalidate = 600
 
 export async function GET(
-  _request: Request,
-  { params }: { params: { locale: string } }
+  _request: NextRequest,
+  { params }: { params: Promise<{ locale: string }> }
 ) {
-  const locale = params?.locale ?? 'es'
+  const {locale = 'es'} = await params
   const prefix = locale ? `/${locale}` : ''
   const base = process.env.NEXT_PUBLIC_BASE_URL!
   const posts = await client.fetch(listPosts, {}, {next:{tags:['blog']}})

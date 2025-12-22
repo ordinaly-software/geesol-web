@@ -6,6 +6,7 @@ import BackToTopButton from '@/components/ui/back-to-top-button';
 import { useMemo } from 'react';
 import { useTranslations } from 'next-intl';
 import { PortableText } from '@portabletext/react';
+import type { PortableTextBlock } from '@portabletext/types';
 import { getPortableTextComponents } from './portable-text-components';
 import { urlFor } from '@/lib/image';
 import Banner from '@/components/ui/banner';
@@ -31,7 +32,6 @@ const getTagStyle = (key: string) => {
 
 export default function BlogPostClient({ post }: { post: BlogPost }) {
   const t = useTranslations('blog');
-  if (!post) return null;
   const p = post;
   const tocData = useMemo(() => {
     const items: { id: string; text: string; level: 'h2' | 'h3' | 'h4' }[] = [];
@@ -48,13 +48,18 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
         .replace(/\s+/g, '-')
         .replace(/-+/g, '-');
 
-    const getBlockText = (block: { children?: Array<{ text?: string }> }) =>
+    const getBlockText = (block: PortableTextBlock) =>
       Array.isArray(block.children)
-        ? block.children.map((child) => child.text || '').join('').trim()
+        ? block.children
+            .map((child) =>
+              'text' in child && typeof child.text === 'string' ? child.text : ''
+            )
+            .join('')
+            .trim()
         : '';
 
-    if (Array.isArray(p.body)) {
-      p.body.forEach((block: { _type?: string; style?: string; _key?: string; children?: Array<{ text?: string }> }) => {
+    if (Array.isArray(p?.body)) {
+      p.body.forEach((block: PortableTextBlock) => {
         if (block?._type !== 'block') return;
         if (!block.style || !['h2', 'h3', 'h4'].includes(block.style)) return;
         const text = getBlockText(block);
@@ -70,7 +75,8 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
     }
 
     return { items, idMap };
-  }, [p.body]);
+  }, [p?.body]);
+  if (!p) return null;
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Article',

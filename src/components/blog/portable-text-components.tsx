@@ -6,10 +6,11 @@ import type { PortableTextComponentProps } from '@portabletext/react';
 import type { PortableTextBlock } from '@portabletext/types';
 import type { ReactNode } from 'react';
 import Image from 'next/image';
+import type { useTranslations } from 'next-intl';
 
 type ImageType = { asset?: { _ref?: string; _id?: string; url?: string }; alt?: string };
 type VideoType = { url?: string };
-type Translate = (key: string, values?: Record<string, unknown>) => string;
+type Translate = ReturnType<typeof useTranslations>;
 type HeadingIdResolver = (value: PortableTextBlock) => string | undefined;
 
 export const getPortableTextComponents = (
