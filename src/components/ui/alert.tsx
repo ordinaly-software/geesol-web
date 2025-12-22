@@ -3,10 +3,10 @@ import React, { useEffect, useState } from "react";
 
 const styleMap = {
   success: {
-    bg: "bg-green-100",
-    border: "border-green-500",
-    text: "text-green-800",
-    icon: "text-green-600",
+    bg: "bg-red-100",
+    border: "border-red-500",
+    text: "text-red-800",
+    icon: "text-red-600",
   },
   error: {
     bg: "bg-red-100",

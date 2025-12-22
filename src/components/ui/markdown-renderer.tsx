@@ -16,7 +16,7 @@ interface MarkdownRendererProps {
 
 export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ children, color, className }) => {
   // Default color fallback
-  const serviceColor = color || "#22A60D";
+  const serviceColor = color || "#D01B17";
 
   return (
     <div className={className}>

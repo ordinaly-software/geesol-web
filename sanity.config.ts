@@ -16,7 +16,7 @@ import {schema} from './src/sanity/schemaTypes'
 
 export default defineConfig({
   name: 'default',
-  title: 'Ordinaly CMS',
+  title: 'Geesol CMS',
   basePath: '/studio',
   projectId,
   dataset,

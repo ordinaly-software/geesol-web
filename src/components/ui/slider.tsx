@@ -10,7 +10,7 @@ interface SliderProps {
 
 
 const colorClassMap: Record<string, string> = {
-  green: 'bg-green-600',
+  green: 'bg-[#D01B17]',
   orange: 'bg-orange-600',
   blue: 'bg-blue-600',
   red: 'bg-red-600',

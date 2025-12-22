@@ -1,6 +1,11 @@
 import {NextConfig} from 'next';
 import createNextIntlPlugin from 'next-intl/plugin';
  
+const isDev = process.env.NODE_ENV === 'development';
+const forceImageOptimization = process.env.NEXT_PUBLIC_LH === 'true';
+const apiUrl = process.env.NEXT_PUBLIC_API_URL ?? '';
+const usesLocalApi = /localhost|127\\.0\\.0\\.1|\\[::1\\]/.test(apiUrl);
+
 const nextConfig: NextConfig = {
   // External packages for server components
   productionBrowserSourceMaps: true,
@@ -63,10 +68,11 @@ const nextConfig: NextConfig = {
     // Enable responsive images
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    qualities: [35, 60, 65, 70, 75],
     // Loader optimization
     loader: 'default',
-    // Disable optimization for development to avoid IPv6 issues
-    unoptimized: process.env.NODE_ENV === 'development',
+    // Disable optimization for development to avoid IPv6 issues unless Lighthouse is running.
+    unoptimized: (isDev && !forceImageOptimization) || usesLocalApi,
     // Allow images from localhost for development
     remotePatterns: [
       {

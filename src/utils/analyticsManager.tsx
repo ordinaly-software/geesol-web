@@ -1,31 +1,54 @@
-// components/AnalyticsManager.tsx
 'use client';
 
 import { useEffect } from 'react';
-import { initializeAnalytics, initializeMarketing } from '@/utils/cookieManager';
+import { usePathname, useSearchParams } from 'next/navigation';
+import { getCookiePreferences } from '@/utils/cookieManager';
+
+function applyConsentUpdate() {
+  const prefs = getCookiePreferences();
+  type Gtag = (...args: unknown[]) => void;
+  const w = window as unknown as { gtag?: Gtag };
+  const gtag = w.gtag;
+  if (!prefs || typeof gtag !== 'function') return;
+
+  gtag('consent', 'update', {
+    analytics_storage: prefs.analytics ? 'granted' : 'denied',
+    ad_storage: prefs.marketing ? 'granted' : 'denied',
+    functionality_storage: prefs.functional ? 'granted' : 'denied',
+    security_storage: 'granted',
+  } as Record<string, unknown>);
+}
 
 export default function AnalyticsManager() {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
+
   useEffect(() => {
-    // Listen for cookie consent changes
-    const handleConsentChange = () => {
-      initializeAnalytics();
-      initializeMarketing();
-    };
+    const handler = () => applyConsentUpdate();
+    handler();
 
-    // Initialize on mount
-    handleConsentChange();
+    window.addEventListener('cookieConsentChange', handler as EventListener);
+    window.addEventListener('storage', handler as EventListener);
 
-    // Listen for storage changes (when user changes preferences)
-    window.addEventListener('storage', handleConsentChange);
-
-    // Listen for same-tab cookie consent changes
-    window.addEventListener('cookieConsentChange', handleConsentChange);
-    
     return () => {
-      window.removeEventListener('storage', handleConsentChange);
-      window.removeEventListener('cookieConsentChange', handleConsentChange);
+      window.removeEventListener('cookieConsentChange', handler as EventListener);
+      window.removeEventListener('storage', handler as EventListener);
     };
   }, []);
+
+  // Pageviews SPA (solo si analytics está granted)
+  useEffect(() => {
+    const prefs = getCookiePreferences();
+    type Gtag = (...args: unknown[]) => void;
+    const w = window as unknown as { gtag?: Gtag };
+    const gtag = w.gtag;
+    if (!GA_ID || typeof gtag !== 'function') return;
+    if (!prefs?.analytics) return;
+
+    const url = pathname + (searchParams?.toString() ? `?${searchParams.toString()}` : '');
+    gtag('event', 'page_view', { page_path: url, page_location: url } as Record<string, unknown>);
+  }, [pathname, searchParams, GA_ID]);
 
   return null;
 }

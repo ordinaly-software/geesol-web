@@ -31,10 +31,154 @@
       "faqs": "Preguntas Frecuentes",
       "contact": "Contacto",
       "blog": "Blog",
-      "start": "Estudio gratis"
+      "contactWorkWithUs": "Trabaja con nosotros",
+      "contactOfficesSeville": "Oficinas en Sevilla",
+      "contactOfficesMadrid": "Oficinas en Madrid",
+      "start": "Estudio gratis",
+      "servicesAll": "Ver todos los servicios",
+      "openMenu": "Abrir menú",
+      "closeMenu": "Cerrar menú"
+    },
+    "hero": {
+      "eyebrow": "Energía solar a tu medida",
+      "titleStart": "El poder del",
+      "titleHighlight": "sol",
+      "titleEnd": "en tu mano",
+      "description": "Disfruta tu propia energía en tu hogar o negocio con la última tecnología en fotovoltaica. Gestionamos ayudas, legalización y puesta en marcha para que ahorres desde el primer mes.",
+      "tags": ["Estudio en 24h", "Gestión integral", "Monitorización 24/7"],
+      "cta": "Solicitar estudio gratis",
+      "subtext": "Hasta el 80% en subvenciones y bonificaciones disponibles.",
+      "imageAlt": "Instalación fotovoltaica sobre tejado",
+      "imageCaptionLeft": "Más de 5.000 instalaciones",
+      "imageCaptionRight": "Garantía hasta 25 años"
+    },
+    "highlights": {
+      "items": [
+        {
+          "title": "Tranquilidad garantizada",
+          "description": "Olvida el papeleo, nos encargamos de gestionar subvenciones y bonificaciones para ti."
+        },
+        {
+          "title": "Gana un total en tu inversión",
+          "description": "Ahorra en tu factura y recupera tu inversión desde el primer año con una instalación optimizada."
+        },
+        {
+          "title": "Ahorro real y sostenible",
+          "description": "Genera tu propia energía limpia y protege tu hogar o negocio frente a subidas de la luz."
+        }
+      ]
+    },
+    "twoColumn": {
+      "imageAlt": "Instalación de paneles solares",
+      "eyebrow": "Instalaciones fotovoltaicas",
+      "title": "Energía solar llave en mano para tu hogar o negocio",
+      "paragraph1": "Gestionamos el diseño, la instalación y la tramitación de subvenciones para que disfrutes de tu propia energía sin preocupaciones. Nuestro equipo técnico supervisa cada detalle para asegurar el mejor rendimiento.",
+      "paragraph2": "Desde proyectos residenciales hasta grandes cubiertas industriales, nos adaptamos a tus necesidades con garantías extendidas y monitorización constante.",
+      "tags": ["Diseño a medida", "Gestión integral", "Monitorización 24/7"]
+    },
+    "successCases": {
+      "title": "Casos de éxito",
+      "items": [
+        { "title": "Cubierta residencial" },
+        { "title": "Instalación en cubierta industrial" },
+        { "title": "Instalación en suelo" },
+        { "title": "Bombeo solar agrícola" }
+      ]
+    },
+    "productStar": {
+      "imageAlt": "Paneles solares sobre cubierta",
+      "eyebrow": "Nuestro",
+      "titleStart": "Producto",
+      "titleHighlight": "Estrella",
+      "cta": "Más información",
+      "items": [
+        {
+          "title": "Seguridad",
+          "description": "Materiales de máxima calidad, instalación certificada y monitorización constante para tu tranquilidad."
+        },
+        {
+          "title": "Ventajas",
+          "description": "Reduce tu factura, aumenta tu independencia energética y accede a bonificaciones exclusivas."
+        },
+        {
+          "title": "Garantía",
+          "description": "Cobertura completa sobre equipos y mano de obra para que tu inversión esté siempre protegida."
+        },
+        {
+          "title": "Monetización",
+          "description": "Vende excedentes a la red y obtén retornos adicionales sin esfuerzo mediante vertido cero controlado."
+        }
+      ]
+    },
+    "handOff": {
+      "title": "Instalaciones fotovoltaicas \"llave en mano\"",
+      "items": [
+        {
+          "title": "Ahorro y rentabilidad garantizados",
+          "description": "Calculamos tu ahorro exacto y optimizamos cada panel para maximizar tu producción energética."
+        },
+        {
+          "title": "Gestión sin complicaciones",
+          "description": "Tramitamos licencias, subvenciones y bonificaciones para que no tengas que preocuparte por nada."
+        },
+        {
+          "title": "Experiencia y confianza",
+          "description": "Equipos certificados y monitoreo continuo para asegurar el mejor rendimiento de tu instalación."
+        },
+        {
+          "title": "Atención personalizada",
+          "description": "Un asesor experto te acompaña durante todo el proceso y resuelve tus dudas al instante."
+        },
+        {
+          "title": "Alto valor añadido",
+          "description": "Incrementa el valor de tu vivienda o negocio con una instalación moderna y eficiente."
+        },
+        {
+          "title": "Financiación flexible",
+          "description": "Te ayudamos a acceder a financiación a medida para que empieces a ahorrar desde el primer mes."
+        }
+      ]
+    },
+    "installationTypes": {
+      "title": "Tipos de instalaciones fotovoltaicas",
+      "description": "Diseñamos y ejecutamos la solución ideal para tu vivienda, negocio o explotación agrícola, con la mejor calidad y eficiencia.",
+      "cta": "Ver más",
+      "items": [
+        {
+          "title": "Autoconsumo doméstico",
+          "description": "Solución integral para viviendas que quieren reducir su factura y ser más sostenibles."
+        },
+        {
+          "title": "Autoconsumo industrial",
+          "description": "Diseños a medida para grandes consumos, optimizando el retorno y la estabilidad energética."
+        },
+        {
+          "title": "Sistemas aislados de la red",
+          "description": "Independencia total para ubicaciones sin conexión eléctrica con sistemas híbridos y baterías."
+        },
+        {
+          "title": "Bombeo solar",
+          "description": "Soluciones de bombeo eficientes para agricultura y riego, reduciendo costes operativos."
+        }
+      ]
+    },
+    "referral": {
+      "title": "Programa de referidos desde la nueva app",
+      "description": "Invita a tus familiares y amigos y gana recompensas por cada instalación que contraten. Gestiona tus referencias desde nuestra app y sigue tu ahorro en tiempo real.",
+      "cta": "Quiero registrarme",
+      "imageAlt": "Vista previa de la app de referidos"
+    },
+    "stats": {
+      "items": [
+        { "value": "70%", "label": "menos en tu factura de energía" },
+        { "value": "25 años", "label": "de garantía total" },
+        { "value": "600 kg", "label": "menos de CO₂ al año por hogar" }
+      ],
+      "title": "Estudio de ahorro a medida y gratuito",
+      "description": "Te decimos cuánto ahorrarás en energía y diseñamos la solución ideal para tu hogar o negocio.",
+      "cta": "Solicitar estudio gratis"
     }
-  }
-  ,
+  },
   "cookie": {
     "title": "Resumen de privacidad",
     "description": "Esta web utiliza cookies para que podamos ofrecerte la mejor experiencia de usuario posible. La información de las cookies se almacena en tu navegador y realiza funciones tales como reconocerte cuando vuelves a nuestra web o ayudar a nuestro equipo a comprender qué secciones de la web encuentras más interesantes y útiles.",
@@ -59,5 +203,160 @@
     "privacy": "Política de privacidad",
     "cookies": "Política de cookies",
     "openCookieSettings": "Abrir ajustes de cookies"
+  },
+  "testimonials": {
+    "title": "La satisfaccion de nuestros clientes, nuestro mejor aval",
+    "googleSource": "Resena verificada",
+    "googleSummary": "{rating} sobre 5 en Google ({count} resenas)",
+    "googleLink": "Ver en Google",
+    "googleWrite": "Escribir resena",
+    "googleLoading": "Cargando resenas de Google...",
+    "googleUnavailable": "Resenas no disponibles por ahora",
+    "items": [
+      {
+        "name": "Ana Garcia",
+        "role": "Propietaria residencial",
+        "quote": "Gestionaron ayudas y la instalacion fue rapidisima. Ya noto el ahorro."
+      },
+      {
+        "name": "Jose Martinez",
+        "role": "Responsable de energia",
+        "quote": "Equipo cercano y profesional. Optimizamos el autoconsumo en tiempo record."
+      },
+      {
+        "name": "Laura Ruiz",
+        "role": "Agricultora",
+        "quote": "El bombeo solar redujo costes y el soporte tecnico es excelente."
+      }
+    ]
+  }
+  ,
+  "contactPage": {
+    "hero": {
+      "title": "Contacto placas solares y autoconsumo en Andalucía",
+      "subtitle": "Cuéntanos tu proyecto de instalaciones fotovoltaicas y coordinamos un estudio gratuito en menos de 24 horas."
+    },
+    "contactForm": {
+      "title": "Formulario de contacto",
+      "subtitle": "Rellena tus datos y un asesor te contactará para calcular ahorros, subvenciones y fecha de instalación.",
+      "seo": "Especialistas en placas solares, autoconsumo e instalaciones fotovoltaicas en Sevilla, Andalucía y España. Te ayudamos a acceder a subvenciones solares y energía verde, limpia y eficiente."
+    },
+    "contactDetails": {
+      "title": "Datos de contacto",
+      "labels": {
+        "phone": "Teléfono",
+        "email": "Email"
+      }
+    },
+    "locations": {
+      "title": "Delegaciones",
+      "andalucia": {
+        "title": "Delegación Andalucía",
+        "address": "C/ Mansíos, 5. 41900. Camas (Sevilla)"
+      },
+      "madrid": {
+        "title": "Delegación Madrid",
+        "address": "C/ Tormes, 7, 28840. Mejorada del Campo (Madrid)"
+      }
+    },
+    "whatsapp": {
+      "title": "WhatsApp",
+      "subtitle": "Escríbenos para resolver dudas rápidas sobre energía solar.",
+      "cta": "Abrir chat"
+    },
+    "map": {
+      "eyebrow": "Mapa",
+      "title": "Visítanos",
+      "subtitle": "Consulta nuestras oficinas y delegaciones para proyectos de autoconsumo e instalaciones fotovoltaicas.",
+      "seo": "Atendemos proyectos solares en Sevilla, Madrid, Andalucía y resto de España. Energía limpia, energía verde y soluciones a medida.",
+      "teamCta": "Conocer al equipo",
+      "servicesCta": "Ver servicios"
+    },
+    "work": {
+      "title": "Únete al equipo de energía solar",
+      "subtitle": "Si trabajas en instalaciones fotovoltaicas, autoconsumo o energía renovable, cuéntanos tu perfil y te contactamos."
+    },
+    "ctaPhone": {
+      "title": "¿Prefieres hablar por teléfono?",
+      "subtitle": "Llámanos y te ayudamos a elegir la mejor solución de autoconsumo y placas solares.",
+      "primary": "Llamar ahora",
+      "secondary": "Programa de referidos"
+    }
+  },
+  "usPage": {
+    "cta": {
+      "eyebrow": "Equipo GEESOL",
+      "title": "Trabaja con nosotros en energía solar",
+      "body": "Buscamos talento para impulsar instalaciones fotovoltaicas, autoconsumo y energía limpia.",
+      "primary": "Enviar candidatura",
+      "secondary": "Contacto",
+      "mailSubject": "Candidatura para trabajar en GEESOL",
+      "mailBody": "Hola equipo GEESOL,\n\nMe gustaría participar en procesos de selección para energía solar. Comparto mi perfil y disponibilidad.\n\nGracias."
+    }
+  },
+  "services": {
+    "productsAndServicesTitle": "Productos y servicios",
+    "productsAndServicesDescription": "Explora nuestras soluciones de autoconsumo y productos destacados.",
+    "searchPlaceholder": "Buscar productos y servicios...",
+    "filters": {
+      "all": "Todos",
+      "featured": "Destacados",
+      "service": "Servicios",
+      "product": "Productos"
+    },
+    "featured": "Destacado",
+    "details": "Detalles",
+    "duration": "Duración",
+    "durationDay": "1 día",
+    "durationDays": "{count} días",
+    "price": "Precio",
+    "contactForQuote": "Solicitar presupuesto",
+    "learnMore": "Más información",
+    "noResults": {
+      "title": "Sin resultados",
+      "description": "No hemos encontrado coincidencias. Prueba con otra búsqueda o filtro."
+    },
+    "cta": {
+      "title": "¿Listo para impulsar tu proyecto solar?",
+      "description": "Cuéntanos lo que necesitas y diseñaremos la solución ideal para tu hogar o empresa.",
+      "contact": "Contactar",
+      "emailSubject": "Consulta sobre servicios de GEESOL",
+      "emailBody": "Hola equipo GEESOL,\n\nQuiero más información sobre sus servicios. ¿Podrían enviarme opciones y próximos pasos?\n\nGracias."
+    },
+    "productsSectionTitle": "Productos",
+    "servicesSectionTitle": "Servicios"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Descubre nuestras últimas noticias, artículos y novedades.",
+    "searchPlaceholder": "Buscar artículos del blog...",
+    "filters": {
+      "all": "Todas las categorías",
+      "category": "Categoría"
+    },
+    "sort": {
+      "newest": "Más nuevos primero",
+      "oldest": "Más antiguos primero",
+      "label": "Ordenar por fecha"
+    },
+    "errors": {
+      "loadPosts": "No se pudieron cargar las publicaciones."
+    },
+    "loading": "Cargando publicaciones...",
+    "pagination": {
+      "prev": "Anterior",
+      "page": "Página",
+      "of": "de",
+      "next": "Siguiente",
+      "first": "Primera",
+      "last": "Última"
+    },
+    "noResults": {
+      "title": "No se han encontrado publicaciones.",
+      "description": "Vuelve pronto para nuevos artículos y actualizaciones."
+    },
+    "backToBlog": "Volver al blog",
+    "postCategories": "Categorías",
+    "shareLabel": "Compartir"
   }
 }

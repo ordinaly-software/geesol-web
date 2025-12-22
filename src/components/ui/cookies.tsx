@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { Cookie, Settings, Shield, Target, BarChart3 } from 'lucide-react';
+import { Cookie, Settings, Shield, BarChart3 } from 'lucide-react';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { Button } from "@/components/ui/button";
@@ -29,12 +29,12 @@ const CookieConsent = () => {
     const onPreferencesChanged = (e: Event) => {
       try {
         // custom event with detail object
-        // @ts-ignore
+        // @ts-expect-error custom event detail
         const detail = e?.detail;
         if (detail && typeof detail === 'object') {
           setCookiePreferences(prev => ({ ...prev, ...detail }));
         }
-      } catch (err) {
+      } catch {
         // ignore
       }
     };
@@ -167,7 +167,7 @@ const CookieConsent = () => {
                 <p className="text-muted-foreground mb-4">
                   {t('description')}
                 </p>
-                <div className="bg-gradient-to-r from-[#22A60D]/10 to-[#46B1C9]/10 p-4 rounded-lg border border-border">
+                <div className="bg-gradient-to-r from-[#D01B17]/10 to-[#46B1C9]/10 p-4 rounded-lg border border-border">
                   <p className="text-sm text-muted-foreground">
                     <strong className="text-foreground">{t('whatAre')}</strong>{' '}
                     {t('whatAreDescription')}
@@ -217,7 +217,7 @@ const CookieConsent = () => {
                   {[
                     {
                       key: 'necessary',
-                      icon: <Shield className="text-[#22A60D]" size={20} />,
+                      icon: <Shield className="text-[#D01B17]" size={20} />,
                       enabled: true,
                       toggle: false,
                       note: t('necessaryAlways')
@@ -242,7 +242,7 @@ const CookieConsent = () => {
                             onChange={() => handlePreferenceChange(key as 'necessary' | 'analytics')}
                           />
                         ) : (
-                          <div className="bg-[#22A60D] rounded-full w-6 h-6 flex items-center justify-center">
+                          <div className="bg-[#D01B17] rounded-full w-6 h-6 flex items-center justify-center">
                             <div className="w-3 h-3 bg-white rounded-full"></div>
                           </div>
                         )}

@@ -31,7 +31,152 @@
       "faqs": "FAQs",
       "contact": "Contact",
       "blog": "Blog",
-      "start": "Free Study"
+      "contactWorkWithUs": "Work with us",
+      "contactOfficesSeville": "Offices in Seville",
+      "contactOfficesMadrid": "Offices in Madrid",
+      "start": "Free Study",
+      "servicesAll": "View all services",
+      "openMenu": "Open menu",
+      "closeMenu": "Close menu"
+    },
+    "hero": {
+      "eyebrow": "Solar energy tailored to you",
+      "titleStart": "The power of the",
+      "titleHighlight": "sun",
+      "titleEnd": "in your hands",
+      "description": "Enjoy your own energy at home or at your business with the latest solar technology. We handle permits, subsidies, and commissioning so you save from month one.",
+      "tags": ["24h assessment", "Full-service management", "24/7 monitoring"],
+      "cta": "Request a free study",
+      "subtext": "Up to 80% in subsidies and incentives available.",
+      "imageAlt": "Solar installation on a rooftop",
+      "imageCaptionLeft": "5,000+ installations",
+      "imageCaptionRight": "Up to 25-year warranty"
+    },
+    "highlights": {
+      "items": [
+        {
+          "title": "Peace of mind guaranteed",
+          "description": "Forget the paperwork—we handle subsidies and incentives for you."
+        },
+        {
+          "title": "Maximize your investment",
+          "description": "Save on your bill and recover your investment from year one with an optimized system."
+        },
+        {
+          "title": "Real, sustainable savings",
+          "description": "Generate clean energy and protect your home or business from rising prices."
+        }
+      ]
+    },
+    "twoColumn": {
+      "imageAlt": "Solar panel installation",
+      "eyebrow": "Solar installations",
+      "title": "Turnkey solar energy for your home or business",
+      "paragraph1": "We manage design, installation, and subsidy paperwork so you can enjoy your own energy without worries. Our technical team supervises every detail to ensure top performance.",
+      "paragraph2": "From residential projects to large industrial rooftops, we adapt to your needs with extended warranties and continuous monitoring.",
+      "tags": ["Custom design", "End-to-end management", "24/7 monitoring"]
+    },
+    "successCases": {
+      "title": "Success stories",
+      "items": [
+        { "title": "Residential rooftop" },
+        { "title": "Industrial rooftop installation" },
+        { "title": "Ground-mounted installation" },
+        { "title": "Agricultural solar pumping" }
+      ]
+    },
+    "productStar": {
+      "imageAlt": "Solar panels on a roof",
+      "eyebrow": "Our",
+      "titleStart": "Product",
+      "titleHighlight": "Star",
+      "cta": "Learn more",
+      "items": [
+        {
+          "title": "Safety",
+          "description": "Top-quality materials, certified installation, and constant monitoring for peace of mind."
+        },
+        {
+          "title": "Benefits",
+          "description": "Lower your bill, gain energy independence, and access exclusive incentives."
+        },
+        {
+          "title": "Warranty",
+          "description": "Full coverage on equipment and workmanship so your investment stays protected."
+        },
+        {
+          "title": "Monetization",
+          "description": "Sell excess energy and get extra returns with controlled zero-export."
+        }
+      ]
+    },
+    "handOff": {
+      "title": "Turnkey solar installations",
+      "items": [
+        {
+          "title": "Guaranteed savings and ROI",
+          "description": "We calculate exact savings and optimize every panel for maximum production."
+        },
+        {
+          "title": "Hassle-free management",
+          "description": "We handle permits, subsidies, and legalization so you don’t have to."
+        },
+        {
+          "title": "Experience and trust",
+          "description": "Certified teams and continuous monitoring ensure top performance."
+        },
+        {
+          "title": "Personalized support",
+          "description": "An expert advisor supports you throughout the process and answers questions fast."
+        },
+        {
+          "title": "Added value",
+          "description": "Increase the value of your home or business with a modern, efficient system."
+        },
+        {
+          "title": "Flexible financing",
+          "description": "Access tailored financing so you start saving from the first month."
+        }
+      ]
+    },
+    "installationTypes": {
+      "title": "Types of solar installations",
+      "description": "We design and deliver the ideal solution for your home, business, or farm with top quality and efficiency.",
+      "cta": "See more",
+      "items": [
+        {
+          "title": "Residential self-consumption",
+          "description": "Complete solution for homes that want to cut bills and be more sustainable."
+        },
+        {
+          "title": "Industrial self-consumption",
+          "description": "Tailored designs for large consumers, optimizing returns and energy stability."
+        },
+        {
+          "title": "Off-grid systems",
+          "description": "Total independence for locations without grid connection using hybrid systems and batteries."
+        },
+        {
+          "title": "Solar pumping",
+          "description": "Efficient pumping solutions for agriculture and irrigation, reducing operating costs."
+        }
+      ]
+    },
+    "referral": {
+      "title": "Referral program with our new app",
+      "description": "Invite friends and family and earn rewards for each completed installation. Manage referrals in the app and track savings in real time.",
+      "cta": "Sign me up",
+      "imageAlt": "Referral app preview"
+    },
+    "stats": {
+      "items": [
+        { "value": "70%", "label": "less on your energy bill" },
+        { "value": "25 years", "label": "total warranty" },
+        { "value": "600 kg", "label": "less CO₂ per home per year" }
+      ],
+      "title": "Free, tailored savings study",
+      "description": "We tell you how much you’ll save on energy and design the ideal solution for your home or business.",
+      "cta": "Request a free study"
     }
   },
 
@@ -59,5 +204,160 @@
     "privacy": "Privacy Policy",
     "cookies": "Cookies Policy",
     "openCookieSettings": "Open cookie settings"
+  },
+  "testimonials": {
+    "title": "Our customers' satisfaction is our best proof",
+    "googleSource": "Verified review",
+    "googleSummary": "{rating} out of 5 on Google ({count} reviews)",
+    "googleLink": "View on Google",
+    "googleWrite": "Write a review",
+    "googleLoading": "Loading Google reviews...",
+    "googleUnavailable": "Reviews unavailable right now",
+    "items": [
+      {
+        "name": "Ana Garcia",
+        "role": "Homeowner",
+        "quote": "They handled the subsidies and the install was fast. Savings show immediately."
+      },
+      {
+        "name": "Jose Martinez",
+        "role": "Energy manager",
+        "quote": "Professional, close team. We optimized self-consumption quickly."
+      },
+      {
+        "name": "Laura Ruiz",
+        "role": "Farmer",
+        "quote": "Solar pumping cut costs and the technical support is excellent."
+      }
+    ]
+  }
+  ,
+  "contactPage": {
+    "hero": {
+      "title": "Contact for solar panels and self-consumption in Andalusia",
+      "subtitle": "Tell us about your photovoltaic project and we’ll arrange a free study in under 24 hours."
+    },
+    "contactForm": {
+      "title": "Contact form",
+      "subtitle": "Fill in your details and an advisor will reach out to calculate savings, subsidies, and installation timeline.",
+      "seo": "Experts in solar panels, self-consumption, and photovoltaic installations in Seville, Andalusia, and Spain. We help you access solar subsidies and clean, green energy."
+    },
+    "contactDetails": {
+      "title": "Contact details",
+      "labels": {
+        "phone": "Phone",
+        "email": "Email"
+      }
+    },
+    "locations": {
+      "title": "Offices",
+      "andalucia": {
+        "title": "Andalusia Office",
+        "address": "C/ Mansíos, 5. 41900. Camas (Seville)"
+      },
+      "madrid": {
+        "title": "Madrid Office",
+        "address": "C/ Tormes, 7, 28840. Mejorada del Campo (Madrid)"
+      }
+    },
+    "whatsapp": {
+      "title": "WhatsApp",
+      "subtitle": "Message us for quick answers about solar energy.",
+      "cta": "Open chat"
+    },
+    "map": {
+      "eyebrow": "Map",
+      "title": "Visit us",
+      "subtitle": "Find our offices for self-consumption and photovoltaic projects.",
+      "seo": "We serve solar projects in Seville, Madrid, Andalusia, and across Spain. Clean energy, green energy, and tailored solutions.",
+      "teamCta": "Meet the team",
+      "servicesCta": "See services"
+    },
+    "work": {
+      "title": "Join the solar energy team",
+      "subtitle": "If you work in photovoltaic installations, self-consumption, or renewable energy, share your profile and we’ll get in touch."
+    },
+    "ctaPhone": {
+      "title": "Prefer to talk by phone?",
+      "subtitle": "Call us and we’ll help you choose the best self-consumption and solar panel solution.",
+      "primary": "Call now",
+      "secondary": "Referral program"
+    }
+  },
+  "usPage": {
+    "cta": {
+      "eyebrow": "GEESOL Team",
+      "title": "Work with us in solar energy",
+      "body": "We’re looking for talent to drive photovoltaic installations, self-consumption, and clean energy.",
+      "primary": "Send application",
+      "secondary": "Contact",
+      "mailSubject": "Application to work at GEESOL",
+      "mailBody": "Hi GEESOL team,\n\nI’d like to apply for roles related to solar energy. I’m sharing my profile and availability.\n\nThanks."
+    }
+  },
+  "services": {
+    "productsAndServicesTitle": "Products and Services",
+    "productsAndServicesDescription": "Explore our self-consumption solutions and featured products.",
+    "searchPlaceholder": "Search products and services...",
+    "filters": {
+      "all": "All",
+      "featured": "Featured",
+      "service": "Services",
+      "product": "Products"
+    },
+    "featured": "Featured",
+    "details": "Details",
+    "duration": "Duration",
+    "durationDay": "1 day",
+    "durationDays": "{count} days",
+    "price": "Price",
+    "contactForQuote": "Contact for quote",
+    "learnMore": "Learn more",
+    "noResults": {
+      "title": "No results",
+      "description": "We couldn't find matches. Try another search or filter."
+    },
+    "cta": {
+      "title": "Ready to power your project with solar?",
+      "description": "Tell us what you need and we'll tailor the right solution for your home or business.",
+      "contact": "Contact us",
+      "emailSubject": "Inquiry about GEESOL services",
+      "emailBody": "Hello GEESOL team,\n\nI'm interested in learning more about your services. Please share the options available and next steps.\n\nThank you."
+    },
+    "productsSectionTitle": "Products",
+    "servicesSectionTitle": "Services"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Discover our latest news, articles, and updates.",
+    "searchPlaceholder": "Search blog posts...",
+    "filters": {
+      "all": "All Categories",
+      "category": "Category"
+    },
+    "sort": {
+      "newest": "Newest first",
+      "oldest": "Oldest first",
+      "label": "Sort by date"
+    },
+    "errors": {
+      "loadPosts": "Failed to load posts."
+    },
+    "loading": "Loading posts...",
+    "pagination": {
+      "prev": "Previous",
+      "page": "Page",
+      "of": "of",
+      "next": "Next",
+      "first": "First",
+      "last": "Last"
+    },
+    "noResults": {
+      "title": "No blog posts found.",
+      "description": "Check back soon for new articles and updates."
+    },
+    "backToBlog": "Back to blog",
+    "postCategories": "Categories",
+    "shareLabel": "Share"
   }
 }
