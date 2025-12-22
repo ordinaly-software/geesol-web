@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import RecomiendaYGanaPage from "./page.client";
 import { createPageMetadata } from "@/lib/metadata";
+import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata({
   params,
@@ -8,15 +9,13 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const isEs = locale?.startsWith("es");
+  const t = await getTranslations({ locale, namespace: "referralPage" });
 
   return createPageMetadata({
     locale,
     path: "/recomienda-y-gana",
-    title: isEs ? "Recomienda y gana | GEESOL" : "Refer and earn | GEESOL",
-    description: isEs
-      ? "Programa de referidos para compartir GEESOL y obtener recompensas por cada instalacion completada."
-      : "Referral program to share GEESOL and earn rewards for each completed installation.",
+    title: t("meta.title"),
+    description: t("meta.description"),
     image:
       "/static/freepik__candid-photography-with-natural-textures-and-highl__86639.jpeg",
   });

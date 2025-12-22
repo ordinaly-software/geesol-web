@@ -6,6 +6,7 @@ import { WorkWithUsSection } from "@/components/ui/work-with-us";
 import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
+import { IconArrowRight } from "@tabler/icons-react";
 
 const contacts = [
   { label: "phone", value: "955 73 73 22", href: "tel:955737322" },
@@ -132,11 +133,11 @@ export default function ContactoPage({ locale }: { locale: string }) {
                 {t("map.seo")}
               </p>
               <div className="flex flex-col sm:flex-row flex-wrap gap-2 sm:gap-3">
-                <Button asChild className="px-4 sm:px-6 py-2 sm:py-3 text-xs sm:text-base">
+                <Button asChild className="rounded-full bg-[#0c3b52] px-6 py-3 text-xs sm:text-base font-semibold text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition dark:bg-[#0c3b52] dark:hover:bg-[#0a2f41]">
                   <Link href={`${basePath}/nosotros`}>{t("map.teamCta")}</Link>
                 </Button>
-                <Button asChild variant="outline" className="px-4 sm:px-6 py-2 sm:py-3 text-xs sm:text-base">
-                  <Link href={`${basePath}/services`}>{t("map.servicesCta")}</Link>
+                <Button asChild className="rounded-full bg-[#D01B17] px-6 py-3 text-xs sm:text-base font-semibold text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition dark:bg-[#D01B17] dark:hover:bg-[#b01714]">
+                  <Link href={`${basePath}/servicios`}>{t("map.servicesCta")}</Link>
                 </Button>
               </div>
             </div>
@@ -187,11 +188,17 @@ export default function ContactoPage({ locale }: { locale: string }) {
             {t("ctaPhone.subtitle")}
           </p>
           <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-2 sm:gap-3 w-full sm:w-auto">
-            <Button asChild className="px-6 sm:px-8 py-2 sm:py-3 text-sm sm:text-lg uppercase">
-              <Link href="tel:955737322">{t("ctaPhone.primary")}</Link>
+            <Button asChild className="rounded-lg border-2 border-white px-6 sm:px-8 py-2 sm:py-3 text-sm sm:text-lg uppercase text-white bg-transparent hover:bg-white hover:text-[#0c3b52] transition-colors">
+              <Link href="tel:955737322" className="flex items-center gap-2">
+                <IconArrowRight className="h-5 w-5" />
+                {t("ctaPhone.primary")}
+              </Link>
             </Button>
-            <Button asChild variant="outline" className="px-6 sm:px-8 py-2 sm:py-3 text-sm sm:text-lg">
-              <Link href={`${basePath}/recomienda-y-gana`}>{t("ctaPhone.secondary")}</Link>
+            <Button asChild className="rounded-lg border-2 border-white px-6 sm:px-8 py-2 sm:py-3 text-sm sm:text-lg text-white bg-transparent hover:bg-white hover:text-[#0c3b52] transition-colors">
+              <Link href={`${basePath}/recomienda-y-gana`} className="flex items-center gap-2">
+                <IconArrowRight className="h-5 w-5" />
+                {t("ctaPhone.secondary")}
+              </Link>
             </Button>
           </div>
         </div>

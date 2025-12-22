@@ -3,34 +3,19 @@ import BackToTopButton from "@/components/ui/back-to-top-button";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
-
-const faqs = [
-  {
-    question: "¿Cuándo estará disponible la sección de FAQs?",
-    answer:
-      "Estamos preparando respuestas dinámicas integradas con la app móvil para que tengas soporte al instante.",
-  },
-  {
-    question: "¿Podré consultar documentación de mi instalación?",
-    answer:
-      "Sí. Añadiremos manuales, garantías y seguimiento de producción desde la app.",
-  },
-  {
-    question: "¿Habrá chat directo con soporte?",
-    answer:
-      "Tendrás un canal directo para incidencias, mantenimiento y seguimiento de tickets.",
-  },
-];
+import { useTranslations } from "next-intl";
 
 export default function FAQsPage({ locale }: { locale: string }) {
   const basePath = locale === routing.defaultLocale ? "" : `/${locale}`;
+  const t = useTranslations("faqPage");
+  const faqs = t.raw("faqs") as Array<{ question: string; answer: string }>;
 
   return (
     <div className="min-h-screen bg-[#f7f8fb] text-[#0c1f2d] dark:bg-[#0b1220] dark:text-gray-100">
       <Banner
-        title="Preguntas frecuentes"
-        subtitle="Próximamente, un centro de ayuda conectado con la app móvil para resolver tus dudas al instante."
-        backgroundImage="/static/main_home_ilustration.webp"
+        title={t("hero.title")}
+        subtitle={t("hero.subtitle")}
+        backgroundImage="/static/home/main_home_ilustration.webp"
       />
 
       <section className="px-4 py-16">
@@ -51,12 +36,12 @@ export default function FAQsPage({ locale }: { locale: string }) {
 
       <section className="bg-[#0c3b52] px-4 py-16 text-white dark:bg-[#060a14]">
         <div className="mx-auto flex max-w-4xl flex-col items-center gap-4 text-center">
-          <h3 className="text-3xl font-black">¿Necesitas ayuda ahora?</h3>
+          <h3 className="text-3xl font-black">{t("cta.title")}</h3>
           <p className="text-lg text-[#e9eef2]">
-            Escríbenos y te responderemos en minutos. Pronto podrás gestionarlo todo desde la app.
+            {t("cta.subtitle")}
           </p>
           <Button asChild className="px-8 py-3 text-lg uppercase">
-            <Link href={`${basePath}/contacto`}>Contactar</Link>
+            <Link href={`${basePath}/contacto`}>{t("cta.button")}</Link>
           </Button>
         </div>
       </section>

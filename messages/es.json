@@ -72,8 +72,8 @@
       "imageAlt": "Instalación de paneles solares",
       "eyebrow": "Instalaciones fotovoltaicas",
       "title": "Energía solar llave en mano para tu hogar o negocio",
-      "paragraph1": "Gestionamos el diseño, la instalación y la tramitación de subvenciones para que disfrutes de tu propia energía sin preocupaciones. Nuestro equipo técnico supervisa cada detalle para asegurar el mejor rendimiento.",
-      "paragraph2": "Desde proyectos residenciales hasta grandes cubiertas industriales, nos adaptamos a tus necesidades con garantías extendidas y monitorización constante.",
+      "paragraph1": "Con más de 6.000 instalaciones realizadas desde 2017, nuestra experiencia garantiza un ahorro real desde el primer día sin complicaciones.",
+      "paragraph2": "Ofrecemos un servicio integral \"llave en mano\" diseñado para tu tranquilidad, que abarca desde el asesoramiento inicial hasta la postventa más completa.",
       "tags": ["Diseño a medida", "Gestión integral", "Monitorización 24/7"]
     },
     "successCases": {
@@ -87,26 +87,49 @@
     },
     "productStar": {
       "imageAlt": "Paneles solares sobre cubierta",
-      "eyebrow": "Nuestro",
-      "titleStart": "Producto",
-      "titleHighlight": "Estrella",
-      "cta": "Más información",
+      "eyebrow": "NO DEJES PARA MAÑANA LO QUE PUEDAS GENERAR HOY",
+      "sectionTitle": "PRODUCTOS ESTRELLA",
+      "nav": {
+        "prev": "Producto anterior",
+        "next": "Producto siguiente",
+        "goto": "Ir al producto {index}"
+      },
       "items": [
         {
-          "title": "Seguridad",
-          "description": "Materiales de máxima calidad, instalación certificada y monitorización constante para tu tranquilidad."
+          "brand": "Seguridad",
+          "title": "Máxima seguridad antiincendios",
+          "subtitle": "",
+          "description": "Olvídate de riesgos. Atmoce elimina la alta tensión de corriente continua (CC), ofreciendo protección total. Además, tienes una función de desactivación rápida para tu tranquilidad.",
+          "warranty": "",
+          "warrantyDetail": "",
+          "cta": ""
         },
         {
-          "title": "Ventajas",
-          "description": "Reduce tu factura, aumenta tu independencia energética y accede a bonificaciones exclusivas."
+          "brand": "Ventajas",
+          "title": "Rendimiento récord y más ahorro",
+          "subtitle": "",
+          "description": "Logra una eficiencia inigualable que captura cada rayo de luz, maximizando la producción y rentabilidad de tus paneles.",
+          "warranty": "",
+          "warrantyDetail": "",
+          "cta": ""
         },
         {
-          "title": "Garantía",
-          "description": "Cobertura completa sobre equipos y mano de obra para que tu inversión esté siempre protegida."
+          "brand": "Garantía",
+          "title": "Garantía total de 25 años",
+          "subtitle": "",
+          "description": "Tu inversión está protegida por la garantía integral más completa del mercado, asegurando la durabilidad y fiabilidad a largo plazo.",
+          "warranty": "",
+          "warrantyDetail": "",
+          "cta": ""
         },
         {
-          "title": "Monetización",
-          "description": "Vende excedentes a la red y obtén retornos adicionales sin esfuerzo mediante vertido cero controlado."
+          "brand": "Monitorización",
+          "title": "Instalación plug-and-play y control total",
+          "subtitle": "",
+          "description": "Un diseño compacto que facilita la instalación y te permite gestionar tu energía de forma sencilla desde la aplicación Atmozen.",
+          "warranty": "",
+          "warrantyDetail": "",
+          "cta": ""
         }
       ]
     },
@@ -177,6 +200,23 @@
       "title": "Estudio de ahorro a medida y gratuito",
       "description": "Te decimos cuánto ahorrarás en energía y diseñamos la solución ideal para tu hogar o negocio.",
       "cta": "Solicitar estudio gratis"
+    },
+    "videoTestimonials": {
+      "title": "¿Qué opinan nuestros clientes sobre nuestras placas solares?",
+      "rating": "4.7 ¡MUY PROFESIONALES!",
+      "subtitle": "Reseñas reales en Google My Business",
+      "cta": "Ver todas las reseñas",
+      "nav": {
+        "prev": "Video anterior",
+        "next": "Video siguiente",
+        "goto": "Ir al video {index}"
+      },
+      "items": [
+        "Instalación residencial en Sevilla",
+        "Proyecto de autoconsumo en Madrid",
+        "Ahorro energético en hogar",
+        "Energía solar para empresas"
+      ]
     }
   },
   "cookie": {
@@ -212,6 +252,10 @@
     "googleWrite": "Escribir resena",
     "googleLoading": "Cargando resenas de Google...",
     "googleUnavailable": "Resenas no disponibles por ahora",
+    "scrollLeft": "Desplazar testimonios a la izquierda",
+    "scrollRight": "Desplazar testimonios a la derecha",
+    "readMore": "Leer más",
+    "readLess": "Leer menos",
     "items": [
       {
         "name": "Ana Garcia",
@@ -329,7 +373,15 @@
   "blog": {
     "title": "Blog",
     "subtitle": "Descubre nuestras últimas noticias, artículos y novedades.",
+    "meta": {
+      "title": "Blog solar",
+      "description": "Noticias y guías sobre energía solar, autoconsumo y ayudas disponibles."
+    },
     "searchPlaceholder": "Buscar artículos del blog...",
+    "media": {
+      "imageAlt": "Contenido visual del blog",
+      "videoFallback": "Tu navegador no soporta la etiqueta de video."
+    },
     "filters": {
       "all": "Todas las categorías",
       "category": "Categoría"
@@ -357,6 +409,249 @@
     },
     "backToBlog": "Volver al blog",
     "postCategories": "Categorías",
-    "shareLabel": "Compartir"
+    "shareLabel": "Compartir",
+    "toc": {
+      "title": "Índice de contenidos"
+    },
+    "share": {
+      "label": "Compartir",
+      "whatsapp": "WhatsApp",
+      "facebook": "Facebook",
+      "linkedin": "LinkedIn",
+      "shareMessage": "Lee este artículo en {siteTag}: \"{title}\"{excerpt}"
+    }
+  },
+  "aboutPage": {
+    "meta": {
+      "title": "Sobre GEESOL | Equipo y experiencia en fotovoltaica",
+      "description": "Equipo especializado en diseño, instalación y mantenimiento de energía solar."
+    },
+    "hero": {
+      "title": "Quiénes somos",
+      "subtitle": "Energía solar para hogares, empresas e industria con un equipo propio que te acompaña de principio a fin."
+    },
+    "story": {
+      "eyebrow": "Nuestra historia",
+      "title": "Energía limpia con equipos propios desde 2017",
+      "paragraphs": [
+        "Impulsados por trabajar en beneficio del medio ambiente y ofrecer una energía alternativa a todos los públicos, en 2017 nació Geesol Renovables, S.L. como heredera de una firma familiar dedicada al sector eléctrico.",
+        "Hoy contamos con un equipo humano especializado que cubre todas las fases: estudio, diseño, instalación, legalización y monitorización continua."
+      ],
+      "imageAlt": "Equipo GEESOL en instalaciones fotovoltaicas",
+      "caption": "Más de 5.000 instalaciones realizadas en Andalucía y Madrid."
+    },
+    "team": {
+      "title": "Equipo humano",
+      "roles": [
+        "Director técnico",
+        "Técnicos instaladores",
+        "Comerciales",
+        "Atención al cliente",
+        "Marketing",
+        "Community manager",
+        "Informático"
+      ]
+    },
+    "stats": [
+      {
+        "value": "+5.000",
+        "label": "instalaciones realizadas"
+      },
+      {
+        "value": "2017",
+        "label": "año de inicio"
+      },
+      {
+        "value": "Andalucía + Madrid",
+        "label": "cobertura actual"
+      }
+    ],
+    "actions": {
+      "primary": "Solicita tu estudio gratis",
+      "secondary": "Ver servicios"
+    },
+    "partners": {
+      "eyebrow": "Partners y certificaciones",
+      "title": "Trabajamos con marcas líderes del sector"
+    },
+    "location": {
+      "eyebrow": "Dónde estamos",
+      "title": "Oficinas centrales en Camas (Sevilla)",
+      "address": "C/ Mansíos, 5. Polígono Parque Plata, 41900, Camas (Sevilla).",
+      "serviceArea": "Atención en Sevilla, Córdoba, Huelva, Cádiz, Málaga y Comunidad de Madrid.",
+      "cta": "Coordinar visita",
+      "mapTitle": "Mapa de Geesol Instalaciones Fotovoltaicas"
+    },
+    "video": {
+      "title": "Descubre la magia del sol",
+      "subtitle": "Video corporativo sobre nuestras instalaciones y el ahorro real que conseguimos.",
+      "iframeTitle": "Descubre la magia del sol"
+    },
+    "cta": {
+      "title": "¿Tienes alguna duda o quieres más información?",
+      "subtitle": "Cuéntanos tu proyecto y te preparamos un estudio gratuito en menos de 24 horas.",
+      "button": "Solicitar estudio gratis"
+    },
+    "associations": {
+      "title": "Geesol es miembro de la Unión Española Fotovoltaica (UNEF) y de la Asociación de Empresarios del Sur de España (CESUR)."
+    }
+  },
+  "faqPage": {
+    "meta": {
+      "title": "Preguntas frecuentes | GEESOL",
+      "description": "Resolvemos dudas sobre autoconsumo, instalación y servicios fotovoltaicos."
+    },
+    "hero": {
+      "title": "Preguntas frecuentes",
+      "subtitle": "Resolvemos las dudas más habituales sobre instalaciones solares y autoconsumo."
+    },
+    "faqs": [
+      {
+        "question": "¿Cuánto ahorraré en mi factura de la luz?",
+        "answer": "Depende, sobre todo, de cuando realices los consumos en tu hogar o empresa. Por nuestra experiencia, se consiguen ahorros de entre un 40% y un 80%. Habitualmente la instalación se amortiza entre 4/5 años en empresas y en 6/7 años en viviendas."
+      },
+      {
+        "question": "¿Es legal tener una instalación fotovoltaica en casa?",
+        "answer": "Sí. Completamente legal. De hecho no hay que pagar impuestos por ella, al contrario, existen subvenciones y descuentos en el IBI urbano. El 5 de abril de 2019 se aprobó definitivamente el Real Decreto 244/2019 que autoriza y regula el autoconsumo fotovoltaico. Más información aquí."
+      },
+      {
+        "question": "¿Se puede financiar?",
+        "answer": "Sí. Es posible financiar la instalación en cómodos plazos. Si te interesa, pregúntanos por nuestro sistema de financiación y las diversas opciones que te ofrecemos y las que mejor se pueden adaptar a tus necesidades."
+      },
+      {
+        "question": "¿Las instalaciones tienen garantía?",
+        "answer": "Sí. Geesol trabaja con los mejores fabricantes del mercado, que ofrecen las siguientes garantías: 12, 15 o 25 años de garantía de producto (Panel Solar); 25 o 30 años garantía de rendimiento (Panel Solar); 10 años garantía del inversor HUAWEI y 25 años en los microinversores ENPHASE y 3 años de garantía de instalación."
+      },
+      {
+        "question": "¿Cómo funciona?",
+        "answer": "Las placas capturan la luz del sol y la convierten en energía eléctrica para que pueda ser utilizada en la vivienda en ese momento. Lo que no se consume, se vierte a la red eléctrica o se puede almacenar en baterías. Las instalaciones están formadas, generalmente, por los paneles solares y el inversor. Opcionalmente, pueden incorporarse baterías."
+      },
+      {
+        "question": "¿Funcionan los paneles solares en días nublados?",
+        "answer": "Sí. En días nublados los paneles solares no dejan de producir electricidad, sino que generan entre un 10 % y un 15 % de su rendimiento habitual. Incluso, demasiado calor puede reducir la producción eléctrica de los paneles (la potencia de salida comienza a disminuir si el panel sobrepasa los 25°C)."
+      },
+      {
+        "question": "¿Qué pasa con la energía que me falte?",
+        "answer": "A priori, la vivienda se abastecerá de la instalación fotovoltaica; en caso de hacer falta más, ésta diferencia será cubierta por la red eléctrica. Se puede controlar el consumo en todo momento a través de una app informática (disponible tanto en ordenador como en móvil)."
+      },
+      {
+        "question": "¿Y con la que me sobre?",
+        "answer": "El sistema vierte esos excedentes a la red eléctrica general. Dicha energía se vende a precio de mayorista, no se evacua de forma gratuita. Según el Real Decreto 244/2019, el 5 de Agosto de 2019 quedará regularizado este aspecto. Más información aquí."
+      },
+      {
+        "question": "¿Cuánto tarda la instalación desde que la contrato?",
+        "answer": "Depende de la envergadura del proyecto; para empresas, podemos irnos a 20-30 días; para viviendas, puedes tener tu propia instalación fotovoltaica en 7-10 días. Dicho plazo está sujeto a la disponibilidad del material."
+      },
+      {
+        "question": "¿Es posible instalar en comunidades de vecinos?",
+        "answer": "Sí. El autoconsumo compartido ya está permitido. Además, no es necesario que la instalación sea para todos los vecinos; se puede asociar a los contadores que queramos, incluso programar diferentes coeficientes de reparto para cada vecino/socio. Más información aquí."
+      },
+      {
+        "question": "¿Existen subvenciones?",
+        "answer": "Sí. De hecho, en Geesol podemos prepararte toda la documentación que necesites."
+      },
+      {
+        "question": "¿Si ya tengo placas solares para agua caliente puedo utilizarlas para obtener electricidad?",
+        "answer": "No. Tanto las placas como las instalaciones son completamente distintas, ya que sus usos son muy diferentes (no es lo mismo la fontanería que la electricidad)."
+      },
+      {
+        "question": "¿Tienen servicio postventa?",
+        "answer": "Sí. La profesionalidad en el servicio es nuestro sello como empresa, tanto antes como después de la instalación. La plena satisfacción de nuestros clientes es nuestro principal objetivo, y a día de hoy podemos presumir de una clientela 100% satisfecha. Incluso, muchos clientes solicitan nuestro servicio de mantenimiento anual."
+      },
+      {
+        "question": "¿Cuál es la diferencia entre autoconsumo conectado a red y autoconsumo aislado?",
+        "answer": "El primero es aquella instalación que también tiene acceso a la red eléctrica general (suelen ser aquellas viviendas situadas dentro de una población), mientras que las instalaciones aisladas son aquellas que no tienen ningún tipo de contacto físico con la red eléctrica (habitualmente están localizadas en zonas rurales o agrícolas)."
+      }
+    ],
+    "cta": {
+      "title": "¿Necesitas ayuda ahora?",
+      "subtitle": "Escríbenos y te responderemos en minutos.",
+      "button": "Contactar"
+    }
+  },
+  "referralPage": {
+    "meta": {
+      "title": "Recomienda y gana | GEESOL",
+      "description": "Programa de referidos para compartir GEESOL y obtener recompensas por cada instalación completada."
+    },
+    "hero": {
+      "title": "Recomienda y gana",
+      "subtitle": "Invita a tus contactos, comparte tu enlace y consigue recompensas por cada instalación completada."
+    },
+    "quickSteps": ["Invita", "Haz seguimiento", "Cobra"],
+    "quickStepsDescriptions": [
+      "Comparte tu enlace o tu código QR con cualquier persona interesada.",
+      "Ve en qué fase está cada referido: estudio, instalación o activación.",
+      "Recibe tu recompensa cuando el proyecto se complete y quede operativo."
+    ],
+    "app": {
+      "eyebrow": "App móvil",
+      "title": "Gestiona tus referidos desde el móvil",
+      "description": "Consulta tus invitaciones, el estado de cada contacto y tus recompensas acumuladas. La app te avisará cuando se complete una instalación.",
+      "store": {
+        "apple": "App Store",
+        "google": "Google Play"
+      },
+      "qrLabel": "QR {store}"
+    },
+    "qrCards": [
+      {
+        "label": "App Store",
+        "description": "Añade aquí tu código QR para descargar la app."
+      },
+      {
+        "label": "Google Play",
+        "description": "Añade aquí tu código QR para descargar la app."
+      }
+    ],
+    "how": {
+      "title": "¿Cómo funciona?",
+      "subtitle": "Tres pasos sencillos para compartir, hacer seguimiento y cobrar tus incentivos."
+    },
+    "steps": [
+      {
+        "title": "Invita desde la app",
+        "description": "Envía tu enlace personalizado a amigos y empresas interesadas en autoconsumo."
+      },
+      {
+        "title": "Seguimiento en tiempo real",
+        "description": "Comprueba cuándo aceptan la invitación y en qué fase está su proyecto."
+      },
+      {
+        "title": "Gana recompensas",
+        "description": "Recibe incentivos cuando la instalación se complete y el cliente quede activo."
+      }
+    ],
+    "cta": {
+      "title": "Solicita tu código de referido",
+      "subtitle": "Escríbenos y te daremos acceso a la app para empezar a compartir tu enlace.",
+      "button": "Contacto"
+    }
+  },
+  "serviceTemplate": {
+    "hero": {
+      "primaryCta": "Solicitar estudio",
+      "secondaryCta": "Programa de referidos"
+    },
+    "features": {
+      "eyebrow": "Beneficios clave",
+      "title": "Diseñado para maximizar tu ahorro",
+      "subtitle": "Seleccionamos componentes de primera, optimizamos la orientación y nos ocupamos de toda la tramitación para que tu instalación rinda al máximo desde el primer día.",
+      "imageAlt": "Detalle de {title}"
+    },
+    "steps": {
+      "title": "Cómo trabajamos contigo",
+      "subtitle": "Un proceso claro, transparente y rápido para que disfrutes de tu instalación sin complicaciones."
+    },
+    "gallery": {
+      "title": "Galería de instalaciones",
+      "imageAlt": "Instalación {index}"
+    },
+    "cta": {
+      "title": "Solicita tu estudio personalizado",
+      "subtitle": "Calculamos tu producción, las subvenciones disponibles y diseñamos una propuesta a medida con las mejores condiciones.",
+      "primary": "Contacto",
+      "secondary": "Conoce al equipo"
+    }
   }
 }

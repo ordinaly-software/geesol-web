@@ -19,7 +19,7 @@ export async function generateMetadata({
     description: isEs
       ? "Instalaciones solares para hogares y empresas. Estudio gratuito, gestion de ayudas y ahorro energetico."
       : "Solar installations for homes and businesses. Free assessment, subsidy handling, and energy savings.",
-    image: "/static/main_home_ilustration.webp",
+    image: "/static/home/main_home_ilustration.webp",
   });
 }
 

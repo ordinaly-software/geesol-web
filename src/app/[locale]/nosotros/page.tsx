@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import NosotrosPage from "./page.client";
 import { createPageMetadata } from "@/lib/metadata";
+import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata({
   params,
@@ -8,18 +9,14 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const isEs = locale?.startsWith("es");
+  const t = await getTranslations({ locale, namespace: "aboutPage" });
 
   return createPageMetadata({
     locale,
     path: "/nosotros",
-    title: isEs
-      ? "Sobre GEESOL | Equipo y experiencia en fotovoltaica"
-      : "About GEESOL | Solar expertise and team",
-    description: isEs
-      ? "Equipo especializado en diseno, instalacion y mantenimiento de energia solar."
-      : "Specialized team for solar design, installation, and maintenance.",
-    image: "/static/28128.jpg",
+    title: t("meta.title"),
+    description: t("meta.description"),
+    image: "/static/nosotros/nosotros_background.webp",
   });
 }
 

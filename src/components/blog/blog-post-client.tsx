@@ -3,9 +3,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import BackToTopButton from '@/components/ui/back-to-top-button';
+import { useMemo } from 'react';
 import { useTranslations } from 'next-intl';
 import { PortableText } from '@portabletext/react';
-import { portableTextComponents } from './portable-text-components';
+import type { PortableTextBlock } from '@portabletext/types';
+import { getPortableTextComponents } from './portable-text-components';
 import { urlFor } from '@/lib/image';
 import Banner from '@/components/ui/banner';
 import type { BlogPost, MediaItem, Category } from './types';
@@ -30,8 +32,51 @@ const getTagStyle = (key: string) => {
 
 export default function BlogPostClient({ post }: { post: BlogPost }) {
   const t = useTranslations('blog');
-  if (!post) return null;
   const p = post;
+  const tocData = useMemo(() => {
+    const items: { id: string; text: string; level: 'h2' | 'h3' | 'h4' }[] = [];
+    const idMap = new Map<string, string>();
+    const counts = new Map<string, number>();
+
+    const slugify = (value: string) =>
+      value
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .trim()
+        .replace(/[^a-z0-9\s-]/g, '')
+        .replace(/\s+/g, '-')
+        .replace(/-+/g, '-');
+
+    const getBlockText = (block: PortableTextBlock) =>
+      Array.isArray(block.children)
+        ? block.children
+            .map((child) =>
+              'text' in child && typeof child.text === 'string' ? child.text : ''
+            )
+            .join('')
+            .trim()
+        : '';
+
+    if (Array.isArray(p?.body)) {
+      p.body.forEach((block: PortableTextBlock) => {
+        if (block?._type !== 'block') return;
+        if (!block.style || !['h2', 'h3', 'h4'].includes(block.style)) return;
+        const text = getBlockText(block);
+        if (!text) return;
+        const base = slugify(text);
+        if (!base) return;
+        const count = (counts.get(base) ?? 0) + 1;
+        counts.set(base, count);
+        const id = count === 1 ? base : `${base}-${count}`;
+        if (block._key) idMap.set(block._key, id);
+        items.push({ id, text, level: block.style as 'h2' | 'h3' | 'h4' });
+      });
+    }
+
+    return { items, idMap };
+  }, [p?.body]);
+  if (!p) return null;
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -87,7 +132,7 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
                 {m.type === 'image' && m.asset && (
                   <Image
                     src={urlFor(m.asset).width(800).height(600).url()}
-                    alt={m.alt || 'Blog media'}
+                    alt={m.alt || t('media.imageAlt')}
                     width={800}
                     height={600}
                     className="w-full h-auto"
@@ -96,15 +141,40 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
                 {m.type === 'video' && m.url && (
                   <video controls className="w-full h-auto">
                     <source src={m.url} type="video/mp4" />
-                    Your browser does not support the video tag.
+                    {t('media.videoFallback')}
                   </video>
                 )}
               </div>
             ))}
           </div>
         )}
+        {tocData.items.length > 0 && (
+          <nav className="mt-8 rounded-2xl border border-gray-200 bg-white/70 p-5 shadow-sm dark:border-gray-700 dark:bg-gray-900/70">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#D01B17]">
+              {t('toc.title')}
+            </p>
+            <ul className="mt-4 space-y-2 text-sm text-gray-700 dark:text-gray-300">
+              {tocData.items.map((item) => (
+                <li key={item.id} className={item.level === 'h3' ? 'pl-3' : item.level === 'h4' ? 'pl-6' : ''}>
+                  <a
+                    href={`#${item.id}`}
+                    className="transition hover:text-[#D01B17] hover:underline"
+                  >
+                    {item.text}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        )}
         <article className="prose max-w-none mt-6">
-          <PortableText value={p.body} components={portableTextComponents} />
+          <PortableText
+            value={p.body}
+            components={getPortableTextComponents(t, {
+              getHeadingId: (value) =>
+                value?._key ? tocData.idMap.get(value._key) : undefined,
+            })}
+          />
         </article>
       </main>
       {/* Categories and share row - centered and evenly spaced */}
@@ -119,7 +189,7 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
                     cat?.slug ? (
                       <Link
                         key={cat.slug}
-                        href={`/blog?category=${cat.title}`}
+                        href={`/blog?category=${cat.slug}`}
                         className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium transition w-fit ${getTagStyle(
                           cat.slug || cat.title
                         )}`}

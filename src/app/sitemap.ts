@@ -14,7 +14,7 @@ export default async function sitemap() {
     { path: "/", changeFrequency: "weekly" as const, priority: 0.9 },
     { path: "/contact", changeFrequency: "weekly" as const, priority: 0.7 },
     { path: "/about", changeFrequency: "weekly" as const, priority: 0.7 },
-    { path: "/services", changeFrequency: "weekly" as const, priority: 0.8 },
+    { path: "/servicios", changeFrequency: "weekly" as const, priority: 0.8 },
     { path: "/formation", changeFrequency: "weekly" as const, priority: 0.7 },
     { path: "/blog", changeFrequency: "daily" as const, priority: 0.8 },
   ];
@@ -37,7 +37,7 @@ export default async function sitemap() {
   };
 
   const services =
-    (await fetchApiCollection<{ slug?: string; id?: string; draft?: boolean }>("/api/services/")).filter(
+    (await fetchApiCollection<{ slug?: string; id?: string; draft?: boolean }>("/api/servicios/")).filter(
       (s) => !s?.draft,
     );
   const courses = await fetchApiCollection<{ slug?: string; id?: string }>("/api/courses/courses/");
@@ -64,7 +64,7 @@ export default async function sitemap() {
       const identifier = service?.slug || service?.id;
       if (!identifier) continue;
       entries.push({
-        url: localized(`/services/${identifier}`, locale),
+        url: localized(`/servicios/${identifier}`, locale),
         changeFrequency: "weekly",
         priority: 0.8,
       });
