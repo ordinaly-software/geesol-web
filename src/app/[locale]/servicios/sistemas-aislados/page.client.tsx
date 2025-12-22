@@ -60,8 +60,8 @@ export default function SistemasAisladosPage({ locale }: { locale: string }) {
         },
       ]}
       galleryImages={[
-        "/static/home/main_home_ilustration.webp",
-        "/static/freepik__candid-photography-with-natural-textures-and-highl__17569.jpeg",
+        "/static/servicios/sistemas_aislados/sistemas_aislados_01.webp",
+        "/static/servicios/sistemas_aislados/sistemas_aislados_02.webp",
       ]}
     />
   );

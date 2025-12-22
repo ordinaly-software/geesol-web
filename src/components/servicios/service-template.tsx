@@ -79,36 +79,36 @@ export const ServiceTemplate = ({
       <section className="relative isolate overflow-hidden bg-[#0c3b52] text-white dark:bg-[#060a14]">
         <div className="absolute inset-0">
           <Image
-            src={heroImage}
-            alt={title}
-            fill
-            className="object-cover opacity-80"
-            priority
-            sizes="100vw"
+        src={heroImage}
+        alt={title}
+        fill
+        className="object-cover opacity-80"
+        priority
+        sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0c3b52]/70 via-[#0c3b52]/85 to-[#0c3b52] dark:from-black/60 dark:via-[#060a14]/90 dark:to-[#060a14]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0c3b52]/40 via-[#0c3b52]/60 to-[#0c3b52] dark:from-black/30 dark:via-[#060a14]/70 dark:to-[#060a14]" />
         </div>
         <div className="relative mx-auto flex max-w-6xl flex-col gap-6 px-4 pb-16 pt-28 text-center md:pb-24 md:pt-32">
           {badge && (
-            <span className="mx-auto rounded-full bg-white/15 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#f7f2ec] shadow-lg">
-              {badge}
-            </span>
+        <span className="mx-auto rounded-full bg-white/15 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#f7f2ec] shadow-lg">
+          {badge}
+        </span>
           )}
           <h1 className="text-4xl font-black leading-tight md:text-5xl lg:text-6xl">
-            {title}
+        {title}
           </h1>
           <p className="mx-auto max-w-3xl text-lg md:text-xl text-[#e9eef2]">
-            {subtitle}
+        {subtitle}
           </p>
           <div className="flex flex-wrap justify-center gap-3">
-            <Button asChild className="px-8 py-3 text-lg uppercase">
-              <Link href={contactHref}>{t("hero.primaryCta")}</Link>
-            </Button>
-            <Button asChild className="rounded-lg border-2 border-white px-6 sm:px-8 py-2 sm:py-3 text-sm sm:text-lg text-white bg-transparent hover:bg-white hover:text-[#0c3b52] transition-colors">
-              <Link href={`${getBasePath(locale)}/recomienda-y-gana`}>
-                {t("hero.secondaryCta")}
-              </Link>
-            </Button>
+        <Button asChild className="px-8 py-3 text-lg uppercase">
+          <Link href={contactHref}>{t("hero.primaryCta")}</Link>
+        </Button>
+        <Button asChild className="rounded-lg border-2 border-white px-6 sm:px-8 py-2 sm:py-3 text-sm sm:text-lg text-white bg-transparent hover:bg-white hover:text-[#0c3b52] transition-colors">
+          <Link href={`${getBasePath(locale)}/recomienda-y-gana`}>
+            {t("hero.secondaryCta")}
+          </Link>
+        </Button>
           </div>
         </div>
       </section>

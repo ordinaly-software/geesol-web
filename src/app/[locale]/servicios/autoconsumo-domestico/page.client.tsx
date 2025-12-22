@@ -1,8 +1,8 @@
 import { ServiceTemplate } from "../../../../components/servicios/service-template";
-import { useTranslations } from "next-intl";
+// import { useTranslations } from "next-intl";
 
 export default function AutoconsumoDomesticoPage({ locale }: { locale: string }) {
-  const t = useTranslations("autoconsumoDomestico");
+  // const t = useTranslations("autoconsumoDomestico");
 
   return (
     <ServiceTemplate
@@ -23,22 +23,6 @@ export default function AutoconsumoDomesticoPage({ locale }: { locale: string })
         {
           title: "Monitorización 24/7",
           description: "Sigue tu producción en tiempo real y detecta incidencias antes de que afecten al ahorro.",
-        },
-      ]}
-      introSections={[
-        {
-          content: t("intro"),
-        },
-        {
-          content: t("typesIntro"),
-        },
-        {
-          title: t("directType.title"),
-          content: t("directType.description"),
-        },
-        {
-          title: t("batteryType.title"),
-          content: t("batteryType.description"),
         },
       ]}
       features={[
@@ -80,9 +64,11 @@ export default function AutoconsumoDomesticoPage({ locale }: { locale: string })
       galleryTitle="Hogares que ya aprovechan el sol"
       galleryDescription="Instalaciones residenciales optimizadas para diferentes tipos de tejado y consumos."
       galleryImages={[
-        "/static/home/main_home_ilustration.webp",
-        "/static/28128.jpg",
-        "/static/freepik__candid-photography-with-natural-textures-and-highl__86638.jpeg",
+        "/static/servicios/autoconsumo_domestico/autoconsumo_domestico_01.webp",
+        "/static/servicios/autoconsumo_domestico/autoconsumo_domestico_02.webp",
+        "/static/servicios/autoconsumo_domestico/autoconsumo_domestico_03.webp",
+        "/static/servicios/autoconsumo_domestico/autoconsumo_domestico_04.webp",
+        "/static/servicios/autoconsumo_domestico/autoconsumo_domestico_05.webp",
       ]}
     />
   );

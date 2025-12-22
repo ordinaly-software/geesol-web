@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { IconArrowNarrowLeft, IconArrowNarrowRight } from "@tabler/icons-react";
 
@@ -41,14 +41,14 @@ export const VideoTestimonialsSection = ({
     },
   ];
 
-  const scrollToIndex = (index: number) => {
+  const scrollToIndex = useCallback((index: number) => {
     const container = scrollRef.current;
     if (!container) return;
     
     const cardWidth = container.scrollWidth / videos.length;
     container.scrollTo({ left: cardWidth * index, behavior: "smooth" });
     setCurrentIndex(index);
-  };
+  }, [videos.length]);
 
   const handleScrollLeft = () => {
     const newIndex = currentIndex > 0 ? currentIndex - 1 : videos.length - 1;
@@ -80,7 +80,7 @@ export const VideoTestimonialsSection = ({
     }, 5000); // Change slide every 5 seconds
 
     return () => clearInterval(interval);
-  }, [isAutoPlaying, videos.length]);
+  }, [isAutoPlaying, scrollToIndex, videos.length]);
 
   // Update current index based on scroll position
   useEffect(() => {

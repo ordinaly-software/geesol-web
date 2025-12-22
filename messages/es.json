@@ -653,17 +653,5 @@
       "primary": "Contacto",
       "secondary": "Conoce al equipo"
     }
-  },
-  "autoconsumoDomestico": {
-    "intro": "Autoconsumo fotovoltaico es un concepto cada vez más presente en la vida diaria de las familias y las empresas, ya que se ha convertido en una alternativa real de ahorro. Si bien, para sacar provecho a este tipo de instalaciones es necesario tener al menos unas nociones básicas y desde Geesol vamos a ayudarte en la tarea.",
-    "typesIntro": "En primer lugar, hay que tener claro que dentro del autoconsumo existen dos tipos de soluciones:",
-    "directType": {
-      "title": "Autoconsumo directo",
-      "description": "Es aquel donde la energía es consumida en el mismo momento de su generación, es decir, de día. Por su parte, este sistema resulta muy útil para compañías o negocios que llevan a cabo su actividad productiva de manera diurna."
-    },
-    "batteryType": {
-      "title": "Autoconsumo con batería",
-      "description": "Se trata de una instalación que dispone de una serie de baterías con el objetivo de que éstas almacenen la energía que se genera de día para consumirla, fundamentalmente, a lo largo de la noche. Es un tipo de sistema ideal para aquellos hogares cuyos habitantes realizan el mayor consumo de energía de noche, una vez llegan a casa después del trabajo."
-    }
   }
 }

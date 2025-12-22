@@ -62,9 +62,10 @@ export default function AutoconsumoIndustrialPage({ locale }: { locale: string }
       galleryTitle="Cubiertas industriales en producción"
       galleryDescription="Proyectos en naves logísticas, industria agroalimentaria y centros de distribución."
       galleryImages={[
-        "/static/freepik__candid-photography-with-natural-textures-and-highl__86639.jpeg",
-        "/static/freepik__candid-photography-with-natural-textures-and-highl__86640.jpeg",
-        "/static/28128.jpg",
+        "/static/servicios/autoconsumo_industrial/autoconsumo_industrial_01.webp",
+        "/static/servicios/autoconsumo_industrial/autoconsumo_industrial_02.webp",
+        "/static/servicios/autoconsumo_industrial/autoconsumo_industrial_03.webp",
+        "/static/servicios/autoconsumo_industrial/autoconsumo_industrial_04.webp",
       ]}
     />
   );

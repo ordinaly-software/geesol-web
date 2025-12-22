@@ -62,8 +62,7 @@ export default function BombeoSolarPage({ locale }: { locale: string }) {
       galleryTitle="Bombeos en marcha"
       galleryDescription="Instalaciones en pozos, balsas y estaciones de bombeo para diferentes cultivos."
       galleryImages={[
-        "/static/freepik__candid-photography-with-natural-textures-and-highl__86638.jpeg",
-        "/static/freepik__candid-photography-with-natural-textures-and-highl__17569.jpeg",
+        "/static/servicios/bombeo_solar/bombeo_solar_01.webp",
       ]}
     />
   );
