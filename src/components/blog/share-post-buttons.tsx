@@ -40,9 +40,10 @@ export const SharePostButtons: React.FC<Props> = ({ title, excerpt, slug, theme 
     ? window.location.hostname.replace(/^www\./, '')
     : 'Ordinaly';
 
+  const excerptSuffix = excerpt ? ` - ${excerpt}` : '';
   const textBase = t('shareMessage', {
     title,
-    excerpt: excerpt || '',
+    excerpt: excerptSuffix,
     siteTag,
     default: `Read this post from ${siteTag}: "${title}"${excerpt ? ' - ' + excerpt : ''}`,
   });

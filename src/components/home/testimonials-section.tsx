@@ -10,6 +10,11 @@ type TranslateFn = (key: string, values?: Record<string, string | number | Date>
 
 interface SectionProps {
   t: TranslateFn;
+  onMetaUpdate?: (meta: {
+    rating: number | null;
+    count: number | null;
+    googleMapsUrl?: string;
+  }) => void;
 }
 
 const MAX_TESTIMONIALS = 5;
@@ -106,7 +111,7 @@ const GoogleIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-export function TestimonialsSection({ t }: SectionProps) {
+export function TestimonialsSection({ t, onMetaUpdate }: SectionProps) {
   const sectionRef = useRef<HTMLElement | null>(null);
   const [googleData, setGoogleData] = useState<GoogleReviewsPayload | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -115,6 +120,7 @@ export function TestimonialsSection({ t }: SectionProps) {
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
+  const [expandedCards, setExpandedCards] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
     let isMounted = true;
@@ -207,6 +213,15 @@ export function TestimonialsSection({ t }: SectionProps) {
   const aggregateCount = googleData?.userRatingsTotal ?? null;
   const cardScrollStep = 320;
 
+  useEffect(() => {
+    if (!onMetaUpdate) return;
+    onMetaUpdate({
+      rating: aggregateRating,
+      count: aggregateCount,
+      googleMapsUrl: googleData?.googleMapsUrl,
+    });
+  }, [aggregateRating, aggregateCount, googleData?.googleMapsUrl, onMetaUpdate]);
+
   const checkScrollability = () => {
     const container = scrollRef.current;
     if (!container) return;
@@ -233,6 +248,10 @@ export function TestimonialsSection({ t }: SectionProps) {
   useEffect(() => {
     checkScrollability();
   }, [visibleTestimonials.length]);
+
+  const toggleExpanded = (key: string) => {
+    setExpandedCards((prev) => ({ ...prev, [key]: !prev[key] }));
+  };
 
   return (
     <section
@@ -285,7 +304,11 @@ export function TestimonialsSection({ t }: SectionProps) {
                 )}
                 <div className="flex flex-wrap items-center justify-center gap-3">
                   {googleData?.googleMapsUrl && (
-                    <Button asChild size="sm" variant="outline" className="gap-2">
+                    <Button
+                      asChild
+                      size="sm"
+                      className="gap-2 bg-gradient-to-r from-[#0c3b52] to-[#1d5675] text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition"
+                    >
                       <a href={googleData.googleMapsUrl} target="_blank" rel="noreferrer">
                         <BadgeCheck className="h-4 w-4" />
                         {t("testimonials.googleLink")}
@@ -293,7 +316,11 @@ export function TestimonialsSection({ t }: SectionProps) {
                     </Button>
                   )}
                   {googleData?.writeReviewUrl && (
-                    <Button asChild size="sm" className="gap-2">
+                    <Button
+                      asChild
+                      size="sm"
+                      className="gap-2 bg-gradient-to-r from-[#c83c3e] to-[#f25f5c] text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition"
+                    >
                       <a href={googleData.writeReviewUrl} target="_blank" rel="noreferrer">
                         <GoogleIcon className="h-4 w-4" />
                         {t("testimonials.googleWrite")}
@@ -317,16 +344,16 @@ export function TestimonialsSection({ t }: SectionProps) {
               ? Array.from({ length: 3 }).map((_, index) => (
                   <div
                     key={`testimonial-skeleton-${index}`}
-                    className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg min-w-[260px] sm:min-w-[300px] md:min-w-[320px] animate-pulse"
+                    className="bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-lg min-w-[260px] sm:min-w-[300px] md:min-w-[320px] animate-pulse"
                   >
-                    <div className="flex items-center mb-4">
-                      <div className="w-12 h-12 rounded-full bg-gray-200 dark:bg-gray-700 mr-3"></div>
+                    <div className="flex items-center mb-3">
+                      <div className="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 mr-3"></div>
                       <div className="space-y-2">
                         <div className="h-3 w-24 bg-gray-200 dark:bg-gray-700 rounded"></div>
                         <div className="h-3 w-16 bg-gray-200 dark:bg-gray-700 rounded"></div>
                       </div>
                     </div>
-                    <div className="flex mb-3 gap-2">
+                    <div className="flex mb-2 gap-2">
                       {Array.from({ length: 5 }).map((_, i) => (
                         <div
                           key={`star-skeleton-${index}-${i}`}
@@ -337,24 +364,23 @@ export function TestimonialsSection({ t }: SectionProps) {
                     <div className="space-y-2">
                       <div className="h-3 w-full bg-gray-200 dark:bg-gray-700 rounded"></div>
                       <div className="h-3 w-5/6 bg-gray-200 dark:bg-gray-700 rounded"></div>
-                      <div className="h-3 w-2/3 bg-gray-200 dark:bg-gray-700 rounded"></div>
                     </div>
                   </div>
                 ))
               : visibleTestimonials.map((item, index) => (
                   <div
                     key={`${item.name}-${index}`}
-                    className="scroll-animate fade-in-up bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg min-w-[260px] sm:min-w-[300px] md:min-w-[320px]"
+                    className="scroll-animate fade-in-up bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-lg min-w-[260px] sm:min-w-[300px] md:min-w-[320px]"
                     style={{ animationDelay: `${index * 0.08}s` }}
                   >
-                    <div className="flex items-center mb-4">
+                    <div className="flex items-center mb-3">
                       {item.profilePhotoUrl && !failedImages[item.profilePhotoUrl] ? (
-                        <div className="w-12 h-12 relative mr-3">
+                        <div className="w-10 h-10 relative mr-3">
                           <Image
                             src={item.profilePhotoUrl}
                             alt={item.name}
-                            width={48}
-                            height={48}
+                            width={40}
+                            height={40}
                             className="rounded-full object-cover"
                             loading="lazy"
                             decoding="async"
@@ -369,9 +395,9 @@ export function TestimonialsSection({ t }: SectionProps) {
                         </div>
                       ) : (
                         <div
-                          className={`w-12 h-12 bg-gradient-to-br ${
+                          className={`w-10 h-10 bg-gradient-to-br ${
                             item.color ?? avatarGradients[index % avatarGradients.length]
-                          } rounded-full flex items-center justify-center text-white font-semibold text-lg mr-3`}
+                          } rounded-full flex items-center justify-center text-white font-semibold text-base mr-3`}
                         >
                           {item.initials ?? getInitials(item.name)}
                         </div>
@@ -385,7 +411,7 @@ export function TestimonialsSection({ t }: SectionProps) {
                         )}
                       </div>
                     </div>
-                    <div className="flex mb-3">
+                    <div className="flex mb-2">
                       {Array.from({ length: 5 }).map((_, i) => (
                         <svg
                           key={i}
@@ -402,9 +428,26 @@ export function TestimonialsSection({ t }: SectionProps) {
                       ))}
                     </div>
                     {item.quote && (
-                      <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-                        “{item.quote}”
-                      </p>
+                      <div>
+                        <p
+                          className={`text-sm text-gray-700 dark:text-gray-300 leading-relaxed ${
+                            expandedCards[`${item.name}-${index}`] ? "" : "line-clamp-3"
+                          }`}
+                        >
+                          “{item.quote}”
+                        </p>
+                        {item.quote.length > 140 && (
+                          <button
+                            type="button"
+                            onClick={() => toggleExpanded(`${item.name}-${index}`)}
+                            className="mt-2 text-xs font-semibold text-[#D01B17] hover:underline"
+                          >
+                            {expandedCards[`${item.name}-${index}`]
+                              ? t("testimonials.readLess")
+                              : t("testimonials.readMore")}
+                          </button>
+                        )}
+                      </div>
                     )}
                   </div>
                 ))}
@@ -415,7 +458,7 @@ export function TestimonialsSection({ t }: SectionProps) {
               onClick={handleScrollLeft}
               disabled={!canScrollLeft}
               type="button"
-              aria-label="Scroll testimonials left"
+              aria-label={t("testimonials.scrollLeft")}
             >
               <IconArrowNarrowLeft className="h-6 w-6 text-gray-500" />
             </button>
@@ -424,7 +467,7 @@ export function TestimonialsSection({ t }: SectionProps) {
               onClick={handleScrollRight}
               disabled={!canScrollRight}
               type="button"
-              aria-label="Scroll testimonials right"
+              aria-label={t("testimonials.scrollRight")}
             >
               <IconArrowNarrowRight className="h-6 w-6 text-gray-500" />
             </button>

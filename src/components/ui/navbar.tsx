@@ -20,6 +20,7 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeMegaItem, setActiveMegaItem] = useState<string | null>(null);
   const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
+  const [isMobileContactOpen, setIsMobileContactOpen] = useState(false);
 
   useEffect(() => {
     const handleResize = () => setViewportWidth(window.innerWidth);
@@ -38,11 +39,13 @@ const Navbar = () => {
   useEffect(() => {
     setIsMenuOpen(false);
     setIsMobileServicesOpen(false);
+    setIsMobileContactOpen(false);
   }, [pathname]);
 
   const navItems = useMemo(
     () => [
-      { id: "services", type: "mega", href: "/services", label: t("services") },
+      { id: "home", type: "link", href: "/", label: t("home") },
+      { id: "services", type: "mega", href: "/servicios", label: t("services") },
       { id: "about", type: "link", href: "/nosotros", label: t("about") },
       { id: "refer", type: "link", href: "/recomienda-y-gana", label: t("refer") },
       { id: "faqs", type: "link", href: "/faqs", label: t("faqs") },
@@ -125,19 +128,19 @@ const Navbar = () => {
                     {item.id === "services" && (
                       <div className="grid grid-cols-2 gap-2 w-[600px] max-w-[90vw]">
                         {serviceMenuItems.length === 0 ? (
-                          <HoveredLink href="/services">{t("servicesAll")}</HoveredLink>
+                          <HoveredLink href="/servicios">{t("servicesAll")}</HoveredLink>
                         ) : (
                           serviceMenuItems.map((service) => (
                             <ProductItem
                               key={service.slug}
-                              href={`/services/${service.slug}`}
+                              href={`/servicios/${service.slug}`}
                               title={service.title}
                               description={service.description}
                               src={service.image}
                             />
                           ))
                         )}
-                        <HoveredLink href="/services">{t("servicesAll")}</HoveredLink>
+                        <HoveredLink href="/servicios">{t("servicesAll")}</HoveredLink>
                       </div>
                     )}
                     {item.id === "contact" && (
@@ -224,7 +227,7 @@ const Navbar = () => {
                   <div className="space-y-1 px-3 pb-3">
                     {serviceMenuItems.length === 0 ? (
                       <Link
-                        href="/services"
+                        href="/servicios"
                         onClick={() => setIsMenuOpen(false)}
                         className="block rounded-md px-2 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-red-600 hover:bg-gray-100 dark:hover:bg-gray-800/70"
                       >
@@ -234,13 +237,15 @@ const Navbar = () => {
                       serviceMenuItems.map((service) => (
                         <Link
                           key={service.slug}
-                          href={`/services/${service.slug}`}
+                          href={`/servicios/${service.slug}`}
                           onClick={() => setIsMenuOpen(false)}
                           className="flex items-center gap-3 rounded-md px-2 py-2 text-sm font-medium text-gray-800 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800/70 hover:text-red-600"
                         >
                           <Image
                             src={service.image}
                             alt={service.title}
+                            width={40}
+                            height={40}
                             className="h-10 w-10 rounded-md object-cover shadow-sm"
                             onError={(event) => {
                               event.currentTarget.src = "/static/producto-estrella3.webp";
@@ -251,7 +256,7 @@ const Navbar = () => {
                       ))
                     )}
                     <Link
-                      href="/services"
+                      href="/servicios"
                       onClick={() => setIsMenuOpen(false)}
                       className="block rounded-md px-2 py-2 text-sm font-semibold text-red-600 hover:text-red-700"
                     >
@@ -262,38 +267,45 @@ const Navbar = () => {
               </div>
 
               <div className="rounded-xl border border-gray-200 dark:border-gray-700/70 bg-gray-50/60 dark:bg-gray-800/60">
-                <Link
-                  href="/contacto"
-                  onClick={() => setIsMenuOpen(false)}
+                <button
                   className="w-full flex items-center justify-between px-3 py-3 text-left"
+                  onClick={() => setIsMobileContactOpen((prev) => !prev)}
                 >
                   <span className="font-semibold text-gray-900 dark:text-white">
                     {t("contact")}
                   </span>
-                </Link>
-                <div className="space-y-1 px-3 pb-3">
-                  <Link
-                    href="/contacto#trabaja-con-nosotros"
-                    onClick={() => setIsMenuOpen(false)}
-                    className="block rounded-md px-2 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-red-600 hover:bg-gray-100 dark:hover:bg-gray-800/70"
-                  >
-                    {t("contactWorkWithUs")}
-                  </Link>
-                  <Link
-                    href="/contacto#mapa"
-                    onClick={() => setIsMenuOpen(false)}
-                    className="block rounded-md px-2 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-red-600 hover:bg-gray-100 dark:hover:bg-gray-800/70"
-                  >
-                    {t("contactOfficesSeville")}
-                  </Link>
-                  <Link
-                    href="/contacto#mapa"
-                    onClick={() => setIsMenuOpen(false)}
-                    className="block rounded-md px-2 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-red-600 hover:bg-gray-100 dark:hover:bg-gray-800/70"
-                  >
-                    {t("contactOfficesMadrid")}
-                  </Link>
-                </div>
+                  <ChevronDown
+                    className={cn(
+                      "h-4 w-4 text-gray-600 dark:text-gray-300 transition-transform",
+                      isMobileContactOpen && "rotate-180",
+                    )}
+                  />
+                </button>
+                {isMobileContactOpen && (
+                  <div className="space-y-1 px-3 pb-3">
+                    <Link
+                      href="/contacto#trabaja-con-nosotros"
+                      onClick={() => setIsMenuOpen(false)}
+                      className="block rounded-md px-2 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-red-600 hover:bg-gray-100 dark:hover:bg-gray-800/70"
+                    >
+                      {t("contactWorkWithUs")}
+                    </Link>
+                    <Link
+                      href="/contacto#mapa"
+                      onClick={() => setIsMenuOpen(false)}
+                      className="block rounded-md px-2 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-red-600 hover:bg-gray-100 dark:hover:bg-gray-800/70"
+                    >
+                      {t("contactOfficesSeville")}
+                    </Link>
+                    <Link
+                      href="/contacto#mapa"
+                      onClick={() => setIsMenuOpen(false)}
+                      className="block rounded-md px-2 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-red-600 hover:bg-gray-100 dark:hover:bg-gray-800/70"
+                    >
+                      {t("contactOfficesMadrid")}
+                    </Link>
+                  </div>
+                )}
               </div>
 
               {hiddenItems

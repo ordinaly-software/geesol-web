@@ -4,7 +4,7 @@ const publicPostFilter =
   `_type=="post" && (!defined(isPrivate) || isPrivate==false) && (!defined(publishedAt) || publishedAt <= now())`;
 
 const searchablePostFilter =
-  `${publicPostFilter} && (!defined($q) || $q == "" || pt::text(body) match $q) && (!defined($tag) || $tag == "" || $tag in tags[]->slug.current) && (!defined($cat) || $cat == "" || $cat in categories[]->slug.current)`;
+  `${publicPostFilter} && (!defined($q) || $q == "" || pt::text(body) match $q) && (!defined($tag) || $tag == "" || $tag in tags[]->slug.current) && (!defined($cat) || $cat == "" || $cat in categories[]->slug.current || $cat in categories[]->title)`;
 
 const orderedPosts = '| order(coalesce(publishedAt,_updatedAt) desc)';
 

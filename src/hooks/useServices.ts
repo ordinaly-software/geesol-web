@@ -57,7 +57,7 @@ export const useServices = (
       }
       setIsLoading(true);
       setError(null);
-      const apiUrl = getApiEndpoint('/api/services/');
+      const apiUrl = getApiEndpoint('/api/servicios/');
       const headers: Record<string, string> = { 'Content-Type': 'application/json' };
       if (isAdmin) {
         const token = typeof window !== 'undefined' ? localStorage.getItem('authToken') : null;

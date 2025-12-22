@@ -86,27 +86,50 @@
       ]
     },
     "productStar": {
-      "imageAlt": "Solar panels on a roof",
-      "eyebrow": "Our",
-      "titleStart": "Product",
-      "titleHighlight": "Star",
-      "cta": "Learn more",
+      "imageAlt": "Paneles solares sobre cubierta",
+      "eyebrow": "NO DEJES PARA MAÑANA LO QUE PUEDAS GENERAR HOY",
+      "sectionTitle": "PRODUCTOS ESTRELLA",
+      "nav": {
+        "prev": "Producto anterior",
+        "next": "Producto siguiente",
+        "goto": "Ir al producto {index}"
+      },
       "items": [
         {
-          "title": "Safety",
-          "description": "Top-quality materials, certified installation, and constant monitoring for peace of mind."
+          "brand": "Seguridad",
+          "title": "Máxima seguridad antiincendios",
+          "subtitle": "",
+          "description": "Olvídate de riesgos. Atmoce elimina la alta tensión de corriente continua (CC), ofreciendo protección total. Además, tienes una función de desactivación rápida para tu tranquilidad.",
+          "warranty": "",
+          "warrantyDetail": "",
+          "cta": ""
         },
         {
-          "title": "Benefits",
-          "description": "Lower your bill, gain energy independence, and access exclusive incentives."
+          "brand": "Ventajas",
+          "title": "Rendimiento récord y más ahorro",
+          "subtitle": "",
+          "description": "Logra una eficiencia inigualable que captura cada rayo de luz, maximizando la producción y rentabilidad de tus paneles.",
+          "warranty": "",
+          "warrantyDetail": "",
+          "cta": ""
         },
         {
-          "title": "Warranty",
-          "description": "Full coverage on equipment and workmanship so your investment stays protected."
+          "brand": "Garantía",
+          "title": "Garantía total de 25 años",
+          "subtitle": "",
+          "description": "Tu inversión está protegida por la garantía integral más completa del mercado, asegurando la durabilidad y fiabilidad a largo plazo.",
+          "warranty": "",
+          "warrantyDetail": "",
+          "cta": ""
         },
         {
-          "title": "Monetization",
-          "description": "Sell excess energy and get extra returns with controlled zero-export."
+          "brand": "Monitorización",
+          "title": "Instalación plug-and-play y control total",
+          "subtitle": "",
+          "description": "Un diseño compacto que facilita la instalación y te permite gestionar tu energía de forma sencilla desde la aplicación Atmozen.",
+          "warranty": "",
+          "warrantyDetail": "",
+          "cta": ""
         }
       ]
     },
@@ -119,7 +142,7 @@
         },
         {
           "title": "Hassle-free management",
-          "description": "We handle permits, subsidies, and legalization so you don’t have to."
+          "description": "We handle permits, subsidies, and legalization so you don't have to."
         },
         {
           "title": "Experience and trust",
@@ -175,8 +198,25 @@
         { "value": "600 kg", "label": "less CO₂ per home per year" }
       ],
       "title": "Free, tailored savings study",
-      "description": "We tell you how much you’ll save on energy and design the ideal solution for your home or business.",
+      "description": "We tell you how much you'll save on energy and design the ideal solution for your home or business.",
       "cta": "Request a free study"
+    },
+    "videoTestimonials": {
+      "title": "What do our customers say about our solar panels?",
+      "rating": "4.7 VERY PROFESSIONAL!",
+      "subtitle": "Real reviews on Google My Business",
+      "cta": "See all reviews",
+      "nav": {
+        "prev": "Previous video",
+        "next": "Next video",
+        "goto": "Go to video {index}"
+      },
+      "items": [
+        "Residential installation in Seville",
+        "Self-consumption project in Madrid",
+        "Home energy savings",
+        "Solar energy for businesses"
+      ]
     }
   },
 
@@ -213,6 +253,10 @@
     "googleWrite": "Write a review",
     "googleLoading": "Loading Google reviews...",
     "googleUnavailable": "Reviews unavailable right now",
+    "scrollLeft": "Scroll testimonials left",
+    "scrollRight": "Scroll testimonials right",
+    "readMore": "Read more",
+    "readLess": "Read less",
     "items": [
       {
         "name": "Ana Garcia",
@@ -235,7 +279,7 @@
   "contactPage": {
     "hero": {
       "title": "Contact for solar panels and self-consumption in Andalusia",
-      "subtitle": "Tell us about your photovoltaic project and we’ll arrange a free study in under 24 hours."
+      "subtitle": "Tell us about your photovoltaic project and we'll arrange a free study in under 24 hours."
     },
     "contactForm": {
       "title": "Contact form",
@@ -275,11 +319,11 @@
     },
     "work": {
       "title": "Join the solar energy team",
-      "subtitle": "If you work in photovoltaic installations, self-consumption, or renewable energy, share your profile and we’ll get in touch."
+      "subtitle": "If you work in photovoltaic installations, self-consumption, or renewable energy, share your profile and we'll get in touch."
     },
     "ctaPhone": {
       "title": "Prefer to talk by phone?",
-      "subtitle": "Call us and we’ll help you choose the best self-consumption and solar panel solution.",
+      "subtitle": "Call us and we'll help you choose the best self-consumption and solar panel solution.",
       "primary": "Call now",
       "secondary": "Referral program"
     }
@@ -288,11 +332,11 @@
     "cta": {
       "eyebrow": "GEESOL Team",
       "title": "Work with us in solar energy",
-      "body": "We’re looking for talent to drive photovoltaic installations, self-consumption, and clean energy.",
+      "body": "We're looking for talent to drive photovoltaic installations, self-consumption, and clean energy.",
       "primary": "Send application",
       "secondary": "Contact",
       "mailSubject": "Application to work at GEESOL",
-      "mailBody": "Hi GEESOL team,\n\nI’d like to apply for roles related to solar energy. I’m sharing my profile and availability.\n\nThanks."
+      "mailBody": "Hi GEESOL team,\n\nI'd like to apply for roles related to solar energy. I'm sharing my profile and availability.\n\nThanks."
     }
   },
   "services": {
@@ -330,7 +374,15 @@
   "blog": {
     "title": "Blog",
     "subtitle": "Discover our latest news, articles, and updates.",
+    "meta": {
+      "title": "Solar blog",
+      "description": "News and guides on solar energy, self-consumption, and incentives."
+    },
     "searchPlaceholder": "Search blog posts...",
+    "media": {
+      "imageAlt": "Blog visual content",
+      "videoFallback": "Your browser does not support the video tag."
+    },
     "filters": {
       "all": "All Categories",
       "category": "Category"
@@ -358,6 +410,260 @@
     },
     "backToBlog": "Back to blog",
     "postCategories": "Categories",
-    "shareLabel": "Share"
-  }
+    "shareLabel": "Share",
+    "toc": {
+      "title": "Table of contents"
+    },
+    "share": {
+      "label": "Share",
+      "whatsapp": "WhatsApp",
+      "facebook": "Facebook",
+      "linkedin": "LinkedIn",
+      "shareMessage": "Read this post from {siteTag}: \"{title}\"{excerpt}"
+    }
+  },
+  "aboutPage": {
+    "meta": {
+      "title": "About GEESOL | Solar expertise and team",
+      "description": "Specialized team for solar design, installation, and maintenance."
+    },
+    "hero": {
+      "title": "About us",
+      "subtitle": "Solar energy for homes, businesses, and industry with an in-house team guiding you end to end."
+    },
+    "story": {
+      "eyebrow": "Our story",
+      "title": "Clean energy with in-house teams since 2017",
+      "paragraphs": [
+        "Driven by our commitment to the environment and to offering alternative energy for everyone, Geesol Renovables, S.L. was founded in 2017 as the successor to a family electrical business.",
+        "Today we have a specialized team covering every phase: assessment, design, installation, legal compliance, and continuous monitoring."
+      ],
+      "imageAlt": "GEESOL team at photovoltaic installations",
+      "caption": "Over 5,000 installations completed in Andalusia and Madrid."
+    },
+    "team": {
+      "title": "Our team",
+      "roles": [
+        "Technical director",
+        "Installation technicians",
+        "Sales",
+        "Customer support",
+        "Marketing",
+        "Community manager",
+        "IT"
+      ]
+    },
+    "stats": [
+      {
+        "value": "+5,000",
+        "label": "installations completed"
+      },
+      {
+        "value": "2017",
+        "label": "year founded"
+      },
+      {
+        "value": "Andalusia + Madrid",
+        "label": "current coverage"
+      }
+    ],
+    "actions": {
+      "primary": "Request a free study",
+      "secondary": "View services"
+    },
+    "partners": {
+      "eyebrow": "Partners and certifications",
+      "title": "We work with leading brands in the sector"
+    },
+    "location": {
+      "eyebrow": "Where we are",
+      "title": "Head office in Camas (Seville)",
+      "address": "C/ Mansíos, 5. Polígono Parque Plata, 41900, Camas (Seville).",
+      "serviceArea": "Service across Seville, Córdoba, Huelva, Cádiz, Málaga, and the Madrid region.",
+      "cta": "Schedule a visit",
+      "mapTitle": "Map of Geesol photovoltaic installations"
+    },
+    "video": {
+      "title": "Discover the magic of the sun",
+      "subtitle": "Corporate video about our installations and the real savings we deliver.",
+      "iframeTitle": "Discover the magic of the sun"
+    },
+    "cta": {
+      "title": "Have a question or want more information?",
+      "subtitle": "Tell us about your project and we'll prepare a free study in under 24 hours.",
+      "button": "Request a free study"
+    },
+    "associations": {
+      "title": "Geesol is a member of the Spanish Photovoltaic Union (UNEF) and the Association of Businessmen of Southern Spain (CESUR)."
+    }
+  },
+  "faqPage": {
+    "meta": {
+      "title": "FAQs | GEESOL",
+      "description": "Answers to common questions about self-consumption, installation, and solar services."
+    },
+    "hero": {
+      "title": "Frequently asked questions",
+      "subtitle": "Clear answers to the most common questions about solar installations and self-consumption."
+    },
+    "faqs": [
+      {
+        "question": "How much will I save on my electricity bill?",
+        "answer": "It depends mainly on when you use energy at home or at your business. Based on our experience, savings range from 40% to 80%. Typically, installations are paid back in 4–5 years for businesses and 6–7 years for homes."
+      },
+      {
+        "question": "Is it legal to have a photovoltaic installation at home?",
+        "answer": "Yes, completely legal. In fact, you don't pay taxes on it; on the contrary, there are subsidies and urban property tax discounts. On April 5, 2019, Royal Decree 244/2019 was approved, authorizing and regulating photovoltaic self-consumption. More information here."
+      },
+      {
+        "question": "Can it be financed?",
+        "answer": "Yes. It's possible to finance the installation with convenient payment plans. If you're interested, ask us about our financing system and the options that best suit your needs."
+      },
+      {
+        "question": "Do installations have a warranty?",
+        "answer": "Yes. Geesol works with top manufacturers who offer: 12, 15, or 25 years product warranty (solar panel); 25 or 30 years performance warranty (solar panel); 10 years warranty for HUAWEI inverters; 25 years for ENPHASE microinverters; and 3 years installation warranty."
+      },
+      {
+        "question": "How does it work?",
+        "answer": "Panels capture sunlight and convert it into electricity for immediate use at the property. What isn't consumed is fed back to the grid or stored in batteries. Installations generally include panels and an inverter. Batteries can be added optionally."
+      },
+      {
+        "question": "Do solar panels work on cloudy days?",
+        "answer": "Yes. On cloudy days panels still produce electricity, generating around 10%–15% of their usual output. Excessive heat can also reduce output (power starts to decrease if panels exceed 25°C)."
+      },
+      {
+        "question": "What happens with the energy I'm missing?",
+        "answer": "In principle, the home is supplied by the photovoltaic system; if more is needed, the difference is covered by the grid. Consumption can be monitored at all times through an app (available on desktop and mobile)."
+      },
+      {
+        "question": "And what about the energy I have left over?",
+        "answer": "The system feeds surplus back into the grid. That energy is sold at wholesale price; it is not given away for free. According to Royal Decree 244/2019, this was regularized on August 5, 2019. More information here."
+      },
+      {
+        "question": "How long does installation take from the time I sign?",
+        "answer": "It depends on the size of the project. For businesses, it can take 20–30 days; for homes, you can have your photovoltaic installation in 7–10 days. This timeframe depends on material availability."
+      },
+      {
+        "question": "Is it possible to install in apartment communities?",
+        "answer": "Yes. Shared self-consumption is already allowed. It doesn't have to be for all neighbors; it can be associated with selected meters and even different allocation coefficients for each neighbor/partner. More information here."
+      },
+      {
+        "question": "Are there subsidies?",
+        "answer": "Yes. At Geesol we can prepare all the documentation you need."
+      },
+      {
+        "question": "If I already have solar panels for hot water, can I use them to generate electricity?",
+        "answer": "No. Panels and installations are completely different because their uses are very different (plumbing is not the same as electricity)."
+      },
+      {
+        "question": "Do you provide after-sales service?",
+        "answer": "Yes. Professional service is our hallmark both before and after installation. Our clients' satisfaction is our main goal, and today we can proudly say we have a 100% satisfied client base. Many clients even request our annual maintenance service. Here we give you some tips to choose the right company."
+      },
+      {
+        "question": "What is the difference between grid-connected self-consumption and off-grid self-consumption?",
+        "answer": "The first is an installation that also has access to the general grid (typically homes within a population center), while off-grid installations have no physical connection to the grid (usually located in rural or agricultural areas). More information here."
+      }
+    ],
+    "cta": {
+      "title": "Need help now?",
+      "subtitle": "Write to us and we'll respond in minutes.",
+      "button": "Contact us"
+    }
+  },
+  "referralPage": {
+    "meta": {
+      "title": "Refer and earn | GEESOL",
+      "description": "Referral program to share GEESOL and earn rewards for each completed installation."
+    },
+    "hero": {
+      "title": "Refer and earn",
+      "subtitle": "Invite your contacts, share your link, and earn rewards for every completed installation."
+    },
+    "quickSteps": ["Invite", "Track", "Earn"],
+    "quickStepsDescriptions": [
+      "Share your link or QR code with anyone interested.",
+      "See which stage each referral is in: study, installation, or activation.",
+      "Receive your reward once the project is completed and active."
+    ],
+    "app": {
+      "eyebrow": "Mobile app",
+      "title": "Manage your referrals on your phone",
+      "description": "Check invitations, track each contact, and see your accumulated rewards. The app notifies you when an installation is completed.",
+      "store": {
+        "apple": "App Store",
+        "google": "Google Play"
+      },
+      "qrLabel": "QR {store}"
+    },
+    "qrCards": [
+      {
+        "label": "App Store",
+        "description": "Add your QR code here to download the app."
+      },
+      {
+        "label": "Google Play",
+        "description": "Add your QR code here to download the app."
+      }
+    ],
+    "how": {
+      "title": "How does it work?",
+      "subtitle": "Three simple steps to share, track, and collect your incentives."
+    },
+    "steps": [
+      {
+        "title": "Invite from the app",
+        "description": "Send your personalized link to friends and businesses interested in self-consumption."
+      },
+      {
+        "title": "Real-time tracking",
+        "description": "Check when they accept the invitation and which stage their project is in."
+      },
+      {
+        "title": "Earn rewards",
+        "description": "Receive incentives when the installation is completed and the client goes live."
+      }
+    ],
+    "cta": {
+      "title": "Request your referral code",
+      "subtitle": "Write to us and we'll give you access to the app to start sharing your link.",
+      "button": "Contact"
+    }
+  },
+  "serviceTemplate": {
+    "hero": {
+      "primaryCta": "Request a study",
+      "secondaryCta": "Referral program"
+    },
+    "features": {
+      "eyebrow": "Key benefits",
+      "title": "Designed to maximize your savings",
+      "subtitle": "We select top-tier components, optimize orientation, and handle every permit so your system performs at its best from day one.",
+      "imageAlt": "Detail of {title}"
+    },
+    "steps": {
+      "title": "How we work with you",
+      "subtitle": "A clear, transparent, and fast process so you enjoy your installation without complications."
+    },
+    "gallery": {
+      "title": "Installation gallery",
+      "imageAlt": "Installation {index}"
+    },
+    "cta": {
+      "title": "Request your personalized study",
+      "subtitle": "We calculate your production, available subsidies, and design a tailored proposal with the best conditions.",
+      "primary": "Contact",
+      "secondary": "Meet the team"
+    }
+  },
+  "autoconsumoDomestico": {
+    "intro": "Photovoltaic self-consumption is an increasingly common concept in the daily lives of families and businesses, as it has become a real savings alternative. However, to take advantage of this type of installation, it is necessary to have at least basic notions, and Geesol will help you with the task.",
+    "typesIntro": "First of all, it is important to understand that within self-consumption there are two types of solutions:",
+    "directType": {
+      "title": "Direct self-consumption",
+      "description": "This is where energy is consumed at the same moment it is generated, that is, during the day. This system is very useful for companies or businesses that carry out their productive activity during the day."
+    },
+    "batteryType": {
+      "title": "Battery self-consumption",
+      "description": "This is an installation that has a series of batteries with the objective of storing the energy generated during the day to be consumed, fundamentally, throughout the night. It is an ideal type of system for those homes whose residents do most of their energy consumption at night, once they arrive home from work."
+    }  }
 }

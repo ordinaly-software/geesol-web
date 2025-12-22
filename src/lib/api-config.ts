@@ -29,7 +29,7 @@ export function getApiEndpoint(path: string): string {
 
 // Common endpoints
 export const API_ENDPOINTS = {
-  services: '/api/services/',
+  services: '/api/servicios/',
   courses: '/api/courses/courses/',
   terms: '/api/terms/',
   contact: '/api/contact/',

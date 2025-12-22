@@ -71,7 +71,7 @@ export function WorkWithUsSection({
               {t("cta.primary")}
             </a>
           </Button>
-          <Button variant="outline" className="bg-white/10 text-white border-white/30 hover:bg-white/20 dark:border-white/40 dark:hover:bg-white/10 gap-2" asChild>
+          <Button asChild className="rounded-lg border-2 border-white px-6 sm:px-8 py-2 sm:py-3 text-sm sm:text-lg text-white bg-transparent hover:bg-white hover:text-[#0c3b52] transition-colors">
             <a href={`/${locale}/contacto`}>
               <ArrowRight className="h-4 w-4" />
               {t("cta.secondary")}

@@ -21,18 +21,6 @@ export type ServicesMenuItem = {
 
 const servicesMenuSource: ServicesMenuSource[] = [
   {
-    slug: "asistencia-tecnica",
-    title: {
-      es: "Asistencia tecnica solar | GEESOL",
-      en: "Solar technical support | GEESOL",
-    },
-    description: {
-      es: "Mantenimiento, monitorizacion y soporte tecnico para instalaciones solares.",
-      en: "Maintenance, monitoring, and technical support for solar installations.",
-    },
-    image: "/static/plans/1_01.webp",
-  },
-  {
     slug: "autoconsumo-domestico",
     title: {
       es: "Autoconsumo domestico | GEESOL",
@@ -42,7 +30,7 @@ const servicesMenuSource: ServicesMenuSource[] = [
       es: "Instalaciones solares para viviendas, ahorro en factura y gestion de ayudas.",
       en: "Residential solar installations, bill savings, and subsidy management.",
     },
-    image: "/static/plans/1.webp",
+    image: "/static/servicios/autoconsumo_domestico.webp",
   },
   {
     slug: "autoconsumo-industrial",
@@ -54,7 +42,7 @@ const servicesMenuSource: ServicesMenuSource[] = [
       es: "Soluciones solares para empresas e industria con analisis de retorno y planificacion de obra.",
       en: "Industrial solar solutions with ROI analysis and project planning.",
     },
-    image: "/static/plans/2.webp",
+    image: "/static/servicios/autoconsumo_industrial.webp",
   },
   {
     slug: "bombeo-solar",
@@ -66,7 +54,7 @@ const servicesMenuSource: ServicesMenuSource[] = [
       es: "Sistemas de bombeo solar para agricultura y riego eficiente.",
       en: "Solar pumping systems for agriculture and efficient irrigation.",
     },
-    image: "/static/plans/2_01.webp",
+    image: "/static/servicios/bombeo_solar.webp",
   },
   {
     slug: "galeria-instalaciones",
@@ -78,7 +66,7 @@ const servicesMenuSource: ServicesMenuSource[] = [
       es: "Casos reales y proyectos de instalaciones fotovoltaicas en hogares y empresas.",
       en: "Real projects and photovoltaic installations for homes and businesses.",
     },
-    image: "/static/plans/2.webp",
+    image: "/static/producto-estrella3.webp",
   },
   {
     slug: "sistemas-aislados",
@@ -90,7 +78,7 @@ const servicesMenuSource: ServicesMenuSource[] = [
       es: "Energia solar para ubicaciones sin red con baterias y sistemas hibridos.",
       en: "Off-grid solar solutions with batteries and hybrid systems.",
     },
-    image: "/static/plans/3.webp",
+    image: "/static/servicios/sistemas_aislados.webp",
   },
 ];
 
