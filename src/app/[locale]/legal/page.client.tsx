@@ -6,7 +6,6 @@ import { useLocale } from "next-intl";
 import { useSearchParams } from "next/navigation";
 import {
   Calendar,
-  FileText,
   ScrollText,
   ShieldCheck,
   Sparkles,
@@ -485,7 +484,7 @@ const LegalPage = () => {
   useEffect(() => {
     const onPrefs = (e: Event) => {
       try {
-        // @ts-ignore
+        // @ts-expect-error custom event carries detail
         const detail = e?.detail;
         if (detail && typeof detail === 'object') {
           setAnalyticsEnabled(!!detail.analytics);
@@ -677,7 +676,7 @@ const LegalPage = () => {
                                 localStorage.setItem('cookie-preferences', JSON.stringify(updated));
                                 setAnalyticsEnabled(!analyticsEnabled);
                                 window.dispatchEvent(new CustomEvent('cookie-preferences-changed', { detail: updated }));
-                              } catch (err) {
+                              } catch {
                                 // ignore
                               }
                             }}

@@ -238,7 +238,7 @@ const Navbar = () => {
                           onClick={() => setIsMenuOpen(false)}
                           className="flex items-center gap-3 rounded-md px-2 py-2 text-sm font-medium text-gray-800 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800/70 hover:text-red-600"
                         >
-                          <img
+                          <Image
                             src={service.image}
                             alt={service.title}
                             className="h-10 w-10 rounded-md object-cover shadow-sm"

@@ -7,6 +7,7 @@ import {
   useScroll,
   useMotionValueEvent,
 } from "motion/react";
+import Image from "next/image";
 
 import React, { useRef, useState, useEffect } from "react";
 
@@ -125,21 +126,10 @@ export const NavBody = ({ children, className, visible, isCompact }: NavBodyProp
         className,
       )}
     >
-        {React.Children.map(children, (child, idx) => {
+        {React.Children.map(children, (child) => {
           if (!React.isValidElement(child)) return child;
 
           const isNavItems = child.type === NavItems;
-
-          // Hide the theme switcher button when navbar is contracted (visible=true)
-          // The buttons div is typically the 3rd child (index 2)
-          if (visible && idx === 2) {
-            const childProps = child.props as any;
-            return React.cloneElement(
-              child,
-              {},
-              React.Children.toArray(childProps.children).filter((_, childIdx) => childIdx !== 0),
-            );
-          }
 
           if (isNavItems) {
             return React.cloneElement(child as React.ReactElement<{ visible?: boolean; isCompact?: boolean }>, { visible, isCompact });
@@ -241,7 +231,6 @@ export const MobileNavMenu = ({
   children,
   className,
   isOpen,
-  onClose,
 }: MobileNavMenuProps) => {
   return (
     <AnimatePresence>
@@ -294,7 +283,7 @@ export const NavbarLogo = () => {
       href="#"
       className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal text-black"
     >
-      <img
+      <Image
         src="https://assets.aceternity.com/logo-dark.png"
         alt="logo"
         width={30}

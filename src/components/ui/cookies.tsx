@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { Cookie, Settings, Shield, Target, BarChart3 } from 'lucide-react';
+import { Cookie, Settings, Shield, BarChart3 } from 'lucide-react';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { Button } from "@/components/ui/button";
@@ -29,12 +29,12 @@ const CookieConsent = () => {
     const onPreferencesChanged = (e: Event) => {
       try {
         // custom event with detail object
-        // @ts-ignore
+        // @ts-expect-error custom event detail
         const detail = e?.detail;
         if (detail && typeof detail === 'object') {
           setCookiePreferences(prev => ({ ...prev, ...detail }));
         }
-      } catch (err) {
+      } catch {
         // ignore
       }
     };
