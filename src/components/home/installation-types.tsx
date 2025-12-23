@@ -75,6 +75,12 @@ export const InstallationTypesSection = () => {
 
   useEffect(() => {
     checkScrollability();
+
+    window.addEventListener("resize", checkScrollability);
+
+    return () => {
+      window.removeEventListener("resize", checkScrollability);
+    };
   }, [products.length, checkScrollability]);
   return (
     <section className="bg-[#f7f8fb] px-4 py-16 dark:bg-[#0f172a]">
