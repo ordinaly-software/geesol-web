@@ -134,7 +134,7 @@ export const ProductStarSection = () => {
         <h2 className="text-center text-3xl font-black uppercase text-[#0c3b52] dark:text-white md:text-4xl">
           {t("productStar.sectionTitle")}
         </h2>
-        <p className="text-center text-sm font-semibold uppercase tracking-wider text-[#D01B17] mb-2 mt-3">
+        <p className="text-center text-sm font-semibold uppercase tracking-wider text-red-800 dark:text-red-300 mb-2 mt-3">
           {t("productStar.eyebrow")}
         </p>
 
@@ -235,13 +235,17 @@ export const ProductStarSection = () => {
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
-                className={`h-2.5 rounded-full transition-all ${
-                  currentSlide === index
-                    ? "w-8 bg-[#D01B17]"
-                    : "w-2.5 bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500"
-                }`}
+                className="flex h-11 w-11 items-center justify-center"
                 aria-label={t("productStar.nav.goto", { index: index + 1 })}
-              />
+              >
+                <span
+                  className={`h-2.5 rounded-full transition-all ${
+                    currentSlide === index
+                      ? "w-8 bg-[#D01B17]"
+                      : "w-2.5 bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500"
+                  }`}
+                />
+              </button>
             ))}
           </div>
         </div>

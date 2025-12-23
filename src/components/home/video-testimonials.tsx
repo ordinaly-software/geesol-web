@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 import { IconArrowNarrowLeft, IconArrowNarrowRight } from "@tabler/icons-react";
 
 import { Button } from "@/components/ui/button";
+import YoutubeEmbed from "@/components/ui/youtube-embed";
 
 export const VideoTestimonialsSection = ({
   rating,
@@ -117,6 +118,10 @@ export const VideoTestimonialsSection = ({
           count,
         })
       : t("videoTestimonials.rating");
+  const playLabel = t("videoTestimonials.play");
+  const consentTitle = t("videoTestimonials.consentTitle");
+  const consentText = t("videoTestimonials.consentText");
+  const openLabel = t("videoTestimonials.open");
 
   return (
     <section className="px-4 py-16">
@@ -167,17 +172,18 @@ export const VideoTestimonialsSection = ({
                   key={video.id}
                   className="w-full shrink-0 snap-center sm:w-[85%] md:w-[75%] lg:w-[65%]"
                 >
-                  <div className="overflow-hidden rounded-[28px_12px_28px_12px] bg-black/20 shadow-[0_18px_45px_rgba(0,0,0,0.2)]">
-                    <div className="relative aspect-video w-full bg-black">
-                      <iframe
-                        title={video.title}
-                        src={`https://www.youtube.com/embed/${video.id}?rel=0`}
-                        className="absolute inset-0 h-full w-full"
-                        loading="lazy"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowFullScreen
-                      />
-                    </div>
+                    <div className="overflow-hidden rounded-[28px_12px_28px_12px] bg-black/20 shadow-[0_18px_45px_rgba(0,0,0,0.2)]">
+                    <YoutubeEmbed
+                      videoId={video.id}
+                      title={video.title}
+                      playLabel={playLabel}
+                      playAriaLabel={t("videoTestimonials.playAria", {
+                        title: video.title,
+                      })}
+                      consentTitle={consentTitle}
+                      consentText={consentText}
+                      openLabel={openLabel}
+                    />
                     <div className="bg-white/10 px-3 py-2 text-xs font-semibold text-white sm:px-4 sm:py-3 sm:text-sm">
                       {video.title}
                     </div>
@@ -202,15 +208,19 @@ export const VideoTestimonialsSection = ({
                 {videos.map((_, index) => (
                   <button
                     key={index}
-                    className={`h-2 rounded-full transition-all sm:h-2.5 ${
-                      index === currentIndex
-                        ? "w-6 bg-white sm:w-8"
-                        : "w-2 bg-white/40 hover:bg-white/60 sm:w-2.5"
-                    }`}
+                    className="flex h-11 w-11 items-center justify-center"
                     onClick={() => handleDotClick(index)}
                     type="button"
                     aria-label={t("videoTestimonials.nav.goto", { index: index + 1 })}
-                  />
+                  >
+                    <span
+                      className={`h-2 rounded-full transition-all sm:h-2.5 ${
+                        index === currentIndex
+                          ? "w-6 bg-white sm:w-8"
+                          : "w-2 bg-white/40 hover:bg-white/60 sm:w-2.5"
+                      }`}
+                    />
+                  </button>
                 ))}
               </div>
               

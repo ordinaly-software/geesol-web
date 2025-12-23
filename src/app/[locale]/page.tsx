@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import HomePage from "./page.client";
 import { createPageMetadata } from "@/lib/metadata";
+import { preload } from "react-dom";
 
 export async function generateMetadata({
   params,
@@ -24,5 +25,6 @@ export async function generateMetadata({
 }
 
 export default async function Home() {
+  preload("/static/home/main_home_ilustration.webp", { as: "image" });
   return <HomePage />;
 }

@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import Banner from "@/components/ui/banner";
 import { Button } from "@/components/ui/button";
+import YoutubeEmbed from "@/components/ui/youtube-embed";
 import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
@@ -239,16 +240,15 @@ export default function NosotrosPage({ locale }: { locale: string }) {
               {t("video.subtitle")}
             </p>
             <div className="mt-6 overflow-hidden rounded-[20px] bg-black/40">
-              <div className="aspect-video w-full">
-                <iframe
-                  title={t("video.iframeTitle")}
-                  src="https://www.youtube.com/embed/8KZRSF5x7hw"
-                  className="h-full w-full border-0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                  loading="lazy"
-                />
-              </div>
+              <YoutubeEmbed
+                videoId="8KZRSF5x7hw"
+                title={t("video.iframeTitle")}
+                playLabel={t("video.play")}
+                playAriaLabel={t("video.playAria")}
+                consentTitle={t("video.consentTitle")}
+                consentText={t("video.consentText")}
+                openLabel={t("video.open")}
+              />
             </div>
           </div>
         </div>

@@ -206,6 +206,11 @@
       "rating": "4.7 ¡MUY PROFESIONALES!",
       "subtitle": "Reseñas reales en Google My Business",
       "cta": "Ver todas las reseñas",
+      "play": "Ver",
+      "playAria": "Reproducir video: {title}",
+      "consentTitle": "Cookies de terceros desactivadas",
+      "consentText": "Para reproducir este video, activa cookies de terceros o ábrelo en YouTube.",
+      "open": "Abrir",
       "nav": {
         "prev": "Video anterior",
         "next": "Video siguiente",
@@ -237,14 +242,14 @@
     "necessaryDescription": "Estas cookies son imprescindibles para el funcionamiento básico del sitio y no se pueden desactivar.",
     "functional": "Cookies funcionales",
     "functionalDescription": "Permiten recordar preferencias y mejorar funciones avanzadas del sitio.",
-    "analytics": "Cookies de terceros",
+    "analytics": "Cookies de analítica",
     "analyticsDescription": "Se utilizan para recopilar información anónima del uso de la web.",
-    "marketing": "Cookies de marketing",
-    "marketingDescription": "Se utilizan para ofrecer medir campañas publicitarias.",
+    "marketing": "Cookies de terceros",
+    "marketingDescription": "Permiten cargar contenido de terceros como videos.",
     "necessaryAlways": "Deben activarse siempre para guardar sus preferencias.",
     "functionalExamples": "Nos ayudan a recordar ajustes y mejorar la experiencia.",
     "analyticsExamples": "Dejar esta cookie activa nos permite mejorar nuestra web.",
-    "marketingExamples": "Nos permiten mostrar anuncios personalizados y medir resultados.",
+    "marketingExamples": "Permiten reproducir contenido externo como videos.",
     
     "back": "Volver",
     "save": "Guardar",
@@ -497,7 +502,12 @@
     "video": {
       "title": "Descubre la magia del sol",
       "subtitle": "Video corporativo sobre nuestras instalaciones y el ahorro real que conseguimos.",
-      "iframeTitle": "Descubre la magia del sol"
+      "iframeTitle": "Descubre la magia del sol",
+      "play": "Reproducir",
+      "playAria": "Reproducir video",
+      "consentTitle": "Cookies de terceros desactivadas",
+      "consentText": "Para reproducir este video, activa cookies de terceros o ábrelo en YouTube.",
+      "open": "Abrir"
     },
     "cta": {
       "title": "¿Tienes alguna duda o quieres más información?",
