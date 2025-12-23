@@ -1,10 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getCookiePreferences, isThirdPartyAllowed } from "@/utils/cookieManager";
-
-const canLoadThirdParty = (prefs?: { marketing?: boolean }) =>
-  Boolean(prefs?.marketing);
+import Image from "next/image";
+import { getCookiePreferences } from "@/utils/cookieManager";
 
 type YoutubeEmbedProps = {
   videoId: string;
@@ -33,7 +31,7 @@ const YoutubeEmbed = ({
     const updateFromPrefs = () => {
       try {
         const prefs = getCookiePreferences();
-        setAllowThirdParty(canLoadThirdParty(prefs) || isThirdPartyAllowed());
+        setAllowThirdParty(Boolean(prefs?.marketing));
       } catch {
         setAllowThirdParty(false);
       }
@@ -53,12 +51,12 @@ const YoutubeEmbed = ({
   if (!allowThirdParty) {
     return (
       <div className="relative aspect-video w-full overflow-hidden bg-black">
-        <img
+        <Image
           src={thumbnailSrc}
           alt={`Video thumbnail for ${title}`}
           className="h-full w-full object-cover"
-          loading="lazy"
-          decoding="async"
+          fill
+          sizes="100vw"
         />
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-black/55 px-4 text-center">
           <p className="text-sm font-semibold text-white">{consentTitle}</p>
@@ -95,11 +93,13 @@ const YoutubeEmbed = ({
           className="group absolute inset-0 flex h-full w-full items-center justify-center overflow-hidden"
           aria-label={playAriaLabel}
         >
-          <img
+          <Image
             src={thumbnailSrc}
             alt={`Video thumbnail for ${title}`}
             className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
             loading="lazy"
+            fill
+            sizes="100vw"
             decoding="async"
           />
           <span className="absolute inline-flex h-14 w-20 items-center justify-center rounded-2xl bg-white/90 text-xs font-bold uppercase tracking-[0.2em] text-[#0c3b52] shadow-lg">
