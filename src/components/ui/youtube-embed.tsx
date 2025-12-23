@@ -55,7 +55,7 @@ const YoutubeEmbed = ({
       <div className="relative aspect-video w-full overflow-hidden bg-black">
         <img
           src={thumbnailSrc}
-          alt={title}
+          alt={`Video thumbnail for ${title}`}
           className="h-full w-full object-cover"
           loading="lazy"
           decoding="async"
