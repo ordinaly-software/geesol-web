@@ -50,6 +50,10 @@ export function isMarketingAllowed(): boolean {
   return Boolean(getCookiePreferences()?.marketing);
 }
 
+export function isThirdPartyAllowed(): boolean {
+  return isMarketingAllowed();
+}
+
 export function isFunctionalAllowed(): boolean {
   return Boolean(getCookiePreferences()?.functional);
 }

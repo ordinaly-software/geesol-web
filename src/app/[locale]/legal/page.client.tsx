@@ -40,6 +40,11 @@ const pageCopy: Record<
     title: string;
     subtitle: string;
     tabs: Record<LegalTab, string>;
+    cookieToggles: {
+      analytics: string;
+      functional: string;
+      thirdParty: string;
+    };
     highlightsTitle: string;
     metaLabel: string;
     supportKicker: string;
@@ -58,6 +63,11 @@ const pageCopy: Record<
       privacy: "Privacy Policy",
       cookies: "Cookies Policy",
     },
+    cookieToggles: {
+      analytics: "Analytics",
+      functional: "Functional",
+      thirdParty: "Third-party",
+    },
     highlightsTitle: "Essentials at a glance",
     metaLabel: "Last updated",
     supportKicker: "PDF & support",
@@ -75,6 +85,11 @@ const pageCopy: Record<
       terms: "Términos del servicio",
       privacy: "Política de privacidad",
       cookies: "Política de cookies",
+    },
+    cookieToggles: {
+      analytics: "Analítica",
+      functional: "Funcionales",
+      thirdParty: "Terceros",
     },
     highlightsTitle: "Lo esencial",
     metaLabel: "Última actualización",
@@ -698,7 +713,7 @@ const LegalPage = () => {
                       <h4 className={isDark ? "text-lg font-bold text-white mt-1" : "text-lg font-bold text-slate-900 mt-1"}>Administrar cookies</h4>
                       <div className="mt-3 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-6">
                         <div className="flex items-center w-full sm:w-auto">
-                          <div className="mr-3 text-sm">Analítica</div>
+                          <div className="mr-3 text-sm">{copy.cookieToggles.analytics}</div>
                           <Slider
                             aria-label="Toggle analytics cookies"
                             checked={analyticsEnabled}
@@ -718,7 +733,7 @@ const LegalPage = () => {
                         </div>
 
                         <div className="flex items-center w-full sm:w-auto">
-                          <div className="mr-3 text-sm">Funcionales</div>
+                          <div className="mr-3 text-sm">{copy.cookieToggles.functional}</div>
                           <Slider
                             aria-label="Toggle functional cookies"
                             checked={functionalEnabled}
@@ -738,9 +753,9 @@ const LegalPage = () => {
                         </div>
 
                         <div className="flex items-center w-full sm:w-auto">
-                          <div className="mr-3 text-sm">Marketing</div>
+                          <div className="mr-3 text-sm">{copy.cookieToggles.thirdParty}</div>
                           <Slider
-                            aria-label="Toggle marketing cookies"
+                            aria-label="Toggle third-party cookies"
                             checked={marketingEnabled}
                             onChange={() => {
                               try {

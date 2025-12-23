@@ -403,9 +403,9 @@ export function TestimonialsSection({ t, onMetaUpdate }: SectionProps) {
                         </div>
                       )}
                       <div>
-                        <h4 className="text-sm font-semibold text-gray-900 dark:text-white">
+                        <p className="text-sm font-semibold text-gray-900 dark:text-white">
                           {item.name}
-                        </h4>
+                        </p>
                         {item.meta && (
                           <p className="text-xs text-gray-600 dark:text-gray-400">{item.meta}</p>
                         )}
@@ -440,7 +440,7 @@ export function TestimonialsSection({ t, onMetaUpdate }: SectionProps) {
                           <button
                             type="button"
                             onClick={() => toggleExpanded(`${item.name}-${index}`)}
-                            className="mt-2 text-xs font-semibold text-[#D01B17] hover:underline"
+                            className="mt-2 text-xs font-semibold text-red-800 hover:underline dark:text-red-300"
                           >
                             {expandedCards[`${item.name}-${index}`]
                               ? t("testimonials.readLess")

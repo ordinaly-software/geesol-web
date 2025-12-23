@@ -202,33 +202,35 @@ const CookieConsent = () => {
   if (!isMounted) return null;
 
   const modalContent = showPopup ? (
-    <div className="fixed inset-0 bottom-6 right-6 z-[9999] pointer-events-none">
-      <div className="w-[95vw] max-w-xl pointer-events-auto bg-card text-card-foreground rounded-2xl shadow-2xl border border-border p-4 transition-transform transform-gpu fixed right-6 bottom-6">
-        <div className="flex items-start justify-between">
-          <div className="flex items-start space-x-3">
-            <div className="bg-gradient-to-r from-amber-400 to-orange-500 rounded-full p-2 mt-1">
-              <Cookie className="text-white" size={20} />
+    <div className="fixed inset-0 z-[9999] pointer-events-none">
+      <div className="w-[95vw] max-w-xl pointer-events-auto bg-card text-card-foreground rounded-2xl shadow-2xl border border-border p-4 sm:p-6 transition-transform transform-gpu fixed right-3 bottom-3 sm:right-6 sm:bottom-6 max-h-[90svh] overflow-y-auto">
+        <div className="sticky top-0 z-10 bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/85 pt-1 pb-2">
+          <div className="flex items-start justify-between gap-3">
+            <div className="flex items-start gap-3">
+              <div className="bg-gradient-to-r from-amber-400 to-orange-500 rounded-full p-2 mt-1">
+                <Cookie className="text-white" size={20} />
+              </div>
+              <div className="min-w-0">
+                <h3 className="text-lg font-semibold text-foreground">{t('title')}</h3>
+              </div>
             </div>
-            <div className="min-w-0">
-              <h3 className="text-lg font-semibold text-foreground">{t('title')}</h3>
-              <p className="text-sm text-muted-foreground mt-1">{t('description')}</p>
-            </div>
-          </div>
-          <div className="flex items-center space-x-2">
+            <div className="flex items-center gap-2 sm:gap-3 self-start sm:self-auto">
             <button
               onClick={() => setShowSettings(prev => !prev)}
-              className="text-sm text-muted-foreground hover:text-foreground"
+              className="text-sm font-semibold text-amber-900 bg-amber-200/90 hover:bg-amber-300/90 px-3 py-1.5 rounded-full shadow-sm"
               aria-label={t('customize')}
             >
               {showSettings ? t('back') : t('customize')}
             </button>
             <ModalCloseButton onClick={closePopup} variant="light" size="sm" />
+            </div>
           </div>
+          <p className="text-sm text-muted-foreground mt-2">{t('description')}</p>
         </div>
 
         {!showSettings ? (
           <div className="mt-4">
-            <div className="flex gap-3">
+            <div className="flex flex-col gap-2 sm:flex-row sm:gap-3">
               <Button onClick={handleAcceptAll} className="flex-1 bg-gradient-to-r from-amber-400 to-orange-500 text-black font-extrabold">{t('acceptAll')}</Button>
               <Button onClick={handleRejectAll} className="flex-1 bg-gradient-to-r from-red-600 to-red-500 text-white border border-red-400">{t('rejectAll')}</Button>
             </div>
@@ -274,25 +276,27 @@ const CookieConsent = () => {
                 note: t('marketingExamples')
               },
             ].map(({ key, icon, enabled, toggle }) => (
-              <div key={key} className="flex items-center justify-between p-3 bg-card border border-border rounded-lg">
-                <div className="flex items-center space-x-3">
+              <div key={key} className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between p-3 bg-card border border-border rounded-lg">
+                <div className="flex items-center gap-3">
                   {icon}
                   <div>
                     <div className="font-medium text-foreground">{t(`${key}`)}</div>
                     <div className="text-xs text-muted-foreground">{t(`${key}Description`)}</div>
                   </div>
                 </div>
-                {toggle ? (
-                  <Slider checked={enabled} onChange={() => handlePreferenceChange(key as 'necessary' | 'functional' | 'analytics' | 'marketing')} />
-                ) : (
-                  <div className="bg-[#1F8A0D] dark:bg-[#7CFC00] rounded-full w-5 h-5 flex items-center justify-center">
-                    <div className="w-2.5 h-2.5 bg-white rounded-full" />
-                  </div>
-                )}
+                <div className="self-end sm:self-auto">
+                  {toggle ? (
+                    <Slider checked={enabled} onChange={() => handlePreferenceChange(key as 'necessary' | 'functional' | 'analytics' | 'marketing')} />
+                  ) : (
+                    <div className="bg-[#1F8A0D] dark:bg-[#7CFC00] rounded-full w-5 h-5 flex items-center justify-center">
+                      <div className="w-2.5 h-2.5 bg-white rounded-full" />
+                    </div>
+                  )}
+                </div>
               </div>
             ))}
 
-            <div className="flex gap-3">
+            <div className="flex flex-col gap-2 sm:flex-row sm:gap-3">
               <Button onClick={() => setShowSettings(false)} className="flex-1 bg-gradient-to-r from-red-600 to-red-500 text-white border border-red-400">{t('back')}</Button>
               <Button onClick={handleSavePreferences} className="flex-1 bg-gradient-to-r from-amber-400 to-orange-500 text-black">{t('save')}</Button>
             </div>

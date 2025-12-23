@@ -206,6 +206,11 @@
       "rating": "4.7 VERY PROFESSIONAL!",
       "subtitle": "Real reviews on Google My Business",
       "cta": "See all reviews",
+      "play": "Play",
+      "playAria": "Play video: {title}",
+      "consentTitle": "Third-party cookies disabled",
+      "consentText": "To play this video, enable third-party cookies or open it on YouTube.",
+      "open": "Open",
       "nav": {
         "prev": "Previous video",
         "next": "Next video",
@@ -237,14 +242,14 @@
     "necessaryDescription": "These cookies are essential for basic site functionality and cannot be disabled.",
     "functional": "Functional cookies",
     "functionalDescription": "They remember preferences and enable enhanced site features.",
-    "analytics": "Third-party cookies",
-    "analyticsDescription": "This site uses Google Analytics to collect anonymous information such as visitor numbers and most popular pages.",
-    "marketing": "Marketing cookies",
-    "marketingDescription": "Used to deliver relevant content and measure advertising campaigns.",
+    "analytics": "Analytics cookies",
+    "analyticsDescription": "Used to collect anonymous usage information such as visitor numbers and popular pages.",
+    "marketing": "Third-party cookies",
+    "marketingDescription": "Enable third-party content such as videos.",
     "necessaryAlways": "Must be enabled to save your preferences.",
     "functionalExamples": "They help us remember settings and improve your experience.",
     "analyticsExamples": "Keeping this cookie enabled helps us improve our website.",
-    "marketingExamples": "They allow personalized ads and performance measurement.",
+    "marketingExamples": "They allow external content such as videos to play.",
     
     "back": "Back",
     "save": "Save",
@@ -497,7 +502,12 @@
     "video": {
       "title": "Discover the magic of the sun",
       "subtitle": "Corporate video about our installations and the real savings we deliver.",
-      "iframeTitle": "Discover the magic of the sun"
+      "iframeTitle": "Discover the magic of the sun",
+      "play": "Play",
+      "playAria": "Play video",
+      "consentTitle": "Third-party cookies disabled",
+      "consentText": "To play this video, enable third-party cookies or open it on YouTube.",
+      "open": "Open"
     },
     "cta": {
       "title": "Have a question or want more information?",
