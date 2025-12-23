@@ -1,6 +1,8 @@
 import { ServiceTemplate } from "../../../../components/servicios/service-template";
+import { getServiceGalleryBySlug } from "@/data/service-gallery";
 
 export default function SistemasAisladosPage({ locale }: { locale: string }) {
+  const gallery = getServiceGalleryBySlug(locale, "sistemas-aislados");
 
   return (
     <ServiceTemplate
@@ -59,10 +61,7 @@ export default function SistemasAisladosPage({ locale }: { locale: string }) {
           description: "Revisiones programadas, limpieza de paneles y actualizaciones de firmware.",
         },
       ]}
-      galleryImages={[
-        "/static/servicios/sistemas_aislados/sistemas_aislados_01.webp",
-        "/static/servicios/sistemas_aislados/sistemas_aislados_02.webp",
-      ]}
+      galleryImages={gallery?.images ?? []}
     />
   );
 }

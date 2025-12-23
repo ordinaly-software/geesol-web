@@ -1,9 +1,13 @@
+ "use client";
+
 import Image from "next/image";
+import { useState } from "react";
 import Banner from "@/components/ui/banner";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
+import { ChevronDown, ChevronUp } from "lucide-react";
 
 const partners = [
   { name: "APsystems", src: "/static/nosotros/ap-system.jpg" },
@@ -27,6 +31,7 @@ export default function NosotrosPage({ locale }: { locale: string }) {
   const t = useTranslations("aboutPage");
   const teamRoles = t.raw("team.roles") as string[];
   const stats = t.raw("stats") as Array<{ value: string; label: string }>;
+  const [partnersExpanded, setPartnersExpanded] = useState(false);
 
   return (
     <div className="min-h-screen bg-[#f7f8fb] text-[#0c1f2d] dark:bg-[#0b1220] dark:text-gray-100">
@@ -151,21 +156,44 @@ export default function NosotrosPage({ locale }: { locale: string }) {
               {t("partners.title")}
             </h3>
           </div>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-            {partners.map((partner) => (
-              <div
-                key={partner.name}
-                className="flex items-center justify-center rounded-[18px] border border-gray-200 bg-[#f7f8fb] px-4 py-6 shadow-sm dark:border-gray-700 dark:bg-[#0f172a]"
-              >
-                <Image
-                  src={partner.src}
-                  alt={partner.name}
-                  width={160}
-                  height={80}
-                  className="h-12 w-auto object-contain"
-                />
-              </div>
-            ))}
+          <div className="relative">
+            <div
+              className={`grid gap-4 sm:grid-cols-2 lg:grid-cols-5 transition-[max-height] duration-300 ${
+                partnersExpanded ? "max-h-[2000px]" : "max-h-[280px] overflow-hidden"
+              } sm:max-h-none sm:overflow-visible`}
+            >
+              {partners.map((partner) => (
+                <div
+                  key={partner.name}
+                  className="flex items-center justify-center rounded-[18px] border border-gray-200 bg-[#f7f8fb] px-4 py-6 shadow-sm dark:border-gray-700 dark:bg-[#0f172a]"
+                >
+                  <Image
+                    src={partner.src}
+                    alt={partner.name}
+                    width={160}
+                    height={80}
+                    className="h-12 w-auto object-contain"
+                  />
+                </div>
+              ))}
+            </div>
+            {!partnersExpanded && (
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-white to-transparent dark:from-[#0b1220] sm:hidden" />
+            )}
+          </div>
+          <div className="flex justify-center sm:hidden">
+            <button
+              type="button"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-gray-200 bg-white text-[#0c3b52] shadow-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-gray-700 dark:bg-[#0f172a] dark:text-white"
+              onClick={() => setPartnersExpanded((prev) => !prev)}
+              aria-label={partnersExpanded ? t("partners.showLess") : t("partners.showMore")}
+            >
+              {partnersExpanded ? (
+                <ChevronUp className="h-6 w-6" />
+              ) : (
+                <ChevronDown className="h-6 w-6" />
+              )}
+            </button>
           </div>
         </div>
       </section>

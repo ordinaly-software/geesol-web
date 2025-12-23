@@ -480,6 +480,28 @@ const LegalPage = () => {
       return false;
     }
   });
+  const [functionalEnabled, setFunctionalEnabled] = useState<boolean>(() => {
+    try {
+      if (typeof window === 'undefined') return false;
+      const raw = localStorage.getItem('cookie-preferences');
+      if (!raw) return false;
+      const parsed = JSON.parse(raw);
+      return !!parsed.functional;
+    } catch {
+      return false;
+    }
+  });
+  const [marketingEnabled, setMarketingEnabled] = useState<boolean>(() => {
+    try {
+      if (typeof window === 'undefined') return false;
+      const raw = localStorage.getItem('cookie-preferences');
+      if (!raw) return false;
+      const parsed = JSON.parse(raw);
+      return !!parsed.marketing;
+    } catch {
+      return false;
+    }
+  });
 
   useEffect(() => {
     const onPrefs = (e: Event) => {
@@ -488,6 +510,16 @@ const LegalPage = () => {
         const detail = e?.detail;
         if (detail && typeof detail === 'object') {
           setAnalyticsEnabled(!!detail.analytics);
+          setFunctionalEnabled(!!detail.functional);
+          setMarketingEnabled(!!detail.marketing);
+        } else {
+          const raw = localStorage.getItem('cookie-preferences');
+          if (raw) {
+            const parsed = JSON.parse(raw);
+            setAnalyticsEnabled(!!parsed.analytics);
+            setFunctionalEnabled(!!parsed.functional);
+            setMarketingEnabled(!!parsed.marketing);
+          }
         }
       } catch {
         // ignore
@@ -508,7 +540,7 @@ const LegalPage = () => {
   );
 
   const tabButtonClass = (id: LegalTab) => {
-    const base = "group inline-flex items-center gap-2 rounded-full border px-4 py-3 text-sm font-semibold transition-all";
+    const base = "group inline-flex items-center gap-2 rounded-full border px-3 py-2 sm:px-4 sm:py-3 text-sm font-semibold transition-all";
     if (activeTab === id) {
       return isDark
         ? `${base} border-amber-300/60 bg-amber-300/15 text-white shadow-[0_10px_30px_rgba(244,178,58,0.2)]`
@@ -533,8 +565,8 @@ const LegalPage = () => {
     : null;
 
   const panelClass = isDark
-    ? "rounded-3xl border border-white/10 bg-white/5 px-6 py-8 shadow-[0_25px_80px_rgba(0,0,0,0.35)] backdrop-blur-md sm:px-10"
-    : "rounded-3xl border border-gray-200 bg-white px-6 py-8 shadow-sm sm:px-10";
+    ? "rounded-3xl border border-white/10 bg-white/5 px-4 py-6 sm:px-6 sm:py-8 md:px-10 shadow-[0_25px_80px_rgba(0,0,0,0.35)] backdrop-blur-md"
+    : "rounded-3xl border border-gray-200 bg-white px-4 py-6 sm:px-6 sm:py-8 md:px-10 shadow-sm";
 
   const cardClass = (extra = "") =>
     isDark ? `border-white/10 bg-white/5 backdrop-blur-md ${extra}` : `border-gray-200 bg-white ${extra}`;
@@ -659,14 +691,16 @@ const LegalPage = () => {
             {/* Cookie quick settings: syncs with cookie modal via custom events */}
             <Card className={cardClass()}>
               <CardContent className={`space-y-4 p-6 md:p-7 ${isDark ? "" : "text-slate-800"}`}>
-                <div className="flex items-center justify-between gap-6">
-                  <div className="flex items-start gap-6">
-                    <div>
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+                  <div className="flex items-start gap-6 w-full">
+                    <div className="w-full">
                       <p className={isDark ? "text-sm font-semibold uppercase tracking-[0.12em] text-amber-200" : "text-sm font-semibold uppercase tracking-[0.12em] text-amber-600"}>{copy.tabs.cookies}</p>
-                      <div className="flex items-center gap-3 mt-1">
-                        <h4 className={isDark ? "text-lg font-bold text-white" : "text-lg font-bold text-slate-900"}>Administrar cookies</h4>
-                        <div className="ml-2">
+                      <h4 className={isDark ? "text-lg font-bold text-white mt-1" : "text-lg font-bold text-slate-900 mt-1"}>Administrar cookies</h4>
+                      <div className="mt-3 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-6">
+                        <div className="flex items-center w-full sm:w-auto">
+                          <div className="mr-3 text-sm">Analítica</div>
                           <Slider
+                            aria-label="Toggle analytics cookies"
                             checked={analyticsEnabled}
                             onChange={() => {
                               try {
@@ -682,14 +716,54 @@ const LegalPage = () => {
                             }}
                           />
                         </div>
+
+                        <div className="flex items-center w-full sm:w-auto">
+                          <div className="mr-3 text-sm">Funcionales</div>
+                          <Slider
+                            aria-label="Toggle functional cookies"
+                            checked={functionalEnabled}
+                            onChange={() => {
+                              try {
+                                const raw = localStorage.getItem('cookie-preferences');
+                                const parsed = raw ? JSON.parse(raw) : { necessary: true, functional: false };
+                                const updated = { ...parsed, functional: !functionalEnabled };
+                                localStorage.setItem('cookie-preferences', JSON.stringify(updated));
+                                setFunctionalEnabled(!functionalEnabled);
+                                window.dispatchEvent(new CustomEvent('cookie-preferences-changed', { detail: updated }));
+                              } catch {
+                                // ignore
+                              }
+                            }}
+                          />
+                        </div>
+
+                        <div className="flex items-center w-full sm:w-auto">
+                          <div className="mr-3 text-sm">Marketing</div>
+                          <Slider
+                            aria-label="Toggle marketing cookies"
+                            checked={marketingEnabled}
+                            onChange={() => {
+                              try {
+                                const raw = localStorage.getItem('cookie-preferences');
+                                const parsed = raw ? JSON.parse(raw) : { necessary: true, marketing: false };
+                                const updated = { ...parsed, marketing: !marketingEnabled };
+                                localStorage.setItem('cookie-preferences', JSON.stringify(updated));
+                                setMarketingEnabled(!marketingEnabled);
+                                window.dispatchEvent(new CustomEvent('cookie-preferences-changed', { detail: updated }));
+                              } catch {
+                                // ignore
+                              }
+                            }}
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-4 mt-2 sm:mt-0">
                     <button
-                      onClick={() => window.dispatchEvent(new Event('open-cookie-popup'))}
-                      className={isDark ? "rounded-full px-8 py-3 bg-white/5 text-white font-extrabold italic uppercase tracking-wide border border-white/10 shadow-[0_18px_40px_rgba(244,178,58,0.08)]" : "rounded-full px-8 py-3 bg-white text-amber-800 font-extrabold italic uppercase tracking-wide border border-gray-100 shadow-[0_18px_40px_rgba(240,124,150,0.12)]"}
+                      onClick={() => window.dispatchEvent(new CustomEvent('open-cookie-popup', { detail: { settings: true } }))}
+                      className={isDark ? "rounded-full px-6 py-2 sm:px-8 sm:py-3 bg-white/5 text-white font-extrabold italic uppercase tracking-wide border border-white/10 shadow-[0_18px_40px_rgba(244,178,58,0.08)]" : "rounded-full px-6 py-2 sm:px-8 sm:py-3 bg-white text-amber-800 font-extrabold italic uppercase tracking-wide border border-gray-100 shadow-[0_18px_40px_rgba(240,124,150,0.12)]"}
                     >
                       {copy.tabs.cookies.toUpperCase()}
                     </button>

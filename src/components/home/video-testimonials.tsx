@@ -44,11 +44,12 @@ export const VideoTestimonialsSection = ({
   const scrollToIndex = useCallback((index: number) => {
     const container = scrollRef.current;
     if (!container) return;
-    
-    const cardWidth = container.scrollWidth / videos.length;
-    container.scrollTo({ left: cardWidth * index, behavior: "smooth" });
+
+    const card = container.children.item(index) as HTMLElement | null;
+    if (!card) return;
+    container.scrollTo({ left: card.offsetLeft, behavior: "smooth" });
     setCurrentIndex(index);
-  }, [videos.length]);
+  }, []);
 
   const handleScrollLeft = () => {
     const newIndex = currentIndex > 0 ? currentIndex - 1 : videos.length - 1;
@@ -88,12 +89,24 @@ export const VideoTestimonialsSection = ({
     if (!container) return;
 
     const handleScroll = () => {
-      const cardWidth = container.scrollWidth / videos.length;
-      const index = Math.round(container.scrollLeft / cardWidth);
-      setCurrentIndex(index);
+      const cards = Array.from(container.children) as HTMLElement[];
+      if (!cards.length) return;
+
+      let closestIndex = 0;
+      let closestDistance = Number.POSITIVE_INFINITY;
+
+      cards.forEach((card, index) => {
+        const distance = Math.abs(container.scrollLeft - card.offsetLeft);
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestIndex = index;
+        }
+      });
+
+      setCurrentIndex(closestIndex);
     };
 
-    container.addEventListener("scroll", handleScroll);
+    container.addEventListener("scroll", handleScroll, { passive: true });
     return () => container.removeEventListener("scroll", handleScroll);
   }, [videos.length]);
 
@@ -142,17 +155,17 @@ export const VideoTestimonialsSection = ({
               </Link>
             </Button>
           </div>
-          <div className="relative -mx-8 px-8 md:-mx-12 md:px-12">
+          <div className="relative -mx-4 px-4 sm:-mx-6 sm:px-6 md:-mx-12 md:px-12">
             <div
               ref={scrollRef}
-              className="flex snap-x snap-mandatory gap-0 overflow-x-scroll scroll-smooth pb-2 touch-pan-x [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+              className="flex snap-x snap-mandatory gap-4 overflow-x-scroll scroll-smooth pb-2 touch-pan-x [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
               onMouseEnter={() => setIsAutoPlaying(false)}
               onMouseLeave={() => setIsAutoPlaying(true)}
             >
               {videos.map((video) => (
                 <div
                   key={video.id}
-                  className="min-w-full snap-start px-3"
+                  className="w-full shrink-0 snap-center sm:w-[85%] md:w-[75%] lg:w-[65%]"
                 >
                   <div className="overflow-hidden rounded-[28px_12px_28px_12px] bg-black/20 shadow-[0_18px_45px_rgba(0,0,0,0.2)]">
                     <div className="relative aspect-video w-full bg-black">
@@ -160,11 +173,12 @@ export const VideoTestimonialsSection = ({
                         title={video.title}
                         src={`https://www.youtube.com/embed/${video.id}?rel=0`}
                         className="absolute inset-0 h-full w-full"
+                        loading="lazy"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowFullScreen
                       />
                     </div>
-                    <div className="bg-white/10 px-4 py-3 text-sm font-semibold text-white">
+                    <div className="bg-white/10 px-3 py-2 text-xs font-semibold text-white sm:px-4 sm:py-3 sm:text-sm">
                       {video.title}
                     </div>
                   </div>
@@ -175,12 +189,12 @@ export const VideoTestimonialsSection = ({
             {/* Navigation arrows */}
             <div className="mt-4 flex items-center justify-center gap-4">
               <button
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/90 transition-all hover:bg-white"
+                className="flex h-9 w-9 items-center justify-center rounded-full bg-white/90 transition-all hover:bg-white sm:h-10 sm:w-10"
                 onClick={handleScrollLeft}
                 type="button"
                 aria-label={t("videoTestimonials.nav.prev")}
               >
-                <IconArrowNarrowLeft className="h-6 w-6 text-gray-700" />
+                <IconArrowNarrowLeft className="h-5 w-5 text-gray-700 sm:h-6 sm:w-6" />
               </button>
               
               {/* Dot indicators */}
@@ -188,10 +202,10 @@ export const VideoTestimonialsSection = ({
                 {videos.map((_, index) => (
                   <button
                     key={index}
-                    className={`h-2.5 rounded-full transition-all ${
+                    className={`h-2 rounded-full transition-all sm:h-2.5 ${
                       index === currentIndex
-                        ? "w-8 bg-white"
-                        : "w-2.5 bg-white/40 hover:bg-white/60"
+                        ? "w-6 bg-white sm:w-8"
+                        : "w-2 bg-white/40 hover:bg-white/60 sm:w-2.5"
                     }`}
                     onClick={() => handleDotClick(index)}
                     type="button"
@@ -201,12 +215,12 @@ export const VideoTestimonialsSection = ({
               </div>
               
               <button
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/90 transition-all hover:bg-white"
+                className="flex h-9 w-9 items-center justify-center rounded-full bg-white/90 transition-all hover:bg-white sm:h-10 sm:w-10"
                 onClick={handleScrollRight}
                 type="button"
                 aria-label={t("videoTestimonials.nav.next")}
               >
-                <IconArrowNarrowRight className="h-6 w-6 text-gray-700" />
+                <IconArrowNarrowRight className="h-5 w-5 text-gray-700 sm:h-6 sm:w-6" />
               </button>
             </div>
           </div>

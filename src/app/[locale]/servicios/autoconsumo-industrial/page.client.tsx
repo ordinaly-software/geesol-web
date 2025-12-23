@@ -1,6 +1,8 @@
 import { ServiceTemplate } from "../../../../components/servicios/service-template";
+import { getServiceGalleryBySlug } from "@/data/service-gallery";
 
 export default function AutoconsumoIndustrialPage({ locale }: { locale: string }) {
+  const gallery = getServiceGalleryBySlug(locale, "autoconsumo-industrial");
 
   return (
     <ServiceTemplate
@@ -59,14 +61,9 @@ export default function AutoconsumoIndustrialPage({ locale }: { locale: string }
           description: "KPIs de producción, alarmas y mantenimiento con acuerdos de nivel de servicio claros.",
         },
       ]}
-      galleryTitle="Cubiertas industriales en producción"
-      galleryDescription="Proyectos en naves logísticas, industria agroalimentaria y centros de distribución."
-      galleryImages={[
-        "/static/servicios/autoconsumo_industrial/autoconsumo_industrial_01.webp",
-        "/static/servicios/autoconsumo_industrial/autoconsumo_industrial_02.webp",
-        "/static/servicios/autoconsumo_industrial/autoconsumo_industrial_03.webp",
-        "/static/servicios/autoconsumo_industrial/autoconsumo_industrial_04.webp",
-      ]}
+      galleryTitle={gallery?.galleryTitle}
+      galleryDescription={gallery?.galleryDescription}
+      galleryImages={gallery?.images ?? []}
     />
   );
 }

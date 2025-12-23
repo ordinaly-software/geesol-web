@@ -2,8 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useMemo } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
+import { IconArrowNarrowLeft, IconArrowNarrowRight } from "@tabler/icons-react";
 
 import { Button } from "@/components/ui/button";
 import { WobbleCard } from "@/components/ui/wobble-card";
@@ -14,6 +15,9 @@ export const InstallationTypesSection = () => {
   const t = useTranslations("home");
   const locale = useLocale() || "es";
   const { services } = useServices();
+  const scrollRef = useRef<HTMLDivElement | null>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
   const fallbackProducts = useMemo(
     () =>
       getServicesMenuItems(locale).map((item, index) => ({
@@ -38,6 +42,40 @@ export const InstallationTypesSection = () => {
     }
     return fallbackProducts;
   }, [services, fallbackProducts]);
+  const getScrollStep = useCallback(() => {
+    const container = scrollRef.current;
+    if (!container) return 360;
+    const card = container.querySelector<HTMLElement>(":scope > *");
+    if (!card) return 360;
+    return card.offsetWidth + 24;
+  }, []);
+
+  const checkScrollability = useCallback(() => {
+    const container = scrollRef.current;
+    if (!container) return;
+    const { scrollLeft, scrollWidth, clientWidth } = container;
+    setCanScrollLeft(scrollLeft > 0);
+    setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 1);
+  }, []);
+
+  const handleScrollLeft = () => {
+    const container = scrollRef.current;
+    if (!container) return;
+    const newScroll = Math.max(container.scrollLeft - getScrollStep(), 0);
+    container.scrollTo({ left: newScroll, behavior: "smooth" });
+  };
+
+  const handleScrollRight = () => {
+    const container = scrollRef.current;
+    if (!container) return;
+    const maxScroll = container.scrollWidth - container.clientWidth;
+    const newScroll = Math.min(container.scrollLeft + getScrollStep(), maxScroll);
+    container.scrollTo({ left: newScroll, behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    checkScrollability();
+  }, [products.length, checkScrollability]);
   return (
     <section className="bg-[#f7f8fb] px-4 py-16 dark:bg-[#0f172a]">
       <div className="mx-auto max-w-6xl space-y-8">
@@ -50,7 +88,29 @@ export const InstallationTypesSection = () => {
           </p>
         </div>
         <div className="relative">
-          <div className="flex snap-x snap-mandatory gap-6 overflow-x-auto pb-4 [-webkit-overflow-scrolling:touch]">
+          <button
+            type="button"
+            onClick={handleScrollLeft}
+            disabled={!canScrollLeft}
+            aria-label={t("testimonials.scrollLeft")}
+            className="absolute left-0 top-1/2 z-10 -translate-y-1/2 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 shadow-lg transition-all hover:bg-white disabled:cursor-not-allowed disabled:opacity-40 sm:h-10 sm:w-10"
+          >
+            <IconArrowNarrowLeft className="h-5 w-5 text-gray-700 sm:h-6 sm:w-6" />
+          </button>
+          <button
+            type="button"
+            onClick={handleScrollRight}
+            disabled={!canScrollRight}
+            aria-label={t("testimonials.scrollRight")}
+            className="absolute right-0 top-1/2 z-10 -translate-y-1/2 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 shadow-lg transition-all hover:bg-white disabled:cursor-not-allowed disabled:opacity-40 sm:h-10 sm:w-10"
+          >
+            <IconArrowNarrowRight className="h-5 w-5 text-gray-700 sm:h-6 sm:w-6" />
+          </button>
+          <div
+            ref={scrollRef}
+            onScroll={checkScrollability}
+            className="flex snap-x snap-mandatory gap-6 overflow-x-auto pb-4 [-webkit-overflow-scrolling:touch]"
+          >
             {products.filter(item => item.slug.toLowerCase() !== "galeria-instalaciones").map((item) => (
               <Link
                 key={item.id}
@@ -69,6 +129,7 @@ export const InstallationTypesSection = () => {
                         fill
                         className="object-cover transition-transform duration-300 group-hover:scale-105"
                         sizes="(min-width: 1024px) 25vw, 50vw"
+                        quality={70}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-80" />
                     </div>

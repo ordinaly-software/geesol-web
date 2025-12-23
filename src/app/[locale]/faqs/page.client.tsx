@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
+import { ChevronDown } from "lucide-react";
 
 export default function FAQsPage({ locale }: { locale: string }) {
   const basePath = locale === routing.defaultLocale ? "" : `/${locale}`;
@@ -21,15 +22,18 @@ export default function FAQsPage({ locale }: { locale: string }) {
       <section className="px-4 py-16">
         <div className="mx-auto max-w-4xl space-y-4">
           {faqs.map((item) => (
-            <div
+            <details
               key={item.question}
-              className="rounded-[20px] bg-white p-6 shadow-[0_12px_32px_rgba(12,59,82,0.12)] dark:bg-[#0f172a] dark:shadow-[0_12px_32px_rgba(0,0,0,0.35)]"
+              className="group rounded-[20px] bg-white p-6 shadow-[0_12px_32px_rgba(12,59,82,0.12)] dark:bg-[#0f172a] dark:shadow-[0_12px_32px_rgba(0,0,0,0.35)]"
             >
-              <h3 className="text-lg font-semibold text-[#0c3b52] dark:text-white">
-                {item.question}
-              </h3>
-              <p className="mt-2 text-gray-700 dark:text-gray-300">{item.answer}</p>
-            </div>
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 [&::-webkit-details-marker]:hidden">
+                <span className="text-lg font-semibold text-[#0c3b52] dark:text-white">
+                  {item.question}
+                </span>
+                <ChevronDown className="h-5 w-5 text-[#0c3b52] transition-transform duration-200 group-open:rotate-180 dark:text-white" />
+              </summary>
+              <p className="mt-3 text-gray-700 dark:text-gray-300">{item.answer}</p>
+            </details>
           ))}
         </div>
       </section>

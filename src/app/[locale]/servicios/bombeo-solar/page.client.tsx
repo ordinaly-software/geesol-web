@@ -1,6 +1,8 @@
 import { ServiceTemplate } from "../../../../components/servicios/service-template";
+import { getServiceGalleryBySlug } from "@/data/service-gallery";
 
 export default function BombeoSolarPage({ locale }: { locale: string }) {
+  const gallery = getServiceGalleryBySlug(locale, "bombeo-solar");
 
   return (
     <ServiceTemplate
@@ -59,11 +61,9 @@ export default function BombeoSolarPage({ locale }: { locale: string }) {
           description: "Ajustes de curvas de presión y programación de riegos para aprovechar cada hora de sol.",
         },
       ]}
-      galleryTitle="Bombeos en marcha"
-      galleryDescription="Instalaciones en pozos, balsas y estaciones de bombeo para diferentes cultivos."
-      galleryImages={[
-        "/static/servicios/bombeo_solar/bombeo_solar_01.webp",
-      ]}
+      galleryTitle={gallery?.galleryTitle}
+      galleryDescription={gallery?.galleryDescription}
+      galleryImages={gallery?.images ?? []}
     />
   );
 }

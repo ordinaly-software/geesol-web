@@ -1,17 +1,40 @@
 "use client";
 
 import { useState } from "react";
+import dynamic from "next/dynamic";
 
 import { HeroSection } from "@/components/home/hero-section";
 import { HighlightCardsSection } from "@/components/home/highlight-cards";
 import { TwoColumnFeatureSection } from "@/components/home/two-column-feature";
-import { HomeTestimonials } from "@/components/home/testimonials-wrapper";
-import { VideoTestimonialsSection } from "@/components/home/video-testimonials";
-import { ProductStarSection } from "@/components/home/product-star";
-import { HandOffGridSection } from "@/components/home/hand-off-grid";
-import { InstallationTypesSection } from "@/components/home/installation-types";
-import { ReferralSection } from "@/components/home/referral-section";
-import { StatsBarSection } from "@/components/home/stats-bar";
+
+const HomeTestimonials = dynamic(
+  () => import("@/components/home/testimonials-wrapper").then((mod) => mod.HomeTestimonials),
+  { loading: () => <div className="h-10" aria-hidden /> },
+);
+const VideoTestimonialsSection = dynamic(
+  () => import("@/components/home/video-testimonials").then((mod) => mod.VideoTestimonialsSection),
+  { loading: () => <div className="h-10" aria-hidden /> },
+);
+const ProductStarSection = dynamic(
+  () => import("@/components/home/product-star").then((mod) => mod.ProductStarSection),
+  { loading: () => <div className="h-10" aria-hidden /> },
+);
+const HandOffGridSection = dynamic(
+  () => import("@/components/home/hand-off-grid").then((mod) => mod.HandOffGridSection),
+  { loading: () => <div className="h-10" aria-hidden /> },
+);
+const InstallationTypesSection = dynamic(
+  () => import("@/components/home/installation-types").then((mod) => mod.InstallationTypesSection),
+  { loading: () => <div className="h-10" aria-hidden /> },
+);
+const ReferralSection = dynamic(
+  () => import("@/components/home/referral-section").then((mod) => mod.ReferralSection),
+  { loading: () => <div className="h-10" aria-hidden /> },
+);
+const StatsBarSection = dynamic(
+  () => import("@/components/home/stats-bar").then((mod) => mod.StatsBarSection),
+  { loading: () => <div className="h-10" aria-hidden /> },
+);
 
 export default function HomePage() {
   const [reviewMeta, setReviewMeta] = useState<{

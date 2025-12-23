@@ -3,14 +3,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { useEffect, useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { IconArrowNarrowLeft, IconArrowNarrowRight } from "@tabler/icons-react";
 
 import { Button } from "@/components/ui/button";
 
 export const ProductStarSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const scrollRef = useRef<HTMLDivElement | null>(null);
   const t = useTranslations("home");
 
   const slides = [
@@ -56,28 +57,74 @@ export const ProductStarSection = () => {
     }
   ];
 
+  const scrollToIndex = useCallback((index: number) => {
+      const container = scrollRef.current;
+      if (!container) return;
+
+      const card = container.children.item(index) as HTMLElement | null;
+      if (!card) return;
+      container.scrollTo({ left: card.offsetLeft, behavior: "smooth" });
+      setCurrentSlide(index);
+    }, []);
+
   useEffect(() => {
     if (!isAutoPlaying) return;
 
     const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
+      setCurrentSlide((prev) => {
+        const nextIndex = (prev + 1) % slides.length;
+        scrollToIndex(nextIndex);
+        return nextIndex;
+      });
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [isAutoPlaying, slides.length]);
+  }, [isAutoPlaying, scrollToIndex, slides.length]);
+
+  useEffect(() => {
+    const container = scrollRef.current;
+    if (!container) return;
+
+    const handleScroll = () => {
+      const cards = Array.from(container.children) as HTMLElement[];
+      if (!cards.length) return;
+
+      let closestIndex = 0;
+      let closestDistance = Number.POSITIVE_INFINITY;
+
+      cards.forEach((card, index) => {
+        const distance = Math.abs(container.scrollLeft - card.offsetLeft);
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestIndex = index;
+        }
+      });
+
+      setCurrentSlide(closestIndex);
+    };
+
+    container.addEventListener("scroll", handleScroll, { passive: true });
+    return () => container.removeEventListener("scroll", handleScroll);
+  }, [slides.length]);
 
   const goToSlide = (index: number) => {
-    setCurrentSlide(index);
+    scrollToIndex(index);
     setIsAutoPlaying(false);
   };
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
+    const nextIndex = (currentSlide + 1) % slides.length;
+    scrollToIndex(nextIndex);
     setIsAutoPlaying(false);
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+    const prevIndex = (currentSlide - 1 + slides.length) % slides.length;
+    scrollToIndex(prevIndex);
+    setIsAutoPlaying(false);
+  };
+
+  const stopAutoPlay = () => {
     setIsAutoPlaying(false);
   };
 
@@ -96,29 +143,31 @@ export const ProductStarSection = () => {
           {/* Navigation arrows */}
           <button
             onClick={prevSlide}
-            className="absolute left-4 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white p-3 shadow-lg transition-colors hover:bg-gray-100 dark:bg-[#0f172a] dark:hover:bg-[#101c2a]"
+            className="absolute left-4 top-1/2 z-10 -translate-y-1/2 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 shadow-lg transition-all hover:bg-white sm:h-10 sm:w-10"
             aria-label={t("productStar.nav.prev")}
           >
-            <ChevronLeft className="h-7 w-7 text-[#0c3b52] dark:text-white" />
+            <IconArrowNarrowLeft className="h-5 w-5 text-gray-700 sm:h-6 sm:w-6" />
           </button>
 
           <button
             onClick={nextSlide}
-            className="absolute right-4 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white p-3 shadow-lg transition-colors hover:bg-gray-100 dark:bg-[#0f172a] dark:hover:bg-[#101c2a]"
+            className="absolute right-4 top-1/2 z-10 -translate-y-1/2 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 shadow-lg transition-all hover:bg-white sm:h-10 sm:w-10"
             aria-label={t("productStar.nav.next")}
           >
-            <ChevronRight className="h-7 w-7 text-[#0c3b52] dark:text-white" />
+            <IconArrowNarrowRight className="h-5 w-5 text-gray-700 sm:h-6 sm:w-6" />
           </button>
 
           {/* Slides container */}
-          <div className="overflow-hidden">
-            <div
-              className="flex transition-transform duration-500 ease-in-out"
-              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-            >
+          <div
+            ref={scrollRef}
+            className="flex items-stretch snap-x snap-mandatory gap-6 overflow-x-scroll scroll-smooth pb-4 touch-pan-x [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+            onWheel={stopAutoPlay}
+            onTouchStart={stopAutoPlay}
+            onPointerDown={stopAutoPlay}
+          >
               {slides.map((slide, index) => (
-                <div key={index} className="w-full flex-shrink-0">
-                  <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center rounded-[28px] bg-white p-6 shadow-[0_16px_45px_rgba(12,59,82,0.12)] dark:bg-[#0f172a] dark:shadow-[0_16px_45px_rgba(0,0,0,0.35)]">
+                <div key={index} className="w-full shrink-0 snap-center self-stretch">
+                  <div className="grid h-full min-h-[520px] gap-8 items-center rounded-[28px] bg-white p-6 shadow-[0_16px_45px_rgba(12,59,82,0.12)] dark:bg-[#0f172a] dark:shadow-[0_16px_45px_rgba(0,0,0,0.35)] md:min-h-[440px] md:grid-cols-2 md:gap-12 lg:min-h-[420px]">
                     {/* Image section */}
                     <div className="relative order-2 md:order-1">
                       <div className="relative aspect-[16/9] md:aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-br from-[#0c3b52] to-[#14556f]">
@@ -128,7 +177,7 @@ export const ProductStarSection = () => {
                           fill
                           className="object-cover"
                           sizes="(min-width: 1024px) 40vw, 100vw"
-                          priority={index === 0}
+                          quality={70}
                         />
                       </div>
                     </div>
@@ -178,7 +227,6 @@ export const ProductStarSection = () => {
                   </div>
                 </div>
               ))}
-            </div>
           </div>
 
           {/* Dots indicator */}

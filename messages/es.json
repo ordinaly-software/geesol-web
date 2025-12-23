@@ -14,8 +14,8 @@
 
     "toggle_to_light": "Cambiar a modo claro",
     "toggle_to_dark": "Cambiar a modo oscuro",
-    "dark": "Oscuro",
-    "light": "Claro",
+    "dark": "Noche",
+    "light": "Día",
     "locations": {
       "madrid": "Delegación en Madrid: ",
       "andalucia": "Delegación en Andalucía (Sevilla): "
@@ -217,41 +217,51 @@
         "Ahorro energético en hogar",
         "Energía solar para empresas"
       ]
+    },
+    "testimonials": {
+      "scrollLeft": "Desplazar a la izquierda",
+      "scrollRight": "Desplazar a la derecha"
     }
   },
   "cookie": {
-    "title": "Resumen de privacidad",
+    "title": "Resumen de COOKIES",
     "description": "Esta web utiliza cookies para que podamos ofrecerte la mejor experiencia de usuario posible. La información de las cookies se almacena en tu navegador y realiza funciones tales como reconocerte cuando vuelves a nuestra web o ayudar a nuestro equipo a comprender qué secciones de la web encuentras más interesantes y útiles.",
     "whatAre": "Cookies estrictamente necesarias",
     "whatAreDescription": "Las cookies estrictamente necesarias tienen que activarse siempre para que podamos guardar tus preferencias de ajustes de cookies.",
     "acceptAll": "Aceptar todas",
-    "rejectAll": "Rechazar todas",
+    "rejectAll": "Rechazar",
     "customize": "Configurar cookies",
     "personalizeTitle": "Personalizar preferencias de cookies",
     "personalizeDescription": "Elige qué tipos de cookies quieres permitir.",
     "necessary": "Cookies estrictamente necesarias",
     "necessaryDescription": "Estas cookies son imprescindibles para el funcionamiento básico del sitio y no se pueden desactivar.",
-    
+    "functional": "Cookies funcionales",
+    "functionalDescription": "Permiten recordar preferencias y mejorar funciones avanzadas del sitio.",
     "analytics": "Cookies de terceros",
-    "analyticsDescription": "Esta web utiliza Google Analytics para recopilar información anónima tal como el número de visitantes del sitio, o las páginas más populares.",
+    "analyticsDescription": "Se utilizan para recopilar información anónima del uso de la web.",
+    "marketing": "Cookies de marketing",
+    "marketingDescription": "Se utilizan para ofrecer medir campañas publicitarias.",
     "necessaryAlways": "Deben activarse siempre para guardar sus preferencias.",
+    "functionalExamples": "Nos ayudan a recordar ajustes y mejorar la experiencia.",
     "analyticsExamples": "Dejar esta cookie activa nos permite mejorar nuestra web.",
+    "marketingExamples": "Nos permiten mostrar anuncios personalizados y medir resultados.",
     
     "back": "Volver",
     "save": "Guardar",
     "footer": "Consulta nuestra ",
     "privacy": "Política de privacidad",
     "cookies": "Política de cookies",
+    "and": "y",
     "openCookieSettings": "Abrir ajustes de cookies"
   },
   "testimonials": {
     "title": "La satisfaccion de nuestros clientes, nuestro mejor aval",
-    "googleSource": "Resena verificada",
-    "googleSummary": "{rating} sobre 5 en Google ({count} resenas)",
+    "googleSource": "Reseña verificada",
+    "googleSummary": "{rating} sobre 5 en Google ({count} reseñas)",
     "googleLink": "Ver en Google",
-    "googleWrite": "Escribir resena",
-    "googleLoading": "Cargando resenas de Google...",
-    "googleUnavailable": "Resenas no disponibles por ahora",
+    "googleWrite": "Escribir reseña",
+    "googleLoading": "Cargando reseñas de Google...",
+    "googleUnavailable": "Reseñas no disponibles por ahora",
     "scrollLeft": "Desplazar testimonios a la izquierda",
     "scrollRight": "Desplazar testimonios a la derecha",
     "readMore": "Leer más",
@@ -277,7 +287,7 @@
   ,
   "contactPage": {
     "hero": {
-      "title": "Contacto placas solares y autoconsumo en Andalucía",
+      "title": "Contacto: Habla con nosotros y encarga un estudio gratis",
       "subtitle": "Cuéntanos tu proyecto de instalaciones fotovoltaicas y coordinamos un estudio gratuito en menos de 24 horas."
     },
     "contactForm": {
@@ -472,7 +482,9 @@
     },
     "partners": {
       "eyebrow": "Partners y certificaciones",
-      "title": "Trabajamos con marcas líderes del sector"
+      "title": "Trabajamos con marcas líderes del sector",
+      "showMore": "Ver todas",
+      "showLess": "Ver menos"
     },
     "location": {
       "eyebrow": "Dónde estamos",
@@ -627,6 +639,11 @@
       "subtitle": "Escríbenos y te daremos acceso a la app para empezar a compartir tu enlace.",
       "button": "Contacto"
     }
+  },
+  "galleryPage": {
+    "title": "Galería de instalaciones",
+    "subtitle": "Proyectos residenciales, industriales y agrícolas agrupados por servicio para inspirar tu próxima instalación.",
+    "cta": "Ver servicio"
   },
   "serviceTemplate": {
     "hero": {

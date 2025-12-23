@@ -21,16 +21,19 @@ const Slider: React.FC<SliderProps> = ({ checked, onChange, className = '', colo
   const checkedBg = colorClassMap[color] || colorClassMap['green'];
   return (
     <button
+      type="button"
       onClick={onChange}
-      className={`w-12 h-6 rounded-full transition-colors flex items-center px-0.5 ${
+      role="switch"
+      aria-checked={checked}
+      className={`relative inline-flex h-6 w-12 items-center rounded-full transition-colors ${
         checked ? checkedBg : 'bg-muted'
       } ${className}`}
     >
       <div
-        className={`w-5 h-5 bg-white rounded-full shadow-md transform transition-transform duration-200 ${
+        className={`absolute left-0.5 top-0.5 h-5 w-5 rounded-full bg-white shadow-md transition-transform duration-200 ${
           checked ? 'translate-x-6' : 'translate-x-0'
         }`}
-      ></div>
+      />
     </button>
   );
 };
