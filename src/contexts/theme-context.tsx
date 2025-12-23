@@ -20,7 +20,8 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const getFunctionalConsent = () => {
     try {
       const preferences = getCookiePreferences();
-      return Boolean(preferences?.functional);
+      // Treat either functional OR necessary (technical) consent as allowing persistence
+      return Boolean(preferences?.functional || preferences?.necessary);
     } catch {
       return false;
     }

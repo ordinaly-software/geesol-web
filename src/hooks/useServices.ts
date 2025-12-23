@@ -48,6 +48,12 @@ export const useServices = (
   const fetchServices = useCallback(async () => {
     if (!enabled) return;
     try {
+      if (!process.env.NEXT_PUBLIC_API_URL) {
+        setIsOnVacation(true);
+        setServices([]);
+        setIsLoading(false);
+        return;
+      }
       const cacheKey = `services_${limit || 'all'}_${isAdmin}`;
       const cached = servicesCache.get(cacheKey);
       if (cached && (Date.now() - cached.timestamp) < CACHE_DURATION) {

@@ -23,6 +23,7 @@ export function WorkWithUsSection({
 }: WorkWithUsSectionProps) {
   const t = useTranslations("usPage");
   const locale = useLocale();
+  const roundedClass = fullBleed ? "" : "rounded-[28px]";
 
   const mailHref = useMemo(() => {
     const subject = encodeURIComponent(t("cta.mailSubject"));
@@ -33,7 +34,7 @@ export function WorkWithUsSection({
   return (
     <section
       id={id}
-      className={`relative overflow-hidden min-h-[460px] md:min-h-[480px] flex items-center py-0 my-0 ${
+      className={`relative isolate overflow-hidden min-h-[460px] md:min-h-[480px] flex items-center py-0 my-0 bg-[#0c3b52] dark:bg-[#0b1220] ${roundedClass} ${
         fullBleed
           ? "w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]"
           : ""
@@ -46,9 +47,12 @@ export function WorkWithUsSection({
         fill
         priority={false}
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1200px"
-        className="object-cover object-center brightness-[.7] dark:brightness-[.5] blur-[2px]"
+        className={`object-cover object-center brightness-[.7] dark:brightness-[.5] blur-[2px] scale-[1.02] ${roundedClass}`}
       />
-      <div className="absolute inset-0 bg-black/20 dark:bg-black/55" aria-hidden />
+      <div
+        className={`absolute inset-0 bg-black/20 dark:bg-black/55 ${roundedClass}`}
+        aria-hidden
+      />
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-10 lg:px-12 py-6 w-full">
         <div className="space-y-3 max-w-2xl text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.55)]">

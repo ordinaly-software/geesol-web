@@ -24,7 +24,18 @@ export function getCookiePreferences(): CookiePreferences | null {
 export function setCookiePreferences(prefs: CookiePreferences) {
   if (typeof window === 'undefined') return;
   localStorage.setItem(STORAGE_KEY, JSON.stringify(prefs));
-  window.dispatchEvent(new Event('cookieConsentChange'));
+  try {
+    // Legacy event for backwards compatibility
+    window.dispatchEvent(new Event('cookieConsentChange'));
+  } catch {
+    // ignore
+  }
+  try {
+    // Modern, detailed event consumers can use
+    window.dispatchEvent(new CustomEvent('cookie-preferences-changed', { detail: prefs }));
+  } catch {
+    // ignore
+  }
 }
 
 /* =========================

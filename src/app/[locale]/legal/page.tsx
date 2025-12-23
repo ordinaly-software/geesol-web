@@ -13,7 +13,7 @@ export async function generateMetadata({
   return createPageMetadata({
     locale,
     path: "/legal",
-    title: isEs ? "Legal | GEESOL" : "Legal | GEESOL",
+    title: isEs ? "Legal" : "Legal",
     description: isEs
       ? "Aviso legal, politica de privacidad y condiciones de uso de GEESOL."
       : "Legal notice, privacy policy, and terms of use for GEESOL.",

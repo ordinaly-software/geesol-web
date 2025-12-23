@@ -1,12 +1,13 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { Cookie, Settings, Shield, BarChart3 } from 'lucide-react';
+import { Cookie, Settings, Shield, BarChart3, Megaphone } from 'lucide-react';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { Button } from "@/components/ui/button";
 import Slider from "@/components/ui/slider";
 import { ModalCloseButton } from "@/components/ui/modal-close-button";
+import { clearFunctionalStorage, getCookiePreferences, setCookiePreferences as setCookiePrefs } from '@/utils/cookieManager';
 
 const CookieConsent = () => {
   const t = useTranslations('cookie');
@@ -17,85 +18,99 @@ const CookieConsent = () => {
   const [isMounted, setIsMounted] = useState(false);
   const [cookiePreferences, setCookiePreferences] = useState({
     necessary: true,
+    functional: true,
     analytics: false,
+    marketing: false,
   });
 
   useEffect(() => {
     setIsMounted(true);
+
+    let hasConsented = null;
+    try {
+      hasConsented = localStorage.getItem('cookie-consent');
+      const storedPreferences = getCookiePreferences();
+      if (storedPreferences) {
+        setCookiePreferences(prev => ({
+          ...prev,
+          ...storedPreferences
+        }));
+      }
+    } catch {
+      // localStorage not available - handle silently
+    }
+    if (!hasConsented) {
+      setShowPopup(true);
+      setShowBubble(true);
+    }
   }, []);
 
-  // Listen to external preference changes (from other components) and open requests
   useEffect(() => {
-    const onPreferencesChanged = (e: Event) => {
+    if (!isMounted) return;
+    // Analytics loading is handled by AnalyticsManager via events
+    // Functional cleanup intentionally omitted to avoid removing required app state
+  }, [cookiePreferences, isMounted]);
+
+  useEffect(() => {
+    const syncPreferencesFromStorage = (event: StorageEvent) => {
+      if (event.key === 'cookie-preferences') {
+        const storedPreferences = getCookiePreferences();
+        if (storedPreferences) {
+          setCookiePreferences(prev => ({
+            ...prev,
+            ...storedPreferences
+          }));
+        }
+      }
+    };
+
+    window.addEventListener('storage', syncPreferencesFromStorage);
+
+    // Also listen for programmatic preference changes (same-tab)
+    const onPrefs = (e: Event) => {
       try {
-        // custom event with detail object
-        // @ts-expect-error custom event detail
-        const detail = e?.detail;
-        if (detail && typeof detail === 'object') {
+        const detail = (e as CustomEvent)?.detail as typeof cookiePreferences | undefined;
+        if (detail) {
           setCookiePreferences(prev => ({ ...prev, ...detail }));
+        } else {
+          const stored = getCookiePreferences();
+          if (stored) setCookiePreferences(prev => ({ ...prev, ...stored }));
         }
       } catch {
         // ignore
       }
     };
 
-    const onOpenPopup = () => {
-      setShowPopup(true);
-      setShowBubble(true);
-    };
-
-    window.addEventListener('cookie-preferences-changed', onPreferencesChanged as EventListener);
-    window.addEventListener('open-cookie-popup', onOpenPopup as EventListener);
+    window.addEventListener('cookie-preferences-changed', onPrefs as EventListener);
 
     return () => {
-      window.removeEventListener('cookie-preferences-changed', onPreferencesChanged as EventListener);
-      window.removeEventListener('open-cookie-popup', onOpenPopup as EventListener);
+      window.removeEventListener('storage', syncPreferencesFromStorage);
+      window.removeEventListener('cookie-preferences-changed', onPrefs as EventListener);
     };
   }, []);
 
-  useEffect(() => {
-    let hasConsented = null;
-    try {
-      hasConsented = localStorage.getItem('cookie-consent');
-    } catch {
-      // localStorage not available - handle silently
-    }
-    if (!hasConsented && !showBubble) {
-      setShowPopup(true);
-      setShowBubble(true);
-    }
-  }, [showBubble]);
-
   // Lock body scroll when popup is open
-  useEffect(() => {
-    if (showPopup) {
-      // Store original values
-      const originalStyle = window.getComputedStyle(document.body);
-      const originalOverflow = originalStyle.overflow;
-      const originalPosition = originalStyle.position;
-      
-      // Apply scroll lock
-      document.body.style.overflow = 'hidden';
-      document.body.style.position = 'relative';
-      document.documentElement.style.overflow = 'hidden';
-      
-      // Cleanup function
-      return () => {
-        document.body.style.overflow = originalOverflow;
-        document.body.style.position = originalPosition;
-        document.documentElement.style.overflow = 'auto';
-      };
-    }
-  }, [showPopup]);
+  // Do not lock the body when the panel is open — allow scrolling and interaction
+  // (previous implementation blocked scroll and prevented interacting with page)
 
   const handleAcceptAll = () => {
     const preferences = {
       necessary: true,
+      functional: true,
       analytics: true,
+      marketing: true,
     };
     setCookiePreferences(preferences);
-    localStorage.setItem('cookie-consent', 'accepted');
-    localStorage.setItem('cookie-preferences', JSON.stringify(preferences));
+    try {
+      setCookiePrefs(preferences);
+    } catch {
+      // ignore
+    }
+    try {
+      localStorage.setItem('cookie-consent', 'accepted');
+    } catch {
+      // ignore
+    }
     setShowBubble(false);
     setShowPopup(false);
     setShowSettings(false);
@@ -104,29 +119,76 @@ const CookieConsent = () => {
   const handleRejectAll = () => {
     const preferences = {
       necessary: true,
+      functional: false,
       analytics: false,
+      marketing: false,
     };
     setCookiePreferences(preferences);
-    localStorage.setItem('cookie-consent', 'rejected');
-    localStorage.setItem('cookie-preferences', JSON.stringify(preferences));
+    try {
+      setCookiePrefs(preferences);
+    } catch {
+      // ignore
+    }
+    try {
+      localStorage.setItem('cookie-consent', 'rejected');
+    } catch {
+      // ignore
+    }
+    clearFunctionalStorage();
     setShowBubble(false);
     setShowPopup(false);
     setShowSettings(false);
   };
 
   const handleSavePreferences = () => {
-    localStorage.setItem('cookie-consent', 'customized');
-    localStorage.setItem('cookie-preferences', JSON.stringify(cookiePreferences));
+    try {
+      localStorage.setItem('cookie-consent', 'customized');
+    } catch {
+      // localStorage not available - handle silently
+    }
+
+    // Centralized write (also emits events)
+    try {
+      setCookiePrefs(cookiePreferences);
+    } catch {
+      try {
+        localStorage.setItem('cookie-preferences', JSON.stringify(cookiePreferences));
+        window.dispatchEvent(new CustomEvent('cookie-preferences-changed', { detail: cookiePreferences }));
+      } catch {
+        // ignore
+      }
+    }
+
+    if (!cookiePreferences.functional) {
+      clearFunctionalStorage();
+    }
     setShowBubble(false);
     setShowPopup(false);
     setShowSettings(false);
   };
 
-  const handlePreferenceChange = (type: 'necessary' | 'analytics') => {
+  // Allow other pages to open the cookie popup (e.g., Legal page)
+  useEffect(() => {
+    const onOpen = (e: Event) => {
+      try {
+        // support opening with detail: { settings: true }
+        const detail = (e as CustomEvent)?.detail as { settings?: boolean } | undefined;
+        setShowPopup(true);
+        if (detail?.settings) setShowSettings(true);
+      } catch {
+        setShowPopup(true);
+      }
+    };
+
+    window.addEventListener('open-cookie-popup', onOpen as EventListener);
+    return () => window.removeEventListener('open-cookie-popup', onOpen as EventListener);
+  }, []);
+
+  const handlePreferenceChange = (type: 'necessary' | 'functional' | 'analytics' | 'marketing') => {
     if (type === 'necessary') return;
     setCookiePreferences(prev => ({
       ...prev,
-      [type]: !prev[type as 'analytics']
+      [type]: !prev[type as keyof typeof prev]
     }));
   };
 
@@ -140,149 +202,108 @@ const CookieConsent = () => {
   if (!isMounted) return null;
 
   const modalContent = showPopup ? (
-    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[9999] flex items-center justify-center p-2 sm:p-4">
-      <div className="bg-card text-card-foreground rounded-2xl shadow-2xl w-[95vw] max-w-2xl min-h-[200px] max-h-[85vh] overflow-y-auto border border-border transform transition-all duration-300 scale-100 opacity-100 mx-auto my-auto">
-        {/* Header */}
-        <div className="flex justify-between items-center p-6 border-b border-border">
-            <div className="flex items-center space-x-3">
-            <div className="bg-gradient-to-r from-amber-400 to-orange-500 rounded-full p-2">
-              <Cookie className="text-black" size={24} />
+    <div className="fixed inset-0 bottom-6 right-6 z-[9999] pointer-events-none">
+      <div className="w-[95vw] max-w-xl pointer-events-auto bg-card text-card-foreground rounded-2xl shadow-2xl border border-border p-4 transition-transform transform-gpu fixed right-6 bottom-6">
+        <div className="flex items-start justify-between">
+          <div className="flex items-start space-x-3">
+            <div className="bg-gradient-to-r from-amber-400 to-orange-500 rounded-full p-2 mt-1">
+              <Cookie className="text-white" size={20} />
             </div>
-            <h2 className="text-2xl font-bold text-foreground">
-              {t('title')}
-            </h2>
+            <div className="min-w-0">
+              <h3 className="text-lg font-semibold text-foreground">{t('title')}</h3>
+              <p className="text-sm text-muted-foreground mt-1">{t('description')}</p>
+            </div>
           </div>
-          <ModalCloseButton
-            onClick={closePopup}
-            variant="light"
-            size="md"
-          />
+          <div className="flex items-center space-x-2">
+            <button
+              onClick={() => setShowSettings(prev => !prev)}
+              className="text-sm text-muted-foreground hover:text-foreground"
+              aria-label={t('customize')}
+            >
+              {showSettings ? t('back') : t('customize')}
+            </button>
+            <ModalCloseButton onClick={closePopup} variant="light" size="sm" />
+          </div>
         </div>
 
-        {/* Content */}
-        <div className="p-6">
-          {!showSettings ? (
-            <>
-              <div className="mb-6">
-                <p className="text-muted-foreground mb-4">
-                  {t('description')}
-                </p>
-                <div className="bg-gradient-to-r from-[#D01B17]/10 to-[#46B1C9]/10 p-4 rounded-lg border border-border">
-                  <p className="text-sm text-muted-foreground">
-                    <strong className="text-foreground">{t('whatAre')}</strong>{' '}
-                    {t('whatAreDescription')}
-                  </p>
+        {!showSettings ? (
+          <div className="mt-4">
+            <div className="flex gap-3">
+              <Button onClick={handleAcceptAll} className="flex-1 bg-gradient-to-r from-amber-400 to-orange-500 text-black font-extrabold">{t('acceptAll')}</Button>
+              <Button onClick={handleRejectAll} className="flex-1 bg-gradient-to-r from-red-600 to-red-500 text-white border border-red-400">{t('rejectAll')}</Button>
+            </div>
+
+            <div className="mt-3 text-sm text-muted-foreground">
+              {t('whatAre')} — {t('whatAreDescription')}
+            </div>
+          </div>
+        ) : (
+          <div className="mt-4 space-y-4">
+            <div>
+              <h4 className="text-sm font-semibold text-foreground">{t('personalizeTitle')}</h4>
+              <p className="text-xs text-muted-foreground">{t('personalizeDescription')}</p>
+            </div>
+
+            {[
+              {
+                key: 'necessary',
+                icon: <Shield className="text-[#1F8A0D] dark:text-[#7CFC00]" size={18} />,
+                enabled: true,
+                toggle: false,
+                note: t('necessaryAlways')
+              },
+              {
+                key: 'functional',
+                icon: <Settings className="text-[#46B1C9]" size={18} />,
+                enabled: cookiePreferences.functional,
+                toggle: true,
+                note: t('functionalExamples')
+              },
+              {
+                key: 'analytics',
+                icon: <BarChart3 className="text-[hsl(var(--color-dark-blue))]" size={18} />,
+                enabled: cookiePreferences.analytics,
+                toggle: true,
+                note: t('analyticsExamples')
+              },
+              {
+                key: 'marketing',
+                icon: <Megaphone className="text-pink-500" size={18} />,
+                enabled: cookiePreferences.marketing,
+                toggle: true,
+                note: t('marketingExamples')
+              },
+            ].map(({ key, icon, enabled, toggle }) => (
+              <div key={key} className="flex items-center justify-between p-3 bg-card border border-border rounded-lg">
+                <div className="flex items-center space-x-3">
+                  {icon}
+                  <div>
+                    <div className="font-medium text-foreground">{t(`${key}`)}</div>
+                    <div className="text-xs text-muted-foreground">{t(`${key}Description`)}</div>
+                  </div>
                 </div>
+                {toggle ? (
+                  <Slider checked={enabled} onChange={() => handlePreferenceChange(key as 'necessary' | 'functional' | 'analytics' | 'marketing')} />
+                ) : (
+                  <div className="bg-[#1F8A0D] dark:bg-[#7CFC00] rounded-full w-5 h-5 flex items-center justify-center">
+                    <div className="w-2.5 h-2.5 bg-white rounded-full" />
+                  </div>
+                )}
               </div>
+            ))}
 
-              <div className="flex flex-col sm:flex-row gap-3 mb-4">
-                <Button
-                  onClick={handleAcceptAll}
-                  className="flex-1 bg-gradient-to-r from-amber-400 to-orange-500 text-black"
-                >
-                  {t('acceptAll')}
-                </Button>
-                <Button
-                  onClick={handleRejectAll}
-                  className="flex-1 bg-white text-black border border-border"
-                >
-                  {t('rejectAll')}
-                </Button>
-              </div>
+            <div className="flex gap-3">
+              <Button onClick={() => setShowSettings(false)} className="flex-1 bg-gradient-to-r from-red-600 to-red-500 text-white border border-red-400">{t('back')}</Button>
+              <Button onClick={handleSavePreferences} className="flex-1 bg-gradient-to-r from-amber-400 to-orange-500 text-black">{t('save')}</Button>
+            </div>
+          </div>
+        )}
 
-              <div className="w-full p-[2px] bg-gradient-to-r from-amber-400 to-orange-500 rounded-lg">
-                <button
-                  onClick={() => setShowSettings(true)}
-                  className="w-full bg-card text-card-foreground font-semibold py-3 px-6 rounded-lg hover:bg-accent transition-all duration-200 flex items-center justify-center space-x-2"
-                >
-                  <Settings size={20} />
-                  <span>{t('customize')}</span>
-                </button>
-              </div>
-            </>
-          ) : (
-            <>
-              <div className="space-y-6">
-                <div className="mb-6">
-                  <h3 className="text-lg font-semibold text-foreground mb-2">
-                    {t('personalizeTitle')}
-                  </h3>
-                  <p className="text-muted-foreground text-sm">
-                    {t('personalizeDescription')}
-                  </p>
-                </div>
-
-                {/* Cookie Categories */}
-                <div className="space-y-4">
-                  {[
-                    {
-                      key: 'necessary',
-                      icon: <Shield className="text-[#D01B17]" size={20} />,
-                      enabled: true,
-                      toggle: false,
-                      note: t('necessaryAlways')
-                    },
-                    {
-                      key: 'analytics',
-                      icon: <BarChart3 className="text-[hsl(var(--color-dark-blue))]" size={20} />,
-                      enabled: cookiePreferences.analytics,
-                      toggle: true,
-                      note: t('analyticsExamples')
-                    }
-                  ].map(({ key, icon, enabled, toggle, note }) => (
-                    <div key={key} className="border border-border rounded-lg p-4 bg-card">
-                      <div className="flex items-center justify-between mb-2">
-                        <div className="flex items-center space-x-3">
-                          {icon}
-                          <h4 className="font-semibold text-foreground">{t(`${key}`)}</h4>
-                        </div>
-                          {toggle ? (
-                          <Slider
-                            checked={enabled}
-                            onChange={() => handlePreferenceChange(key as 'necessary' | 'analytics')}
-                          />
-                        ) : (
-                          <div className="bg-[#D01B17] rounded-full w-6 h-6 flex items-center justify-center">
-                            <div className="w-3 h-3 bg-white rounded-full"></div>
-                          </div>
-                        )}
-                      </div>
-                      <p className="text-sm text-muted-foreground">{t(`${key}Description`)}</p>
-                      <p className="text-xs text-muted-foreground">{note}</p>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t border-border">
-                  <Button
-                    onClick={() => setShowSettings(false)}
-                    className="flex-1 bg-secondary text-secondary-foreground"
-                  >
-                    {t('back')}
-                  </Button>
-                  <Button
-                    onClick={handleSavePreferences}
-                    className="flex-1 bg-[#623CEA] text-white"
-                  >
-                    {t('save')}
-                  </Button>
-                </div>
-              </div>
-            </>
-          )}
-        </div>
-
-        <div className="bg-muted/30 p-4 rounded-b-2xl border-t border-border">
-          <p className="text-xs text-muted-foreground text-center">
-            {t('footer')}
-            <Link href="/legal?tab=privacy" className="text-[#46B1C9] hover:underline" target="_blank" rel="noopener noreferrer">
-              {t('privacy')}
-            </Link>{' '}
-            y{' '}
-            <Link href="/legal?tab=cookies" className="text-[#46B1C9] hover:underline" target="_blank" rel="noopener noreferrer">
-              {t('cookies')}
-            </Link>
-          </p>
+        <div className="mt-3 text-xs text-muted-foreground">
+          {t('footer')}{' '}
+          <Link href="/legal?tab=privacy" className="text-[#46B1C9] hover:underline" target="_blank" rel="noopener noreferrer">{t('privacy')}</Link>{' '}
+          {t('and')}{' '}
+          <Link href="/legal?tab=cookies" className="text-[#46B1C9] hover:underline" target="_blank" rel="noopener noreferrer">{t('cookies')}</Link>
         </div>
       </div>
     </div>
@@ -295,7 +316,7 @@ const CookieConsent = () => {
         <div className="fixed bottom-6 left-6 z-[9998]">
           <button
             onClick={openPopup}
-            className="bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-500 hover:to-orange-600 text-black rounded-full p-4 shadow-2xl transition-all duration-200 hover:scale-110 ring-4 ring-amber-400/20"
+            className="bg-gradient-to-r from-amber-400 to-orange-500 text-black rounded-full p-4 shadow-2xl transition-all duration-300 hover:scale-110 ring-4 ring-amber-400/20"
             aria-label={t('openCookieSettings')}
           >
             <Cookie size={24} aria-hidden="true" />

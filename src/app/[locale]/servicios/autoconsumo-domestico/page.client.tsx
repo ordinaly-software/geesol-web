@@ -1,8 +1,8 @@
 import { ServiceTemplate } from "../../../../components/servicios/service-template";
-// import { useTranslations } from "next-intl";
+import { getServiceGalleryBySlug } from "@/data/service-gallery";
 
 export default function AutoconsumoDomesticoPage({ locale }: { locale: string }) {
-  // const t = useTranslations("autoconsumoDomestico");
+  const gallery = getServiceGalleryBySlug(locale, "autoconsumo-domestico");
 
   return (
     <ServiceTemplate
@@ -61,15 +61,9 @@ export default function AutoconsumoDomesticoPage({ locale }: { locale: string })
           description: "Configuramos la monitorización y revisamos tu producción para asegurar el rendimiento esperado.",
         },
       ]}
-      galleryTitle="Hogares que ya aprovechan el sol"
-      galleryDescription="Instalaciones residenciales optimizadas para diferentes tipos de tejado y consumos."
-      galleryImages={[
-        "/static/servicios/autoconsumo_domestico/autoconsumo_domestico_01.webp",
-        "/static/servicios/autoconsumo_domestico/autoconsumo_domestico_02.webp",
-        "/static/servicios/autoconsumo_domestico/autoconsumo_domestico_03.webp",
-        "/static/servicios/autoconsumo_domestico/autoconsumo_domestico_04.webp",
-        "/static/servicios/autoconsumo_domestico/autoconsumo_domestico_05.webp",
-      ]}
+      galleryTitle={gallery?.galleryTitle}
+      galleryDescription={gallery?.galleryDescription}
+      galleryImages={gallery?.images ?? []}
     />
   );
 }

@@ -16,6 +16,7 @@ export const TwoColumnFeatureSection = () => {
               fill
               className="object-contain object-bottom"
               sizes="288px"
+              quality={60}
             />
           </div>
 
@@ -27,6 +28,7 @@ export const TwoColumnFeatureSection = () => {
                 fill
                 className="object-cover"
                 sizes="(min-width: 1024px) 50vw, 100vw"
+                quality={70}
                 priority
               />
             </div>

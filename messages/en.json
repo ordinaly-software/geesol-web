@@ -217,9 +217,12 @@
         "Home energy savings",
         "Solar energy for businesses"
       ]
+    },
+    "testimonials": {
+      "scrollLeft": "Scroll left",
+      "scrollRight": "Scroll right"
     }
   },
-
   "cookie": {
     "title": "Privacy summary",
     "description": "This website uses cookies so we can provide you with the best possible user experience. Cookie information is stored in your browser and helps functions such as recognising you when you return to our site or helping our team understand which sections you find most useful.",
@@ -232,17 +235,23 @@
     "personalizeDescription": "Choose which types of cookies you want to allow.",
     "necessary": "Strictly necessary cookies",
     "necessaryDescription": "These cookies are essential for basic site functionality and cannot be disabled.",
-    
+    "functional": "Functional cookies",
+    "functionalDescription": "They remember preferences and enable enhanced site features.",
     "analytics": "Third-party cookies",
     "analyticsDescription": "This site uses Google Analytics to collect anonymous information such as visitor numbers and most popular pages.",
+    "marketing": "Marketing cookies",
+    "marketingDescription": "Used to deliver relevant content and measure advertising campaigns.",
     "necessaryAlways": "Must be enabled to save your preferences.",
+    "functionalExamples": "They help us remember settings and improve your experience.",
     "analyticsExamples": "Keeping this cookie enabled helps us improve our website.",
+    "marketingExamples": "They allow personalized ads and performance measurement.",
     
     "back": "Back",
     "save": "Save",
     "footer": "See our ",
     "privacy": "Privacy Policy",
     "cookies": "Cookies Policy",
+    "and": "and",
     "openCookieSettings": "Open cookie settings"
   },
   "testimonials": {
@@ -473,7 +482,9 @@
     },
     "partners": {
       "eyebrow": "Partners and certifications",
-      "title": "We work with leading brands in the sector"
+      "title": "We work with leading brands in the sector",
+      "showMore": "Show all",
+      "showLess": "Show less"
     },
     "location": {
       "eyebrow": "Where we are",
@@ -629,6 +640,11 @@
       "button": "Contact"
     }
   },
+  "galleryPage": {
+    "title": "Installation gallery",
+    "subtitle": "Residential, industrial, and agricultural projects grouped by service to inspire your next installation.",
+    "cta": "View service"
+  },
   "serviceTemplate": {
     "hero": {
       "primaryCta": "Request a study",
@@ -654,16 +670,5 @@
       "primary": "Contact",
       "secondary": "Meet the team"
     }
-  },
-  "autoconsumoDomestico": {
-    "intro": "Photovoltaic self-consumption is an increasingly common concept in the daily lives of families and businesses, as it has become a real savings alternative. However, to take advantage of this type of installation, it is necessary to have at least basic notions, and Geesol will help you with the task.",
-    "typesIntro": "First of all, it is important to understand that within self-consumption there are two types of solutions:",
-    "directType": {
-      "title": "Direct self-consumption",
-      "description": "This is where energy is consumed at the same moment it is generated, that is, during the day. This system is very useful for companies or businesses that carry out their productive activity during the day."
-    },
-    "batteryType": {
-      "title": "Battery self-consumption",
-      "description": "This is an installation that has a series of batteries with the objective of storing the energy generated during the day to be consumed, fundamentally, throughout the night. It is an ideal type of system for those homes whose residents do most of their energy consumption at night, once they arrive home from work."
-    }  }
+  }
 }

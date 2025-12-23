@@ -25,6 +25,8 @@ export const HeroSection = () => {
               height={900}
               className="h-full w-full object-cover"
               priority
+              fetchPriority="high"
+              quality={70}
               sizes="(min-width: 1024px) 50vw, 100vw"
             />
             <div className="absolute bottom-0 left-0 right-0 flex items-center justify-between gap-4 bg-white/90 px-6 py-4 text-sm font-semibold text-[#0c3b52] backdrop-blur dark:bg-[#0b1220]/90 dark:text-gray-100 z-20">

@@ -1,61 +1,23 @@
+"use client";
+
 import Image from "next/image";
 import Banner from "@/components/ui/banner";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
+import { useTranslations } from "next-intl";
+import { getServiceGallerySections } from "@/data/service-gallery";
 
 export default function GaleriaInstalacionesPage({ locale }: { locale: string }) {
   const basePath = locale === routing.defaultLocale ? "" : `/${locale}`;
-  const gallerySections = [
-    {
-      slug: "autoconsumo-domestico",
-      title: "Autoconsumo doméstico",
-      description:
-        "Viviendas con instalaciones optimizadas para consumo diario, máxima independencia y monitorización constante.",
-      images: [
-        "/static/home/main_home_ilustration.webp",
-        "/static/28128.jpg",
-        "/static/freepik__candid-photography-with-natural-textures-and-highl__86638.jpeg",
-      ],
-    },
-    {
-      slug: "autoconsumo-industrial",
-      title: "Autoconsumo industrial",
-      description:
-        "Proyectos para naves, cubiertas y centros logísticos diseñados para reducir costes energéticos.",
-      images: [
-        "/static/freepik__candid-photography-with-natural-textures-and-highl__86639.jpeg",
-        "/static/freepik__candid-photography-with-natural-textures-and-highl__86640.jpeg",
-        "/static/28128.jpg",
-      ],
-    },
-    {
-      slug: "bombeo-solar",
-      title: "Bombeo solar",
-      description:
-        "Instalaciones agrícolas con variadores solares, control de caudal y ahorro operativo.",
-      images: [
-        "/static/freepik__candid-photography-with-natural-textures-and-highl__86638.jpeg",
-        "/static/freepik__candid-photography-with-natural-textures-and-highl__17569.jpeg",
-      ],
-    },
-    {
-      slug: "sistemas-aislados",
-      title: "Sistemas aislados",
-      description:
-        "Sistemas híbridos con baterías para zonas sin red, con autonomía y control remoto.",
-      images: [
-        "/static/home/main_home_ilustration.webp",
-        "/static/freepik__candid-photography-with-natural-textures-and-highl__17569.jpeg",
-      ],
-    },
-  ];
+  const t = useTranslations("galleryPage");
+  const gallerySections = getServiceGallerySections(locale);
 
   return (
     <div className="min-h-screen bg-[#f7f8fb] text-[#0c1f2d] dark:bg-[#0b1220] dark:text-gray-100">
       <Banner
-        title="Galería de instalaciones"
-        subtitle="Proyectos residenciales, industriales y agrícolas agrupados por servicio para inspirar tu próxima instalación."
+        title={t("title")}
+        subtitle={t("subtitle")}
         backgroundImage="/static/services_background.webp"
       />
 
@@ -77,7 +39,7 @@ export default function GaleriaInstalacionesPage({ locale }: { locale: string })
                 </div>
                 <Button asChild className="w-fit px-6 py-3">
                   <Link href={`${basePath}/servicios/${section.slug}`}>
-                    Ver servicio
+                    {t("cta")}
                   </Link>
                 </Button>
               </div>
