@@ -26,6 +26,12 @@ export const buildSocialTitle = (pageTitle: string, locale?: string) => {
   const fullBrand = getFullBrandName(locale);
   const normalizedTitle = pageTitle?.trim();
   if (!normalizedTitle) return fullBrand;
+  // Avoid duplicating the brand when the page title already contains it
+  const brandContext = getBrandContext(locale);
+  const containsBrand =
+    normalizedTitle.includes(SITE_NAME) || normalizedTitle.includes(brandContext) ||
+    normalizedTitle.includes(fullBrand);
+  if (containsBrand) return normalizedTitle;
   return `${normalizedTitle} | ${fullBrand}`;
 };
 
