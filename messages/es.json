@@ -49,7 +49,7 @@
       "cta": "Solicitar estudio gratis",
       "subtext": "Hasta el 80% en subvenciones y bonificaciones disponibles.",
       "imageAlt": "Instalación fotovoltaica sobre tejado",
-      "imageCaptionLeft": "Más de 5.000 instalaciones",
+      "imageCaptionLeft": "Más de 7.000 instalaciones",
       "imageCaptionRight": "Garantía hasta 25 años"
     },
     "highlights": {
@@ -72,7 +72,7 @@
       "imageAlt": "Instalación de paneles solares",
       "eyebrow": "Instalaciones fotovoltaicas",
       "title": "Energía solar llave en mano para tu hogar o negocio",
-      "paragraph1": "Con más de 6.000 instalaciones realizadas desde 2017, nuestra experiencia garantiza un ahorro real desde el primer día sin complicaciones.",
+      "paragraph1": "Con más de 7.000 instalaciones realizadas desde 2017, nuestra experiencia garantiza un ahorro real desde el primer día sin complicaciones.",
       "paragraph2": "Ofrecemos un servicio integral \"llave en mano\" diseñado para tu tranquilidad, que abarca desde el asesoramiento inicial hasta la postventa más completa.",
       "tags": ["Diseño a medida", "Gestión integral", "Monitorización 24/7"]
     },
@@ -88,7 +88,7 @@
     "productStar": {
       "imageAlt": "Paneles solares sobre cubierta",
       "eyebrow": "NO DEJES PARA MAÑANA LO QUE PUEDAS GENERAR HOY",
-      "sectionTitle": "PRODUCTOS ESTRELLA",
+      "sectionTitle": "NUESTRO PRODUCTO ESTRELLA",
       "nav": {
         "prev": "Producto anterior",
         "next": "Producto siguiente",
@@ -229,7 +229,7 @@
     }
   },
   "cookie": {
-    "title": "Resumen de COOKIES",
+    "title": "¡Cookies!",
     "description": "Esta web utiliza cookies para que podamos ofrecerte la mejor experiencia de usuario posible. La información de las cookies se almacena en tu navegador y realiza funciones tales como reconocerte cuando vuelves a nuestra web o ayudar a nuestro equipo a comprender qué secciones de la web encuentras más interesantes y útiles.",
     "whatAre": "Cookies estrictamente necesarias",
     "whatAreDescription": "Las cookies estrictamente necesarias tienen que activarse siempre para que podamos guardar tus preferencias de ajustes de cookies.",
@@ -453,23 +453,23 @@
         "Hoy contamos con un equipo humano especializado que cubre todas las fases: estudio, diseño, instalación, legalización y monitorización continua."
       ],
       "imageAlt": "Equipo GEESOL en instalaciones fotovoltaicas",
-      "caption": "Más de 5.000 instalaciones realizadas en Andalucía y Madrid."
+      "caption": "Más de 7.000 instalaciones realizadas en Andalucía y Madrid."
     },
     "team": {
       "title": "Equipo humano",
       "roles": [
-        "Director técnico",
-        "Técnicos instaladores",
-        "Comerciales",
+        "Dirección Técnica",
+        "Ingenieros",
+        "Instaladores",
+        "Asesores Comerciales",
         "Atención al cliente",
-        "Marketing",
-        "Community manager",
-        "Informático"
+        "Licencias y legalizaciones",
+        "Ayudas y Pos-venta"
       ]
     },
     "stats": [
       {
-        "value": "+5.000",
+        "value": "+7.000",
         "label": "instalaciones realizadas"
       },
       {

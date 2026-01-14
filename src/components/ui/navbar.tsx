@@ -44,7 +44,7 @@ const Navbar = () => {
 
   const navItems = useMemo(
     () => [
-      { id: "home", type: "link", href: "/", label: t("home") },
+      // { id: "home", type: "link", href: "/", label: t("home") },
       { id: "services", type: "mega", href: "/servicios", label: t("services") },
       { id: "about", type: "link", href: "/nosotros", label: t("about") },
       { id: "refer", type: "link", href: "/recomienda-y-gana", label: t("refer") },
@@ -107,7 +107,7 @@ const Navbar = () => {
               alt="GEESOL"
               width={140}
               height={44}
-              className="h-9 w-auto sm:h-10"
+              className="h-10 w-auto sm:h-12 md:h-14"
               priority
             />
           </Link>

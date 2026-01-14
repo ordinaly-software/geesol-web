@@ -203,7 +203,7 @@ const CookieConsent = () => {
 
   const modalContent = showPopup ? (
     <div className="fixed inset-0 z-[9999] pointer-events-none">
-      <div className="w-[95vw] max-w-xl pointer-events-auto bg-card text-card-foreground rounded-2xl shadow-2xl border border-border p-4 sm:p-6 transition-transform transform-gpu fixed right-3 bottom-3 sm:right-6 sm:bottom-6 max-h-[90svh] overflow-y-auto">
+      <div className="w-[86vw] max-w-md pointer-events-auto bg-card text-card-foreground rounded-2xl shadow-2xl border border-border p-3 sm:p-4 transition-transform transform-gpu fixed right-3 bottom-3 sm:right-6 sm:bottom-6 max-h-[90svh] overflow-y-auto">
         <div className="sticky top-0 z-10 bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/85 pt-1 pb-2">
           <div className="flex items-start justify-between gap-3">
             <div className="flex items-start gap-3">
@@ -231,8 +231,8 @@ const CookieConsent = () => {
         {!showSettings ? (
           <div className="mt-4">
             <div className="flex flex-col gap-2 sm:flex-row sm:gap-3">
-              <Button onClick={handleAcceptAll} className="flex-1 bg-gradient-to-r from-amber-400 to-orange-500 text-black font-extrabold">{t('acceptAll')}</Button>
-              <Button onClick={handleRejectAll} className="flex-1 bg-gradient-to-r from-red-600 to-red-500 text-white border border-red-400">{t('rejectAll')}</Button>
+              <Button onClick={handleAcceptAll} className="flex-1 py-2 text-sm px-3 bg-gradient-to-r from-amber-400 to-orange-500 text-black font-semibold">{t('acceptAll')}</Button>
+              <Button onClick={handleRejectAll} className="flex-1 py-2 text-sm px-3 bg-gradient-to-r from-red-600 to-red-500 text-white border border-red-400">{t('rejectAll')}</Button>
             </div>
 
             <div className="mt-3 text-sm text-muted-foreground">
@@ -297,8 +297,8 @@ const CookieConsent = () => {
             ))}
 
             <div className="flex flex-col gap-2 sm:flex-row sm:gap-3">
-              <Button onClick={() => setShowSettings(false)} className="flex-1 bg-gradient-to-r from-red-600 to-red-500 text-white border border-red-400">{t('back')}</Button>
-              <Button onClick={handleSavePreferences} className="flex-1 bg-gradient-to-r from-amber-400 to-orange-500 text-black">{t('save')}</Button>
+              <Button onClick={() => setShowSettings(false)} className="flex-1 py-2 text-sm px-3 bg-gradient-to-r from-red-600 to-red-500 text-white border border-red-400">{t('back')}</Button>
+              <Button onClick={handleSavePreferences} className="flex-1 py-2 text-sm px-3 bg-gradient-to-r from-amber-400 to-orange-500 text-black">{t('save')}</Button>
             </div>
           </div>
         )}

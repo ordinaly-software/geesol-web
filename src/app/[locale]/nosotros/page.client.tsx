@@ -11,20 +11,26 @@ import { useTranslations } from "next-intl";
 import { ChevronDown, ChevronUp } from "lucide-react";
 
 const partners = [
-  { name: "APsystems", src: "/static/nosotros/ap-system.jpg" },
-  { name: "Enphase", src: "/static/nosotros/enphase.jpg" },
-  { name: "Exiom Group", src: "/static/nosotros/exiom-group.jpg" },
-  { name: "Fronius", src: "/static/nosotros/fronius.jpg" },
-  { name: "Huawei", src: "/static/nosotros/huawei.jpg" },
-  { name: "Jinko Solar", src: "/static/nosotros/jinko-solar.jpg" },
-  { name: "Kostal", src: "/static/nosotros/kostal.jpg" },
-  { name: "REC", src: "/static/nosotros/rec.jpg" },
-  { name: "Schneider", src: "/static/nosotros/sheneider.jpg" },
-  { name: "Siemens", src: "/static/nosotros/siemens.jpg" },
-  { name: "SMA", src: "/static/nosotros/sma.jpg" },
-  { name: "SolarEdge", src: "/static/nosotros/solar-edge.jpg" },
-  { name: "SunPower", src: "/static/nosotros/sunpower.jpg" },
-  { name: "Victron Energy", src: "/static/nosotros/victron.jpg" },
+  { name: "ATMOCE", src: "/static/nosotros/atmoce.webp" },
+  { name: "Huawei", src: "/static/nosotros/huawei.webp" },
+  { name: "AIKO", src: "/static/nosotros/aiko.webp" },
+  { name: "TCL", src: "/static/nosotros/tcl.webp" },
+  { name: "TESLA", src: "/static/nosotros/tesla.webp" },
+  { name: "APsystems", src: "/static/nosotros/ap-system.webp" },
+  { name: "Enphase", src: "/static/nosotros/enphase.webp" },
+  { name: "Exiom Group", src: "/static/nosotros/exiom-group.webp" },
+  { name: "Fronius", src: "/static/nosotros/fronius.webp" },
+  { name: "Jinko Solar", src: "/static/nosotros/jinko-solar.webp" },
+  { name: "Kostal", src: "/static/nosotros/kostal.webp" },
+  { name: "REC", src: "/static/nosotros/rec.webp" },
+  { name: "Schneider", src: "/static/nosotros/schneider.webp" },
+  { name: "Siemens", src: "/static/nosotros/siemens.webp" },
+  { name: "SMA", src: "/static/nosotros/sma.webp" },
+  { name: "SolarEdge", src: "/static/nosotros/solar-edge.webp" },
+  { name: "SunPower", src: "/static/nosotros/sunpower.webp" },
+  { name: "Victron Energy", src: "/static/nosotros/victron.webp" },
+  { name: "DEYE", src: "/static/nosotros/deye.webp" },
+  { name: "GOODWE", src: "/static/nosotros/goodwe.webp" },
 ];
 
 export default function NosotrosPage({ locale }: { locale: string }) {
@@ -147,7 +153,7 @@ export default function NosotrosPage({ locale }: { locale: string }) {
         </div>
       </section>
 
-      <section className="bg-white px-4 py-16 dark:bg-[#0b1220]">
+      <section className="bg-white px-4 py-16 dark:bg-black">
         <div className="mx-auto max-w-6xl space-y-8">
           <div className="text-center">
             <p className="text-sm font-semibold uppercase tracking-[0.15em] text-[#c81618]">
@@ -158,34 +164,33 @@ export default function NosotrosPage({ locale }: { locale: string }) {
             </h3>
           </div>
           <div className="relative">
-            <div
-              className={`grid gap-4 sm:grid-cols-2 lg:grid-cols-5 transition-[max-height] duration-300 ${
-                partnersExpanded ? "max-h-[2000px]" : "max-h-[280px] overflow-hidden"
+            <div className={`grid gap-3 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 transition-[max-height] duration-300 ${
+                partnersExpanded ? "max-h-[2000px]" : "max-h-[320px] overflow-hidden"
               } sm:max-h-none sm:overflow-visible`}
             >
               {partners.map((partner) => (
                 <div
                   key={partner.name}
-                  className="flex items-center justify-center rounded-[18px] border border-gray-200 bg-[#f7f8fb] px-4 py-6 shadow-sm dark:border-gray-700 dark:bg-[#0f172a]"
+                  className="flex items-center justify-center rounded-xl border border-gray-200 bg-white px-4 py-3 shadow-sm dark:border-gray-800 dark:bg-black min-h-[56px] sm:min-h-[64px] md:min-h-[72px]"
                 >
                   <Image
                     src={partner.src}
                     alt={partner.name}
                     width={160}
                     height={80}
-                    className="h-12 w-auto object-contain"
+                    className="max-h-10 sm:max-h-12 md:max-h-14 w-auto object-contain"
                   />
                 </div>
               ))}
             </div>
-            {!partnersExpanded && (
-              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-white to-transparent dark:from-[#0b1220] sm:hidden" />
-            )}
+              {!partnersExpanded && (
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-white to-transparent dark:from-black sm:hidden" />
+              )}
           </div>
           <div className="flex justify-center sm:hidden">
             <button
               type="button"
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-gray-200 bg-white text-[#0c3b52] shadow-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-gray-700 dark:bg-[#0f172a] dark:text-white"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-gray-200 bg-white text-[#0c3b52] shadow-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-gray-700 dark:bg-black dark:text-white"
               onClick={() => setPartnersExpanded((prev) => !prev)}
               aria-label={partnersExpanded ? t("partners.showLess") : t("partners.showMore")}
             >

@@ -88,7 +88,7 @@
     "productStar": {
       "imageAlt": "Paneles solares sobre cubierta",
       "eyebrow": "NO DEJES PARA MAÑANA LO QUE PUEDAS GENERAR HOY",
-      "sectionTitle": "PRODUCTOS ESTRELLA",
+      "sectionTitle": "NUESTRO PRODUCTO ESTRELLA",
       "nav": {
         "prev": "Producto anterior",
         "next": "Producto siguiente",
@@ -458,13 +458,13 @@
     "team": {
       "title": "Our team",
       "roles": [
-        "Technical director",
-        "Installation technicians",
-        "Sales",
-        "Customer support",
-        "Marketing",
-        "Community manager",
-        "IT"
+        "Technical Management",
+        "Engineers",
+        "Installers",
+        "Sales Advisors",
+        "Customer Service",
+        "Permits and Legalizations",
+        "Subsidies and After-sales"
       ]
     },
     "stats": [

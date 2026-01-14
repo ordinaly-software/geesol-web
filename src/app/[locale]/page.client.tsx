@@ -55,9 +55,9 @@ export default function HomePage() {
         googleMapsUrl={reviewMeta.googleMapsUrl}
       />
       <ProductStarSection/>
+      <ReferralSection />
       <HandOffGridSection />
       <InstallationTypesSection />
-      <ReferralSection />
       <StatsBarSection />
     </div>
   );
