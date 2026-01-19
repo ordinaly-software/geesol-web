@@ -7,6 +7,7 @@ import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
 import { IconArrowRight } from "@tabler/icons-react";
+import Image from "next/image";
 
 const contacts = [
   { label: "phone", value: "955 73 73 22", href: "tel:955737322" },
@@ -97,17 +98,32 @@ export default function ContactoPage({ locale }: { locale: string }) {
             </div>
 
             <div className="border-t border-gray-200 pt-4 dark:border-gray-700">
-              <h4 className="text-lg sm:text-xl font-semibold text-[#0c3b52] dark:text-white">
-                {t("whatsapp.title")}
-              </h4>
-              <p className="mt-2 text-xs sm:text-sm text-gray-700 dark:text-gray-300">
-                {t("whatsapp.subtitle")}
-              </p>
-              <Button asChild className="mt-3 w-full text-sm sm:text-base">
-                <Link href="https://wa.me/34955737322" target="_blank">
+              <div className="flex items-start gap-3">
+                <div className="relative h-12 w-12 overflow-hidden rounded-full border-2 border-[#1F8A0D] bg-white/80 shadow-lg">
+                  <Image
+                    src="/static/chatbot_profile_picture.webp"
+                    alt="Chatbot avatar"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="flex-1">
+                  <h4 className="text-lg sm:text-xl font-semibold text-[#0c3b52] dark:text-white">
+                    {t("whatsapp.title")}
+                  </h4>
+                  <p className="mt-1 text-xs sm:text-sm text-gray-700 dark:text-gray-300">
+                    {t("whatsapp.subtitle")}
+                  </p>
+                </div>
+              </div>
+                <Button
+                  asChild
+                  className="mt-3 w-full bg-gradient-to-br from-[#0b3c0a] to-[#1f8a0d] text-white shadow-lg shadow-[#0b3c0a]/40 hover:shadow-[#1f8a0d]/60 hover:opacity-90 transition-all duration-200 font-semibold rounded-lg"
+                >
+                  <a href="https://wa.me/34621151468" target="_blank" rel="noopener noreferrer">
                   {t("whatsapp.cta")}
-                </Link>
-              </Button>
+                  </a>
+                </Button>
             </div>
           </div>
         </div>

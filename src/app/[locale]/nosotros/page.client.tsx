@@ -131,7 +131,7 @@ export default function NosotrosPage({ locale }: { locale: string }) {
               <div className="grid gap-12 sm:grid-cols-2 items-center justify-center">
                 <div className="flex items-center justify-center">
                   <Image
-                    src="/static/nosotros/unef.png"
+                    src="/static/nosotros/unef.webp"
                     alt="UNEF - Unión Española Fotovoltaica"
                     width={240}
                     height={120}
@@ -140,7 +140,7 @@ export default function NosotrosPage({ locale }: { locale: string }) {
                 </div>
                 <div className="flex items-center justify-center">
                   <Image
-                    src="/static/nosotros/cesur.png"
+                    src="/static/nosotros/cesur.webp"
                     alt="CESUR - Asociación de Empresarios del Sur de España"
                     width={240}
                     height={120}
