@@ -319,9 +319,8 @@
       }
     },
     "whatsapp": {
-      "title": "WhatsApp",
-      "subtitle": "Message us for quick answers about solar energy.",
-      "cta": "Open chat"
+      "title": "GEESOL Renovables Chatbot",
+      "cta": "Open the AI Chatbot"
     },
     "map": {
       "eyebrow": "Map",
@@ -341,6 +340,25 @@
       "primary": "Call now",
       "secondary": "Referral program"
     }
+  },
+  "whatsapp": {
+    "openLine": "Open Chatbot",
+    "tooltip": "You'll be redirected to GEESOL Renovables' AI-powered customer-assistance chatbot.",
+    "title": "GEESOL Renovables Chatbot",
+    "bubbleTagline": "AI assistant · 24/7",
+    "description": "This virtual assistant handles questions about solar solutions, savings, subsidies, and project follow-up.",
+    "aiNotice": "Powered by artificial intelligence to assist you in real time.",
+    "phoneNotice": "Official number: +34 621 15 14 68",
+    "canHelpWith": "It can help you with",
+    "help1": "Answering technical and commercial questions",
+    "help2": "Explaining savings, financing, and subsidies",
+    "help3": "Scheduling appointments or tracking your project",
+    "help4": "Clarifying requirements and regulations",
+    "help5": "Post-installation support and maintenance",
+    "requestAssistance": "Open the chatbot in WhatsApp",
+    "responseTime": "Immediate replies 24/7 via our chatbot.",
+    "status": "Connected via +34 621 15 14 68",
+    "defaultWhatsAppMessage": "Hello, I would like to speak with the GEESOL Renovables customer-assistance chatbot."
   },
   "usPage": {
     "cta": {
@@ -427,6 +445,14 @@
     "shareLabel": "Share",
     "toc": {
       "title": "Table of contents"
+    },
+    "highlighted": {
+      "title": "Highlighted",
+      "previous": "Previous",
+      "next": "Next"
+    },
+    "otherPosts": {
+      "title": "Other posts"
     },
     "share": {
       "label": "Share",

@@ -249,7 +249,7 @@ const CookieConsent = () => {
             {[
               {
                 key: 'necessary',
-                icon: <Shield className="text-[#1F8A0D] dark:text-[#7CFC00]" size={18} />,
+                icon: <Shield className="text-[#D01B17] dark:text-[#FF6B6B]" size={18} />,
                 enabled: true,
                 toggle: false,
                 note: t('necessaryAlways')
@@ -288,7 +288,7 @@ const CookieConsent = () => {
                   {toggle ? (
                     <Slider checked={enabled} onChange={() => handlePreferenceChange(key as 'necessary' | 'functional' | 'analytics' | 'marketing')} />
                   ) : (
-                    <div className="bg-[#1F8A0D] dark:bg-[#7CFC00] rounded-full w-5 h-5 flex items-center justify-center">
+                    <div className="bg-[#D01B17] dark:bg-[#FF6B6B] rounded-full w-5 h-5 flex items-center justify-center">
                       <div className="w-2.5 h-2.5 bg-white rounded-full" />
                     </div>
                   )}

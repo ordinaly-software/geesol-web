@@ -20,6 +20,7 @@ import { ThemeProvider } from "@/contexts/theme-context";
 import { NextIntlClientProvider } from "next-intl";
 import AnalyticsManager from "@/utils/analyticsManager";
 import ServiceWorkerRegistrar from "@/components/pwa/service-worker-registrar";
+import WhatsAppBubble from "@/components/ui/whatsapp-bubble";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -206,6 +207,7 @@ export default async function RootLayout({
             <Footer />
             <CookieConsent />
             <BackToTopButton />
+            <WhatsAppBubble />
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>
