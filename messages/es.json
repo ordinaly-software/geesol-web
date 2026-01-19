@@ -319,9 +319,8 @@
       }
     },
     "whatsapp": {
-      "title": "WhatsApp",
-      "subtitle": "Escríbenos para resolver dudas rápidas sobre energía solar.",
-      "cta": "Abrir chat"
+      "title": "Chatbot GEESOL Renovables",
+      "cta": "Abrir Chatbot AI"
     },
     "map": {
       "eyebrow": "Mapa",
@@ -341,6 +340,25 @@
       "primary": "Llamar ahora",
       "secondary": "Programa de referidos"
     }
+  },
+  "whatsapp": {
+    "openLine": "Abrir Chatbot",
+    "tooltip": "Serás redirigido al Chatbot de asistencia al cliente potenciado por inteligencia artificial de GEESOL Renovables.",
+    "title": "Chatbot GEESOL Renovables",
+    "bubbleTagline": "Asistente IA 24/7",
+    "description": "Este asistente virtual responde preguntas sobre soluciones solares, ahorros, subvenciones y el seguimiento de tu proyecto.",
+    "aiNotice": "Potenciado por inteligencia artificial para asistirte en tiempo real.",
+    "phoneNotice": "Número oficial: +34 621 15 14 68",
+    "canHelpWith": "Puede ayudarte con",
+    "help1": "Responder dudas técnicas y comerciales",
+    "help2": "Explicar ahorros, financiación y ayudas",
+    "help3": "Agendar citas o seguimiento de tu instalación",
+    "help4": "Aclarar trámites y normativa",
+    "help5": "Soporte post-instalación y mantenimiento",
+    "requestAssistance": "Abrir el Chatbot en WhatsApp",
+    "responseTime": "Respuestas inmediatas 24/7 vía nuestro Chatbot.",
+    "status": "Conectado al +34 621 15 14 68",
+    "defaultWhatsAppMessage": "Hola, quiero hablar con el Chatbot de GEESOL Renovables para asistencia al cliente."
   },
   "usPage": {
     "cta": {
@@ -422,6 +440,12 @@
       "title": "No se han encontrado publicaciones.",
       "description": "Vuelve pronto para nuevos artículos y actualizaciones."
     },
+    "backToBlog": "Volver al blog",
+    "postCategories": "Categorías",
+    "shareLabel": "Compartir",
+    "toc": {
+      "title": "Índice de contenidos"
+    },
     "highlighted": {
       "title": "Destacados",
       "previous": "Anterior",
@@ -429,12 +453,6 @@
     },
     "otherPosts": {
       "title": "Más publicaciones"
-    },
-    "backToBlog": "Volver al blog",
-    "postCategories": "Categorías",
-    "shareLabel": "Compartir",
-    "toc": {
-      "title": "Índice de contenidos"
     },
     "share": {
       "label": "Compartir",

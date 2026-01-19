@@ -3,8 +3,8 @@
   "short_name": "Geesol", 
   "start_url": "/",
   "display": "standalone",
-  "theme_color": "#22A60D",
-  "background_color": "#22A60D",
+  "theme_color": "#D01B17",
+  "background_color": "#D01B17",
   "icons": [
     {
       "src": "android-chrome-192x192.png",
