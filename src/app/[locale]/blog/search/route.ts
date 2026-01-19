@@ -8,7 +8,6 @@ const MAX_PAGE_SIZE = 24;
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url)
   const q = searchParams.get('q')
-  const tag = searchParams.get('tag')
   const cat = searchParams.get('category')
   const order = searchParams.get('order') === 'asc' ? 'asc' : 'desc'
   const pageParam = Number(searchParams.get('page') || '1')
@@ -25,7 +24,6 @@ export async function GET(req: NextRequest) {
     offset,
     end,
     q: q ?? '',
-    tag: tag ?? '',
     cat: cat ?? ''
   }
 

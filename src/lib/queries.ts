@@ -1,10 +1,10 @@
 import {groq} from 'next-sanity'
 
 const publicPostFilter =
-  `_type=="post" && (!defined(isPrivate) || isPrivate==false) && (!defined(publishedAt) || publishedAt <= now())`;
+  `_type=="post" && (!defined(isPrivate) || isPrivate==false)`;
 
 const searchablePostFilter =
-  `${publicPostFilter} && (!defined($q) || $q == "" || pt::text(body) match $q) && (!defined($tag) || $tag == "" || $tag in tags[]->slug.current) && (!defined($cat) || $cat == "" || $cat in categories[]->slug.current || $cat in categories[]->title)`;
+  `${publicPostFilter} && (!defined($q) || $q == "" || pt::text(body) match $q) && (!defined($cat) || $cat == "" || $cat in categories[]->slug.current || $cat in categories[]->title)`;
 
 const orderedPosts = '| order(coalesce(publishedAt,_updatedAt) desc)';
 
@@ -28,7 +28,6 @@ export const postFields = groq`{
     "slug": slug.current,
     ogImage { asset, alt }
   },
-  "tags": tags[]-> { title, "slug": slug.current },
   "author": author-> { name, avatar },
   publishedAt,
   updatedAt,
@@ -37,7 +36,7 @@ export const postFields = groq`{
 
 export const allPublicSlugs = groq`*[${publicPostFilter} && defined(slug.current)].slug.current`
 
-export const postBySlug = groq`*[_type=="post" && slug.current==$slug && (!defined(isPrivate) || isPrivate==false) && (!defined(publishedAt) || publishedAt <= now())][0] ${postFields}`
+export const postBySlug = groq`*[_type=="post" && slug.current==$slug && (!defined(isPrivate) || isPrivate==false)][0] ${postFields}`
 
 export const listPosts = groq`*[${publicPostFilter}] ${orderedPosts} [0...50] ${postFields}`
 
