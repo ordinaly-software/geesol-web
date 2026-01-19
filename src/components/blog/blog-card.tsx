@@ -32,6 +32,10 @@ export const BlogCard: React.FC<BlogCardProps> = ({ post, onCategoryClick }) => 
     return tagStyles[Math.abs(hash) % tagStyles.length];
   };
 
+  const rawDescription = post.seoDescription || post.excerpt || "";
+  const truncatedDescription =
+    rawDescription.length > 250 ? `${rawDescription.slice(0, 250).trim()}…` : rawDescription;
+
   return (
     <div
       className="
@@ -127,9 +131,9 @@ export const BlogCard: React.FC<BlogCardProps> = ({ post, onCategoryClick }) => 
         )}
 
         {/* Description – desktop only */}
-        {(post.seoDescription || post.excerpt) && (
-          <p className="hidden md:block text-gray-600 dark:text-gray-400 text-base opacity-80 mt-2">
-            {post.seoDescription || post.excerpt}
+        {truncatedDescription && (
+          <p className="hidden md:block text-gray-600 dark:text-gray-400 text-sm leading-relaxed opacity-80 mt-2 max-h-20 overflow-hidden">
+            {truncatedDescription}
           </p>
         )}
       </div>
