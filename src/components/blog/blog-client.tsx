@@ -1,8 +1,10 @@
 "use client";
 
+import Footer from '@/components/ui/footer';
 import BackToTopButton from '@/components/ui/back-to-top-button';
 import { useTranslations, useLocale } from 'next-intl';
 import { BlogCard } from './blog-card';
+import { HighlightedCarousel } from './highlighted-carousel';
 import type { BlogPost, Category } from './types';
 import { Search } from 'lucide-react';
 import Banner from '@/components/ui/banner';
@@ -16,6 +18,7 @@ type Props = {
   posts: BlogPost[];
   total: number;
   pageSize?: number;
+  highlightedPosts?: BlogPost[];
 };
 
 const mapCategories = (items: BlogPost[]) => {
@@ -32,7 +35,7 @@ const mapCategories = (items: BlogPost[]) => {
   return categories;
 };
 
-export default function BlogClient({ posts: initialPosts, total: initialTotal, pageSize = 6 }: Props) {
+export default function BlogClient({ posts: initialPosts, total: initialTotal, pageSize = 6, highlightedPosts = [] }: Props) {
   const t = useTranslations('blog');
   const locale = useLocale() || 'es';
   const localePrefix = locale ? `/${locale}` : '';
@@ -177,10 +180,10 @@ export default function BlogClient({ posts: initialPosts, total: initialTotal, p
       <Banner
         title={t('title', { default: 'Blog' })}
         subtitle={t('subtitle', { default: 'Discover our latest news, articles, and updates.' })}
-        backgroundImage={'/static/footer_background.webp'}
+        backgroundImage={'/static/backgrounds/blog_background.webp'}
       >
-        <div className="max-w-2xl mx-auto bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-4 sm:p-6 shadow-xl mt-6">
-          <div className="flex flex-col md:flex-row gap-3 sm:gap-4 items-center w-full">
+        <div className="max-w-2xl mx-auto bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 shadow-xl mt-6">
+          <div className="flex flex-col md:flex-row gap-4 items-center">
             {/* Search Bar */}
             <div className="relative flex-1 w-full">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
@@ -188,41 +191,44 @@ export default function BlogClient({ posts: initialPosts, total: initialTotal, p
                 placeholder={t('searchPlaceholder', { default: 'Search blog posts...' })}
                 value={searchTerm}
                 onChange={e => handleSearchChange(e.target.value)}
-                className="pl-10 h-12 bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 focus:border-[#D01B17] dark:focus:border-[#D01B17]"
+                className="pl-10 h-12 bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 focus:border-[#1F8A0D] dark:focus:border-[#7CFC00]"
               />
             </div>
             {/* Category Dropdown */}
-            <div className="w-full md:w-auto">
-              <Dropdown
-                options={categories}
-                value={selectedCategory}
-                onChange={handleCategoryChange}
-                minWidth="200px"
-                placeholder={t('filters.category', { default: 'Category' })}
-                buttonClassName="w-full md:w-auto"
-              />
-            </div>
+            <Dropdown
+              options={categories}
+              value={selectedCategory}
+              onChange={handleCategoryChange}
+              minWidth="200px"
+              placeholder={t('filters.category', { default: 'Category' })}
+            />
             {/* Order Dropdown */}
-            <div className="w-full md:w-auto">
-              <Dropdown
-                options={[
-                  { value: 'desc', label: t('sort.newest', { default: 'Newest first' }) },
-                  { value: 'asc', label: t('sort.oldest', { default: 'Oldest first' }) },
-                ]}
-                value={order}
-                onChange={value => handleOrderChange(value as 'asc' | 'desc')}
-                minWidth="200px"
-                placeholder={t('sort.label', { default: 'Sort by date' })}
-                buttonClassName="w-full md:w-auto"
-              />
-            </div>
+            <Dropdown
+              options={[
+                { value: 'desc', label: t('sort.newest', { default: 'Newest first' }) },
+                { value: 'asc', label: t('sort.oldest', { default: 'Oldest first' }) },
+              ]}
+              value={order}
+              onChange={value => handleOrderChange(value as 'asc' | 'desc')}
+              minWidth="200px"
+              placeholder={t('sort.label', { default: 'Sort by date' })}
+            />
           </div>
         </div>
       </Banner>
 
+      {/* Highlighted Posts Carousel */}
+      <HighlightedCarousel 
+        posts={highlightedPosts} 
+        onCategoryClick={(cat: string) => handleCategoryChange(cat)}
+      />
+
       {/* Blog Posts Grid */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
+      <section className="py-10 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-6">
+            {t('otherPosts.title', { default: 'All posts' })}
+          </h2>
           {error && (
             <div className="text-center mb-8 text-red-600 dark:text-red-400">
               {error}
@@ -230,13 +236,13 @@ export default function BlogClient({ posts: initialPosts, total: initialTotal, p
           )}
 
           {totalPages > 1 && (
-            <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-4 text-xs sm:text-sm text-gray-600 dark:text-gray-300">
+            <div className="flex items-center justify-center gap-4 mb-4 text-sm text-gray-600 dark:text-gray-300">
               <div className="flex justify-center gap-2">
                 <button
                   type="button"
                   onClick={() => handlePageChange(currentPage - 1)}
                   disabled={currentPage === 1 || loading}
-                  className="flex items-center justify-center gap-2 px-3 py-2 sm:px-4 sm:py-2 rounded-full border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-200 disabled:opacity-50 disabled:cursor-not-allowed hover:border-[#D01B17] dark:hover:border-[#D01B17] hover:text-[#D01B17] dark:hover:text-[#D01B17] transition"
+                  className="flex items-center justify-center gap-2 px-4 py-2 rounded-full border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-200 disabled:opacity-50 disabled:cursor-not-allowed hover:border-[#1F8A0D] dark:hover:border-[#7CFC00] hover:text-[#1F8A0D] dark:hover:text-[#7CFC00] transition"
                 >
                   <ArrowLeft className="h-4 w-4" />
                   {t('pagination.prev', { default: 'Previous' })}
@@ -259,7 +265,7 @@ export default function BlogClient({ posts: initialPosts, total: initialTotal, p
                   type="button"
                   onClick={() => handlePageChange(currentPage + 1)}
                   disabled={currentPage === totalPages || loading}
-                  className="flex items-center justify-center gap-2 px-3 py-2 sm:px-4 sm:py-2 rounded-full border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-200 disabled:opacity-50 disabled:cursor-not-allowed hover:border-[#D01B17] dark:hover:border-[#D01B17] hover:text-[#D01B17] dark:hover:text-[#D01B17] transition"
+                  className="flex items-center justify-center gap-2 px-4 py-2 rounded-full border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-200 disabled:opacity-50 disabled:cursor-not-allowed hover:border-[#1F8A0D] dark:hover:border-[#7CFC00] hover:text-[#1F8A0D] dark:hover:text-[#7CFC00] transition"
                 >
                   {t('pagination.next', { default: 'Next' })}
                   <ArrowRight className="h-4 w-4" />
@@ -281,7 +287,7 @@ export default function BlogClient({ posts: initialPosts, total: initialTotal, p
               </p>
             </div>
           ) : (
-            <ul className="space-y-8 sm:space-y-12">
+            <ul className="space-y-12">
               {posts.map((p: BlogPost) => (
                 <li key={p.slug}>
                   <BlogCard
@@ -296,12 +302,12 @@ export default function BlogClient({ posts: initialPosts, total: initialTotal, p
           <br></br>
 
           {totalPages > 1 && (
-            <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-4 text-xs sm:text-sm text-gray-600 dark:text-gray-300">
+            <div className="flex items-center justify-center gap-4 mb-4 text-sm text-gray-600 dark:text-gray-300">
               <button
                 type="button"
                 onClick={() => handlePageChange(1)}
                 disabled={currentPage === 1 || loading}
-                  className="flex items-center justify-center gap-2 px-3 py-2 sm:px-4 sm:py-2 rounded-full border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-200 disabled:opacity-50 disabled:cursor-not-allowed hover:border-[#D01B17] dark:hover:border-[#D01B17] hover:text-[#D01B17] dark:hover:text-[#D01B17] transition"
+                  className="flex items-center justify-center gap-2 px-4 py-2 rounded-full border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-200 disabled:opacity-50 disabled:cursor-not-allowed hover:border-[#1F8A0D] dark:hover:border-[#7CFC00] hover:text-[#1F8A0D] dark:hover:text-[#7CFC00] transition"
               >
                 <ChevronsLeft className="h-4 w-4" />
                 {t('pagination.first', { default: 'First' })}
@@ -311,7 +317,7 @@ export default function BlogClient({ posts: initialPosts, total: initialTotal, p
                 type="button"
                 onClick={() => handlePageChange(currentPage - 1)}
                 disabled={currentPage === 1 || loading}
-                  className="flex items-center justify-center gap-2 px-3 py-2 sm:px-4 sm:py-2 rounded-full border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-200 disabled:opacity-50 disabled:cursor-not-allowed hover:border-[#D01B17] dark:hover:border-[#D01B17] hover:text-[#D01B17] dark:hover:text-[#D01B17] transition"
+                  className="flex items-center justify-center gap-2 px-4 py-2 rounded-full border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-200 disabled:opacity-50 disabled:cursor-not-allowed hover:border-[#1F8A0D] dark:hover:border-[#7CFC00] hover:text-[#1F8A0D] dark:hover:text-[#7CFC00] transition"
               >
                 <ArrowLeft className="h-4 w-4" />
                 {t('pagination.prev', { default: 'Previous' })}
@@ -329,7 +335,7 @@ export default function BlogClient({ posts: initialPosts, total: initialTotal, p
                   type="button"
                   onClick={() => handlePageChange(currentPage + 1)}
                   disabled={currentPage === totalPages || loading}
-                  className="flex items-center justify-center gap-2 px-3 py-2 sm:px-4 sm:py-2 rounded-full border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-200 disabled:opacity-50 disabled:cursor-not-allowed hover:border-[#D01B17] dark:hover:border-[#D01B17] hover:text-[#D01B17] dark:hover:text-[#D01B17] transition"
+                  className="flex items-center justify-center gap-2 px-4 py-2 rounded-full border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-200 disabled:opacity-50 disabled:cursor-not-allowed hover:border-[#1F8A0D] dark:hover:border-[#7CFC00] hover:text-[#1F8A0D] dark:hover:text-[#7CFC00] transition"
                 >
                   {t('pagination.next')}
                   <ArrowRight className="h-4 w-4" />
@@ -338,7 +344,7 @@ export default function BlogClient({ posts: initialPosts, total: initialTotal, p
                   type="button"
                   onClick={() => handlePageChange(totalPages)}
                   disabled={currentPage === totalPages || loading}
-                  className="flex items-center justify-center gap-2 px-3 py-2 sm:px-4 sm:py-2 rounded-full border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-200 disabled:opacity-50 disabled:cursor-not-allowed hover:border-[#D01B17] dark:hover:border-[#D01B17] hover:text-[#D01B17] dark:hover:text-[#D01B17] transition"
+                  className="flex items-center justify-center gap-2 px-4 py-2 rounded-full border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-200 disabled:opacity-50 disabled:cursor-not-allowed hover:border-[#1F8A0D] dark:hover:border-[#7CFC00] hover:text-[#1F8A0D] dark:hover:text-[#7CFC00] transition"
                 >
                   {t('pagination.last', { default: 'Last' })}
                   <ChevronsRight className="h-4 w-4" />
@@ -349,6 +355,7 @@ export default function BlogClient({ posts: initialPosts, total: initialTotal, p
         </div>
       </section>
 
+      <Footer />
       <BackToTopButton />
     </div>
   );

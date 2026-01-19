@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import BlogIndex from "./page.client";
 import { createPageMetadata } from "@/lib/metadata";
 import { client } from "@/lib/sanity";
-import { listPosts } from "@/lib/queries";
-import type { BlogPost } from "@/components/blog/types";
+import type { QueryParams } from "@sanity/client";
+import { paginatedPosts, highlightedPosts } from "@/lib/queries";
 import { getTranslations } from "next-intl/server";
 
 export const revalidate = 300;
@@ -26,7 +25,21 @@ export async function generateMetadata({
   });
 }
 
-export default async function BlogPage() {
-  const posts = await client.fetch<BlogPost[]>(listPosts, {}, { next: { tags: ["blog"] } });
-  return <BlogIndex posts={posts} />;
+export default async function BlogIndex() {
+  const pageSize = 6;
+  const params = {
+    offset: 0,
+    end: pageSize,
+    q: "",
+    tag: null,
+    cat: null,
+  } as unknown as QueryParams;
+
+  const [{ items, total }, highlighted] = await Promise.all([
+    client.fetch(paginatedPosts, params, { next: { tags: ['blog'] } }),
+    client.fetch(highlightedPosts, {}, { next: { tags: ['blog'] } })
+  ]);
+
+  const { default: BlogClient } = await import('@/components/blog/blog-client');
+  return <BlogClient posts={items} total={total} pageSize={pageSize} highlightedPosts={highlighted} />;
 }

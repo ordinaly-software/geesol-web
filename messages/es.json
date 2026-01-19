@@ -422,6 +422,14 @@
       "title": "No se han encontrado publicaciones.",
       "description": "Vuelve pronto para nuevos artículos y actualizaciones."
     },
+    "highlighted": {
+      "title": "Destacados",
+      "previous": "Anterior",
+      "next": "Siguiente"
+    },
+    "otherPosts": {
+      "title": "Más publicaciones"
+    },
     "backToBlog": "Volver al blog",
     "postCategories": "Categorías",
     "shareLabel": "Compartir",
