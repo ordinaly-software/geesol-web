@@ -38,7 +38,7 @@ export const SharePostButtons: React.FC<Props> = ({ title, excerpt, slug, theme 
 
   const siteTag = (typeof window !== 'undefined' && window.location && window.location.hostname)
     ? window.location.hostname.replace(/^www\./, '')
-    : 'Ordinaly';
+    : 'GEESOL';
 
   const excerptSuffix = excerpt ? ` - ${excerpt}` : '';
   const textBase = t('shareMessage', {

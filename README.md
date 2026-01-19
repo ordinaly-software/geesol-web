@@ -17,7 +17,6 @@
   - [Variables de entorno](#variables-de-entorno)
   - [Instalacion y ejecucion](#instalacion-y-ejecucion)
 - [Testing](#testing)
-- [Contribuir](#contribuir)
 - [Licencia](#licencia)
 - [Reconocimientos](#reconocimientos)
 
@@ -129,12 +128,6 @@ npx lighthouse http://localhost:3000/es --form-factor=mobile --view
 
 ---
 
-##  Contribuir
-
-- **💬 [Únete a las discusiones](https://LOCAL/Developer/ordinaly/discussions)**: Comparte tus ideas, proporciona comentarios o haz preguntas.
-- **🐛 [Reportar problemas](https://LOCAL/Developer/ordinaly/issues)**: Envía errores encontrados o registra solicitudes de funciones para el proyecto `ordinaly`.
-- **💡 [Enviar solicitudes de extracción](https://LOCAL/Developer/ordinaly/blob/main/CONTRIBUTING.md)**: Revisa las PR abiertas y envía tus propias PR.
-
 
 <details closed>
 <summary>Guías de contribución</summary>
@@ -143,7 +136,7 @@ npx lighthouse http://localhost:3000/es --form-factor=mobile --view
 1. **Haz un fork del repositorio**: Comienza haciendo un fork del repositorio del proyecto a tu cuenta de LOCAL.
 2. **Clona localmente**: Clona el repositorio forkeado en tu máquina local usando un cliente de git.
     ```sh
-    git clone /home/tu_usuario/Developer/ordinaly
+    git clone /home/tu_usuario/Developer/geesol-web
     ```
 3. **Crea una nueva rama**: Trabaja siempre en una nueva rama, dándole un nombre descriptivo.
     ```sh
@@ -162,16 +155,6 @@ npx lighthouse http://localhost:3000/es --form-factor=mobile --view
 8. **Envía una solicitud de extracción**: Crea una PR contra el repositorio del proyecto original. Describe claramente los cambios y sus motivaciones.
 9. **Revisión**: Una vez que tu PR sea revisada y aprobada, se fusionará en la rama principal. ¡Felicidades por tu contribución!
 </details>
-
-<!-- <details closed>
-<summary>Gráfico de contribuidores</summary>
-<br>
-<p align="left">
-   <a href="https://LOCAL{/Developer/ordinaly/}graphs/contributors">
-      <img src="https://contrib.rocks/image?repo=Developer/ordinaly">
-   </a>
-</p>
-</details> -->
 
 ---
 
