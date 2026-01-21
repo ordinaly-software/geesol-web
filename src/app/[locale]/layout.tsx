@@ -18,7 +18,7 @@ import {
 } from "@/lib/metadata";
 import { ThemeProvider } from "@/contexts/theme-context";
 import { NextIntlClientProvider } from "next-intl";
-import AnalyticsManager from "@/utils/analyticsManager";
+import GoogleAnalyticsLoader from "@/components/analytics/google-analytics-loader";
 import ServiceWorkerRegistrar from "@/components/pwa/service-worker-registrar";
 import WhatsAppBubble from "@/components/ui/whatsapp-bubble";
 
@@ -167,37 +167,8 @@ export default async function RootLayout({
         >
           Skip to content
         </a>
-        {process.env.NODE_ENV === "production" && GA_ID && (
-          <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
-              strategy="afterInteractive"
-            />
-            <Script id="gtag-init" strategy="afterInteractive">
-              {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                window.gtag = gtag;
 
-                // Consent default (RGPD)
-                gtag('consent', 'default', {
-                  ad_storage: 'denied',
-                  analytics_storage: 'denied',
-                  functionality_storage: 'denied',
-                  security_storage: 'granted',
-                  wait_for_update: 500
-                });
-
-                gtag('js', new Date());
-
-                // Init Google tag (GA4)
-                gtag('config', '${GA_ID}', { anonymize_ip: true });
-              `}
-            </Script>
-          </>
-        )}
-
-        <AnalyticsManager />
+        <GoogleAnalyticsLoader />
 
         <NextIntlClientProvider>
           <ThemeProvider>
