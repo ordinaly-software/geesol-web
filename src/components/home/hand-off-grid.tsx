@@ -57,7 +57,7 @@ export const HandOffGridSection = () => {
                   alt={item.title}
                   width={56}
                   height={56}
-                  className="sm:w-18 sm:h-18 w-14 h-14 object-contain"
+                  className="sm:w-16 sm:h-16 w-14 h-14 object-contain"
                 />
               </div>
               <h4 className="mb-2 sm:mb-4 text-base sm:text-xl font-bold italic text-black dark:text-white break-words hyphens-auto">
