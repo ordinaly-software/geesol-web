@@ -5,12 +5,13 @@ import { useMemo } from "react";
 import { useCookiePreferences } from "@/hooks/useCookiePreferences";
 
 const GA_TAG_ID = process.env.NEXT_PUBLIC_GOOGLE_TAG_ID;
+const IS_PRODUCTION = process.env.NODE_ENV === "production";
 
 export default function GoogleAnalyticsLoader() {
   const preferences = useCookiePreferences();
   const analyticsAllowed = useMemo(() => Boolean(preferences?.analytics), [preferences?.analytics]);
 
-  if (!analyticsAllowed || !GA_TAG_ID) {
+  if (!IS_PRODUCTION || !analyticsAllowed || !GA_TAG_ID) {
     return null;
   }
 
