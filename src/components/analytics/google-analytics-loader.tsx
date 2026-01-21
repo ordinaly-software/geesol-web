@@ -25,7 +25,7 @@ export default function GoogleAnalyticsLoader() {
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config','${GA_TAG_ID}')
+          gtag('config', '${GA_TAG_ID}')
         `}
       </Script>
     </>
