@@ -256,32 +256,32 @@ export function TestimonialsSection({ t, onMetaUpdate }: SectionProps) {
   return (
     <section
       ref={sectionRef}
-      className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900/50"
+      className="py-12 sm:py-16 lg:py-20 px-3 sm:px-4 lg:px-8 bg-gray-50 dark:bg-gray-900/50"
     >
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
+        <div className="text-center mb-10 sm:mb-16">
+          <h2 className="text-xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-white px-2 sm:px-4 leading-tight sm:leading-snug break-words">
             {t("testimonials.title")}
           </h2>
-          <div className="mt-6 flex flex-col items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
+          <div className="mt-4 sm:mt-6 flex flex-col items-center gap-2 sm:gap-3 text-xs sm:text-sm text-gray-600 dark:text-gray-400">
             {shouldShowSkeleton ? (
               <>
-                <div className="h-6 w-36 bg-gray-200 dark:bg-gray-700 rounded animate-pulse"></div>
-                <div className="h-4 w-60 bg-gray-200 dark:bg-gray-700 rounded animate-pulse"></div>
+                <div className="h-5 sm:h-6 w-24 sm:w-36 bg-gray-200 dark:bg-gray-700 rounded animate-pulse"></div>
+                <div className="h-3 sm:h-4 w-48 sm:w-60 bg-gray-200 dark:bg-gray-700 rounded animate-pulse"></div>
               </>
             ) : (
               <>
                 {aggregateRating !== null && aggregateCount !== null && (
-                  <div className="flex flex-wrap items-center justify-center gap-2">
-                    <div className="flex items-center gap-2">
-                      <span className="text-2xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
+                  <div className="flex flex-wrap items-center justify-center gap-1 sm:gap-2">
+                    <div className="flex items-center gap-1 sm:gap-2">
+                      <span className="text-lg sm:text-2xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
                         {aggregateRating.toFixed(1)}
                       </span>
                       <div className="flex">
                         {Array.from({ length: 5 }).map((_, index) => (
                           <svg
                             key={index}
-                            className={`w-5 h-5 ${
+                            className={`w-4 sm:w-5 h-4 sm:h-5 ${
                               index < clampStars(aggregateRating)
                                 ? "text-yellow-400"
                                 : "text-gray-300 dark:text-gray-700"
@@ -302,15 +302,15 @@ export function TestimonialsSection({ t, onMetaUpdate }: SectionProps) {
                     </span>
                   </div>
                 )}
-                <div className="flex flex-wrap items-center justify-center gap-3">
+                <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
                   {googleData?.googleMapsUrl && (
                     <Button
                       asChild
                       size="sm"
-                      className="gap-2 bg-gradient-to-r from-[#0c3b52] to-[#1d5675] text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition"
+                      className="gap-1 sm:gap-2 text-xs sm:text-sm bg-gradient-to-r from-[#0c3b52] to-[#1d5675] text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition"
                     >
                       <a href={googleData.googleMapsUrl} target="_blank" rel="noreferrer">
-                        <BadgeCheck className="h-4 w-4" />
+                        <BadgeCheck className="h-3 sm:h-4 w-3 sm:w-4" />
                         {t("testimonials.googleLink")}
                       </a>
                     </Button>
@@ -319,10 +319,10 @@ export function TestimonialsSection({ t, onMetaUpdate }: SectionProps) {
                     <Button
                       asChild
                       size="sm"
-                      className="gap-2 bg-gradient-to-r from-[#c83c3e] to-[#f25f5c] text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition"
+                      className="gap-1 sm:gap-2 text-xs sm:text-sm bg-gradient-to-r from-[#c83c3e] to-[#f25f5c] text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition"
                     >
                       <a href={googleData.writeReviewUrl} target="_blank" rel="noreferrer">
-                        <GoogleIcon className="h-4 w-4" />
+                        <GoogleIcon className="h-3 sm:h-4 w-3 sm:w-4" />
                         {t("testimonials.googleWrite")}
                       </a>
                     </Button>
@@ -338,13 +338,13 @@ export function TestimonialsSection({ t, onMetaUpdate }: SectionProps) {
           <div
             ref={scrollRef}
             onScroll={checkScrollability}
-            className="flex gap-6 overflow-x-auto scroll-smooth pb-6 [scrollbar-width:none] [-ms-overflow-style:none]"
+            className="flex gap-3 sm:gap-4 lg:gap-6 overflow-x-auto scroll-smooth pb-4 sm:pb-6 [scrollbar-width:none] [-ms-overflow-style:none]"
           >
             {shouldShowSkeleton
               ? Array.from({ length: 3 }).map((_, index) => (
                   <div
                     key={`testimonial-skeleton-${index}`}
-                    className="bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-lg min-w-[260px] sm:min-w-[300px] md:min-w-[320px] animate-pulse"
+                    className="bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl p-4 sm:p-5 shadow-md sm:shadow-lg min-w-[240px] sm:min-w-[280px] md:min-w-[300px] animate-pulse"
                   >
                     <div className="flex items-center mb-3">
                       <div className="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 mr-3"></div>
@@ -370,18 +370,18 @@ export function TestimonialsSection({ t, onMetaUpdate }: SectionProps) {
               : visibleTestimonials.map((item, index) => (
                   <div
                     key={`${item.name}-${index}`}
-                    className="scroll-animate fade-in-up bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-lg min-w-[260px] sm:min-w-[300px] md:min-w-[320px]"
+                    className="scroll-animate fade-in-up bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl p-4 sm:p-5 shadow-md sm:shadow-lg min-w-[240px] sm:min-w-[280px] md:min-w-[300px]"
                     style={{ animationDelay: `${index * 0.08}s` }}
                   >
-                    <div className="flex items-center mb-3">
+                    <div className="flex items-center mb-2 sm:mb-3 gap-2 sm:gap-3">
                       {item.profilePhotoUrl && !failedImages[item.profilePhotoUrl] ? (
-                        <div className="w-10 h-10 relative mr-3">
+                        <div className="w-9 sm:w-10 h-9 sm:h-10 relative flex-shrink-0">
                           <Image
                             src={item.profilePhotoUrl}
                             alt={item.name}
                             width={40}
                             height={40}
-                            className="rounded-full object-cover"
+                            className="rounded-full object-cover w-full h-full"
                             loading="lazy"
                             decoding="async"
                             referrerPolicy="no-referrer"
@@ -395,27 +395,27 @@ export function TestimonialsSection({ t, onMetaUpdate }: SectionProps) {
                         </div>
                       ) : (
                         <div
-                          className={`w-10 h-10 bg-gradient-to-br ${
+                          className={`w-9 sm:w-10 h-9 sm:h-10 bg-gradient-to-br ${
                             item.color ?? avatarGradients[index % avatarGradients.length]
-                          } rounded-full flex items-center justify-center text-white font-semibold text-base mr-3`}
+                          } rounded-full flex items-center justify-center text-white font-semibold text-sm sm:text-base flex-shrink-0`}
                         >
                           {item.initials ?? getInitials(item.name)}
                         </div>
                       )}
-                      <div>
-                        <p className="text-sm font-semibold text-gray-900 dark:text-white">
+                      <div className="min-w-0">
+                        <p className="text-xs sm:text-sm font-semibold text-gray-900 dark:text-white truncate">
                           {item.name}
                         </p>
                         {item.meta && (
-                          <p className="text-xs text-gray-600 dark:text-gray-400">{item.meta}</p>
+                          <p className="text-xs text-gray-600 dark:text-gray-400 truncate">{item.meta}</p>
                         )}
                       </div>
                     </div>
-                    <div className="flex mb-2">
+                    <div className="flex mb-2 gap-0.5">
                       {Array.from({ length: 5 }).map((_, i) => (
                         <svg
                           key={i}
-                          className={`w-4 h-4 ${
+                          className={`w-3.5 sm:w-4 h-3.5 sm:h-4 ${
                             i < clampStars(item.rating)
                               ? "text-yellow-400"
                               : "text-gray-300 dark:text-gray-700"
@@ -431,16 +431,16 @@ export function TestimonialsSection({ t, onMetaUpdate }: SectionProps) {
                       <div>
                         <p
                           className={`text-sm text-gray-700 dark:text-gray-300 leading-relaxed ${
-                            expandedCards[`${item.name}-${index}`] ? "" : "line-clamp-3"
+                            expandedCards[`${item.name}-${index}`] ? "" : "line-clamp-2 sm:line-clamp-3"
                           }`}
                         >
                           “{item.quote}”
                         </p>
-                        {item.quote.length > 140 && (
+                        {item.quote.length > 100 && (
                           <button
                             type="button"
                             onClick={() => toggleExpanded(`${item.name}-${index}`)}
-                            className="mt-2 text-xs font-semibold text-red-800 hover:underline dark:text-red-300"
+                            className="mt-1 sm:mt-2 text-xs font-semibold text-red-800 hover:underline dark:text-red-300"
                           >
                             {expandedCards[`${item.name}-${index}`]
                               ? t("testimonials.readLess")
@@ -452,24 +452,24 @@ export function TestimonialsSection({ t, onMetaUpdate }: SectionProps) {
                   </div>
                 ))}
           </div>
-          <div className="mr-2 mt-4 flex justify-end gap-2 px-1">
+          <div className="mr-1 sm:mr-2 mt-3 sm:mt-4 flex justify-end gap-1 sm:gap-2 px-0.5 sm:px-1">
             <button
-              className="relative z-40 flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 disabled:opacity-50"
+              className="relative z-40 flex h-8 sm:h-10 w-8 sm:w-10 items-center justify-center rounded-full bg-gray-100 disabled:opacity-50"
               onClick={handleScrollLeft}
               disabled={!canScrollLeft}
               type="button"
               aria-label={t("testimonials.scrollLeft")}
             >
-              <IconArrowNarrowLeft className="h-6 w-6 text-gray-500" />
+              <IconArrowNarrowLeft className="h-4 sm:h-6 w-4 sm:w-6 text-gray-500" />
             </button>
             <button
-              className="relative z-40 flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 disabled:opacity-50"
+              className="relative z-40 flex h-8 sm:h-10 w-8 sm:w-10 items-center justify-center rounded-full bg-gray-100 disabled:opacity-50"
               onClick={handleScrollRight}
               disabled={!canScrollRight}
               type="button"
               aria-label={t("testimonials.scrollRight")}
             >
-              <IconArrowNarrowRight className="h-6 w-6 text-gray-500" />
+              <IconArrowNarrowRight className="h-4 sm:h-6 w-4 sm:w-6 text-gray-500" />
             </button>
           </div>
         </div>

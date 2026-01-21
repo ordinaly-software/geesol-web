@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import HomePage from "./page.client";
+import HomePage from "./page-shell";
 import { createPageMetadata } from "@/lib/metadata";
 import { preload } from "react-dom";
 

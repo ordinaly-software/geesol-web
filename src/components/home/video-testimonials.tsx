@@ -124,19 +124,19 @@ export const VideoTestimonialsSection = ({
   const openLabel = t("videoTestimonials.open");
 
   return (
-    <section className="px-4 py-16">
-      <div className="mx-auto max-w-6xl overflow-hidden rounded-[56px_18px_56px_18px] bg-[#0c3b52] text-white shadow-[0_24px_70px_rgba(12,59,82,0.2)]">
-        <div className="grid gap-8 p-8 md:grid-cols-[1.1fr_1fr] md:items-center md:p-12">
-          <div className="space-y-5">
-            <h3 className="text-3xl font-black leading-tight md:text-4xl">
+    <section className="px-3 sm:px-4 py-12 sm:py-16">
+      <div className="mx-auto max-w-6xl overflow-hidden rounded-3xl sm:rounded-[56px_18px_56px_18px] bg-[#0c3b52] text-white shadow-[0_12px_40px_rgba(12,59,82,0.15)] sm:shadow-[0_24px_70px_rgba(12,59,82,0.2)]">
+        <div className="grid gap-6 sm:gap-8 p-5 sm:p-8 md:grid-cols-[1.1fr_1fr] md:items-center md:p-12">
+          <div className="space-y-3 sm:space-y-5">
+            <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black leading-tight sm:leading-snug break-words">
               {t("videoTestimonials.title")}
             </h3>
-            <p className="text-lg font-semibold text-white/90">{ratingText}</p>
-            <div className="flex items-center gap-2">
+            <p className="text-sm sm:text-base md:text-lg font-semibold text-white/90">{ratingText}</p>
+            <div className="flex items-center gap-1 sm:gap-2">
               {Array.from({ length: 5 }).map((_, index) => (
                 <svg
                   key={index}
-                  className={`h-8 w-8 ${
+                  className={`h-6 sm:h-8 w-6 sm:w-8 ${
                     index < Math.round(rating ?? 0)
                       ? "text-[#f5c245]"
                       : "text-white/40"
@@ -148,10 +148,10 @@ export const VideoTestimonialsSection = ({
                 </svg>
               ))}
             </div>
-            <p className="text-lg text-white/90">
+            <p className="text-base sm:text-lg text-white/90">
               {t("videoTestimonials.subtitle")}
             </p>
-            <Button asChild className="mt-2 w-fit bg-[#D01B17] text-white hover:bg-[#b01714]">
+            <Button asChild className="mt-2 sm:mt-4 w-fit bg-[#D01B17] text-white text-sm sm:text-base hover:bg-[#b01714] px-4 sm:px-6 py-2 sm:py-3">
               <Link
                 href={googleMapsUrl || "/contacto#mapa"}
                 target={googleMapsUrl ? "_blank" : undefined}
@@ -160,10 +160,10 @@ export const VideoTestimonialsSection = ({
               </Link>
             </Button>
           </div>
-          <div className="relative -mx-4 px-4 sm:-mx-6 sm:px-6 md:-mx-12 md:px-12">
+          <div className="relative px-2 sm:px-6 md:px-12">
             <div
               ref={scrollRef}
-              className="flex snap-x snap-mandatory gap-4 overflow-x-scroll scroll-smooth pb-2 touch-pan-x [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+              className="flex snap-x snap-mandatory gap-3 sm:gap-4 overflow-x-scroll scroll-smooth pb-2 touch-pan-x [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
               onMouseEnter={() => setIsAutoPlaying(false)}
               onMouseLeave={() => setIsAutoPlaying(true)}
             >
@@ -172,7 +172,7 @@ export const VideoTestimonialsSection = ({
                   key={video.id}
                   className="w-full shrink-0 snap-center sm:w-[85%] md:w-[75%] lg:w-[65%]"
                 >
-                    <div className="overflow-hidden rounded-[28px_12px_28px_12px] bg-black/20 shadow-[0_18px_45px_rgba(0,0,0,0.2)]">
+                    <div className="overflow-hidden rounded-2xl sm:rounded-[28px_12px_28px_12px] bg-black/20 shadow-[0_8px_24px_rgba(0,0,0,0.15)] sm:shadow-[0_18px_45px_rgba(0,0,0,0.2)]">
                     <YoutubeEmbed
                       videoId={video.id}
                       title={video.title}
@@ -184,7 +184,7 @@ export const VideoTestimonialsSection = ({
                       consentText={consentText}
                       openLabel={openLabel}
                     />
-                    <div className="bg-white/10 px-3 py-2 text-xs font-semibold text-white sm:px-4 sm:py-3 sm:text-sm">
+                    <div className="bg-white/10 px-2 sm:px-3 lg:px-4 py-1.5 sm:py-2 lg:py-3 text-xs font-semibold text-white">
                       {video.title}
                     </div>
                   </div>
@@ -193,31 +193,31 @@ export const VideoTestimonialsSection = ({
             </div>
             
             {/* Navigation arrows */}
-            <div className="mt-4 flex items-center justify-center gap-4">
+            <div className="mt-3 sm:mt-4 flex items-center justify-center gap-2 sm:gap-4">
               <button
-                className="flex h-9 w-9 items-center justify-center rounded-full bg-white/90 transition-all hover:bg-white sm:h-10 sm:w-10"
+                className="flex h-7 sm:h-9 lg:h-10 w-7 sm:w-9 lg:w-10 items-center justify-center rounded-full bg-white/90 transition-all hover:bg-white"
                 onClick={handleScrollLeft}
                 type="button"
                 aria-label={t("videoTestimonials.nav.prev")}
               >
-                <IconArrowNarrowLeft className="h-5 w-5 text-gray-700 sm:h-6 sm:w-6" />
+                <IconArrowNarrowLeft className="h-4 sm:h-5 lg:h-6 w-4 sm:w-5 lg:w-6 text-gray-700" />
               </button>
               
               {/* Dot indicators */}
-              <div className="flex gap-2">
+              <div className="flex gap-1 sm:gap-2">
                 {videos.map((_, index) => (
                   <button
                     key={index}
-                    className="flex h-11 w-11 items-center justify-center"
+                    className="flex h-8 sm:h-11 w-8 sm:w-11 items-center justify-center"
                     onClick={() => handleDotClick(index)}
                     type="button"
                     aria-label={t("videoTestimonials.nav.goto", { index: index + 1 })}
                   >
                     <span
-                      className={`h-2 rounded-full transition-all sm:h-2.5 ${
+                      className={`h-1.5 sm:h-2 rounded-full transition-all sm:h-2.5 ${
                         index === currentIndex
-                          ? "w-6 bg-white sm:w-8"
-                          : "w-2 bg-white/40 hover:bg-white/60 sm:w-2.5"
+                          ? "w-5 sm:w-6 lg:w-8 bg-white"
+                          : "w-1.5 sm:w-2 lg:w-2.5 bg-white/40 hover:bg-white/60"
                       }`}
                     />
                   </button>
@@ -225,12 +225,12 @@ export const VideoTestimonialsSection = ({
               </div>
               
               <button
-                className="flex h-9 w-9 items-center justify-center rounded-full bg-white/90 transition-all hover:bg-white sm:h-10 sm:w-10"
+                className="flex h-7 sm:h-9 lg:h-10 w-7 sm:w-9 lg:w-10 items-center justify-center rounded-full bg-white/90 transition-all hover:bg-white"
                 onClick={handleScrollRight}
                 type="button"
                 aria-label={t("videoTestimonials.nav.next")}
               >
-                <IconArrowNarrowRight className="h-5 w-5 text-gray-700 sm:h-6 sm:w-6" />
+                <IconArrowNarrowRight className="h-4 sm:h-5 lg:h-6 w-4 sm:w-5 lg:w-6 text-gray-700" />
               </button>
             </div>
           </div>

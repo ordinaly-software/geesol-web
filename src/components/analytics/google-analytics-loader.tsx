@@ -4,6 +4,7 @@ import Script from "next/script";
 import { useCookiePreferences } from "@/hooks/useCookiePreferences";
 
 const GA_TAG_ID = process.env.NEXT_PUBLIC_GOOGLE_TAG_ID;
+const IS_PRODUCTION = process.env.NODE_ENV === "production";
 
 export default function GoogleAnalyticsLoader() {
   const preferences = useCookiePreferences();
