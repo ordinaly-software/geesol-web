@@ -12,7 +12,7 @@ export function useCookiePreferences() {
     update();
 
     const handleStorage = (event: StorageEvent) => {
-      if (event.key && event.key !== "cookie-preferences") return;
+      if (event.key !== null && event.key !== "cookie-preferences") return;
       update();
     };
 
