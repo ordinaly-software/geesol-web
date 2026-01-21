@@ -8,13 +8,14 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useLocale, useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
+import { routing } from "@/i18n/routing";
 import { Menu as HoverMenu, MenuItem, HoveredLink, ProductItem } from "@/components/ui/navbar-menu";
 import { getServicesMenuItems } from "@/data/services-menu";
 
 const Navbar = () => {
   const t = useTranslations("home.navigation");
   const pathname = usePathname();
-  const locale = useLocale() || "es";
+  const locale = useLocale() || routing.defaultLocale;
   const [isScrolled, setIsScrolled] = useState(false);
   const [viewportWidth, setViewportWidth] = useState(1280);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -101,7 +102,10 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between py-2.5 sm:py-3.5 lg:py-4 gap-4">
-          <Link href="/" className="flex items-center gap-3">
+          <Link
+            href={locale === routing.defaultLocale ? "/" : `/${locale}`}
+            className="flex items-center gap-3"
+          >
             <Image
               src={isMobile ? "/logo_3.webp" : "/logo_2.webp"}
               alt="GEESOL"
