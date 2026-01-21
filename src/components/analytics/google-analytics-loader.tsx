@@ -1,7 +1,6 @@
 "use client";
 
 import Script from "next/script";
-import { useMemo } from "react";
 import { useCookiePreferences } from "@/hooks/useCookiePreferences";
 
 const GA_TAG_ID = process.env.NEXT_PUBLIC_GOOGLE_TAG_ID;
