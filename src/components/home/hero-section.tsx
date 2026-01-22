@@ -64,9 +64,6 @@ export const HeroSection = () => {
             <Button asChild className="w-full text-base sm:text-lg px-6 sm:px-8 py-2.5 sm:py-3 uppercase sm:w-auto">
               <Link href="#cta">{t("hero.cta")}</Link>
             </Button>
-            <span className="hidden sm:flex text-xs sm:text-sm font-semibold text-gray-600 dark:text-gray-300">
-              {t("hero.subtext")}
-            </span>
           </div>
         </div>
       </div>
