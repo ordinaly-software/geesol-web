@@ -41,7 +41,7 @@ const ogLocales: Record<string, string> = {
 };
 
 const defaultDescription =
-  "Instalaciones fotovoltaicas y soluciones de autoconsumo para hogares, empresas e industria en Espana.";
+  "Instalaciones fotovoltaicas y soluciones de autoconsumo para hogares, empresas e industria en Sevilla, Andalucía y Madrid.";
 
 type OpenGraphType =
   | "website"
