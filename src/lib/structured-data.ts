@@ -9,7 +9,8 @@ export function createStructuredData(locale?: string) {
   const productDescription = isEs
     ? "Estudio, diseño, instalación y monitorización de sistemas solares completos."
     : "Study, design, installation and monitoring of complete solar systems.";
-  const offersUrl = `${businessInfo.url}/servicios`;
+  const localePrefix = locale ? `/${locale}` : "";
+  const offersUrl = `${businessInfo.url}${localePrefix}/servicios`;
 
   return JSON.stringify({
     "@context": "https://schema.org",
