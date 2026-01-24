@@ -108,7 +108,7 @@ export const homeSeoCopy: Record<"es" | "en", HomeSeoCopy> = {
         huawei: "Hasta 99 % de eficiencia con algoritmo MPPT en toda la gama SUN2000.",
         victron: "97 % manteniendo el modo híbrido con baterías y apoyo a la red.",
         battery:
-          "Cargadores Type 2 y 22 kW que gestionan priorización enería solar en horario valle.",
+          "Cargadores Type 2 y 22 kW que gestionan priorización energía solar en horario valle.",
       },
       {
         metric: "Compacidad y diseño",
