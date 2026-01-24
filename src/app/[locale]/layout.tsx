@@ -21,6 +21,7 @@ import { NextIntlClientProvider } from "next-intl";
 import GoogleAnalyticsLoader from "@/components/analytics/google-analytics-loader";
 import ServiceWorkerRegistrar from "@/components/pwa/service-worker-registrar";
 import WhatsAppBubble from "@/components/ui/whatsapp-bubble";
+import { createStructuredData } from "@/lib/structured-data";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -30,10 +31,12 @@ const inter = Inter({
 });
 
 const baseDescription =
-  "Instalaciones fotovoltaicas y soluciones de autoconsumo para hogares, empresas e industria en Espana.";
+  "Instalaciones fotovoltaicas y soluciones de autoconsumo para hogares, empresas e industria con presencia en Camas (Sevilla) y Madrid.";
 
 const ogDescription =
-  "Instalaciones fotovoltaicas y soluciones de autoconsumo con asesoramiento y gestion integral en Espana.";
+  "Instalaciones fotovoltaicas y soluciones de autoconsumo con asesoramiento y gestión integral desde Camas (Sevilla) y Madrid.";
+
+const previewDomains = [".netlify.app", ".vercel.app"];
 
 export async function generateMetadata({
   params,
@@ -110,11 +113,15 @@ export default async function RootLayout({
 }) {
   const { locale } = await params;
 
+  const structuredData = createStructuredData(locale);
   if (!routing.locales.includes(locale as Locale)) notFound();
 
   const apiOrigin = getApiOrigin();
   // GA4 measurement ID (e.g. G-XXXXXXXXXX)
   const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
+  const shouldBlockIndexing =
+    process.env.NEXT_PUBLIC_BLOCK_INDEXING === "1" ||
+    previewDomains.some((domain) => metadataBaseUrl.includes(domain));
 
   return (
     <html lang={locale} className={inter.variable} suppressHydrationWarning>
@@ -123,6 +130,19 @@ export default async function RootLayout({
         {apiOrigin && <link rel="dns-prefetch" href={apiOrigin} />}
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+        {shouldBlockIndexing && (
+          <>
+            <meta name="robots" content="noindex,nofollow" />
+            <meta name="googlebot" content="noindex,nofollow" />
+          </>
+        )}
+        {structuredData && (
+          <script
+            id="geesol-structured-data"
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: structuredData }}
+          />
+        )}
         {/* Theme init */}
         <script
           dangerouslySetInnerHTML={{

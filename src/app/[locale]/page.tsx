@@ -24,7 +24,12 @@ export async function generateMetadata({
   });
 }
 
-export default async function Home() {
+export default async function Home({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
   preload("/static/home/main_home_ilustration.webp", { as: "image" });
-  return <HomePage />;
+  return <HomePage locale={locale} />;
 }
