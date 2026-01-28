@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import dynamic from "next/dynamic";
+import { HomeHubSpotFormSection } from "@/components/home/hubspot-form-section";
 
 const HomeTestimonials = dynamic(
   () => import("@/components/home/testimonials-wrapper").then((mod) => mod.HomeTestimonials),
@@ -52,6 +53,7 @@ export default function HomeSections() {
       <HandOffGridSection />
       <InstallationTypesSection />
       <StatsBarSection />
+      <HomeHubSpotFormSection />
     </>
   );
 }

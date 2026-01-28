@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 
 import { Button } from "@/components/ui/button";
 import { HeroHighlight, Highlight } from "@/components/ui/hero-highlight";
@@ -20,7 +20,7 @@ export const HeroSection = () => {
             <div className="absolute inset-0 bg-gradient-to-br from-[#0c3b52]/10 via-transparent to-[#D01B17]/10 z-10" />
             <Image
               src="/static/home/main_home_ilustration.webp"
-              alt={t("hero.imageAlt")}
+              alt="instalaciones fotovoltaicas"
               width={1200}
               height={900}
               className="h-full w-full object-cover"
@@ -29,24 +29,23 @@ export const HeroSection = () => {
               quality={70}
               sizes="(min-width: 1024px) 50vw, (min-width: 640px) 90vw, 100vw"
             />
-            <div className="absolute bottom-0 left-0 right-0 flex items-center justify-between gap-2 bg-white/90 px-3 sm:px-6 py-2 sm:py-4 text-xs sm:text-sm font-semibold text-[#0c3b52] backdrop-blur dark:bg-[#0b1220]/90 dark:text-gray-100 z-20">
-              <span>{t("hero.imageCaptionLeft")}</span>
-              <span>{t("hero.imageCaptionRight")}</span>
-            </div>
           </div>
         </div>
 
         <div className="relative z-10 flex-1 space-y-4 sm:space-y-6 text-left order-2 lg:order-1">
-          <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-[#0c3b52] dark:text-[#e9eef2]">
-            {t("hero.eyebrow")}
-          </p>
-          <h1 className="text-2xl font-black leading-tight sm:leading-snug text-[#0c3b52] dark:text-white sm:text-4xl md:text-5xl lg:text-6xl break-words">
+          <h1 className="text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-[#0c3b52] dark:text-[#e9eef2]">
+            instalaciones fotovoltaicas
+          </h1>
+          <h3 className="text-2xl font-black leading-tight sm:leading-snug text-[#0c3b52] dark:text-white sm:text-4xl md:text-5xl lg:text-6xl break-words">
             {t("hero.titleStart")}{" "}
             <Highlight className="from-[#f6c343] to-[#f59e0b] text-[#0c3b52]">
               {t("hero.titleHighlight")}
             </Highlight>{" "}
             {t("hero.titleEnd")}
-          </h1>
+          </h3>
+          <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-[#0c3b52] dark:text-[#e9eef2]">
+            {t("hero.eyebrow")}
+          </p>
           <p className="max-w-2xl text-base sm:text-lg text-gray-700 dark:text-gray-300 md:text-xl leading-relaxed">
             {t("hero.description")}
           </p>
@@ -62,7 +61,7 @@ export const HeroSection = () => {
           </div>
           <div className="flex flex-col gap-6 sm:gap-10 lg:flex-row lg:items-center lg:gap-4 pt-4 sm:pt-6">
             <Button asChild className="w-full text-base sm:text-lg px-6 sm:px-8 py-2.5 sm:py-3 uppercase sm:w-auto">
-              <Link href="#cta">{t("hero.cta")}</Link>
+              <Link href="/estudio-gratis">{t("hero.cta")}</Link>
             </Button>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import SistemasAisladosPage from "./page.client";
+import SistemasAisladosPage from "../empresa-placas-solares/sistemas-aislados/page.client";
 import { createPageMetadata } from "@/lib/metadata";
 
 export async function generateMetadata({
@@ -12,10 +12,8 @@ export async function generateMetadata({
 
   return createPageMetadata({
     locale,
-    path: "/servicios/sistemas-aislados",
-    title: isEs
-      ? "Sistemas aislados de red | GEESOL"
-      : "Off-grid solar systems | GEESOL",
+    path: "/sistemas-aislados",
+    title: isEs ? "Sistemas aislados | GEESOL" : "Off-grid solar systems | GEESOL",
     description: isEs
       ? "Energia solar para ubicaciones sin red con baterias y sistemas hibridos."
       : "Off-grid solar solutions with batteries and hybrid systems.",

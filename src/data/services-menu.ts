@@ -23,8 +23,8 @@ const servicesMenuSource: ServicesMenuSource[] = [
   {
     slug: "autoconsumo-domestico",
     title: {
-      es: "Autoconsumo domestico | GEESOL",
-      en: "Residential solar | GEESOL",
+      es: "Autoconsumo domestico",
+      en: "Residential solar",
     },
     description: {
       es: "Instalaciones solares para viviendas, ahorro en factura y gestion de ayudas.",
@@ -35,8 +35,8 @@ const servicesMenuSource: ServicesMenuSource[] = [
   {
     slug: "autoconsumo-industrial",
     title: {
-      es: "Autoconsumo industrial | GEESOL",
-      en: "Industrial solar | GEESOL",
+      es: "Autoconsumo industrial",
+      en: "Industrial solar",
     },
     description: {
       es: "Soluciones solares para empresas e industria con analisis de retorno y planificacion de obra.",
@@ -47,8 +47,8 @@ const servicesMenuSource: ServicesMenuSource[] = [
   {
     slug: "bombeo-solar",
     title: {
-      es: "Bombeo solar | GEESOL",
-      en: "Solar pumping | GEESOL",
+      es: "Bombeo solar",
+      en: "Solar pumping",
     },
     description: {
       es: "Sistemas de bombeo solar para agricultura y riego eficiente.",
@@ -59,8 +59,8 @@ const servicesMenuSource: ServicesMenuSource[] = [
   {
     slug: "galeria-instalaciones",
     title: {
-      es: "Galeria de instalaciones | GEESOL",
-      en: "Installation gallery | GEESOL",
+      es: "Galeria de instalaciones",
+      en: "Installation gallery",
     },
     description: {
       es: "Casos reales y proyectos de instalaciones fotovoltaicas en hogares y empresas.",
@@ -71,8 +71,8 @@ const servicesMenuSource: ServicesMenuSource[] = [
   {
     slug: "sistemas-aislados",
     title: {
-      es: "Sistemas aislados de red | GEESOL",
-      en: "Off-grid solar systems | GEESOL",
+      es: "Sistemas aislados de red",
+      en: "Off-grid solar systems",
     },
     description: {
       es: "Energia solar para ubicaciones sin red con baterias y sistemas hibridos.",

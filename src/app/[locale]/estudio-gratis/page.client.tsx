@@ -1,0 +1,86 @@
+"use client";
+
+import Banner from "@/components/ui/banner";
+import { HubSpotForm } from "@/components/ui/hubspot-form";
+import { useTranslations } from "next-intl";
+
+export default function EstudioGratisPage({ locale: _locale }: { locale: string }) {
+  const t = useTranslations("freeStudyPage");
+  const portalId = process.env.NEXT_PUBLIC_HUBSPOT_PORTAL_ID;
+  const headerFormId =
+    process.env.NEXT_PUBLIC_HUBSPOT_FREE_STUDY_FORM_ID ||
+    process.env.NEXT_PUBLIC_HUBSPOT_FORM_ID;
+  const footerFormId =
+    process.env.NEXT_PUBLIC_HUBSPOT_FREE_STUDY_FOOTER_FORM_ID || headerFormId;
+  const benefits = t.raw("benefits.items") as Array<{ title: string; description: string }>;
+
+  return (
+    <div className="min-h-screen bg-[#f7f8fb] text-[#0c1f2d] dark:bg-[#0b1220] dark:text-gray-100">
+      <Banner
+        title={t("hero.title")}
+        subtitle={t("hero.subtitle")}
+        backgroundImage="/static/footer_background.webp"
+      />
+
+      <section className="px-4 py-10 sm:py-16">
+        <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="rounded-[28px] bg-white p-6 sm:p-8 shadow-[0_16px_45px_rgba(12,59,82,0.12)] dark:bg-[#0f172a] dark:shadow-[0_16px_45px_rgba(0,0,0,0.35)]">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#c81618]">
+              {t("hero.eyebrow")}
+            </p>
+            <h2 className="mt-3 text-2xl sm:text-3xl font-bold text-[#0c3b52] dark:text-white">
+              {t("hero.formTitle")}
+            </h2>
+            <p className="mt-2 text-sm sm:text-base text-gray-700 dark:text-gray-300">
+              {t("hero.formSubtitle")}
+            </p>
+            <div className="mt-6">
+              <HubSpotForm portalId={portalId} formId={headerFormId} />
+            </div>
+          </div>
+
+          <div className="rounded-[28px] bg-white p-6 sm:p-8 shadow-[0_16px_45px_rgba(12,59,82,0.12)] dark:bg-[#0f172a] dark:shadow-[0_16px_45px_rgba(0,0,0,0.35)]">
+            <h3 className="text-xl sm:text-2xl font-bold text-[#0c3b52] dark:text-white">
+              {t("benefits.title")}
+            </h3>
+            <p className="mt-2 text-sm sm:text-base text-gray-700 dark:text-gray-300">
+              {t("benefits.subtitle")}
+            </p>
+            <div className="mt-6 grid gap-4">
+              {benefits.map((item) => (
+                <div
+                  key={item.title}
+                  className="rounded-[18px] bg-[#f7f8fb] px-4 py-4 text-sm text-gray-700 shadow-sm dark:bg-[#0b1220] dark:text-gray-200"
+                >
+                  <p className="font-semibold text-[#0c3b52] dark:text-white">
+                    {item.title}
+                  </p>
+                  <p className="mt-1 text-gray-600 dark:text-gray-300">
+                    {item.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#0c3b52] px-4 py-12 sm:py-16 text-white dark:bg-[#060a14]">
+        <div className="mx-auto max-w-5xl text-center">
+          <h3 className="text-2xl sm:text-3xl font-black">
+            {t("footerForm.title")}
+          </h3>
+          <p className="mt-3 text-base sm:text-lg text-[#e9eef2]">
+            {t("footerForm.subtitle")}
+          </p>
+          <div className="mt-6 rounded-[24px] bg-white/10 p-6 sm:p-8 shadow-[0_18px_45px_rgba(0,0,0,0.25)]">
+            <HubSpotForm portalId={portalId} formId={footerFormId} />
+          </div>
+          <p className="mt-4 text-xs sm:text-sm text-[#d9e4ec]">
+            {t("footerForm.note")}
+          </p>
+        </div>
+      </section>
+    </div>
+  );
+}

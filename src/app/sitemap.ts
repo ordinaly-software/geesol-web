@@ -14,9 +14,11 @@ export default async function sitemap() {
     { path: "/", changeFrequency: "weekly" as const, priority: 0.9 },
     { path: "/contact", changeFrequency: "weekly" as const, priority: 0.7 },
     { path: "/about", changeFrequency: "weekly" as const, priority: 0.7 },
-    { path: "/servicios", changeFrequency: "weekly" as const, priority: 0.8 },
+    { path: "/empresa-placas-solares", changeFrequency: "weekly" as const, priority: 0.8 },
+    { path: "/estudio-gratis", changeFrequency: "weekly" as const, priority: 0.8 },
     { path: "/formation", changeFrequency: "weekly" as const, priority: 0.7 },
     { path: "/blog", changeFrequency: "daily" as const, priority: 0.8 },
+    { path: "/noticias", changeFrequency: "daily" as const, priority: 0.7 },
   ];
   const slugs: string[] = await client.fetch(
     '*[_type=="post" && (!defined(isPrivate) || isPrivate==false) && (!defined(publishedAt) || publishedAt <= now())].slug.current',
@@ -64,7 +66,7 @@ export default async function sitemap() {
       const identifier = service?.slug || service?.id;
       if (!identifier) continue;
       entries.push({
-        url: localized(`/servicios/${identifier}`, locale),
+        url: localized(`/${identifier}`, locale),
         changeFrequency: "weekly",
         priority: 0.8,
       });

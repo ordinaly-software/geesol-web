@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import AutoconsumoDomesticoPage from "./page.client";
+import AutoconsumoDomesticoPage from "../empresa-placas-solares/autoconsumo-domestico/page.client";
 import { createPageMetadata } from "@/lib/metadata";
 
 export async function generateMetadata({
@@ -12,7 +12,7 @@ export async function generateMetadata({
 
   return createPageMetadata({
     locale,
-    path: "/servicios/autoconsumo-domestico",
+    path: "/autoconsumo-domestico",
     title: isEs ? "Autoconsumo doméstico | GEESOL" : "Residential solar | GEESOL",
     description: isEs
       ? "Instalaciones solares para viviendas, ahorro en factura y gestion de ayudas."

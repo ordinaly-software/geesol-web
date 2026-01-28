@@ -106,7 +106,7 @@ const legalDocuments: Record<Locale, Record<LegalTab, LegalDocument>> = {
   en: {
     terms: {
       title: "Terms of Service",
-      updated: "2025-02-02",
+      updated: "2026-02-02",
       summary:
         "How you can use our website and services, what we promise, and how we handle changes or service availability.",
       keyPoints: [
@@ -154,7 +154,7 @@ const legalDocuments: Record<Locale, Record<LegalTab, LegalDocument>> = {
     },
     privacy: {
       title: "Privacy Policy — Your data secure",
-      updated: "2025-12-09",
+      updated: "2026-12-09",
       summary:
         "Clear information about how we protect your personal data, how we use it and how you can exercise your rights.",
       keyPoints: [
@@ -244,7 +244,7 @@ const legalDocuments: Record<Locale, Record<LegalTab, LegalDocument>> = {
     },
     cookies: {
       title: "Cookies Policy",
-      updated: "2025-01-18",
+      updated: "2026-01-18",
       summary:
         "How we use cookies and similar technologies to keep the site secure, understand traffic, and improve the experience.",
       keyPoints: [
@@ -288,7 +288,7 @@ const legalDocuments: Record<Locale, Record<LegalTab, LegalDocument>> = {
   es: {
     terms: {
       title: "Términos del servicio",
-      updated: "2025-02-02",
+      updated: "2026-02-02",
       summary:
         "Cómo puedes usar nuestra web y servicios, qué ofrecemos y cómo gestionamos cambios o disponibilidad.",
       keyPoints: [
@@ -336,7 +336,7 @@ const legalDocuments: Record<Locale, Record<LegalTab, LegalDocument>> = {
     },
     privacy: {
       title: "Política de privacidad — Sus datos seguros",
-      updated: "2025-12-09",
+      updated: "2026-12-09",
       summary:
         "Información clara sobre cómo protegemos sus datos personales, cómo los usamos y cómo puede ejercer sus derechos.",
       keyPoints: [
@@ -425,7 +425,7 @@ const legalDocuments: Record<Locale, Record<LegalTab, LegalDocument>> = {
     },
     cookies: {
       title: "Política de cookies",
-      updated: "2025-01-18",
+      updated: "2026-01-18",
       summary:
         "Cómo usamos cookies y tecnologías similares para mantener el sitio seguro, entender el tráfico y mejorar la experiencia.",
       keyPoints: [

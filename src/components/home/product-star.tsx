@@ -131,9 +131,12 @@ export const ProductStarSection = () => {
   return (
     <section className="relative bg-[#f7f8fb] py-12 md:py-20 dark:bg-[#0b1220]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <h2 className="text-center text-3xl font-black uppercase text-[#0c3b52] dark:text-white md:text-4xl">
+        <h3 className="text-center text-3xl font-black uppercase text-[#0c3b52] dark:text-white md:text-4xl">
           {t("productStar.sectionTitle")}
-        </h2>
+        </h3>
+        <p className="text-center text-sm sm:text-base font-semibold text-[#0c3b52] dark:text-gray-200 mt-2">
+          Microinversores Atcmoce: máxima seguridad y eficiencia
+        </p>
         <p className="text-center text-sm font-semibold uppercase tracking-wider text-red-800 dark:text-red-300 mb-2 mt-3">
           {t("productStar.eyebrow")}
         </p>
@@ -173,7 +176,7 @@ export const ProductStarSection = () => {
                       <div className="relative aspect-[16/9] md:aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-br from-[#0c3b52] to-[#14556f]">
                         <Image
                           src={slide.image}
-                          alt={slide.title}
+                          alt={`instalaciones fotovoltaicas - ${slide.title}`}
                           fill
                           className="object-cover"
                           sizes="(min-width: 1024px) 40vw, 100vw"
@@ -185,12 +188,12 @@ export const ProductStarSection = () => {
                     {/* Content section */}
                       <div className="order-1 md:order-2 space-y-4">
                         <div>
-                        <h2 className="text-4xl md:text-5xl font-black text-[#0c3b52] dark:text-white mb-2">
+                        <h3 className="text-4xl md:text-5xl font-black text-[#0c3b52] dark:text-white mb-2">
                           {slide.brand}
-                        </h2>
-                        <h3 className="text-2xl md:text-3xl font-bold text-[#0c3b52] dark:text-white">
-                          {slide.title}
                         </h3>
+                        <h4 className="text-2xl md:text-3xl font-bold text-[#0c3b52] dark:text-white">
+                          {slide.title}
+                        </h4>
                       </div>
 
                       {slide.subtitle && (

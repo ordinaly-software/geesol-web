@@ -3,8 +3,20 @@ import {groq} from 'next-sanity'
 const publicPostFilter =
   `_type=="post" && (!defined(isPrivate) || isPrivate==false)`;
 
+const newsCategoryFilter =
+  `count((categories[]->slug.current)[@ in ["noticias", "news"]]) > 0 || count((categories[]->title)[@ in ["Noticias", "News"]]) > 0`;
+
+const nonNewsPostFilter =
+  `${publicPostFilter} && !(${newsCategoryFilter})`;
+
+const newsPostFilter =
+  `${publicPostFilter} && (${newsCategoryFilter})`;
+
 const searchablePostFilter =
-  `${publicPostFilter} && (!defined($q) || $q == "" || pt::text(body) match $q) && (!defined($cat) || $cat == "" || $cat in categories[]->slug.current || $cat in categories[]->title)`;
+  `${nonNewsPostFilter} && (!defined($q) || $q == "" || pt::text(body) match $q) && (!defined($cat) || $cat == "" || $cat in categories[]->slug.current || $cat in categories[]->title)`;
+
+const searchableNewsPostFilter =
+  `${newsPostFilter} && (!defined($q) || $q == "" || pt::text(body) match $q) && (!defined($cat) || $cat == "" || $cat in categories[]->slug.current || $cat in categories[]->title)`;
 
 const orderedPosts = '| order(coalesce(publishedAt,_updatedAt) desc)';
 
@@ -50,4 +62,16 @@ export const paginatedPostsAsc: string = groq`{
   "total": count(*[${searchablePostFilter}])
 }`
 
-export const highlightedPosts = groq`*[${publicPostFilter} && count((categories[]->slug.current)[@ in ["destacado", "highlighted"]]) > 0] ${orderedPosts} [0...10] ${postFields}`
+export const paginatedNewsPosts: string = groq`{
+  "items": *[${searchableNewsPostFilter}] ${orderedPosts} [$offset...$end] ${postFields},
+  "total": count(*[${searchableNewsPostFilter}])
+}`
+
+export const paginatedNewsPostsAsc: string = groq`{
+  "items": *[${searchableNewsPostFilter}] | order(coalesce(publishedAt,_updatedAt) asc) [$offset...$end] ${postFields},
+  "total": count(*[${searchableNewsPostFilter}])
+}`
+
+export const highlightedPosts = groq`*[${nonNewsPostFilter} && count((categories[]->slug.current)[@ in ["destacado", "highlighted"]]) > 0] ${orderedPosts} [0...10] ${postFields}`
+
+export const highlightedNewsPosts = groq`*[${newsPostFilter} && count((categories[]->slug.current)[@ in ["destacado", "highlighted"]]) > 0] ${orderedPosts} [0...10] ${postFields}`

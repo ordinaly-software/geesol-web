@@ -268,7 +268,7 @@ export default function NosotrosPage({ locale }: { locale: string }) {
             {t("cta.subtitle")}
           </p>
           <Button asChild className="px-8 py-3 text-lg uppercase">
-            <Link href={`${basePath}/contacto`}>{t("cta.button")}</Link>
+            <Link href={`${basePath}/estudio-gratis`}>{t("cta.button")}</Link>
           </Button>
         </div>
       </section>

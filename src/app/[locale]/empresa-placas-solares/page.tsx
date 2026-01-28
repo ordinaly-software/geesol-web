@@ -12,7 +12,7 @@ export async function generateMetadata({
 
   return createPageMetadata({
     locale,
-    path: "/servicios",
+    path: "/empresa-placas-solares",
     title: isEs
       ? "Servicios fotovoltaicos y autoconsumo | GEESOL"
       : "Solar services and self-consumption | GEESOL",

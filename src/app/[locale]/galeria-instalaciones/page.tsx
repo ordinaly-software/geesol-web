@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import GaleriaInstalacionesPage from "./page.client";
+import GaleriaInstalacionesPage from "../empresa-placas-solares/galeria-instalaciones/page.client";
 import { createPageMetadata } from "@/lib/metadata";
 
 export async function generateMetadata({
@@ -12,7 +12,7 @@ export async function generateMetadata({
 
   return createPageMetadata({
     locale,
-    path: "/servicios/galeria-instalaciones",
+    path: "/galeria-instalaciones",
     title: isEs ? "Galeria de instalaciones | GEESOL" : "Installation gallery | GEESOL",
     description: isEs
       ? "Casos reales y proyectos de instalaciones fotovoltaicas en hogares y empresas."

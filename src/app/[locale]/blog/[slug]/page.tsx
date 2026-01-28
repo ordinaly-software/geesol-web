@@ -4,6 +4,7 @@ import { client } from "@/lib/sanity";
 import { postBySlug } from "@/lib/queries";
 import { createPageMetadata } from "@/lib/metadata";
 import BlogPostPage from "./page.client";
+import { notFound } from "next/navigation";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 300;
@@ -48,7 +49,9 @@ export default async function BlogPost({
   const p = await client.fetch<BlogPost | null>(postBySlug, { slug }, {
     next: { tags: ["blog", `post:${slug}`] },
   });
-  if (!p || ("isPrivate" in p && p.isPrivate)) return null;
+  if (!p || ("isPrivate" in p && p.isPrivate)) {
+    notFound();
+  }
 
   return <BlogPostPage post={p} />;
 }

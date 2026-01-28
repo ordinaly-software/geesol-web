@@ -1,9 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import { useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/button";
+import { Link } from "@/i18n/navigation";
 
 export const StatsBarSection = () => {
   const t = useTranslations("home");
@@ -16,6 +16,9 @@ export const StatsBarSection = () => {
     <>
       <section className="bg-white px-4 py-16 dark:bg-[#0b1220]">
         <div className="mx-auto max-w-6xl">
+          <h4 className="mb-6 text-center text-sm font-semibold uppercase tracking-[0.2em] text-[#0c3b52] dark:text-gray-200">
+            Nuestro trabajo en cifras
+          </h4>
           <div className="grid gap-12 text-center sm:grid-cols-3">
             {stats.map((stat) => (
               <div key={stat.value} className="space-y-2">
@@ -46,7 +49,7 @@ export const StatsBarSection = () => {
             {t("stats.description")}
           </p>
           <Button asChild className="rounded-full bg-[#D01B17] px-8 py-3 text-lg font-bold uppercase text-white hover:bg-[#b01714]">
-            <Link href="/contacto">{t("stats.cta")}</Link>
+            <Link href="/estudio-gratis">{t("stats.cta")}</Link>
           </Button>
         </div>
       </section>

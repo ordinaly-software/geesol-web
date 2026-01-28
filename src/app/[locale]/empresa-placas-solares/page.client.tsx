@@ -105,7 +105,7 @@ const ServicesPage = () => {
     
     const serviceColor = getServiceColor(service);
     
-    const serviceHref = `/servicios/${service.slug ?? service.id}`;
+    const serviceHref = `/${service.slug ?? service.id}`;
 
     const serviceImage = service.image || "/static/producto-estrella3.webp";
 

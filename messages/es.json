@@ -21,6 +21,11 @@
       "andalucia": "Delegación en Andalucía (Sevilla): "
     }
   },
+  "notFound": {
+    "title": "Página no encontrada",
+    "description": "No hemos encontrado el contenido que buscas.",
+    "backHome": "Volver al inicio"
+  },
 
   "home": {
     "navigation": {
@@ -31,6 +36,7 @@
       "faqs": "Preguntas Frecuentes",
       "contact": "Contacto",
       "blog": "Blog",
+      "news": "Noticias",
       "contactWorkWithUs": "Trabaja con nosotros",
       "contactOfficesSeville": "Oficinas en Sevilla",
       "contactOfficesMadrid": "Oficinas en Madrid",
@@ -45,7 +51,7 @@
       "titleHighlight": "sol",
       "titleEnd": "en tu mano",
       "description": "Disfruta tu propia energía en tu hogar o negocio con la última tecnología en fotovoltaica. Gestionamos ayudas, legalización y puesta en marcha para que ahorres desde el primer mes.",
-      "tags": ["Estudio en 24h", "Gestión integral", "Monitorización 24/7"],
+      "tags": ["Estudio en 24h", "Gestión integral", "Monitorización 24/7", "Más de 7.000 instalaciones", "Garantía hasta 25 años"],
       "cta": "Solicitar estudio gratis",
       "imageAlt": "Instalación fotovoltaica sobre tejado",
       "imageCaptionLeft": "Más de 7.000 instalaciones",
@@ -200,6 +206,12 @@
       "description": "Te decimos cuánto ahorrarás en energía y diseñamos la solución ideal para tu hogar o negocio.",
       "cta": "Solicitar estudio gratis"
     },
+    "form": {
+      "eyebrow": "Estudio gratis",
+      "title": "Calcula tu ahorro en menos de 24h",
+      "subtitle": "Completa el formulario y te enviamos un estudio personalizado con ahorro estimado y ayudas disponibles.",
+      "note": "Sin compromiso."
+    },
     "videoTestimonials": {
       "title": "¿Qué opinan nuestros clientes?",
       "rating": "4.7 ¡MUY PROFESIONALES!",
@@ -330,6 +342,10 @@
       "teamCta": "Conocer al equipo",
       "servicesCta": "Ver servicios"
     },
+    "studyForm": {
+      "title": "Solicita tu estudio gratis",
+      "subtitle": "Déjanos tus datos y un asesor te contactará con una propuesta a medida."
+    },
     "work": {
       "title": "Únete al equipo de energía solar",
       "subtitle": "Si trabajas en instalaciones fotovoltaicas, autoconsumo o energía renovable, cuéntanos tu perfil y te contactamos."
@@ -339,6 +355,38 @@
       "subtitle": "Llámanos y te ayudamos a elegir la mejor solución de autoconsumo y placas solares.",
       "primary": "Llamar ahora",
       "secondary": "Programa de referidos"
+    }
+  },
+  "freeStudyPage": {
+    "hero": {
+      "title": "Estudio gratuito para tu instalación fotovoltaica",
+      "subtitle": "En menos de 24 horas te enviamos una propuesta con ahorro estimado, ayudas y planificación.",
+      "eyebrow": "Estudio gratis",
+      "formTitle": "Solicita tu estudio personalizado",
+      "formSubtitle": "Cuéntanos tu consumo y tipo de instalación para preparar el cálculo."
+    },
+    "benefits": {
+      "title": "Qué incluye el estudio",
+      "subtitle": "Un análisis rápido, claro y sin compromiso.",
+      "items": [
+        {
+          "title": "Ahorro estimado",
+          "description": "Calculamos tu reducción de factura y el tiempo de amortización."
+        },
+        {
+          "title": "Ayudas disponibles",
+          "description": "Te indicamos subvenciones y bonificaciones aplicables en tu zona."
+        },
+        {
+          "title": "Propuesta técnica",
+          "description": "Recomendamos potencia, equipos y próximos pasos del proyecto."
+        }
+      ]
+    },
+    "footerForm": {
+      "title": "¿Listo para empezar a ahorrar?",
+      "subtitle": "Completa el formulario y un experto te contactará hoy mismo.",
+      "note": "Respuesta en menos de 24 horas."
     }
   },
   "whatsapp": {
@@ -460,6 +508,65 @@
       "facebook": "Facebook",
       "linkedin": "LinkedIn",
       "shareMessage": "Lee este artículo en {siteTag}: \"{title}\"{excerpt}"
+    }
+  },
+  "news": {
+    "title": "Noticias",
+    "subtitle": "Actualidad y novedades sobre energía solar, autoconsumo y fotovoltaica.",
+    "meta": {
+      "title": "Noticias solares | GEESOL",
+      "description": "Noticias y novedades sobre energía solar, autoconsumo y ayudas."
+    },
+    "searchPlaceholder": "Buscar noticias...",
+    "media": {
+      "imageAlt": "Contenido visual de noticias",
+      "videoFallback": "Tu navegador no soporta la etiqueta de video."
+    },
+    "filters": {
+      "all": "Todas las categorías",
+      "category": "Categoría"
+    },
+    "sort": {
+      "newest": "Más nuevos primero",
+      "oldest": "Más antiguos primero",
+      "label": "Ordenar por fecha"
+    },
+    "errors": {
+      "loadPosts": "No se pudieron cargar las noticias."
+    },
+    "loading": "Cargando noticias...",
+    "pagination": {
+      "prev": "Anterior",
+      "page": "Página",
+      "of": "de",
+      "next": "Siguiente",
+      "first": "Primera",
+      "last": "Última"
+    },
+    "noResults": {
+      "title": "No se han encontrado noticias.",
+      "description": "Vuelve pronto para nuevas actualizaciones."
+    },
+    "backToBlog": "Volver a noticias",
+    "postCategories": "Categorías",
+    "shareLabel": "Compartir",
+    "toc": {
+      "title": "Índice de contenidos"
+    },
+    "highlighted": {
+      "title": "Destacados",
+      "previous": "Anterior",
+      "next": "Siguiente"
+    },
+    "otherPosts": {
+      "title": "Más noticias"
+    },
+    "share": {
+      "label": "Compartir",
+      "whatsapp": "WhatsApp",
+      "facebook": "Facebook",
+      "linkedin": "LinkedIn",
+      "shareMessage": "Lee esta noticia en {siteTag}: \"{title}\"{excerpt}"
     }
   },
   "aboutPage": {

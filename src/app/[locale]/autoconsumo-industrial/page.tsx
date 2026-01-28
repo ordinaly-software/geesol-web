@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import AutoconsumoIndustrialPage from "./page.client";
+import AutoconsumoIndustrialPage from "../empresa-placas-solares/autoconsumo-industrial/page.client";
 import { createPageMetadata } from "@/lib/metadata";
 
 export async function generateMetadata({
@@ -12,7 +12,7 @@ export async function generateMetadata({
 
   return createPageMetadata({
     locale,
-    path: "/servicios/autoconsumo-industrial",
+    path: "/autoconsumo-industrial",
     title: isEs ? "Autoconsumo industrial | GEESOL" : "Industrial solar | GEESOL",
     description: isEs
       ? "Soluciones solares para empresas e industria con analisis de retorno y planificacion de obra."

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import BombeoSolarPage from "./page.client";
+import BombeoSolarPage from "../empresa-placas-solares/bombeo-solar/page.client";
 import { createPageMetadata } from "@/lib/metadata";
 
 export async function generateMetadata({
@@ -12,7 +12,7 @@ export async function generateMetadata({
 
   return createPageMetadata({
     locale,
-    path: "/servicios/bombeo-solar",
+    path: "/bombeo-solar",
     title: isEs ? "Bombeo solar | GEESOL" : "Solar pumping | GEESOL",
     description: isEs
       ? "Sistemas de bombeo solar para agricultura y riego eficiente."

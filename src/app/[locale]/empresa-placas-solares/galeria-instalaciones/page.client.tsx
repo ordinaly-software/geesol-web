@@ -38,7 +38,7 @@ export default function GaleriaInstalacionesPage({ locale }: { locale: string })
                   </p>
                 </div>
                 <Button asChild className="w-fit px-6 py-3">
-                  <Link href={`${basePath}/servicios/${section.slug}`}>
+                  <Link href={`${basePath}/${section.slug}`}>
                     {t("cta")}
                   </Link>
                 </Button>

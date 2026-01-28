@@ -21,6 +21,11 @@
       "andalucia": "Delegation in Andalucía (Seville): "
     }
   },
+  "notFound": {
+    "title": "Page not found",
+    "description": "We couldn't find the page you're looking for.",
+    "backHome": "Back to home"
+  },
 
   "home": {
     "navigation": {
@@ -31,6 +36,7 @@
       "faqs": "FAQs",
       "contact": "Contact",
       "blog": "Blog",
+      "news": "News",
       "contactWorkWithUs": "Work with us",
       "contactOfficesSeville": "Offices in Seville",
       "contactOfficesMadrid": "Offices in Madrid",
@@ -45,7 +51,7 @@
       "titleHighlight": "sun",
       "titleEnd": "in your hands",
       "description": "Enjoy your own energy at home or at your business with the latest solar technology. We handle permits, subsidies, and commissioning so you save from month one.",
-      "tags": ["24h assessment", "Full-service management", "24/7 monitoring"],
+      "tags": ["24h assessment", "Full-service management", "24/7 monitoring", "7,000+ installations", "Up to 25-year warranty"],
       "cta": "Request a free study",
       "imageAlt": "Solar installation on a rooftop",
       "imageCaptionLeft": "5,000+ installations",
@@ -200,6 +206,12 @@
       "description": "We tell you how much you'll save on energy and design the ideal solution for your home or business.",
       "cta": "Request a free study"
     },
+    "form": {
+      "eyebrow": "Free study",
+      "title": "Calculate your savings in under 24h",
+      "subtitle": "Complete the form and we’ll send a tailored study with estimated savings and available incentives.",
+      "note": "No commitment."
+    },
     "videoTestimonials": {
       "title": "What do our customers say about our solar panels?",
       "rating": "4.7 VERY PROFESSIONAL!",
@@ -330,6 +342,10 @@
       "teamCta": "Meet the team",
       "servicesCta": "See services"
     },
+    "studyForm": {
+      "title": "Request your free study",
+      "subtitle": "Leave your details and an advisor will contact you with a tailored proposal."
+    },
     "work": {
       "title": "Join the solar energy team",
       "subtitle": "If you work in photovoltaic installations, self-consumption, or renewable energy, share your profile and we'll get in touch."
@@ -339,6 +355,38 @@
       "subtitle": "Call us and we'll help you choose the best self-consumption and solar panel solution.",
       "primary": "Call now",
       "secondary": "Referral program"
+    }
+  },
+  "freeStudyPage": {
+    "hero": {
+      "title": "Free study for your solar installation",
+      "subtitle": "In under 24 hours we’ll send a proposal with estimated savings, incentives, and planning.",
+      "eyebrow": "Free study",
+      "formTitle": "Request your tailored study",
+      "formSubtitle": "Tell us about your usage and installation type so we can prepare the calculation."
+    },
+    "benefits": {
+      "title": "What the study includes",
+      "subtitle": "A quick, clear, no-obligation analysis.",
+      "items": [
+        {
+          "title": "Estimated savings",
+          "description": "We calculate bill reduction and expected payback time."
+        },
+        {
+          "title": "Available incentives",
+          "description": "We outline subsidies and local bonuses you can access."
+        },
+        {
+          "title": "Technical proposal",
+          "description": "We recommend system size, equipment, and next steps."
+        }
+      ]
+    },
+    "footerForm": {
+      "title": "Ready to start saving?",
+      "subtitle": "Complete the form and a specialist will contact you today.",
+      "note": "Response within 24 hours."
     }
   },
   "whatsapp": {
@@ -460,6 +508,65 @@
       "facebook": "Facebook",
       "linkedin": "LinkedIn",
       "shareMessage": "Read this post from {siteTag}: \"{title}\"{excerpt}"
+    }
+  },
+  "news": {
+    "title": "News",
+    "subtitle": "Updates and announcements about solar energy, self-consumption, and photovoltaics.",
+    "meta": {
+      "title": "Solar news | GEESOL",
+      "description": "News and updates about solar energy, self-consumption, and incentives."
+    },
+    "searchPlaceholder": "Search news...",
+    "media": {
+      "imageAlt": "News visual content",
+      "videoFallback": "Your browser does not support the video tag."
+    },
+    "filters": {
+      "all": "All categories",
+      "category": "Category"
+    },
+    "sort": {
+      "newest": "Newest first",
+      "oldest": "Oldest first",
+      "label": "Sort by date"
+    },
+    "errors": {
+      "loadPosts": "Could not load news."
+    },
+    "loading": "Loading news...",
+    "pagination": {
+      "prev": "Previous",
+      "page": "Page",
+      "of": "of",
+      "next": "Next",
+      "first": "First",
+      "last": "Last"
+    },
+    "noResults": {
+      "title": "No news found.",
+      "description": "Check back soon for updates."
+    },
+    "backToBlog": "Back to news",
+    "postCategories": "Categories",
+    "shareLabel": "Share",
+    "toc": {
+      "title": "Table of contents"
+    },
+    "highlighted": {
+      "title": "Highlighted",
+      "previous": "Previous",
+      "next": "Next"
+    },
+    "otherPosts": {
+      "title": "More news"
+    },
+    "share": {
+      "label": "Share",
+      "whatsapp": "WhatsApp",
+      "facebook": "Facebook",
+      "linkedin": "LinkedIn",
+      "shareMessage": "Read this news on {siteTag}: \"{title}\"{excerpt}"
     }
   },
   "aboutPage": {

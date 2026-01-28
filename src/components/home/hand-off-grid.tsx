@@ -42,9 +42,9 @@ export const HandOffGridSection = () => {
   return (
     <section className="bg-white px-3 sm:px-4 py-12 sm:py-16 dark:bg-[#0b1220]">
       <div className="mx-auto max-w-6xl">
-        <h3 className="mb-8 sm:mb-12 text-center text-xl sm:text-3xl lg:text-4xl font-black text-[#0c3b52] dark:text-white px-2 sm:px-4 leading-tight sm:leading-snug break-words">
-          {t("handOff.title")}
-        </h3>
+        <h2 className="mb-8 sm:mb-12 text-center text-xl sm:text-3xl lg:text-4xl font-black text-[#0c3b52] dark:text-white px-2 sm:px-4 leading-tight sm:leading-snug break-words">
+          Instalaciones fotovoltaicas 'llave en mano'
+        </h2>
         <div className="grid gap-4 sm:gap-6 lg:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {handOffFeatures.map((item) => (
             <div
