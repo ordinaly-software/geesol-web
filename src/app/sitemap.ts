@@ -62,7 +62,7 @@ export default async function sitemap() {
     }
     for (const slug of slugs) {
       entries.push({
-        url: localized(`/blog/${slug}`, locale),
+        url: localized(`/${slug}`, locale),
         changeFrequency: "weekly",
         priority: 0.7,
       });

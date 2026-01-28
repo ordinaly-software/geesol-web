@@ -3,8 +3,8 @@ import type { BlogPost } from "@/components/blog/types";
 import { client } from "@/lib/sanity";
 import { postBySlug } from "@/lib/queries";
 import { createPageMetadata } from "@/lib/metadata";
-import BlogPostPage from "./page.client";
-import { notFound } from "next/navigation";
+import { redirect } from "next/navigation";
+import { routing } from "@/i18n/routing";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 300;
@@ -32,7 +32,7 @@ export async function generateMetadata({
 
   return createPageMetadata({
     locale,
-    path: `/blog/${p.slug}`,
+    path: `/${p.slug}`,
     title,
     description,
     image: imageUrl,
@@ -45,13 +45,7 @@ export default async function BlogPost({
 }: {
   params: Promise<{ locale: string; slug: string }>;
 }) {
-  const { slug } = await params;
-  const p = await client.fetch<BlogPost | null>(postBySlug, { slug }, {
-    next: { tags: ["blog", `post:${slug}`] },
-  });
-  if (!p || ("isPrivate" in p && p.isPrivate)) {
-    notFound();
-  }
-
-  return <BlogPostPage post={p} />;
+  const { locale, slug } = await params;
+  const basePath = locale === routing.defaultLocale ? "" : `/${locale}`;
+  redirect(`${basePath}/${slug}`);
 }

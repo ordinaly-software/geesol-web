@@ -21,7 +21,7 @@ export async function generateMetadata({
     path: "/noticias",
     title: t("meta.title"),
     description: t("meta.description"),
-    image: "/static/footer_background.webp",
+    image: "/static/news_background.webp",
   });
 }
 

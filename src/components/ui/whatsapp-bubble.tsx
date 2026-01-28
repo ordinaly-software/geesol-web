@@ -61,7 +61,7 @@ const WhatsAppBubble = () => {
     <>
       {/* WhatsApp Bubble */}
       <div
-        className={`fixed ${hasCookieConsent ? 'bottom-24' : 'bottom-36'} left-6 z-40 transition-all duration-300`}
+        className={`fixed ${hasCookieConsent ? 'bottom-16' : 'bottom-24'} left-6 z-40 transition-all duration-300`}
       >
         <div className="relative">
           <div className="absolute inset-0 bg-[#1F8A0D] rounded-full animate-ping opacity-30 pointer-events-none" />

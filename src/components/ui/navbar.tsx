@@ -217,11 +217,11 @@ const Navbar = () => {
                 variant="ghost"
                 size="icon"
                 onClick={() => setIsMenuOpen((prev) => !prev)}
-                className="text-gray-700 dark:text-gray-300 h-10 w-10"
+                className="text-gray-700 dark:text-gray-300 h-12 w-12"
                 aria-label={isMenuOpen ? t("closeMenu") : t("openMenu")}
                 aria-expanded={isMenuOpen}
               >
-                {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+                {isMenuOpen ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
               </Button>
             )}
           </div>
