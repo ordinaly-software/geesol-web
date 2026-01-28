@@ -2,6 +2,9 @@
 
 import { useState } from "react";
 import dynamic from "next/dynamic";
+import { HeroSection } from "@/components/home/hero-section";
+import { HighlightCardsSection } from "@/components/home/highlight-cards";
+import { TwoColumnFeatureSection } from "@/components/home/two-column-feature";
 import { HomeHubSpotFormSection } from "@/components/home/hubspot-form-section";
 
 const HomeTestimonials = dynamic(
@@ -33,7 +36,7 @@ const StatsBarSection = dynamic(
   { loading: () => <div className="h-10" aria-hidden="true" /> },
 );
 
-export default function HomeSections() {
+export default function HomePageClient({ locale: _locale }: { locale: string }) {
   const [reviewMeta, setReviewMeta] = useState<{
     rating: number | null;
     count: number | null;
@@ -41,7 +44,10 @@ export default function HomeSections() {
   }>({ rating: null, count: null });
 
   return (
-    <>
+    <div className="bg-[#f7f8fb] text-[#0c1f2d] dark:bg-[#0b1220] dark:text-gray-100">
+      <HeroSection />
+      <HighlightCardsSection />
+      <TwoColumnFeatureSection />
       <HomeTestimonials onMetaUpdate={setReviewMeta} />
       <VideoTestimonialsSection
         rating={reviewMeta.rating}
@@ -54,6 +60,6 @@ export default function HomeSections() {
       <InstallationTypesSection />
       <StatsBarSection />
       <HomeHubSpotFormSection />
-    </>
+    </div>
   );
 }

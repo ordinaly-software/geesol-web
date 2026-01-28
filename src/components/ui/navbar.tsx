@@ -11,6 +11,7 @@ import { Link, usePathname } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { Menu as HoverMenu, MenuItem, HoveredLink, ProductItem } from "@/components/ui/navbar-menu";
 import { getServicesMenuItems } from "@/data/services-menu";
+import { getServicePath } from "@/lib/service-slug";
 
 const Navbar = () => {
   const t = useTranslations("home.navigation");
@@ -21,6 +22,7 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeMegaItem, setActiveMegaItem] = useState<string | null>(null);
   const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
+  const [isMobileAboutOpen, setIsMobileAboutOpen] = useState(false);
   const [isMobileBlogOpen, setIsMobileBlogOpen] = useState(false);
   const [isMobileContactOpen, setIsMobileContactOpen] = useState(false);
 
@@ -41,6 +43,7 @@ const Navbar = () => {
   useEffect(() => {
     setIsMenuOpen(false);
     setIsMobileServicesOpen(false);
+    setIsMobileAboutOpen(false);
     setIsMobileBlogOpen(false);
     setIsMobileContactOpen(false);
   }, [pathname]);
@@ -49,7 +52,7 @@ const Navbar = () => {
     () => [
       // { id: "home", type: "link", href: "/", label: t("home") },
       { id: "services", type: "mega", href: "/empresa-placas-solares", label: t("services") },
-      { id: "about", type: "link", href: "/nosotros", label: t("about") },
+      { id: "about", type: "mega", href: "/nosotros", label: t("about") },
       { id: "faqs", type: "link", href: "/faqs", label: t("faqs") },
       { id: "refer", type: "link", href: "/recomienda-y-gana", label: t("refer") },
       { id: "blog", type: "mega", href: "/blog", label: t("blog") },
@@ -93,6 +96,7 @@ const Navbar = () => {
     return pathname.startsWith(href);
   };
   const isBlogActive = isLinkActive("/blog") || isLinkActive("/noticias");
+  const isAboutActive = isLinkActive("/nosotros") || isLinkActive("/quienes-somos");
 
   return (
     <nav
@@ -127,7 +131,13 @@ const Navbar = () => {
                     active={activeMegaItem}
                     setActive={setActiveMegaItem}
                     href={item.href}
-                    isActiveLink={item.id === "blog" ? isBlogActive : isLinkActive(item.href)}
+                    isActiveLink={
+                      item.id === "blog"
+                        ? isBlogActive
+                        : item.id === "about"
+                          ? isAboutActive
+                          : isLinkActive(item.href)
+                    }
                   >
                     {item.id === "services" && (
                       <div className="grid grid-cols-2 gap-2 w-[600px] max-w-[90vw]">
@@ -137,7 +147,7 @@ const Navbar = () => {
                           serviceMenuItems.map((service) => (
                             <ProductItem
                               key={service.slug}
-                              href={`/${service.slug}`}
+                              href={getServicePath(service.slug)}
                               title={service.title}
                               description={service.description}
                               src={service.image}
@@ -145,6 +155,12 @@ const Navbar = () => {
                           ))
                         )}
                         <HoveredLink href="/empresa-placas-solares">{t("servicesAll")}</HoveredLink>
+                      </div>
+                    )}
+                    {item.id === "about" && (
+                      <div className="grid gap-2 w-[220px] max-w-[90vw]">
+                        <HoveredLink href="/nosotros">{t("about")}</HoveredLink>
+                        <HoveredLink href="/quienes-somos">{t("aboutWho")}</HoveredLink>
                       </div>
                     )}
                     {item.id === "contact" && (
@@ -245,7 +261,7 @@ const Navbar = () => {
                       serviceMenuItems.map((service) => (
                         <Link
                           key={service.slug}
-                          href={`/${service.slug}`}
+                          href={getServicePath(service.slug)}
                           onClick={() => setIsMenuOpen(false)}
                           className="flex items-center gap-3 rounded-md px-2 py-2 text-sm font-medium text-gray-800 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800/70 hover:text-red-600"
                         >
@@ -269,6 +285,41 @@ const Navbar = () => {
                       className="block rounded-md px-2 py-2 text-sm font-semibold text-red-600 hover:text-red-700"
                     >
                       {t("servicesAll")}
+                    </Link>
+                  </div>
+                )}
+              </div>
+
+              <div className="rounded-xl border border-gray-200 dark:border-gray-700/70 bg-gray-50/60 dark:bg-gray-800/60">
+                <button
+                  className="w-full flex items-center justify-between px-3 py-3 text-left"
+                  onClick={() => setIsMobileAboutOpen((prev) => !prev)}
+                >
+                  <span className="font-semibold text-gray-900 dark:text-white">
+                    {t("about")}
+                  </span>
+                  <ChevronDown
+                    className={cn(
+                      "h-4 w-4 text-gray-600 dark:text-gray-300 transition-transform",
+                      isMobileAboutOpen && "rotate-180",
+                    )}
+                  />
+                </button>
+                {isMobileAboutOpen && (
+                  <div className="space-y-1 px-3 pb-3">
+                    <Link
+                      href="/nosotros"
+                      onClick={() => setIsMenuOpen(false)}
+                      className="block rounded-md px-2 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-red-600 hover:bg-gray-100 dark:hover:bg-gray-800/70"
+                    >
+                      {t("about")}
+                    </Link>
+                    <Link
+                      href="/quienes-somos"
+                      onClick={() => setIsMenuOpen(false)}
+                      className="block rounded-md px-2 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-red-600 hover:bg-gray-100 dark:hover:bg-gray-800/70"
+                    >
+                      {t("aboutWho")}
                     </Link>
                   </div>
                 )}

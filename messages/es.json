@@ -32,6 +32,7 @@
       "home": "Inicio",
       "services": "Servicios",
       "about": "Nosotros",
+      "aboutWho": "Quiénes somos",
       "refer": "Recomienda y Gana",
       "faqs": "Preguntas Frecuentes",
       "contact": "Contacto",
@@ -363,7 +364,9 @@
       "subtitle": "En menos de 24 horas te enviamos una propuesta con ahorro estimado, ayudas y planificación.",
       "eyebrow": "Estudio gratis",
       "formTitle": "Solicita tu estudio personalizado",
-      "formSubtitle": "Cuéntanos tu consumo y tipo de instalación para preparar el cálculo."
+      "formSubtitle": "Cuéntanos tu consumo y tipo de instalación para preparar el cálculo.",
+      "contactCta": "Contacto",
+      "formCta": "Ir al formulario"
     },
     "benefits": {
       "title": "Qué incluye el estudio",
@@ -409,6 +412,81 @@
     "defaultWhatsAppMessage": "Hola, quiero hablar con el Chatbot de GEESOL Renovables para asistencia al cliente."
   },
   "usPage": {
+    "meta": {
+      "title": "Quiénes somos | GEESOL Renovables",
+      "description": "Conoce al equipo de GEESOL, nuestra misión y cómo impulsamos instalaciones fotovoltaicas con servicio integral."
+    },
+    "hero": {
+      "tagline": "Quiénes somos",
+      "title": "El equipo que impulsa la energía solar en GEESOL",
+      "subtitle": "Ingeniería, montaje y mantenimiento con foco en ahorro real, seguridad y atención cercana.",
+      "ctaPrimary": "Conoce al equipo",
+      "ctaSecondary": "Trabaja con nosotros",
+      "missionLabel": "Misión",
+      "visionLabel": "Visión",
+      "imageAlt": "Equipo de GEESOL trabajando en energía solar"
+    },
+    "mission": {
+      "title": "Hacer la energía solar simple y rentable",
+      "body": "Diseñamos e instalamos sistemas fotovoltaicos con un servicio llave en mano y resultados medibles."
+    },
+    "vision": {
+      "title": "Liderar la transición energética local",
+      "body": "Acompañamos a hogares y empresas con tecnología fiable, cercanía y soporte continuo."
+    },
+    "stats": {
+      "teamLabel": "Equipo experto",
+      "teamValue": "25+ profesionales"
+    },
+    "story": {
+      "eyebrow": "Nuestra historia",
+      "title": "Un camino de crecimiento solar",
+      "lead": "Desde nuestros inicios, trabajamos para acercar el autoconsumo a hogares y empresas con soluciones seguras.",
+      "timeline": {
+        "1": {
+          "title": "2017 · Nace GEESOL",
+          "body": "Comenzamos con un objetivo claro: facilitar el acceso a la energía solar en Andalucía."
+        },
+        "2": {
+          "title": "2019 · Expansión residencial",
+          "body": "Crecemos con proyectos llave en mano y equipos propios de montaje y legalización."
+        },
+        "3": {
+          "title": "2021 · Industria y grandes cubiertas",
+          "body": "Ampliamos servicios para empresas con soluciones de autoconsumo industrial."
+        },
+        "4": {
+          "title": "Hoy · Soporte y mantenimiento",
+          "body": "Reforzamos el acompañamiento postventa con monitorización y planes de mantenimiento."
+        }
+      }
+    },
+    "testimonials": {
+      "1": {
+        "quote": "Transmitimos confianza porque trabajamos con transparencia en cada fase del proyecto.",
+        "name": "Antonio Martínez",
+        "role": "Dirección"
+      },
+      "2": {
+        "quote": "Nuestro reto es conseguir que cada instalación rinda al máximo desde el primer día.",
+        "name": "Guillermo Montero",
+        "role": "Operaciones"
+      },
+      "3": {
+        "quote": "Acompañamos al cliente antes, durante y después de la instalación.",
+        "name": "Emilio Cid",
+        "role": "Postventa"
+      }
+    },
+    "form": {
+      "eyebrow": "Contacto",
+      "title": "¿Quieres hablar con nuestro equipo?",
+      "subtitle": "Completa el formulario y te responderemos con una propuesta a medida."
+    },
+    "news": {
+      "title": "Noticias destacadas",
+      "viewAll": "Ver todas las noticias"
+    },
     "cta": {
       "eyebrow": "Equipo GEESOL",
       "title": "Trabaja con nosotros en energía solar",
@@ -784,8 +862,8 @@
     }
   },
   "galleryPage": {
-    "title": "Galería de instalaciones",
-    "subtitle": "Proyectos residenciales, industriales y agrícolas agrupados por servicio para inspirar tu próxima instalación.",
+    "title": "Casos de éxito",
+    "subtitle": "Casos reales de instalaciones fotovoltaicas en hogares y empresas para inspirar tu próximo proyecto.",
     "cta": "Ver servicio"
   },
   "serviceTemplate": {
@@ -804,7 +882,7 @@
       "subtitle": "Un proceso claro, transparente y rápido para que disfrutes de tu instalación sin complicaciones."
     },
     "gallery": {
-      "title": "Galería de instalaciones",
+      "title": "Casos de éxito",
       "imageAlt": "Instalación {index}"
     },
     "cta": {
@@ -813,5 +891,10 @@
       "primary": "Contacto",
       "secondary": "Conoce al equipo"
     }
+  },
+  "serviceHubspot": {
+    "eyebrow": "Contacto",
+    "title": "Solicita tu estudio personalizado",
+    "subtitle": "Cuéntanos tu caso y preparamos una propuesta con ahorro, plazos y ayudas disponibles."
   }
 }

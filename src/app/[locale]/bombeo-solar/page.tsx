@@ -13,10 +13,12 @@ export async function generateMetadata({
   return createPageMetadata({
     locale,
     path: "/bombeo-solar",
-    title: isEs ? "Bombeo solar | GEESOL" : "Solar pumping | GEESOL",
+    title: isEs
+      ? "Bombeo solar fotovoltaico para riego | Geesol Renovables"
+      : "Bombeo solar fotovoltaico para riego | Geesol Renovables",
     description: isEs
-      ? "Sistemas de bombeo solar para agricultura y riego eficiente."
-      : "Solar pumping systems for agriculture and efficient irrigation.",
+      ? "Bombeo solar fotovoltaico para riego con instalaciones eficientes y ahorro energético."
+      : "Bombeo solar fotovoltaico para riego con instalaciones eficientes y ahorro energético.",
     image: "/static/servicios/bombeo_solar.webp",
   });
 }

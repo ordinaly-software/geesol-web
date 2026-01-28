@@ -13,10 +13,12 @@ export async function generateMetadata({
   return createPageMetadata({
     locale,
     path: "/autoconsumo-industrial",
-    title: isEs ? "Autoconsumo industrial | GEESOL" : "Industrial solar | GEESOL",
+    title: isEs
+      ? "Placas solares para empresas | Geesol Renovables"
+      : "Placas solares para empresas | Geesol Renovables",
     description: isEs
-      ? "Soluciones solares para empresas e industria con analisis de retorno y planificacion de obra."
-      : "Industrial solar solutions with ROI analysis and project planning.",
+      ? "Placas solares para empresas con análisis de retorno, instalación y mantenimiento integral."
+      : "Placas solares para empresas con análisis de retorno, instalación y mantenimiento integral.",
     image: "/static/servicios/autoconsumo_industrial.webp",
   });
 }

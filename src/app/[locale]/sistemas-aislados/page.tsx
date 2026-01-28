@@ -13,10 +13,12 @@ export async function generateMetadata({
   return createPageMetadata({
     locale,
     path: "/sistemas-aislados",
-    title: isEs ? "Sistemas aislados | GEESOL" : "Off-grid solar systems | GEESOL",
+    title: isEs
+      ? "Instalaciones fotovoltaicas aisladas | Geesol Renovables"
+      : "Instalaciones fotovoltaicas aisladas | Geesol Renovables",
     description: isEs
-      ? "Energia solar para ubicaciones sin red con baterias y sistemas hibridos."
-      : "Off-grid solar solutions with batteries and hybrid systems.",
+      ? "Instalaciones fotovoltaicas aisladas para zonas sin red con baterías y autonomía."
+      : "Instalaciones fotovoltaicas aisladas para zonas sin red con baterías y autonomía.",
     image: "/static/servicios/sistemas_aislados.webp",
   });
 }

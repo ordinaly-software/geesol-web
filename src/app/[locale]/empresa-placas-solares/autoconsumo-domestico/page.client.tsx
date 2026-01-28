@@ -7,10 +7,28 @@ export default function AutoconsumoDomesticoPage({ locale }: { locale: string })
   return (
     <ServiceTemplate
       locale={locale}
-      title="Autoconsumo doméstico"
+      title="Placas solares para casas"
       heroImage="/static/servicios/autoconsumo_domestico.webp"
+      heroImageAlt={[
+        "placas solares para casas",
+        "placas solares para viviendas",
+        "paneles solares para uso doméstico",
+      ]}
+      featureImageAlt={[
+        "placas solares para viviendas",
+        "paneles solares para uso doméstico",
+        "placas solares para casas",
+      ]}
+      galleryImageAlt={[
+        "placas solares para casas",
+        "placas solares para viviendas",
+        "paneles solares para uso doméstico",
+      ]}
       subtitle="Reduce tu factura y gana independencia energética con una instalación fotovoltaica diseñada para tu vivienda."
       badge="Residencial"
+      seoHeadings={{
+        h2: ["Placas solares para viviendas", "Paneles solares para uso doméstico"],
+      }}
       highlights={[
         {
           title: "Estudio personalizado",

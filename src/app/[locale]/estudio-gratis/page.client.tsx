@@ -1,8 +1,16 @@
 "use client";
 
+import { HandOffGridSection } from "@/components/home/hand-off-grid";
+import { HighlightCardsSection } from "@/components/home/highlight-cards";
+import { InstallationTypesSection } from "@/components/home/installation-types";
+import { HomeTestimonials } from "@/components/home/testimonials-wrapper";
+import { TwoColumnFeatureSection } from "@/components/home/two-column-feature";
 import Banner from "@/components/ui/banner";
+import { Button } from "@/components/ui/button";
 import { HubSpotForm } from "@/components/ui/hubspot-form";
+import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
+import { useState } from "react";
 
 export default function EstudioGratisPage({ locale: _locale }: { locale: string }) {
   const t = useTranslations("freeStudyPage");
@@ -14,15 +22,33 @@ export default function EstudioGratisPage({ locale: _locale }: { locale: string 
     process.env.NEXT_PUBLIC_HUBSPOT_FREE_STUDY_FOOTER_FORM_ID || headerFormId;
   const benefits = t.raw("benefits.items") as Array<{ title: string; description: string }>;
 
+  const [reviewMeta, setReviewMeta] = useState<{
+    rating: number | null;
+    count: number | null;
+    googleMapsUrl?: string;
+  }>({ rating: null, count: null });
+
   return (
     <div className="min-h-screen bg-[#f7f8fb] text-[#0c1f2d] dark:bg-[#0b1220] dark:text-gray-100">
       <Banner
         title={t("hero.title")}
         subtitle={t("hero.subtitle")}
         backgroundImage="/static/footer_background.webp"
-      />
+      >
+        <div className="mt-6 flex flex-wrap justify-center gap-3">
+          <Button asChild className="px-6 py-3 text-sm sm:text-base uppercase">
+            <Link href="/contacto">{t("hero.contactCta")}</Link>
+          </Button>
+          <Button
+            asChild
+            className="rounded-lg border-2 border-white px-6 py-3 text-sm sm:text-base text-white bg-transparent hover:bg-white hover:text-[#0c3b52] transition-colors"
+          >
+            <Link href="#free-study-form">{t("hero.formCta")}</Link>
+          </Button>
+        </div>
+      </Banner>
 
-      <section className="px-4 py-10 sm:py-16">
+      <section id="free-study-form" className="px-4 py-10 sm:py-16 scroll-mt-24">
         <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1.05fr_0.95fr]">
           <div className="rounded-[28px] bg-white p-6 sm:p-8 shadow-[0_16px_45px_rgba(12,59,82,0.12)] dark:bg-[#0f172a] dark:shadow-[0_16px_45px_rgba(0,0,0,0.35)]">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#c81618]">
@@ -64,6 +90,12 @@ export default function EstudioGratisPage({ locale: _locale }: { locale: string 
           </div>
         </div>
       </section>
+
+      <HighlightCardsSection />
+      <InstallationTypesSection />
+      <HomeTestimonials onMetaUpdate={setReviewMeta} />
+      <HandOffGridSection />
+      <TwoColumnFeatureSection />
 
       <section className="bg-[#0c3b52] px-4 py-12 sm:py-16 text-white dark:bg-[#060a14]">
         <div className="mx-auto max-w-5xl text-center">

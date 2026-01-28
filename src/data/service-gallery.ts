@@ -111,7 +111,7 @@ const serviceGallerySource: ServiceGallerySource[] = [
       "/static/servicios/sistemas_aislados/sistemas_aislados_01.webp",
       "/static/servicios/sistemas_aislados/sistemas_aislados_02.webp",
     ],
-  },
+  }
 ];
 
 const getLocaleKey = (locale: string): LocaleKey =>

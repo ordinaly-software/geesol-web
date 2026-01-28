@@ -8,5 +8,5 @@ export default async function AutoconsumoDomestico({
 }) {
   const { locale } = await params;
   const basePath = locale === routing.defaultLocale ? "" : `/${locale}`;
-  redirect(`${basePath}/autoconsumo-domestico`);
+  redirect(`${basePath}/placas-solares-para-casa`);
 }

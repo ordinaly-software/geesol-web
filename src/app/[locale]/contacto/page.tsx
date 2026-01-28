@@ -17,7 +17,7 @@ export async function generateMetadata({
     description: isEs
       ? "Solicita un estudio gratuito de tu instalacion fotovoltaica. Respuesta en menos de 24 horas."
       : "Request a free assessment of your solar installation. We reply within 24 hours.",
-    image: "/static/footer_background.webp",
+    image: "/static/nosotros/quienes-somos-header.webp",
   });
 }
 

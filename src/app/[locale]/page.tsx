@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import HomePage from "./page-shell";
 import { createPageMetadata } from "@/lib/metadata";
-import { preload } from "react-dom";
+import HomePageClient from "./page.client";
+
 
 export async function generateMetadata({
   params,
@@ -30,6 +30,5 @@ export default async function Home({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  preload("/static/home/main_home_ilustration.webp", { as: "image" });
-  return <HomePage locale={locale} />;
+  return <HomePageClient locale={locale} />;
 }

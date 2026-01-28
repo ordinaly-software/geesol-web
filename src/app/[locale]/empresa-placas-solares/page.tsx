@@ -14,11 +14,11 @@ export async function generateMetadata({
     locale,
     path: "/empresa-placas-solares",
     title: isEs
-      ? "Servicios fotovoltaicos y autoconsumo | GEESOL"
-      : "Solar services and self-consumption | GEESOL",
+      ? "Empresa de Placas Solares Fotovoltaicas | Geesol Renovables"
+      : "Empresa de Placas Solares Fotovoltaicas | Geesol Renovables",
     description: isEs
-      ? "Soluciones solares para viviendas, industria y agricultura: autoconsumo, sistemas aislados, bombeo solar y mantenimiento."
-      : "Solar solutions for homes, industry, and agriculture: self-consumption, off-grid systems, solar pumping, and maintenance.",
+      ? "Empresa instaladora de placas solares fotovoltaicas para hogares y empresas."
+      : "Empresa instaladora de placas solares fotovoltaicas para hogares y empresas.",
     image: "/static/producto-estrella3.webp",
   });
 }

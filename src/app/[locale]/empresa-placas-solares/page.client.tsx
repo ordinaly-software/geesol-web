@@ -18,6 +18,7 @@ import {
 import { Link } from "@/i18n/navigation";
 import { WobbleCard } from "@/components/ui/wobble-card";
 import { getServicesMenuItems } from "@/data/services-menu";
+import { getServicePath } from "@/lib/service-slug";
 
 const ServicesPage = () => {
   const t = useTranslations("services");
@@ -105,7 +106,7 @@ const ServicesPage = () => {
     
     const serviceColor = getServiceColor(service);
     
-    const serviceHref = `/${service.slug ?? service.id}`;
+    const serviceHref = getServicePath(service.slug ?? String(service.id));
 
     const serviceImage = service.image || "/static/producto-estrella3.webp";
 
@@ -133,7 +134,15 @@ const ServicesPage = () => {
             <div className="relative h-48 w-full overflow-hidden rounded-2xl shadow-[0_18px_45px_rgba(12,59,82,0.2)] transition-transform duration-500 group-hover:-translate-y-1">
               <Image
                 src={serviceImage}
-                alt={service.title}
+                alt={(() => {
+                  const altOptions = ["empresa placas solares", "placas solares", "paneles solares"];
+                  const key = service.slug ?? String(service.id);
+                  let hash = 0;
+                  for (let i = 0; i < key.length; i += 1) {
+                    hash = (hash * 31 + key.charCodeAt(i)) % 100000;
+                  }
+                  return altOptions[Math.abs(hash) % altOptions.length];
+                })()}
                 fill
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
                 sizes="(min-width: 1024px) 50vw, 100vw"
@@ -226,8 +235,9 @@ const ServicesPage = () => {
     <div className="min-h-screen bg-gradient-to-b from-[#F3F7FB] via-white to-[#F9FAFB] dark:from-[#121826] dark:via-[#141a2c] dark:to-[#1A1924] text-gray-800 dark:text-white transition-colors duration-300">
       {/* Banner Section (generalized) */}
       <Banner
-        title={t('productsAndServicesTitle')}
+        title="Empresa de placas solares"
         subtitle={t('productsAndServicesDescription')}
+        backgroundAlt="empresa placas solares"
         backgroundImage={'/static/services_background.webp'}
       >
         <div className="max-w-5xl mx-auto bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-3xl p-6 shadow-[0_20px_50px_rgba(12,59,82,0.18)] relative z-10 mt-8 border border-white/60 dark:border-white/10">
@@ -245,6 +255,16 @@ const ServicesPage = () => {
           </div>
         </div>
       </Banner>
+
+      <section className="px-4 sm:py-14">
+        <div className="mx-auto max-w-5xl space-y-6">
+          <div className="space-y-3">
+            <h2 className="text-lg sm:text-xl font-semibold text-[#0c3b52] dark:text-white">
+              Empresa instaladora de placas solares - Instaladores de placas solares - Nuestros paneles solares
+            </h2>
+          </div>
+        </div>
+      </section>
 
       {/* Services Grid */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">

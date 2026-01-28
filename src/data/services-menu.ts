@@ -57,14 +57,14 @@ const servicesMenuSource: ServicesMenuSource[] = [
     image: "/static/servicios/bombeo_solar.webp",
   },
   {
-    slug: "galeria-instalaciones",
+    slug: "casos-de-exito",
     title: {
-      es: "Galeria de instalaciones",
-      en: "Installation gallery",
+      es: "Casos de éxito",
+      en: "Success stories",
     },
     description: {
-      es: "Casos reales y proyectos de instalaciones fotovoltaicas en hogares y empresas.",
-      en: "Real projects and photovoltaic installations for homes and businesses.",
+      es: "Casos reales y proyectos destacados de instalaciones fotovoltaicas.",
+      en: "Real projects and success stories of photovoltaic installations.",
     },
     image: "/static/producto-estrella3.webp",
   },
@@ -79,6 +79,19 @@ const servicesMenuSource: ServicesMenuSource[] = [
       en: "Off-grid solar solutions with batteries and hybrid systems.",
     },
     image: "/static/servicios/sistemas_aislados.webp",
+  },
+  {
+    slug: "mantenimiento-instalaciones-fotovoltaicas",
+    title: {
+      es: "Mantenimiento",
+      en: "Maintenance",
+    },
+    description: {
+      es: "Revisiones, limpieza y asistencia técnica para maximizar el rendimiento.",
+      en: "Inspections, cleaning, and technical support to maximize performance.",
+    },
+    image:
+      "/static/servicios/mantenimiento-instalaciones-fotovoltaicas/mantenimiento-instalaciones-fotovoltaicas_1.webp",
   },
 ];
 

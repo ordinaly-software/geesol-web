@@ -10,6 +10,7 @@ import { WobbleCard } from "@/components/ui/wobble-card";
 import { getServicesMenuItems } from "@/data/services-menu";
 import { useServices } from "@/hooks/useServices";
 import { Link } from "@/i18n/navigation";
+import { getServicePath } from "@/lib/service-slug";
 
 export const InstallationTypesSection = () => {
   const t = useTranslations("home");
@@ -117,10 +118,14 @@ export const InstallationTypesSection = () => {
             onScroll={checkScrollability}
             className="flex snap-x snap-mandatory gap-6 overflow-x-auto pb-4 [-webkit-overflow-scrolling:touch]"
           >
-            {products.filter(item => item.slug.toLowerCase() !== "galeria-instalaciones").map((item) => (
+            {products
+              .filter(
+                (item) =>
+                  item.slug.toLowerCase() !== "casos-de-exito")
+              .map((item) => (
               <Link
                 key={item.id}
-                href={`/${item.slug}`}
+                href={getServicePath(item.slug)}
                 className="block h-full min-w-[280px] max-w-[360px] flex-1 snap-start sm:min-w-[320px] lg:min-w-[360px]"
               >
                 <WobbleCard

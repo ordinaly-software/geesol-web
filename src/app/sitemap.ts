@@ -1,5 +1,6 @@
 import { client } from "@/lib/sanity";
 import { routing } from "@/i18n/routing";
+import { mapServiceSlugToPath } from "@/lib/service-slug";
 
 export default async function sitemap() {
   const base = process.env.NEXT_PUBLIC_BASE_URL!;
@@ -15,10 +16,14 @@ export default async function sitemap() {
     { path: "/contact", changeFrequency: "weekly" as const, priority: 0.7 },
     { path: "/about", changeFrequency: "weekly" as const, priority: 0.7 },
     { path: "/empresa-placas-solares", changeFrequency: "weekly" as const, priority: 0.8 },
+    { path: "/placas-solares-para-casa", changeFrequency: "weekly" as const, priority: 0.8 },
     { path: "/estudio-gratis", changeFrequency: "weekly" as const, priority: 0.8 },
+    { path: "/solicitud-estudio-gratis", changeFrequency: "weekly" as const, priority: 0.8 },
+    { path: "/casos-de-exito", changeFrequency: "weekly" as const, priority: 0.7 },
     { path: "/formation", changeFrequency: "weekly" as const, priority: 0.7 },
     { path: "/blog", changeFrequency: "daily" as const, priority: 0.8 },
     { path: "/noticias", changeFrequency: "daily" as const, priority: 0.7 },
+    { path: "/mantenimiento-instalaciones-fotovoltaicas", changeFrequency: "weekly" as const, priority: 0.7 },
   ];
   const slugs: string[] = await client.fetch(
     '*[_type=="post" && (!defined(isPrivate) || isPrivate==false) && (!defined(publishedAt) || publishedAt <= now())].slug.current',
@@ -66,7 +71,7 @@ export default async function sitemap() {
       const identifier = service?.slug || service?.id;
       if (!identifier) continue;
       entries.push({
-        url: localized(`/${identifier}`, locale),
+        url: localized(`/${mapServiceSlugToPath(String(identifier))}`, locale),
         changeFrequency: "weekly",
         priority: 0.8,
       });

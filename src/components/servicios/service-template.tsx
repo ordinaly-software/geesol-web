@@ -1,6 +1,7 @@
 import type React from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { HubSpotForm } from "@/components/ui/hubspot-form";
 import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
@@ -12,7 +13,7 @@ type Highlight = {
 
 type Feature = {
   title: string;
-  description: string;
+  description?: string;
   icon?: string;
 };
 
@@ -27,6 +28,9 @@ type ServicePageContent = {
   subtitle: string;
   badge?: string;
   heroImage?: string;
+  heroImageAlt?: string | string[];
+  featureImageAlt?: string | string[];
+  galleryImageAlt?: string | string[];
   highlights: Highlight[];
   features: Feature[];
   steps: Step[];
@@ -37,6 +41,18 @@ type ServicePageContent = {
     title?: string;
     content: string;
   }>;
+  customSection?: React.ReactNode;
+  seoHeadings?: {
+    h2?: string[];
+    h3?: string[];
+  };
+  hubspotSection?: {
+    eyebrow?: string;
+    title?: string;
+    subtitle?: string;
+    portalId?: string;
+    formId?: string;
+  };
 };
 
 const getBasePath = (locale: string) =>
@@ -62,6 +78,9 @@ export const ServiceTemplate = ({
   subtitle,
   badge,
   heroImage = "/static/home/main_home_ilustration.webp",
+  heroImageAlt,
+  featureImageAlt,
+  galleryImageAlt,
   highlights,
   features,
   steps,
@@ -69,9 +88,34 @@ export const ServiceTemplate = ({
   galleryDescription,
   galleryImages = [],
   introSections = [],
+  customSection,
+  seoHeadings,
+  hubspotSection,
 }: ServicePageContent) => {
   const t = useTranslations("serviceTemplate");
+  const hubspotT = useTranslations("serviceHubspot");
   const contactHref = `${getBasePath(locale)}/contacto`;
+  const formAnchorId = "service-form";
+  const formAnchorHref = `#${formAnchorId}`;
+  const resolveAlt = (alt: string | string[] | undefined, index: number, fallback: string) => {
+    if (!alt) return fallback;
+    if (Array.isArray(alt)) {
+      if (alt.length === 0) return fallback;
+      return alt[index % alt.length];
+    }
+    return alt;
+  };
+  const hubspotCopy = {
+    eyebrow: hubspotSection?.eyebrow ?? hubspotT("eyebrow"),
+    title: hubspotSection?.title ?? hubspotT("title"),
+    subtitle: hubspotSection?.subtitle ?? hubspotT("subtitle"),
+  };
+  const portalId =
+    hubspotSection?.portalId ?? process.env.NEXT_PUBLIC_HUBSPOT_PORTAL_ID;
+  const formId =
+    hubspotSection?.formId ??
+    process.env.NEXT_PUBLIC_HUBSPOT_SERVICE_FORM_ID ??
+    process.env.NEXT_PUBLIC_HUBSPOT_FORM_ID;
 
   return (
     <div className="bg-[#f7f8fb] text-[#0c1f2d] dark:bg-[#0b1220] dark:text-gray-100">
@@ -79,12 +123,12 @@ export const ServiceTemplate = ({
       <section className="relative isolate overflow-hidden bg-[#0c3b52] text-white dark:bg-[#060a14]">
         <div className="absolute inset-0">
           <Image
-        src={heroImage}
-        alt={title}
-        fill
-        className="object-cover opacity-80"
-        priority
-        sizes="100vw"
+            src={heroImage}
+            alt={resolveAlt(heroImageAlt, 0, title)}
+            fill
+            className="object-cover opacity-80"
+            priority
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#0c3b52]/40 via-[#0c3b52]/60 to-[#0c3b52] dark:from-black/30 dark:via-[#060a14]/70 dark:to-[#060a14]" />
         </div>
@@ -102,7 +146,7 @@ export const ServiceTemplate = ({
           </p>
           <div className="flex flex-wrap justify-center gap-3">
         <Button asChild className="px-8 py-3 text-lg uppercase">
-          <Link href={contactHref}>{t("hero.primaryCta")}</Link>
+          <Link href={formAnchorHref}>{t("hero.primaryCta")}</Link>
         </Button>
         <Button asChild className="rounded-lg border-2 border-white px-6 sm:px-8 py-2 sm:py-3 text-sm sm:text-lg text-white bg-transparent hover:bg-white hover:text-[#0c3b52] transition-colors">
           <Link href={`${getBasePath(locale)}/recomienda-y-gana`}>
@@ -112,6 +156,29 @@ export const ServiceTemplate = ({
           </div>
         </div>
       </section>
+
+      {(seoHeadings?.h2?.length || seoHeadings?.h3?.length) && (
+        <section className="bg-white px-4 py-10 dark:bg-[#0b1220]">
+          <div className="mx-auto max-w-6xl space-y-3">
+            {seoHeadings?.h2?.map((heading) => (
+              <h2
+                key={heading}
+                className="text-base sm:text-lg align-center font-semibold text-[#0c3b52] dark:text-white"
+              >
+                {heading}
+              </h2>
+            ))}
+            {seoHeadings?.h3?.map((heading) => (
+              <h3
+                key={heading}
+                className="text-sm sm:text-base font-semibold text-[#0c3b52] dark:text-gray-200"
+              >
+                {heading}
+              </h3>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Highlights */}
       <section className="px-4 py-12">
@@ -147,6 +214,12 @@ export const ServiceTemplate = ({
         </section>
       )}
 
+      {customSection && (
+        <section className="bg-white px-4 py-16 dark:bg-[#0b1220]">
+          {customSection}
+        </section>
+      )}
+
       {/* Features */}
       <section className="bg-white px-4 py-16 dark:bg-[#0b1220]">
         <div className="mx-auto grid max-w-6xl items-start gap-10 lg:grid-cols-[1.1fr_0.9fr]">
@@ -172,7 +245,11 @@ export const ServiceTemplate = ({
                   <h4 className="mb-2 text-lg font-semibold text-[#0c3b52] dark:text-white">
                     {feature.title}
                   </h4>
-                  <p className="text-sm text-gray-700 dark:text-gray-300">{feature.description}</p>
+                  {feature.description && (
+                    <p className="text-sm text-gray-700 dark:text-gray-300">
+                      {feature.description}
+                    </p>
+                  )}
                 </div>
               ))}
             </div>
@@ -180,7 +257,7 @@ export const ServiceTemplate = ({
           <div className="overflow-hidden rounded-[32px] shadow-[0_18px_55px_rgba(12,59,82,0.16)]">
             <Image
               src={heroImage}
-              alt={t("features.imageAlt", { title })}
+              alt={resolveAlt(featureImageAlt ?? heroImageAlt, 1, t("features.imageAlt", { title }))}
               width={1200}
               height={900}
               className="h-full w-full object-cover"
@@ -240,7 +317,7 @@ export const ServiceTemplate = ({
                 >
                   <Image
                     src={src}
-                    alt={t("gallery.imageAlt", { index: idx + 1 })}
+                    alt={resolveAlt(galleryImageAlt, idx, t("gallery.imageAlt", { index: idx + 1 }))}
                     fill
                     className="object-cover transition duration-500 group-hover:scale-105"
                     sizes="(min-width: 1024px) 30vw, 100vw"
@@ -267,6 +344,29 @@ export const ServiceTemplate = ({
             <Button asChild className="rounded-lg border-2 border-white px-6 sm:px-8 py-2 sm:py-3 text-sm sm:text-lg text-white bg-transparent hover:bg-white hover:text-[#0c3b52] transition-colors">
               <Link href={`${getBasePath(locale)}/nosotros`}>{t("cta.secondary")}</Link>
             </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* HubSpot Form */}
+      <section
+        id={formAnchorId}
+        className="bg-white px-4 py-16 scroll-mt-24 dark:bg-[#0b1220]"
+      >
+        <div className="mx-auto max-w-5xl rounded-[28px] bg-[#f7f8fb] p-6 sm:p-8 shadow-[0_16px_45px_rgba(12,59,82,0.12)] dark:bg-[#0f172a] dark:shadow-[0_16px_45px_rgba(0,0,0,0.35)]">
+          <div className="text-center">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#c81618]">
+              {hubspotCopy.eyebrow}
+            </p>
+            <h3 className="mt-2 text-2xl sm:text-3xl font-bold text-[#0c3b52] dark:text-white">
+              {hubspotCopy.title}
+            </h3>
+            <p className="mt-3 text-sm sm:text-base text-gray-700 dark:text-gray-300">
+              {hubspotCopy.subtitle}
+            </p>
+          </div>
+          <div className="mt-6">
+            <HubSpotForm portalId={portalId} formId={formId} />
           </div>
         </div>
       </section>

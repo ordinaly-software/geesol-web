@@ -7,10 +7,28 @@ export default function SistemasAisladosPage({ locale }: { locale: string }) {
   return (
     <ServiceTemplate
       locale={locale}
-      title="Sistemas aislados de la red"
+      title="Instalaciones fotovoltaicas aisladas"
       heroImage="/static/servicios/sistemas_aislados.webp"
+      heroImageAlt={[
+        "instalaciones aisladas",
+        "instalaciones fotovoltaicas aisladas",
+      ]}
+      featureImageAlt={[
+        "instalaciones fotovoltaicas aisladas",
+        "instalaciones aisladas",
+      ]}
+      galleryImageAlt={[
+        "instalaciones aisladas",
+        "instalaciones fotovoltaicas aisladas",
+      ]}
       subtitle="Energía garantizada en ubicaciones sin acceso a red con soluciones híbridas de paneles, baterías e inversores de alta fiabilidad."
       badge="Autonomía"
+      seoHeadings={{
+        h2: [
+          "Instalaciones fotovoltaicas aisladas: ventajas",
+          "Instalaciones fotovoltaicas aisladas",
+        ],
+      }}
       highlights={[
         {
           title: "Autonomía total",

@@ -32,6 +32,7 @@
       "home": "Home",
       "services": "Services",
       "about": "About Us",
+      "aboutWho": "Who we are",
       "refer": "Refer & Earn",
       "faqs": "FAQs",
       "contact": "Contact",
@@ -363,7 +364,9 @@
       "subtitle": "In under 24 hours we’ll send a proposal with estimated savings, incentives, and planning.",
       "eyebrow": "Free study",
       "formTitle": "Request your tailored study",
-      "formSubtitle": "Tell us about your usage and installation type so we can prepare the calculation."
+      "formSubtitle": "Tell us about your usage and installation type so we can prepare the calculation.",
+      "contactCta": "Contact",
+      "formCta": "Go to the form"
     },
     "benefits": {
       "title": "What the study includes",
@@ -409,6 +412,81 @@
     "defaultWhatsAppMessage": "Hello, I would like to speak with the GEESOL Renovables customer-assistance chatbot."
   },
   "usPage": {
+    "meta": {
+      "title": "Who we are | GEESOL Renovables",
+      "description": "Meet the GEESOL team, our mission, and how we deliver turnkey photovoltaic installations."
+    },
+    "hero": {
+      "tagline": "Who we are",
+      "title": "The team driving solar energy at GEESOL",
+      "subtitle": "Engineering, installation, and maintenance focused on real savings, safety, and close support.",
+      "ctaPrimary": "Meet the team",
+      "ctaSecondary": "Work with us",
+      "missionLabel": "Mission",
+      "visionLabel": "Vision",
+      "imageAlt": "GEESOL team working on solar energy"
+    },
+    "mission": {
+      "title": "Make solar simple and profitable",
+      "body": "We design and install photovoltaic systems with turnkey service and measurable results."
+    },
+    "vision": {
+      "title": "Lead the local energy transition",
+      "body": "We support homes and businesses with reliable technology, proximity, and ongoing support."
+    },
+    "stats": {
+      "teamLabel": "Expert team",
+      "teamValue": "25+ professionals"
+    },
+    "story": {
+      "eyebrow": "Our story",
+      "title": "A path of solar growth",
+      "lead": "Since our beginnings, we’ve helped homes and businesses adopt solar with safe, reliable solutions.",
+      "timeline": {
+        "1": {
+          "title": "2017 · GEESOL begins",
+          "body": "We started with a clear goal: make solar energy accessible in southern Spain."
+        },
+        "2": {
+          "title": "2019 · Residential expansion",
+          "body": "We grew with turnkey projects and in-house installation and legalization teams."
+        },
+        "3": {
+          "title": "2021 · Industrial scale",
+          "body": "We expanded services for companies with industrial self-consumption solutions."
+        },
+        "4": {
+          "title": "Today · Support & maintenance",
+          "body": "We strengthened after-sales with monitoring and maintenance plans."
+        }
+      }
+    },
+    "testimonials": {
+      "1": {
+        "quote": "We build trust by working transparently at every stage of the project.",
+        "name": "Antonio Martínez",
+        "role": "Leadership"
+      },
+      "2": {
+        "quote": "Our challenge is to make every system perform at its best from day one.",
+        "name": "Guillermo Montero",
+        "role": "Operations"
+      },
+      "3": {
+        "quote": "We support the customer before, during, and after installation.",
+        "name": "Emilio Cid",
+        "role": "After-sales"
+      }
+    },
+    "form": {
+      "eyebrow": "Contact",
+      "title": "Want to talk to our team?",
+      "subtitle": "Complete the form and we’ll reply with a tailored proposal."
+    },
+    "news": {
+      "title": "Featured news",
+      "viewAll": "View all news"
+    },
     "cta": {
       "eyebrow": "GEESOL Team",
       "title": "Work with us in solar energy",
@@ -784,8 +862,8 @@
     }
   },
   "galleryPage": {
-    "title": "Installation gallery",
-    "subtitle": "Residential, industrial, and agricultural projects grouped by service to inspire your next installation.",
+    "title": "Success stories",
+    "subtitle": "Real photovoltaic installations for homes and businesses to inspire your next project.",
     "cta": "View service"
   },
   "serviceTemplate": {
@@ -813,5 +891,10 @@
       "primary": "Contact",
       "secondary": "Meet the team"
     }
+  },
+  "serviceHubspot": {
+    "eyebrow": "Contact",
+    "title": "Request your personalized study",
+    "subtitle": "Tell us about your project and we’ll prepare a proposal with savings, timelines, and incentives."
   }
 }

@@ -9,8 +9,27 @@ export default function BombeoSolarPage({ locale }: { locale: string }) {
       locale={locale}
       heroImage="/static/servicios/bombeo_solar.webp"
       title="Bombeo solar"
+      heroImageAlt={[
+        "bombeo solar",
+        "instalacion de bombeo solar",
+        "bombeo solar para riego",
+      ]}
+      featureImageAlt={[
+        "bombeo solar para riego",
+        "bombeo solar",
+        "instalacion de bombeo solar",
+      ]}
+      galleryImageAlt={[
+        "bombeo solar",
+        "instalacion de bombeo solar",
+        "bombeo solar para riego",
+      ]}
       subtitle="Riega y abastece con energía limpia y estable, reduciendo costes de gasoil y mantenimiento en explotaciones agrícolas."
       badge="Agrícola"
+      seoHeadings={{
+        h2: ["Bombeo solar para riego", "Bombeo solar fotovoltaico para riego"],
+        h3: ["Instalaciones de bombeo solar"],
+      }}
       highlights={[
         {
           title: "Caudal constante",
