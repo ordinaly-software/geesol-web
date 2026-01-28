@@ -10,6 +10,7 @@ import LocaleSwitcher from "./locale-switcher";
 const Footer = () => {
   const t = useTranslations("footer");
   const { isDark, toggleTheme } = useTheme();
+  const year = new Date().getFullYear();
 
   const ThemeToggleButton = () => (
     <button
@@ -157,7 +158,7 @@ const Footer = () => {
                 <Link href="/" className="block font-bold hover:text-blue-300 transition-colors">
                   {t("home")}
                 </Link>
-                <Link href="/servicios" className="block font-bold hover:text-blue-300 transition-colors">
+                <Link href="/empresa-placas-solares" className="block font-bold hover:text-blue-300 transition-colors">
                   {t("services")}
                 </Link>
                 <Link href="/nosotros" className="block font-bold hover:text-blue-300 transition-colors">
@@ -169,11 +170,11 @@ const Footer = () => {
                 <Link href="/faqs" className="block font-bold hover:text-blue-300 transition-colors">
                   {t("faqs")}
                 </Link>
-                <Link href="/contacto" className="block font-bold hover:text-blue-300 transition-colors">
-                  {t("contact")}
-                </Link>
                 <Link href="/blog" className="block font-bold hover:text-blue-300 transition-colors">
                   {t("blog")}
+                </Link>
+                <Link href="/contacto" className="block font-bold hover:text-blue-300 transition-colors">
+                  {t("contact")}
                 </Link>
               </div>
             </div>
@@ -199,14 +200,15 @@ const Footer = () => {
       {/* Bottom Bar */}
        {/* Bottom Bar - Outside the pill */}
       <div className="relative z-10 bg-[#f7f8fb] py-6 px-8 text-slate-900 dark:bg-[#0b1220] dark:text-white">
-        <div className="mx-auto flex max-w-[1400px] flex-col items-center justify-between gap-4 md:flex-row">
+        <div className="mx-auto flex max-w-[1400px] flex-col items-center gap-4 text-center">
           <div className="text-sm">
-            © 2025 GEESOL RENOVABLES SL - Instalaciones Fotovoltaicas.
+            © {year} GEESOL RENOVABLES SL - Instalaciones Fotovoltaicas.
           </div>
-          <div className="flex items-center gap-3">
-            <ThemeToggleButton />
-            <LocaleSwitcher />
-          </div>
+          <div className="flex flex-col items-center gap-3 md:flex-row">
+            <div className="flex items-center gap-3">
+              <ThemeToggleButton />
+              <LocaleSwitcher />
+            </div>
             <div className="flex gap-3">
             <a
               href="https://www.linkedin.com/company/geesol-renovables/"
@@ -257,6 +259,7 @@ const Footer = () => {
               </svg>
             </a>
             </div>
+          </div>
         </div>
       </div>
     </footer>

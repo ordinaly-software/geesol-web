@@ -9,10 +9,15 @@ import { useTranslations } from 'next-intl';
 interface HighlightedCarouselProps {
   posts: BlogPost[];
   onCategoryClick?: (cat: string) => void;
+  namespace?: string;
 }
 
-export const HighlightedCarousel: React.FC<HighlightedCarouselProps> = ({ posts, onCategoryClick }) => {
-  const t = useTranslations('blog');
+export const HighlightedCarousel: React.FC<HighlightedCarouselProps> = ({
+  posts,
+  onCategoryClick,
+  namespace = 'blog',
+}) => {
+  const t = useTranslations(namespace);
   const carouselRef = React.useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = React.useState(false);
   const [canScrollRight, setCanScrollRight] = React.useState(true);

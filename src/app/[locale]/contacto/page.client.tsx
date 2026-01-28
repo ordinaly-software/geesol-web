@@ -34,6 +34,8 @@ export default function ContactoPage({ locale }: { locale: string }) {
   const formId = process.env.NEXT_PUBLIC_HUBSPOT_FORM_ID;
   const workFormId =
     process.env.NEXT_PUBLIC_HUBSPOT_WORK_FORM_ID || formId;
+  const secondaryFormId =
+    process.env.NEXT_PUBLIC_HUBSPOT_CONTACT_SECONDARY_FORM_ID || formId;
 
   return (
     <div className="min-h-screen bg-[#f7f8fb] text-[#0c1f2d] dark:bg-[#0b1220] dark:text-gray-100">
@@ -170,6 +172,20 @@ export default function ContactoPage({ locale }: { locale: string }) {
                 className="w-full"
               />
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#f7f8fb] px-4 py-10 sm:py-16 dark:bg-[#0b1220]">
+        <div className="mx-auto max-w-6xl rounded-[28px] bg-white p-6 sm:p-8 shadow-[0_16px_45px_rgba(12,59,82,0.12)] dark:bg-[#0f172a] dark:shadow-[0_16px_45px_rgba(0,0,0,0.35)]">
+          <h3 className="text-xl sm:text-2xl font-bold text-[#0c3b52] dark:text-white">
+            {t("studyForm.title")}
+          </h3>
+          <p className="mt-2 text-sm sm:text-base text-gray-700 dark:text-gray-300">
+            {t("studyForm.subtitle")}
+          </p>
+          <div className="mt-6">
+            <HubSpotForm portalId={portalId} formId={secondaryFormId} />
           </div>
         </div>
       </section>

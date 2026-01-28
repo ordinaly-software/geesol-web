@@ -21,16 +21,23 @@
       "andalucia": "Delegación en Andalucía (Sevilla): "
     }
   },
+  "notFound": {
+    "title": "Página no encontrada",
+    "description": "No hemos encontrado el contenido que buscas.",
+    "backHome": "Volver al inicio"
+  },
 
   "home": {
     "navigation": {
       "home": "Inicio",
       "services": "Servicios",
       "about": "Nosotros",
+      "aboutWho": "Quiénes somos",
       "refer": "Recomienda y Gana",
       "faqs": "Preguntas Frecuentes",
       "contact": "Contacto",
       "blog": "Blog",
+      "news": "Noticias",
       "contactWorkWithUs": "Trabaja con nosotros",
       "contactOfficesSeville": "Oficinas en Sevilla",
       "contactOfficesMadrid": "Oficinas en Madrid",
@@ -45,7 +52,7 @@
       "titleHighlight": "sol",
       "titleEnd": "en tu mano",
       "description": "Disfruta tu propia energía en tu hogar o negocio con la última tecnología en fotovoltaica. Gestionamos ayudas, legalización y puesta en marcha para que ahorres desde el primer mes.",
-      "tags": ["Estudio en 24h", "Gestión integral", "Monitorización 24/7"],
+      "tags": ["Estudio en 24h", "Gestión integral", "Monitorización 24/7", "Más de 7.000 instalaciones", "Garantía hasta 25 años"],
       "cta": "Solicitar estudio gratis",
       "imageAlt": "Instalación fotovoltaica sobre tejado",
       "imageCaptionLeft": "Más de 7.000 instalaciones",
@@ -200,6 +207,12 @@
       "description": "Te decimos cuánto ahorrarás en energía y diseñamos la solución ideal para tu hogar o negocio.",
       "cta": "Solicitar estudio gratis"
     },
+    "form": {
+      "eyebrow": "Estudio gratis",
+      "title": "Calcula tu ahorro en menos de 24h",
+      "subtitle": "Completa el formulario y te enviamos un estudio personalizado con ahorro estimado y ayudas disponibles.",
+      "note": "Sin compromiso."
+    },
     "videoTestimonials": {
       "title": "¿Qué opinan nuestros clientes?",
       "rating": "4.7 ¡MUY PROFESIONALES!",
@@ -330,6 +343,10 @@
       "teamCta": "Conocer al equipo",
       "servicesCta": "Ver servicios"
     },
+    "studyForm": {
+      "title": "Solicita tu estudio gratis",
+      "subtitle": "Déjanos tus datos y un asesor te contactará con una propuesta a medida."
+    },
     "work": {
       "title": "Únete al equipo de energía solar",
       "subtitle": "Si trabajas en instalaciones fotovoltaicas, autoconsumo o energía renovable, cuéntanos tu perfil y te contactamos."
@@ -339,6 +356,40 @@
       "subtitle": "Llámanos y te ayudamos a elegir la mejor solución de autoconsumo y placas solares.",
       "primary": "Llamar ahora",
       "secondary": "Programa de referidos"
+    }
+  },
+  "freeStudyPage": {
+    "hero": {
+      "title": "Estudio gratuito para tu instalación fotovoltaica",
+      "subtitle": "En menos de 24 horas te enviamos una propuesta con ahorro estimado, ayudas y planificación.",
+      "eyebrow": "Estudio gratis",
+      "formTitle": "Solicita tu estudio personalizado",
+      "formSubtitle": "Cuéntanos tu consumo y tipo de instalación para preparar el cálculo.",
+      "contactCta": "Contacto",
+      "formCta": "Ir al formulario"
+    },
+    "benefits": {
+      "title": "Qué incluye el estudio",
+      "subtitle": "Un análisis rápido, claro y sin compromiso.",
+      "items": [
+        {
+          "title": "Ahorro estimado",
+          "description": "Calculamos tu reducción de factura y el tiempo de amortización."
+        },
+        {
+          "title": "Ayudas disponibles",
+          "description": "Te indicamos subvenciones y bonificaciones aplicables en tu zona."
+        },
+        {
+          "title": "Propuesta técnica",
+          "description": "Recomendamos potencia, equipos y próximos pasos del proyecto."
+        }
+      ]
+    },
+    "footerForm": {
+      "title": "¿Listo para empezar a ahorrar?",
+      "subtitle": "Completa el formulario y un experto te contactará hoy mismo.",
+      "note": "Respuesta en menos de 24 horas."
     }
   },
   "whatsapp": {
@@ -361,6 +412,81 @@
     "defaultWhatsAppMessage": "Hola, quiero hablar con el Chatbot de GEESOL Renovables para asistencia al cliente."
   },
   "usPage": {
+    "meta": {
+      "title": "Quiénes somos | GEESOL Renovables",
+      "description": "Conoce al equipo de GEESOL, nuestra misión y cómo impulsamos instalaciones fotovoltaicas con servicio integral."
+    },
+    "hero": {
+      "tagline": "Quiénes somos",
+      "title": "El equipo que impulsa la energía solar en GEESOL",
+      "subtitle": "Ingeniería, montaje y mantenimiento con foco en ahorro real, seguridad y atención cercana.",
+      "ctaPrimary": "Conoce al equipo",
+      "ctaSecondary": "Trabaja con nosotros",
+      "missionLabel": "Misión",
+      "visionLabel": "Visión",
+      "imageAlt": "Equipo de GEESOL trabajando en energía solar"
+    },
+    "mission": {
+      "title": "Hacer la energía solar simple y rentable",
+      "body": "Diseñamos e instalamos sistemas fotovoltaicos con un servicio llave en mano y resultados medibles."
+    },
+    "vision": {
+      "title": "Liderar la transición energética local",
+      "body": "Acompañamos a hogares y empresas con tecnología fiable, cercanía y soporte continuo."
+    },
+    "stats": {
+      "teamLabel": "Equipo experto",
+      "teamValue": "25+ profesionales"
+    },
+    "story": {
+      "eyebrow": "Nuestra historia",
+      "title": "Un camino de crecimiento solar",
+      "lead": "Desde nuestros inicios, trabajamos para acercar el autoconsumo a hogares y empresas con soluciones seguras.",
+      "timeline": {
+        "1": {
+          "title": "2017 · Nace GEESOL",
+          "body": "Comenzamos con un objetivo claro: facilitar el acceso a la energía solar en Andalucía."
+        },
+        "2": {
+          "title": "2019 · Expansión residencial",
+          "body": "Crecemos con proyectos llave en mano y equipos propios de montaje y legalización."
+        },
+        "3": {
+          "title": "2021 · Industria y grandes cubiertas",
+          "body": "Ampliamos servicios para empresas con soluciones de autoconsumo industrial."
+        },
+        "4": {
+          "title": "Hoy · Soporte y mantenimiento",
+          "body": "Reforzamos el acompañamiento postventa con monitorización y planes de mantenimiento."
+        }
+      }
+    },
+    "testimonials": {
+      "1": {
+        "quote": "Transmitimos confianza porque trabajamos con transparencia en cada fase del proyecto.",
+        "name": "Antonio Martínez",
+        "role": "Dirección"
+      },
+      "2": {
+        "quote": "Nuestro reto es conseguir que cada instalación rinda al máximo desde el primer día.",
+        "name": "Guillermo Montero",
+        "role": "Operaciones"
+      },
+      "3": {
+        "quote": "Acompañamos al cliente antes, durante y después de la instalación.",
+        "name": "Emilio Cid",
+        "role": "Postventa"
+      }
+    },
+    "form": {
+      "eyebrow": "Contacto",
+      "title": "¿Quieres hablar con nuestro equipo?",
+      "subtitle": "Completa el formulario y te responderemos con una propuesta a medida."
+    },
+    "news": {
+      "title": "Noticias destacadas",
+      "viewAll": "Ver todas las noticias"
+    },
     "cta": {
       "eyebrow": "Equipo GEESOL",
       "title": "Trabaja con nosotros en energía solar",
@@ -460,6 +586,65 @@
       "facebook": "Facebook",
       "linkedin": "LinkedIn",
       "shareMessage": "Lee este artículo en {siteTag}: \"{title}\"{excerpt}"
+    }
+  },
+  "news": {
+    "title": "Noticias",
+    "subtitle": "Actualidad y novedades sobre energía solar, autoconsumo y fotovoltaica.",
+    "meta": {
+      "title": "Noticias solares | GEESOL",
+      "description": "Noticias y novedades sobre energía solar, autoconsumo y ayudas."
+    },
+    "searchPlaceholder": "Buscar noticias...",
+    "media": {
+      "imageAlt": "Contenido visual de noticias",
+      "videoFallback": "Tu navegador no soporta la etiqueta de video."
+    },
+    "filters": {
+      "all": "Todas las categorías",
+      "category": "Categoría"
+    },
+    "sort": {
+      "newest": "Más nuevos primero",
+      "oldest": "Más antiguos primero",
+      "label": "Ordenar por fecha"
+    },
+    "errors": {
+      "loadPosts": "No se pudieron cargar las noticias."
+    },
+    "loading": "Cargando noticias...",
+    "pagination": {
+      "prev": "Anterior",
+      "page": "Página",
+      "of": "de",
+      "next": "Siguiente",
+      "first": "Primera",
+      "last": "Última"
+    },
+    "noResults": {
+      "title": "No se han encontrado noticias.",
+      "description": "Vuelve pronto para nuevas actualizaciones."
+    },
+    "backToBlog": "Volver a noticias",
+    "postCategories": "Categorías",
+    "shareLabel": "Compartir",
+    "toc": {
+      "title": "Índice de contenidos"
+    },
+    "highlighted": {
+      "title": "Destacados",
+      "previous": "Anterior",
+      "next": "Siguiente"
+    },
+    "otherPosts": {
+      "title": "Más noticias"
+    },
+    "share": {
+      "label": "Compartir",
+      "whatsapp": "WhatsApp",
+      "facebook": "Facebook",
+      "linkedin": "LinkedIn",
+      "shareMessage": "Lee esta noticia en {siteTag}: \"{title}\"{excerpt}"
     }
   },
   "aboutPage": {
@@ -677,8 +862,8 @@
     }
   },
   "galleryPage": {
-    "title": "Galería de instalaciones",
-    "subtitle": "Proyectos residenciales, industriales y agrícolas agrupados por servicio para inspirar tu próxima instalación.",
+    "title": "Casos de éxito",
+    "subtitle": "Casos reales de instalaciones fotovoltaicas en hogares y empresas para inspirar tu próximo proyecto.",
     "cta": "Ver servicio"
   },
   "serviceTemplate": {
@@ -697,7 +882,7 @@
       "subtitle": "Un proceso claro, transparente y rápido para que disfrutes de tu instalación sin complicaciones."
     },
     "gallery": {
-      "title": "Galería de instalaciones",
+      "title": "Casos de éxito",
       "imageAlt": "Instalación {index}"
     },
     "cta": {
@@ -706,5 +891,10 @@
       "primary": "Contacto",
       "secondary": "Conoce al equipo"
     }
+  },
+  "serviceHubspot": {
+    "eyebrow": "Contacto",
+    "title": "Solicita tu estudio personalizado",
+    "subtitle": "Cuéntanos tu caso y preparamos una propuesta con ahorro, plazos y ayudas disponibles."
   }
 }

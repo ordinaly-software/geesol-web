@@ -52,7 +52,7 @@ export const SharePostButtons: React.FC<Props> = ({ title, excerpt, slug, theme 
   if (typeof window !== 'undefined') {
     const cleanSlug = slug.replace(/^\/+/, '');
     const localePart = locale ? locale : 'es';
-    pageUrl = `${window.location.origin}/${localePart}/blog/${cleanSlug}`;
+    pageUrl = `${window.location.origin}/${localePart}/${cleanSlug}`;
   }
 
   const whatsappShare = () => {

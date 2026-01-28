@@ -24,7 +24,7 @@ export const TwoColumnFeatureSection = () => {
             <div className="absolute inset-0 overflow-hidden rounded-tl-[56px] rounded-tr-[18px] lg:rounded-tr-none lg:rounded-bl-[56px]">
               <Image
                 src="/static/home/two_column_photo.webp"
-                alt={t("twoColumn.imageAlt")}
+                alt="instalaciones fotovoltaicas"
                 fill
                 className="object-cover"
                 sizes="(min-width: 1024px) 50vw, 100vw"
@@ -36,8 +36,11 @@ export const TwoColumnFeatureSection = () => {
 
           <div className="relative z-10 space-y-5 p-8 lg:p-12">
             <h2 className="text-3xl font-black italic leading-tight text-[#0c3b52] dark:text-white lg:text-4xl">
-              {t("twoColumn.title")}
+              Instaladores fotovoltaicos
             </h2>
+            <p className="text-base font-semibold text-[#0c3b52] dark:text-gray-100 lg:text-lg">
+              {t("twoColumn.title")}
+            </p>
             <p className="text-base leading-relaxed text-gray-800 dark:text-gray-300 lg:text-lg">
               {t("twoColumn.paragraph1")}
             </p>

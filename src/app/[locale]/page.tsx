@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import HomePage from "./page-shell";
 import { createPageMetadata } from "@/lib/metadata";
-import { preload } from "react-dom";
+import HomePageClient from "./page.client";
+
 
 export async function generateMetadata({
   params,
@@ -15,8 +15,8 @@ export async function generateMetadata({
     locale,
     path: "/",
     title: isEs
-      ? "GEESOL | Instalaciones fotovoltaicas y autoconsumo"
-      : "GEESOL | Solar installations and self-consumption",
+      ? "Instalaciones Fotovoltaicas | Instaladores fotovoltaicos"
+      : "Photovoltaic installations | Photovoltaic installers",
     description: isEs
       ? "Instalaciones solares para hogares y empresas. Estudio gratuito, gestion de ayudas y ahorro energetico."
       : "Solar installations for homes and businesses. Free assessment, subsidy handling, and energy savings.",
@@ -30,6 +30,5 @@ export default async function Home({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  preload("/static/home/main_home_ilustration.webp", { as: "image" });
-  return <HomePage locale={locale} />;
+  return <HomePageClient locale={locale} />;
 }

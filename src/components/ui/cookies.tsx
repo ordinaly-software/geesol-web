@@ -215,13 +215,6 @@ const CookieConsent = () => {
               </div>
             </div>
             <div className="flex items-center gap-2 sm:gap-3 self-start sm:self-auto">
-            <button
-              onClick={() => setShowSettings(prev => !prev)}
-              className="text-sm font-semibold text-amber-900 bg-amber-200/90 hover:bg-amber-300/90 px-3 py-1.5 rounded-full shadow-sm"
-              aria-label={t('customize')}
-            >
-              {showSettings ? t('back') : t('customize')}
-            </button>
             <ModalCloseButton onClick={closePopup} variant="light" size="sm" />
             </div>
           </div>
@@ -232,12 +225,9 @@ const CookieConsent = () => {
           <div className="mt-4">
             <div className="flex flex-col gap-2 sm:flex-row sm:gap-3">
               <Button onClick={handleAcceptAll} className="flex-1 py-2 text-sm px-3 bg-gradient-to-r from-amber-400 to-orange-500 text-black font-semibold">{t('acceptAll')}</Button>
-              <Button onClick={handleRejectAll} className="flex-1 py-2 text-sm px-3 bg-gradient-to-r from-red-600 to-red-500 text-white border border-red-400">{t('rejectAll')}</Button>
+              <Button onClick={() => setShowSettings(true)} className="flex-1 py-2 text-sm px-3 bg-gradient-to-r from-red-600 to-red-500 text-white border border-red-400">{t('customize')}</Button>
             </div>
 
-            <div className="mt-3 text-sm text-muted-foreground">
-              {t('whatAre')} — {t('whatAreDescription')}
-            </div>
           </div>
         ) : (
           <div className="mt-4 space-y-4">

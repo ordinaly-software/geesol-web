@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { IconArrowNarrowLeft, IconArrowNarrowRight } from "@tabler/icons-react";
@@ -10,6 +9,8 @@ import { Button } from "@/components/ui/button";
 import { WobbleCard } from "@/components/ui/wobble-card";
 import { getServicesMenuItems } from "@/data/services-menu";
 import { useServices } from "@/hooks/useServices";
+import { Link } from "@/i18n/navigation";
+import { getServicePath } from "@/lib/service-slug";
 
 export const InstallationTypesSection = () => {
   const t = useTranslations("home");
@@ -86,9 +87,9 @@ export const InstallationTypesSection = () => {
     <section className="bg-[#f7f8fb] px-4 py-16 dark:bg-[#0f172a]">
       <div className="mx-auto max-w-6xl space-y-8">
         <div className="text-center">
-          <h3 className="text-3xl font-black text-[#0c3b52] dark:text-white">
-            {t("installationTypes.title")}
-          </h3>
+          <h2 className="text-3xl font-black text-[#0c3b52] dark:text-white">
+            Tipos de instalaciones fotovoltaicas
+          </h2>
           <p className="mt-3 text-gray-700 dark:text-gray-300">
             {t("installationTypes.description")}
           </p>
@@ -117,10 +118,14 @@ export const InstallationTypesSection = () => {
             onScroll={checkScrollability}
             className="flex snap-x snap-mandatory gap-6 overflow-x-auto pb-4 [-webkit-overflow-scrolling:touch]"
           >
-            {products.filter(item => item.slug.toLowerCase() !== "galeria-instalaciones").map((item) => (
+            {products
+              .filter(
+                (item) =>
+                  item.slug.toLowerCase() !== "casos-de-exito")
+              .map((item) => (
               <Link
                 key={item.id}
-                href={`/servicios/${item.slug}`}
+                href={getServicePath(item.slug)}
                 className="block h-full min-w-[280px] max-w-[360px] flex-1 snap-start sm:min-w-[320px] lg:min-w-[360px]"
               >
                 <WobbleCard
@@ -131,7 +136,7 @@ export const InstallationTypesSection = () => {
                     <div className="relative mb-5 h-44 w-full overflow-hidden rounded-[22px]">
                       <Image
                         src={item.image}
-                        alt={item.title}
+                        alt={`instalaciones fotovoltaicas - ${item.title}`}
                         fill
                         className="object-cover transition-transform duration-300 group-hover:scale-105"
                         sizes="(min-width: 1024px) 25vw, 50vw"

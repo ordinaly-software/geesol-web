@@ -1,7 +1,6 @@
 import type React from "react";
 import type { Metadata } from "next";
-import Script from "next/script";
-import { Inter } from "next/font/google";
+import { Inter, Montserrat } from "next/font/google";
 import "../globals.css";
 import { notFound } from "next/navigation";
 import { Locale, routing } from "@/i18n/routing";
@@ -30,6 +29,13 @@ const inter = Inter({
   preload: false,
 });
 
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-montserrat",
+  weight: ["600", "700", "800", "900"],
+  preload: false,
+});
 const baseDescription =
   "Instalaciones fotovoltaicas y soluciones de autoconsumo para hogares, empresas e industria con presencia en Camas (Sevilla) y Madrid.";
 
@@ -124,7 +130,7 @@ export default async function RootLayout({
     previewDomains.some((domain) => metadataBaseUrl.includes(domain));
 
   return (
-    <html lang={locale} className={inter.variable} suppressHydrationWarning>
+    <html lang={locale} className={`${inter.variable} ${montserrat.variable}`} suppressHydrationWarning>
       <head>
         {apiOrigin && <link rel="preconnect" href={apiOrigin} />}
         {apiOrigin && <link rel="dns-prefetch" href={apiOrigin} />}

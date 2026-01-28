@@ -11,6 +11,7 @@ import { Link, usePathname } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { Menu as HoverMenu, MenuItem, HoveredLink, ProductItem } from "@/components/ui/navbar-menu";
 import { getServicesMenuItems } from "@/data/services-menu";
+import { getServicePath } from "@/lib/service-slug";
 
 const Navbar = () => {
   const t = useTranslations("home.navigation");
@@ -21,6 +22,8 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeMegaItem, setActiveMegaItem] = useState<string | null>(null);
   const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
+  const [isMobileAboutOpen, setIsMobileAboutOpen] = useState(false);
+  const [isMobileBlogOpen, setIsMobileBlogOpen] = useState(false);
   const [isMobileContactOpen, setIsMobileContactOpen] = useState(false);
 
   useEffect(() => {
@@ -40,18 +43,20 @@ const Navbar = () => {
   useEffect(() => {
     setIsMenuOpen(false);
     setIsMobileServicesOpen(false);
+    setIsMobileAboutOpen(false);
+    setIsMobileBlogOpen(false);
     setIsMobileContactOpen(false);
   }, [pathname]);
 
   const navItems = useMemo(
     () => [
       // { id: "home", type: "link", href: "/", label: t("home") },
-      { id: "services", type: "mega", href: "/servicios", label: t("services") },
-      { id: "about", type: "link", href: "/nosotros", label: t("about") },
-      { id: "refer", type: "link", href: "/recomienda-y-gana", label: t("refer") },
+      { id: "services", type: "mega", href: "/empresa-placas-solares", label: t("services") },
+      { id: "about", type: "mega", href: "/nosotros", label: t("about") },
       { id: "faqs", type: "link", href: "/faqs", label: t("faqs") },
+      { id: "refer", type: "link", href: "/recomienda-y-gana", label: t("refer") },
+      { id: "blog", type: "mega", href: "/blog", label: t("blog") },
       { id: "contact", type: "mega", href: "/contacto", label: t("contact") },
-      { id: "blog", type: "link", href: "/blog", label: t("blog") },
     ],
     [t],
   );
@@ -90,8 +95,8 @@ const Navbar = () => {
     if (href === "/") return pathname === "/" || pathname === "/en" || pathname === "/es";
     return pathname.startsWith(href);
   };
-
-  const isMobile = viewportWidth < 1024;
+  const isBlogActive = isLinkActive("/blog") || isLinkActive("/noticias");
+  const isAboutActive = isLinkActive("/nosotros") || isLinkActive("/quienes-somos");
 
   return (
     <nav
@@ -107,7 +112,7 @@ const Navbar = () => {
             className="flex items-center gap-3"
           >
             <Image
-              src={isMobile ? "/logo_3.webp" : "/logo_2.webp"}
+              src="/logo_2.webp"
               alt="GEESOL"
               width={140}
               height={44}
@@ -118,33 +123,44 @@ const Navbar = () => {
 
           <div className="hidden lg:flex items-center justify-end flex-1 gap-6">
             <HoverMenu setActive={setActiveMegaItem}>
-              {visibleItems
-                .filter((item) => item.type === "mega")
-                .map((item) => (
+              {visibleItems.map((item) =>
+                item.type === "mega" ? (
                   <MenuItem
                     key={item.id}
                     item={item.label}
                     active={activeMegaItem}
                     setActive={setActiveMegaItem}
                     href={item.href}
-                    isActiveLink={isLinkActive(item.href)}
+                    isActiveLink={
+                      item.id === "blog"
+                        ? isBlogActive
+                        : item.id === "about"
+                          ? isAboutActive
+                          : isLinkActive(item.href)
+                    }
                   >
                     {item.id === "services" && (
                       <div className="grid grid-cols-2 gap-2 w-[600px] max-w-[90vw]">
                         {serviceMenuItems.length === 0 ? (
-                          <HoveredLink href="/servicios">{t("servicesAll")}</HoveredLink>
+                          <HoveredLink href="/empresa-placas-solares">{t("servicesAll")}</HoveredLink>
                         ) : (
                           serviceMenuItems.map((service) => (
                             <ProductItem
                               key={service.slug}
-                              href={`/servicios/${service.slug}`}
+                              href={getServicePath(service.slug)}
                               title={service.title}
                               description={service.description}
                               src={service.image}
                             />
                           ))
                         )}
-                        <HoveredLink href="/servicios">{t("servicesAll")}</HoveredLink>
+                        <HoveredLink href="/empresa-placas-solares">{t("servicesAll")}</HoveredLink>
+                      </div>
+                    )}
+                    {item.id === "about" && (
+                      <div className="grid gap-2 w-[220px] max-w-[90vw]">
+                        <HoveredLink href="/nosotros">{t("about")}</HoveredLink>
+                        <HoveredLink href="/quienes-somos">{t("aboutWho")}</HoveredLink>
                       </div>
                     )}
                     {item.id === "contact" && (
@@ -160,48 +176,52 @@ const Navbar = () => {
                         </HoveredLink>
                       </div>
                     )}
+                    {item.id === "blog" && (
+                      <div className="grid gap-2 w-[220px] max-w-[90vw]">
+                        <HoveredLink href="/blog">{t("blog")}</HoveredLink>
+                        <HoveredLink href="/noticias">{t("news")}</HoveredLink>
+                      </div>
+                    )}
                   </MenuItem>
-                ))}
-            </HoverMenu>
-
-            {visibleItems
-              .filter((item) => item.type === "link")
-              .map((item) => (
-                <Link
-                  key={item.id}
-                  href={item.href}
+                ) : (
+                  <Link
+                    key={item.id}
+                    href={item.href}
+                    onMouseEnter={() => setActiveMegaItem(null)}
                     className={cn(
                       "transition-all duration-200 whitespace-nowrap text-sm xl:text-base font-medium relative group",
                       isLinkActive(item.href)
-                      ? "text-red-600"
-                      : "text-gray-700 dark:text-gray-300 hover:text-red-600",
+                        ? "text-red-600"
+                        : "text-gray-700 dark:text-gray-300 hover:text-red-600",
                     )}
                   >
                     {item.label}
                     <span
                       className={cn(
-                      "absolute -bottom-1 left-0 w-0 h-0.5 bg-red-600 transition-all duration-300 group-hover:w-full",
-                      isLinkActive(item.href) ? "w-full" : "w-0",
-                    )}
-                  />
-                </Link>
-              ))}
+                        "absolute -bottom-1 left-0 w-0 h-0.5 bg-red-600 transition-all duration-300 group-hover:w-full",
+                        isLinkActive(item.href) ? "w-full" : "w-0",
+                      )}
+                    />
+                  </Link>
+                ),
+              )}
+            </HoverMenu>
           </div>
 
           <div className="flex items-center gap-2">
             <Button asChild className="inline-flex px-5 py-2 text-sm uppercase">
-              <Link href="/contacto">{t("start")}</Link>
+              <Link href="/estudio-gratis">{t("start")}</Link>
             </Button>
             {hiddenItems.length > 0 && (
               <Button
                 variant="ghost"
                 size="icon"
                 onClick={() => setIsMenuOpen((prev) => !prev)}
-                className="text-gray-700 dark:text-gray-300 h-9 w-9"
+                className="text-gray-700 dark:text-gray-300 h-12 w-12"
                 aria-label={isMenuOpen ? t("closeMenu") : t("openMenu")}
                 aria-expanded={isMenuOpen}
               >
-                {isMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+                {isMenuOpen ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
               </Button>
             )}
           </div>
@@ -231,7 +251,7 @@ const Navbar = () => {
                   <div className="space-y-1 px-3 pb-3">
                     {serviceMenuItems.length === 0 ? (
                       <Link
-                        href="/servicios"
+                        href="/empresa-placas-solares"
                         onClick={() => setIsMenuOpen(false)}
                         className="block rounded-md px-2 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-red-600 hover:bg-gray-100 dark:hover:bg-gray-800/70"
                       >
@@ -241,7 +261,7 @@ const Navbar = () => {
                       serviceMenuItems.map((service) => (
                         <Link
                           key={service.slug}
-                          href={`/servicios/${service.slug}`}
+                          href={getServicePath(service.slug)}
                           onClick={() => setIsMenuOpen(false)}
                           className="flex items-center gap-3 rounded-md px-2 py-2 text-sm font-medium text-gray-800 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800/70 hover:text-red-600"
                         >
@@ -260,7 +280,7 @@ const Navbar = () => {
                       ))
                     )}
                     <Link
-                      href="/servicios"
+                      href="/empresa-placas-solares"
                       onClick={() => setIsMenuOpen(false)}
                       className="block rounded-md px-2 py-2 text-sm font-semibold text-red-600 hover:text-red-700"
                     >
@@ -269,6 +289,94 @@ const Navbar = () => {
                   </div>
                 )}
               </div>
+
+              <div className="rounded-xl border border-gray-200 dark:border-gray-700/70 bg-gray-50/60 dark:bg-gray-800/60">
+                <button
+                  className="w-full flex items-center justify-between px-3 py-3 text-left"
+                  onClick={() => setIsMobileAboutOpen((prev) => !prev)}
+                >
+                  <span className="font-semibold text-gray-900 dark:text-white">
+                    {t("about")}
+                  </span>
+                  <ChevronDown
+                    className={cn(
+                      "h-4 w-4 text-gray-600 dark:text-gray-300 transition-transform",
+                      isMobileAboutOpen && "rotate-180",
+                    )}
+                  />
+                </button>
+                {isMobileAboutOpen && (
+                  <div className="space-y-1 px-3 pb-3">
+                    <Link
+                      href="/nosotros"
+                      onClick={() => setIsMenuOpen(false)}
+                      className="block rounded-md px-2 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-red-600 hover:bg-gray-100 dark:hover:bg-gray-800/70"
+                    >
+                      {t("about")}
+                    </Link>
+                    <Link
+                      href="/quienes-somos"
+                      onClick={() => setIsMenuOpen(false)}
+                      className="block rounded-md px-2 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-red-600 hover:bg-gray-100 dark:hover:bg-gray-800/70"
+                    >
+                      {t("aboutWho")}
+                    </Link>
+                  </div>
+                )}
+              </div>
+
+              <div className="rounded-xl border border-gray-200 dark:border-gray-700/70 bg-gray-50/60 dark:bg-gray-800/60">
+                <button
+                  className="w-full flex items-center justify-between px-3 py-3 text-left"
+                  onClick={() => setIsMobileBlogOpen((prev) => !prev)}
+                >
+                  <span className="font-semibold text-gray-900 dark:text-white">
+                    {t("blog")}
+                  </span>
+                  <ChevronDown
+                    className={cn(
+                      "h-4 w-4 text-gray-600 dark:text-gray-300 transition-transform",
+                      isMobileBlogOpen && "rotate-180",
+                    )}
+                  />
+                </button>
+                {isMobileBlogOpen && (
+                  <div className="space-y-1 px-3 pb-3">
+                    <Link
+                      href="/blog"
+                      onClick={() => setIsMenuOpen(false)}
+                      className="block rounded-md px-2 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-red-600 hover:bg-gray-100 dark:hover:bg-gray-800/70"
+                    >
+                      {t("blog")}
+                    </Link>
+                    <Link
+                      href="/noticias"
+                      onClick={() => setIsMenuOpen(false)}
+                      className="block rounded-md px-2 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-red-600 hover:bg-gray-100 dark:hover:bg-gray-800/70"
+                    >
+                      {t("news")}
+                    </Link>
+                  </div>
+                )}
+              </div>
+
+              {hiddenItems
+                .filter((item) => item.type === "link")
+                .map((item) => (
+                  <Link
+                    key={item.id}
+                    href={item.href}
+                    className={cn(
+                      "transition-colors py-3 px-2 block rounded-md font-medium",
+                      isLinkActive(item.href)
+                        ? "text-red-600 bg-red-600/10"
+                        : "text-gray-700 dark:text-gray-300 hover:text-red-600 hover:bg-gray-50 dark:hover:bg-gray-800/50",
+                    )}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
 
               <div className="rounded-xl border border-gray-200 dark:border-gray-700/70 bg-gray-50/60 dark:bg-gray-800/60">
                 <button
@@ -311,24 +419,6 @@ const Navbar = () => {
                   </div>
                 )}
               </div>
-
-              {hiddenItems
-                .filter((item) => item.type === "link")
-                .map((item) => (
-                  <Link
-                    key={item.id}
-                    href={item.href}
-                    className={cn(
-                      "transition-colors py-3 px-2 block rounded-md font-medium",
-                      isLinkActive(item.href)
-                        ? "text-red-600 bg-red-600/10"
-                        : "text-gray-700 dark:text-gray-300 hover:text-red-600 hover:bg-gray-50 dark:hover:bg-gray-800/50",
-                    )}
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
             </div>
           </div>
         </div>

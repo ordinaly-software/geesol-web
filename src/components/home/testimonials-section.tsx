@@ -260,8 +260,8 @@ export function TestimonialsSection({ t, onMetaUpdate }: SectionProps) {
     >
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-10 sm:mb-16">
-          <h2 className="text-xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-white px-2 sm:px-4 leading-tight sm:leading-snug break-words">
-            {t("testimonials.title")}
+          <h2 className="text-xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-white px-2 sm:px-4 leading-tight sm:leading-snug break-words">
+            Instalaciones fotovoltaicas cinco estrellas
           </h2>
           <div className="mt-4 sm:mt-6 flex flex-col items-center gap-2 sm:gap-3 text-xs sm:text-sm text-gray-600 dark:text-gray-400">
             {shouldShowSkeleton ? (

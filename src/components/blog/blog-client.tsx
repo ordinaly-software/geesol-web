@@ -19,6 +19,8 @@ type Props = {
   total: number;
   pageSize?: number;
   highlightedPosts?: BlogPost[];
+  basePath?: string;
+  namespace?: string;
 };
 
 const mapCategories = (items: BlogPost[]) => {
@@ -35,8 +37,15 @@ const mapCategories = (items: BlogPost[]) => {
   return categories;
 };
 
-export default function BlogClient({ posts: initialPosts, total: initialTotal, pageSize = 6, highlightedPosts = [] }: Props) {
-  const t = useTranslations('blog');
+export default function BlogClient({
+  posts: initialPosts,
+  total: initialTotal,
+  pageSize = 6,
+  highlightedPosts = [],
+  basePath = '/blog',
+  namespace = 'blog',
+}: Props) {
+  const t = useTranslations(namespace);
   const locale = useLocale() || 'es';
   const localePrefix = locale ? `/${locale}` : '';
   const router = useRouter();
@@ -91,8 +100,8 @@ export default function BlogClient({ posts: initialPosts, total: initialTotal, p
     if (pageValue > 1) params.set('page', String(pageValue));
     if (orderValue === 'asc') params.set('order', 'asc');
     const query = params.toString();
-    router.push(`${localePrefix}/blog${query ? `?${query}` : ''}`);
-  }, [router, localePrefix]);
+    router.push(`${localePrefix}${basePath}${query ? `?${query}` : ''}`);
+  }, [router, localePrefix, basePath]);
 
   useEffect(() => {
     const baseState = debouncedSearch === '' && selectedCategory === 'all' && currentPage === 1 && order === 'desc';
@@ -115,7 +124,7 @@ export default function BlogClient({ posts: initialPosts, total: initialTotal, p
     if (debouncedSearch) params.set('q', debouncedSearch);
     if (selectedCategory !== 'all') params.set('category', selectedCategory);
 
-    fetch(`${localePrefix}/blog/search?${params.toString()}`, { cache: 'no-store' })
+    fetch(`${localePrefix}${basePath}/search?${params.toString()}`, { cache: 'no-store' })
       .then(res => {
         if (!res.ok) throw new Error('Failed to fetch posts');
         return res.json();
@@ -136,7 +145,7 @@ export default function BlogClient({ posts: initialPosts, total: initialTotal, p
     return () => {
       cancelled = true;
     };
-  }, [debouncedSearch, selectedCategory, currentPage, pageSize, initialPosts, initialTotal, mergeCategories, t, localePrefix, order]);
+  }, [debouncedSearch, selectedCategory, currentPage, pageSize, initialPosts, initialTotal, mergeCategories, t, localePrefix, order, basePath]);
 
   const categories = useMemo(() => {
     const options = Object.entries(categoryMap).map(([value, label]) => ({ value, label }));
@@ -221,6 +230,7 @@ export default function BlogClient({ posts: initialPosts, total: initialTotal, p
       <HighlightedCarousel 
         posts={highlightedPosts} 
         onCategoryClick={(cat: string) => handleCategoryChange(cat)}
+        namespace={namespace}
       />
 
       {/* Blog Posts Grid */}

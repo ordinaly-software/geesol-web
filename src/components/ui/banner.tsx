@@ -7,6 +7,7 @@ interface BannerProps {
   subtitle?: string;
   backgroundImage?: string;
   backgroundVideo?: string;
+  backgroundAlt?: string;
   filters?: React.ReactNode;
   searchParams?: React.ReactNode;
   children?: React.ReactNode;
@@ -17,6 +18,7 @@ const Banner: React.FC<BannerProps> = ({
   subtitle,
   backgroundImage,
   backgroundVideo,
+  backgroundAlt = "Banner background",
   filters,
   searchParams,
   children,
@@ -36,7 +38,7 @@ const Banner: React.FC<BannerProps> = ({
       ) : backgroundImage ? (
         <Image
           src={backgroundImage}
-          alt="Banner background"
+          alt={backgroundAlt}
           fill
           className="absolute inset-0 w-full h-full object-cover z-0 blur-sm"
           priority

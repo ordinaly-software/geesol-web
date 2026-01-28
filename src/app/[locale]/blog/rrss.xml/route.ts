@@ -22,8 +22,8 @@ export async function GET(
   const items = posts.map((p: Post) => `
     <item>
       <title><![CDATA[${p.title}]]></title>
-      <link>${base}${prefix}/blog/${p.slug}</link>
-      <guid>${base}${prefix}/blog/${p.slug}</guid>
+      <link>${base}${prefix}/${p.slug}</link>
+      <guid>${base}${prefix}/${p.slug}</guid>
       <description><![CDATA[${p.excerpt ?? ''}]]></description>
       <pubDate>${new Date(p.publishedAt ?? p._createdAt).toUTCString()}</pubDate>
     </item>`).join('')

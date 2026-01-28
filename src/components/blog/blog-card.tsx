@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
 import { Category } from './types';
 import { BlogPost } from './types';
@@ -114,7 +114,7 @@ export const BlogCard: React.FC<BlogCardProps> = ({ post, onCategoryClick }) => 
             line-clamp-2
           "
         >
-          <Link href={`/blog/${post.slug}`}>
+          <Link href={`/${post.slug}`}>
             {post.seoTitle || post.title}
           </Link>
         </h2>

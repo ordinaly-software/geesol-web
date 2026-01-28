@@ -1,10 +1,10 @@
 "use client";
 
 import Image from 'next/image';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import BackToTopButton from '@/components/ui/back-to-top-button';
 import { useMemo } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { PortableText } from '@portabletext/react';
 import type { PortableTextBlock } from '@portabletext/types';
 import { getPortableTextComponents } from './portable-text-components';
@@ -32,6 +32,7 @@ const getTagStyle = (key: string) => {
 
 export default function BlogPostClient({ post }: { post: BlogPost }) {
   const t = useTranslations('blog');
+  const locale = useLocale() || 'es';
   const p = post;
   const tocData = useMemo(() => {
     const items: { id: string; text: string; level: 'h2' | 'h3' | 'h4' }[] = [];
@@ -85,7 +86,7 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
     dateModified: p.updatedAt || p._updatedAt,
     author: { '@type': 'Person', name: p.author?.name },
     image: p.coverImage && p.coverImage.asset ? [urlFor(p.coverImage.asset).width(1200).height(630).url()] : undefined,
-    mainEntityOfPage: `${process.env.NEXT_PUBLIC_BASE_URL}/blog/${p.slug}`,
+    mainEntityOfPage: `${process.env.NEXT_PUBLIC_BASE_URL}/${locale}/${p.slug}`,
   };
 
   return (
