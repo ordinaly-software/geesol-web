@@ -210,7 +210,7 @@
     "form": {
       "eyebrow": "Free study",
       "title": "Calculate your savings in under 24h",
-      "subtitle": "Complete the form and we’ll send a tailored study with estimated savings and available incentives.",
+      "subtitle": "Complete the form and we'll send a tailored study with estimated savings and available incentives.",
       "note": "No commitment."
     },
     "videoTestimonials": {
@@ -308,9 +308,7 @@
       "subtitle": "Tell us about your photovoltaic project and we'll arrange a free study in under 24 hours."
     },
     "contactForm": {
-      "title": "Contact form",
-      "subtitle": "Fill in your details and an advisor will reach out to calculate savings, subsidies, and installation timeline.",
-      "seo": "Experts in solar panels, self-consumption, and photovoltaic installations in Seville, Andalusia, and Spain. We help you access solar subsidies and clean, green energy."
+      "title": "Contact form"
     },
     "contactDetails": {
       "title": "Contact details",
@@ -362,7 +360,7 @@
   "freeStudyPage": {
     "hero": {
       "title": "Free study for your solar installation",
-      "subtitle": "In under 24 hours we’ll send a proposal with estimated savings, incentives, and planning.",
+      "subtitle": "In under 24 hours we'll send a proposal with estimated savings, incentives, and planning.",
       "eyebrow": "Free study",
       "formTitle": "Request your tailored study",
       "formSubtitle": "Tell us about your usage and installation type so we can prepare the calculation.",
@@ -436,7 +434,7 @@
     "story": {
       "eyebrow": "Our story",
       "title": "A path of solar growth",
-      "lead": "Since our beginnings, we’ve helped homes and businesses adopt solar with safe, reliable solutions.",
+      "lead": "Since our beginnings, we've helped homes and businesses adopt solar with safe, reliable solutions.",
       "timeline": {
         "1": {
           "title": "2017 · GEESOL begins",
@@ -476,7 +474,7 @@
     "form": {
       "eyebrow": "Contact",
       "title": "Want to talk to our team?",
-      "subtitle": "Complete the form and we’ll reply with a tailored proposal."
+      "subtitle": "Complete the form and we'll reply with a tailored proposal."
     },
     "news": {
       "title": "Featured news",
@@ -489,7 +487,8 @@
       "primary": "Send application",
       "secondary": "Contact",
       "mailSubject": "Application to work at GEESOL",
-      "mailBody": "Hi GEESOL team,\n\nI'd like to apply for roles related to solar energy. I'm sharing my profile and availability.\n\nThanks."    },
+      "mailBody": "Hi GEESOL team,\n\nI'd like to apply for roles related to solar energy. I'm sharing my profile and availability.\n\nThanks."
+    },
     "businessModel": {
       "eyebrow": "Business Model",
       "title": "Solutions for every customer",
@@ -616,7 +615,8 @@
         "quote": "We want to be the most trusted company in the sector, with warranty extension on our installations to endorse it.",
         "quoteSource": "GEESOL Trust",
         "quoteLink": "www.confianzageesol.com"
-      }    }
+      }
+    }
   },
   "services": {
     "productsAndServicesTitle": "Products and Services",
@@ -703,7 +703,7 @@
     },
     "form": {
       "title": "Want more solar insights?",
-      "subtitle": "Leave your details and we’ll send a tailored proposal."
+      "subtitle": "Leave your details and we'll send a tailored proposal."
     },
     "share": {
       "label": "Share",
@@ -851,7 +851,8 @@
       "button": "Request a free study"
     },
     "associations": {
-      "title": "Geesol is a member of the Spanish Photovoltaic Union (UNEF) and the Association of Businessmen of Southern Spain (CESUR)."    },
+      "title": "Geesol is a member of the Spanish Photovoltaic Union (UNEF) and the Association of Businessmen of Southern Spain (CESUR)."
+    },
     "purposeMissionVision": {
       "eyebrow": "Purpose, Mission and Vision",
       "title": "Our guide and commitment",
@@ -923,7 +924,8 @@
           "title": "Investment Optimization",
           "description": "Management of tax deductions and subsidies"
         }
-      ]    }
+      ]
+    }
   },
   "faqPage": {
     "meta": {
@@ -1085,12 +1087,12 @@
       "title": "Request your personalized study",
       "subtitle": "We calculate your production, available subsidies, and design a tailored proposal with the best conditions.",
       "primary": "Contact",
-      "secondary": "Meet the team"
+      "secondary": "Free study"
     }
   },
   "serviceHubspot": {
     "eyebrow": "Contact",
     "title": "Request your personalized study",
-    "subtitle": "Tell us about your project and we’ll prepare a proposal with savings, timelines, and incentives."
+    "subtitle": "Tell us about your project and we'll prepare a proposal with savings, timelines, and incentives."
   }
 }

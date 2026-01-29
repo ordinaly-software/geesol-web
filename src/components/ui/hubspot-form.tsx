@@ -24,7 +24,8 @@ export const HubSpotForm = ({
   region = "na1",
 }: HubSpotFormProps) => {
   const [error, setError] = useState<string | null>(null);
-  const formContainerId = useId();
+  const rawFormContainerId = useId();
+  const formContainerId = `hubspot-form-${rawFormContainerId.replace(/:/g, "")}`;
 
   useEffect(() => {
     if (!portalId || !formId) return;
@@ -46,7 +47,11 @@ export const HubSpotForm = ({
       | null;
 
     if (existingScript) {
-      loadForm();
+      if (window.hbspt?.forms?.create) {
+        loadForm();
+      } else {
+        existingScript.addEventListener("load", loadForm, { once: true });
+      }
       return;
     }
 
@@ -61,7 +66,7 @@ export const HubSpotForm = ({
     return () => {
       script.onload = null;
     };
-  }, [formContainerId, formId, portalId]);
+  }, [formContainerId, formId, portalId, region]);
 
   if (!portalId || !formId) {
     return (

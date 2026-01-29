@@ -16,6 +16,32 @@ body {
 @tailwind utilities;
 
 @layer base {
+  .hubspot-light :where(.hs-form label, .hs-form legend, .hs-form .hs-form-required) {
+    color: #0c1f2d;
+  }
+
+  .hubspot-light :where(.hs-form .inputs-list, .hs-form .inputs-list label) {
+    color: #334155;
+  }
+
+  .hubspot-light :where(.hs-form .hs-input, .hs-form select, .hs-form textarea) {
+    color: #0c1f2d;
+    background-color: #ffffff;
+  }
+
+  .hubspot-light :where(.hs-form .hs-input::placeholder, .hs-form textarea::placeholder) {
+    color: #94a3b8;
+  }
+
+  .hubspot-light :where(.hs-form .hs-error-msgs label) {
+    color: #b91c1c;
+  }
+
+  .hubspot-light :where(.hs-form a) {
+    color: #1d4ed8;
+  }
+}
+@layer base {
   :root {
     --background: 0 0% 93.7%;  /* #efefef */
     --foreground: 0 0% 3.9%;

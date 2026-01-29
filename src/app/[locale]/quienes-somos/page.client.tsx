@@ -388,15 +388,15 @@ export default function UsPage({ highlightedNews }: { highlightedNews: BlogPost[
       <TestimonialsSection t={t_common} />
 
       <section className="bg-[#0c3b52] px-4 py-16 text-white dark:bg-[#060a14]">
-        <div className="mx-auto max-w-5xl rounded-[28px] bg-white/10 p-6 sm:p-8 shadow-[0_18px_45px_rgba(0,0,0,0.25)]">
+        <div className="hubspot-light mx-auto max-w-5xl rounded-[28px] bg-white p-6 sm:p-8 text-[#0c1f2d] shadow-[0_18px_45px_rgba(0,0,0,0.25)]">
           <div className="text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#f4d0d0]">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#c81618]">
               {t("form.eyebrow")}
             </p>
-            <h3 className="mt-2 text-2xl sm:text-3xl font-bold">
+            <h3 className="mt-2 text-2xl sm:text-3xl font-bold text-[#0c3b52]">
               {t("form.title")}
             </h3>
-            <p className="mt-3 text-sm sm:text-base text-[#e9eef2]">
+            <p className="mt-3 text-sm sm:text-base text-gray-700">
               {t("form.subtitle")}
             </p>
           </div>

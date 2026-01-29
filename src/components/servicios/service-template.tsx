@@ -35,9 +35,11 @@ type ServicePageContent = {
   highlights: Highlight[];
   features: Feature[];
   steps: Step[];
+  featuresTitle?: string;
   galleryTitle?: string;
   galleryDescription?: string;
   galleryImages?: Array<{ src: string; alt?: string; title?: string }>;
+  highlightHeadingLevel?: "h2" | "h3";
   introSections?: Array<{
     title?: string;
     content: string;
@@ -85,9 +87,11 @@ export const ServiceTemplate = ({
   highlights,
   features,
   steps,
+  featuresTitle,
   galleryTitle,
   galleryDescription,
   galleryImages = [],
+  highlightHeadingLevel = "h3",
   introSections = [],
   customSection,
   seoHeadings,
@@ -185,9 +189,15 @@ export const ServiceTemplate = ({
         <div className="mx-auto grid max-w-6xl gap-6 md:grid-cols-3">
           {highlights.map((item) => (
             <GradientCard key={item.title}>
-              <h3 className="mb-2 text-xl font-bold text-[#0c3b52] dark:text-white">
-                {item.title}
-              </h3>
+              {highlightHeadingLevel === "h2" ? (
+                <h2 className="mb-2 text-xl font-bold text-[#0c3b52] dark:text-white">
+                  {item.title}
+                </h2>
+              ) : (
+                <h3 className="mb-2 text-xl font-bold text-[#0c3b52] dark:text-white">
+                  {item.title}
+                </h3>
+              )}
               <p className="text-gray-600 dark:text-gray-300">{item.description}</p>
             </GradientCard>
           ))}
@@ -229,7 +239,7 @@ export const ServiceTemplate = ({
                 {t("features.eyebrow")}
               </p>
               <h2 className="text-3xl font-black text-[#0c3b52] dark:text-white">
-                {t("features.title")}
+                {featuresTitle ?? t("features.title")}
               </h2>
               <p className="text-gray-700 dark:text-gray-300">
                 {t("features.subtitle")}
@@ -329,7 +339,13 @@ export const ServiceTemplate = ({
                     className="object-cover transition duration-500 group-hover:scale-105"
                     sizes="(min-width: 1024px) 30vw, 100vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent opacity-0 transition group-hover:opacity-100" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/15 to-transparent opacity-0 transition group-hover:opacity-100" />
+                  <div className="absolute inset-x-0 bottom-0 p-4 opacity-0 transition group-hover:opacity-100">
+                    <p className="text-sm font-semibold text-white">
+                      {image.title ??
+                        resolveAlt(galleryImageAlt, idx, t("gallery.imageAlt", { index: idx + 1 }))}
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -349,7 +365,7 @@ export const ServiceTemplate = ({
               <Link href={contactHref}>{t("cta.primary")}</Link>
             </Button>
             <Button asChild className="rounded-lg border-2 border-white px-6 sm:px-8 py-2 sm:py-3 text-sm sm:text-lg text-white bg-transparent hover:bg-white hover:text-[#0c3b52] transition-colors">
-              <Link href={`${getBasePath(locale)}/nosotros`}>{t("cta.secondary")}</Link>
+              <Link href={`${getBasePath(locale)}/estudio-gratis`}>{t("cta.secondary")}</Link>
             </Button>
           </div>
         </div>

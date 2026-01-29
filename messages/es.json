@@ -304,13 +304,11 @@
   ,
   "contactPage": {
     "hero": {
-      "title": "Contacto: Habla con nosotros y encarga un estudio gratis",
-      "subtitle": "Cuéntanos tu proyecto de instalaciones fotovoltaicas y coordinamos un estudio gratuito en menos de 24 horas."
+      "title": "Habla con nosotros y encarga un estudio gratis",
+      "subtitle": "Especialistas en placas solares, autoconsumo e instalaciones fotovoltaicas en Sevilla, Andalucía y España. Te ayudamos a acceder a subvenciones solares y energía verde, limpia y eficiente."
     },
     "contactForm": {
-      "title": "Formulario de contacto",
-      "subtitle": "Rellena tus datos y un asesor te contactará para calcular ahorros, subvenciones y fecha de instalación.",
-      "seo": "Especialistas en placas solares, autoconsumo e instalaciones fotovoltaicas en Sevilla, Andalucía y España. Te ayudamos a acceder a subvenciones solares y energía verde, limpia y eficiente."
+      "title": "Formulario de contacto"
     },
     "contactDetails": {
       "title": "Datos de contacto",
@@ -331,9 +329,9 @@
       }
     },
     "whatsapp": {
-      "title": "Chatbot GEESOL Renovables",
+      "title": "¡Geermán te ayuda!",
       "subtitle": "Pregunta sobre ahorros, ayudas o citas con nuestro asistente AI en WhatsApp.",
-      "cta": "Abrir Chatbot AI"
+      "cta": "Abrir WhastApp"
     },
     "map": {
       "eyebrow": "Mapa",
@@ -780,7 +778,7 @@
       "description": "Equipo especializado en diseño, instalación y mantenimiento de energía solar."
     },
     "hero": {
-      "title": "Quiénes somos",
+      "title": "Sobre nosotros",
       "subtitle": "Energía solar para hogares, empresas e industria con un equipo propio que te acompaña de principio a fin."
     },
     "story": {
@@ -1089,7 +1087,7 @@
       "title": "Solicita tu estudio personalizado",
       "subtitle": "Calculamos tu producción, las subvenciones disponibles y diseñamos una propuesta a medida con las mejores condiciones.",
       "primary": "Contacto",
-      "secondary": "Conoce al equipo"
+      "secondary": "Estudio gratis"
     }
   },
   "serviceHubspot": {

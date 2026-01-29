@@ -125,7 +125,7 @@ export default function EstudioGratisPage({
           <p className="mt-3 text-base sm:text-lg text-[#e9eef2]">
             {t("footerForm.subtitle")}
           </p>
-          <div className="mt-6 rounded-[24px] bg-white/10 p-6 sm:p-8 shadow-[0_18px_45px_rgba(0,0,0,0.25)]">
+          <div className="hubspot-light mt-6 rounded-[24px] bg-white p-6 sm:p-8 text-[#0c1f2d] shadow-[0_18px_45px_rgba(0,0,0,0.25)]">
             <HubSpotForm
               portalId={portalId}
               formId={footerFormId}

@@ -71,13 +71,13 @@ export default function NosotrosPage({ locale }: { locale: string }) {
             </div>
             <div className="flex flex-wrap gap-3 pt-2">
               <Button asChild className="px-6 py-3">
-                <Link href={`${basePath}/contacto`}>{t("actions.primary")}</Link>
+                <Link href={`${basePath}/estudio-gratis`}>{t("actions.primary")}</Link>
               </Button>
               <Button
                 asChild
                 className="px-6 py-3 bg-gradient-to-r from-[#c83c3e] to-[#f25f5c] text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition"
               >
-                <Link href={`${basePath}/servicios`}>{t("actions.secondary")}</Link>
+                <Link href={`${basePath}/empresa-placas-solares`}>{t("actions.secondary")}</Link>
               </Button>
             </div>
           </div>
@@ -180,58 +180,6 @@ export default function NosotrosPage({ locale }: { locale: string }) {
                     className="h-auto max-h-24 w-auto object-contain"
                   />
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Key Resources and Activities */}
-      <section className="bg-white px-4 py-16 dark:bg-[#0b1220]">
-        <div className="mx-auto max-w-6xl">
-          <div className="grid md:grid-cols-2 gap-12">
-            {/* Key Resources */}
-            <div>
-              <h2 className="text-3xl md:text-4xl font-black text-[#0c3b52] dark:text-white mb-8">
-                {t("keyResources.title")}
-              </h2>
-              <div className="space-y-6">
-                {(t.raw("keyResources.items") as Array<{icon: string, title: string, description: string}>).map((resource, i) => {
-                  const icons = [Users, TrendingUp, Wrench, MapPin, Leaf];
-                  const Icon = icons[i];
-                  
-                  return (
-                    <div key={i} className="flex gap-4 items-start">
-                      <div className="h-12 w-12 rounded-full bg-[#0c3b52]/10 dark:bg-[#0c3b52]/20 flex items-center justify-center flex-shrink-0">
-                        <Icon className="h-6 w-6 text-[#0c3b52]" />
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-bold text-[#0c3b52] dark:text-white mb-2">{resource.title}</h3>
-                        <p className="text-gray-600 dark:text-gray-400">{resource.description}</p>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* Key Activities */}
-            <div className="rounded-[24px] bg-gradient-to-br from-[#c81618] to-[#f25f5c] p-8 text-white shadow-[0_16px_45px_rgba(200,22,24,0.3)]">
-              <h2 className="text-3xl md:text-4xl font-black mb-8">
-                {t("keyActivities.title")}
-              </h2>
-              <div className="space-y-6">
-                {(t.raw("keyActivities.items") as Array<{title: string, description: string}>).map((activity, i) => (
-                  <div key={i} className="flex gap-4 items-start">
-                    <div className="h-10 w-10 rounded-full bg-white/20 backdrop-blur flex items-center justify-center flex-shrink-0 font-bold text-lg">
-                      {i + 1}
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-bold mb-2">{activity.title}</h3>
-                      <p className="text-white/90">{activity.description}</p>
-                    </div>
-                  </div>
-                ))}
               </div>
             </div>
           </div>

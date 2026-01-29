@@ -165,14 +165,14 @@ const Navbar = () => {
                     )}
                     {item.id === "contact" && (
                       <div className="grid gap-2 w-[280px] max-w-[90vw]">
-                        <HoveredLink href="/contacto#trabaja-con-nosotros">
-                          {t("contactWorkWithUs")}
-                        </HoveredLink>
                         <HoveredLink href="/contacto#mapa">
                           {t("contactOfficesSeville")}
                         </HoveredLink>
                         <HoveredLink href="/contacto#mapa">
                           {t("contactOfficesMadrid")}
+                        </HoveredLink>
+                        <HoveredLink href="/contacto#trabaja-con-nosotros">
+                          {t("contactWorkWithUs")}
                         </HoveredLink>
                       </div>
                     )}

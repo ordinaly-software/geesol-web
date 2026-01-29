@@ -28,25 +28,18 @@ export default function AutoconsumoDomesticoPage({ locale }: { locale: string })
       ]}
       subtitle="Convierte tu vivienda en una casa eficiente: reduce tu factura y gana independencia con un diseño fotovoltaico a medida."
       badge="Residencial"
-      seoHeadings={{
-        h2: [
-          "Autoconsumo doméstico con placas solares",
-          "Instalación fotovoltaica residencial llave en mano",
-          "Paneles solares para casas con ahorro real",
-        ],
-      }}
+      highlightHeadingLevel="h2"
       highlights={[
         {
-          title: "Estudio personalizado",
-          description: "Analizamos tu consumo y tejado para dimensionar la instalación ideal.",
+          title: "Autoconsumo doméstico con placas solares",
+          description: ""},
+        {
+          title: "Instalación fotovoltaica residencial llave en mano",
+          description: ""
         },
         {
-          title: "Gestión de ayudas",
-          description: "Nos encargamos de subvenciones, bonificaciones y legalización sin que tengas que preocuparte.",
-        },
-        {
-          title: "Monitorización 24/7",
-          description: "Sigue tu producción en tiempo real y detecta incidencias antes de que afecten al ahorro.",
+          title: "Paneles solares para casas con ahorro real",
+          description: ""
         },
       ]}
       features={[

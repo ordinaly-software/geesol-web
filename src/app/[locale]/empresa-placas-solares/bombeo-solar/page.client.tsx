@@ -28,25 +28,22 @@ export default function BombeoSolarPage({ locale }: { locale: string }) {
       ]}
       subtitle="Riega y abastece con energía limpia y estable, reduciendo gasoil y mantenimiento en explotaciones agrícolas."
       badge="Agrícola"
-      seoHeadings={{
-        h2: [
-          "Bombeo solar fotovoltaico para riego",
-          "Bombeo solar para fincas y explotaciones agrícolas",
-          "Instalaciones de bombeo solar con ahorro de combustible",
-        ],
-      }}
+      highlightHeadingLevel="h2"
       highlights={[
         {
-          title: "Caudal constante",
-          description: "Diseños adaptados a tus horarios de riego y necesidades de presión.",
+          title: "Bombeo solar fotovoltaico para riego",
+          description:
+            "Caudal constante: diseños adaptados a tus horarios de riego y necesidades de presión.",
         },
         {
-          title: "Ahorro operativo",
-          description: "Elimina consumo de generadores y reduce costes de combustible y mantenimiento.",
+          title: "Bombeo solar para fincas y explotaciones agrícolas",
+          description:
+            "Ahorro operativo: elimina consumo de generadores y reduce costes de combustible y mantenimiento.",
         },
         {
-          title: "Equipos robustos",
-          description: "Variadores solares y bombas diseñados para trabajar en condiciones exigentes.",
+          title: "Instalaciones de bombeo solar con ahorro de combustible",
+          description:
+            "Equipos robustos: variadores solares y bombas diseñados para trabajar en condiciones exigentes.",
         },
       ]}
       features={[
