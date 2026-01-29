@@ -7,13 +7,124 @@ import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
-import { getServiceGallerySections } from "@/data/service-gallery";
+import { getServiceGallerySections, type ServiceGalleryImage } from "@/data/service-gallery";
 import { getServicePath } from "@/lib/service-slug";
-import { IconArrowNarrowLeft, IconArrowNarrowRight } from "@tabler/icons-react";
-import { HubSpotForm } from "@/components/ui/hubspot-form";
+import { IconArrowNarrowLeft, IconArrowNarrowRight, IconX } from "@tabler/icons-react";
 import { HomeHubSpotFormSection } from "@/components/home/hubspot-form-section";
 
-const GalleryCarousel = ({ images, title }: { images: string[]; title: string }) => {
+interface LightboxProps {
+  images: ServiceGalleryImage[];
+  initialIndex: number;
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+const Lightbox = ({ images, initialIndex, isOpen, onClose }: LightboxProps) => {
+  const [currentIndex, setCurrentIndex] = useState(initialIndex);
+
+  useEffect(() => {
+    setCurrentIndex(initialIndex);
+  }, [initialIndex]);
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+      if (e.key === "ArrowLeft") handlePrevious();
+      if (e.key === "ArrowRight") handleNext();
+    };
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isOpen, currentIndex]);
+
+  const handlePrevious = () => {
+    setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+  };
+
+  if (!isOpen) return null;
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-sm"
+      onClick={onClose}
+    >
+      <button
+        onClick={onClose}
+        className="absolute right-4 top-4 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white transition-all hover:bg-white/20"
+        aria-label="Cerrar"
+      >
+        <IconX className="h-6 w-6" />
+      </button>
+
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          handlePrevious();
+        }}
+        className="absolute left-4 top-1/2 z-50 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white transition-all hover:bg-white/20"
+        aria-label="Imagen anterior"
+      >
+        <IconArrowNarrowLeft className="h-6 w-6" />
+      </button>
+
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          handleNext();
+        }}
+        className="absolute right-4 top-1/2 z-50 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white transition-all hover:bg-white/20"
+        aria-label="Imagen siguiente"
+      >
+        <IconArrowNarrowRight className="h-6 w-6" />
+      </button>
+
+      <div
+        className="flex h-full w-full flex-col items-center justify-center p-4"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="relative h-[70vh] w-full max-w-6xl">
+          <Image
+            src={images[currentIndex].src}
+            alt={images[currentIndex].alt || images[currentIndex].title}
+            fill
+            className="object-contain"
+            sizes="100vw"
+            priority
+          />
+        </div>
+        <div className="mt-4 text-center">
+          <h3 className="text-xl font-semibold text-white">
+            {images[currentIndex].title}
+          </h3>
+          <p className="mt-1 text-sm text-gray-300">
+            {currentIndex + 1} / {images.length}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const GalleryCarousel = ({
+  images,
+  title,
+  onImageClick,
+}: {
+  images: ServiceGalleryImage[];
+  title: string;
+  onImageClick: (index: number) => void;
+}) => {
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
@@ -82,18 +193,20 @@ const GalleryCarousel = ({ images, title }: { images: string[]; title: string })
         onScroll={checkScrollability}
         className="flex snap-x snap-mandatory gap-6 overflow-x-auto pb-4 [-webkit-overflow-scrolling:touch]"
       >
-        {images.map((src, idx) => {
-          const caption = `${title} ${idx + 1}`;
+        {images.map((image, idx) => {
+          const caption = image.title || `${title} ${idx + 1}`;
           return (
             <figure
-              key={`${title}-${src}-${idx}`}
+              key={`${title}-${image.src}-${idx}`}
               data-gallery-card
-              className="min-w-[85%] sm:min-w-[70%] lg:min-w-[60%] snap-start overflow-hidden rounded-[24px] bg-[#f7f8fb] shadow-[0_12px_35px_rgba(12,59,82,0.14)] dark:bg-[#0f172a] dark:shadow-[0_12px_35px_rgba(0,0,0,0.35)]"
+              className="min-w-[85%] sm:min-w-[70%] lg:min-w-[60%] snap-start overflow-hidden rounded-[24px] bg-[#f7f8fb] shadow-[0_12px_35px_rgba(12,59,82,0.14)] dark:bg-[#0f172a] dark:shadow-[0_12px_35px_rgba(0,0,0,0.35)] cursor-pointer transition-transform hover:scale-[1.02]"
+              onClick={() => onImageClick(idx)}
             >
               <div className="relative aspect-[16/9] w-full">
                 <Image
-                  src={src}
-                  alt={caption}
+                  src={image.src}
+                  alt={image.alt || caption}
+                  title={caption}
                   fill
                   className="object-cover"
                   sizes="(min-width: 1024px) 60vw, 90vw"
@@ -114,9 +227,38 @@ export default function CasosDeExitoPage({ locale }: { locale: string }) {
   const basePath = locale === routing.defaultLocale ? "" : `/${locale}`;
   const t = useTranslations("galleryPage");
   const gallerySections = getServiceGallerySections(locale);
+  
+  const [lightboxState, setLightboxState] = useState<{
+    isOpen: boolean;
+    images: ServiceGalleryImage[];
+    initialIndex: number;
+  }>({
+    isOpen: false,
+    images: [],
+    initialIndex: 0,
+  });
+
+  const openLightbox = (images: ServiceGalleryImage[], index: number) => {
+    setLightboxState({
+      isOpen: true,
+      images,
+      initialIndex: index,
+    });
+  };
+
+  const closeLightbox = () => {
+    setLightboxState((prev) => ({ ...prev, isOpen: false }));
+  };
 
   return (
     <div className="min-h-screen bg-[#f7f8fb] text-[#0c1f2d] dark:bg-[#0b1220] dark:text-gray-100">
+      <Lightbox
+        images={lightboxState.images}
+        initialIndex={lightboxState.initialIndex}
+        isOpen={lightboxState.isOpen}
+        onClose={closeLightbox}
+      />
+      
       <Banner
         title={t("title")}
         subtitle={t("subtitle")}
@@ -146,7 +288,11 @@ export default function CasosDeExitoPage({ locale }: { locale: string }) {
                 </Button>
               </div>
               <div className="mt-6">
-                <GalleryCarousel images={section.images} title={section.title} />
+                <GalleryCarousel 
+                  images={section.images} 
+                  title={section.title}
+                  onImageClick={(index) => openLightbox(section.images, index)}
+                />
               </div>
             </div>
           ))}

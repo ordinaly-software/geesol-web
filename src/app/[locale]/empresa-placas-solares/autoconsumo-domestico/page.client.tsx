@@ -7,27 +7,33 @@ export default function AutoconsumoDomesticoPage({ locale }: { locale: string })
   return (
     <ServiceTemplate
       locale={locale}
-      title="Placas solares para casas"
+      title="Placas solares para casas: autoconsumo doméstico inteligente"
       heroImage="/static/servicios/autoconsumo_domestico.webp"
       heroImageAlt={[
-        "placas solares para casas",
-        "placas solares para viviendas",
-        "paneles solares para uso doméstico",
+        "autoconsumo doméstico con placas solares",
+        "instalación fotovoltaica residencial",
+        "paneles solares en tejado de casa",
+        "placas solares para viviendas con ahorro real",
       ]}
       featureImageAlt={[
-        "placas solares para viviendas",
-        "paneles solares para uso doméstico",
-        "placas solares para casas",
+        "instalación de placas solares en vivienda unifamiliar",
+        "autoconsumo residencial con monitorización",
+        "paneles solares para casas eficientes",
       ]}
       galleryImageAlt={[
-        "placas solares para casas",
-        "placas solares para viviendas",
-        "paneles solares para uso doméstico",
+        "casos de éxito de autoconsumo doméstico",
+        "instalaciones solares residenciales en tejado",
+        "paneles solares para viviendas con ahorro",
+        "autoconsumo solar en casas unifamiliares",
       ]}
-      subtitle="Reduce tu factura y gana independencia energética con una instalación fotovoltaica diseñada para tu vivienda."
+      subtitle="Convierte tu vivienda en una casa eficiente: reduce tu factura y gana independencia con un diseño fotovoltaico a medida."
       badge="Residencial"
       seoHeadings={{
-        h2: ["Placas solares para viviendas", "Paneles solares para uso doméstico"],
+        h2: [
+          "Autoconsumo doméstico con placas solares",
+          "Instalación fotovoltaica residencial llave en mano",
+          "Paneles solares para casas con ahorro real",
+        ],
       }}
       highlights={[
         {

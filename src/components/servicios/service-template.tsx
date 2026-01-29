@@ -5,6 +5,7 @@ import { HubSpotForm } from "@/components/ui/hubspot-form";
 import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
+import { HUBSPOT_FORMS, HUBSPOT_PORTAL_ID, HUBSPOT_REGION } from "@/data/hubspot-forms";
 
 type Highlight = {
   title: string;
@@ -36,7 +37,7 @@ type ServicePageContent = {
   steps: Step[];
   galleryTitle?: string;
   galleryDescription?: string;
-  galleryImages?: string[];
+  galleryImages?: Array<{ src: string; alt?: string; title?: string }>;
   introSections?: Array<{
     title?: string;
     content: string;
@@ -111,11 +112,10 @@ export const ServiceTemplate = ({
     subtitle: hubspotSection?.subtitle ?? hubspotT("subtitle"),
   };
   const portalId =
-    hubspotSection?.portalId ?? process.env.NEXT_PUBLIC_HUBSPOT_PORTAL_ID;
+    hubspotSection?.portalId ?? HUBSPOT_PORTAL_ID;
   const formId =
     hubspotSection?.formId ??
-    process.env.NEXT_PUBLIC_HUBSPOT_SERVICE_FORM_ID ??
-    process.env.NEXT_PUBLIC_HUBSPOT_FORM_ID;
+    HUBSPOT_FORMS.footer;
 
   return (
     <div className="bg-[#f7f8fb] text-[#0c1f2d] dark:bg-[#0b1220] dark:text-gray-100">
@@ -310,14 +310,21 @@ export const ServiceTemplate = ({
               )}
             </div>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {galleryImages.map((src, idx) => (
+              {galleryImages.map((image, idx) => (
                 <div
-                  key={`${src}-${idx}`}
+                  key={`${image.src}-${idx}`}
                   className="group relative aspect-[4/3] overflow-hidden rounded-[24px] bg-[#f7f8fb] shadow-[0_12px_35px_rgba(12,59,82,0.14)] dark:bg-[#0f172a] dark:shadow-[0_12px_35px_rgba(0,0,0,0.35)]"
                 >
                   <Image
-                    src={src}
-                    alt={resolveAlt(galleryImageAlt, idx, t("gallery.imageAlt", { index: idx + 1 }))}
+                    src={image.src}
+                    alt={
+                      image.alt ??
+                      resolveAlt(galleryImageAlt, idx, t("gallery.imageAlt", { index: idx + 1 }))
+                    }
+                    title={
+                      image.title ??
+                      resolveAlt(galleryImageAlt, idx, t("gallery.imageAlt", { index: idx + 1 }))
+                    }
                     fill
                     className="object-cover transition duration-500 group-hover:scale-105"
                     sizes="(min-width: 1024px) 30vw, 100vw"
@@ -366,7 +373,7 @@ export const ServiceTemplate = ({
             </p>
           </div>
           <div className="mt-6">
-            <HubSpotForm portalId={portalId} formId={formId} />
+            <HubSpotForm portalId={portalId} formId={formId} region={HUBSPOT_REGION} />
           </div>
         </div>
       </section>

@@ -2,12 +2,12 @@ import Banner from "@/components/ui/banner";
 import { Button } from "@/components/ui/button";
 import BackToTopButton from "@/components/ui/back-to-top-button";
 import { HubSpotForm } from "@/components/ui/hubspot-form";
-import { WorkWithUsSection } from "@/components/ui/work-with-us";
 import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
 import { IconArrowRight } from "@tabler/icons-react";
 import Image from "next/image";
+import { HUBSPOT_FORMS, HUBSPOT_PORTAL_ID, HUBSPOT_REGION } from "@/data/hubspot-forms";
 
 const contacts = [
   { label: "phone", value: "955 73 73 22", href: "tel:955737322" },
@@ -30,12 +30,8 @@ const locations = [
 export default function ContactoPage({ locale }: { locale: string }) {
   const t = useTranslations("contactPage");
   const basePath = locale === routing.defaultLocale ? "" : `/${locale}`;
-  const portalId = process.env.NEXT_PUBLIC_HUBSPOT_PORTAL_ID;
-  const formId = process.env.NEXT_PUBLIC_HUBSPOT_FORM_ID;
-  const workFormId =
-    process.env.NEXT_PUBLIC_HUBSPOT_WORK_FORM_ID || formId;
-  const secondaryFormId =
-    process.env.NEXT_PUBLIC_HUBSPOT_CONTACT_SECONDARY_FORM_ID || formId;
+  const portalId = HUBSPOT_PORTAL_ID;
+  const formId = HUBSPOT_FORMS.contact;
 
   return (
     <div className="min-h-screen bg-[#f7f8fb] text-[#0c1f2d] dark:bg-[#0b1220] dark:text-gray-100">
@@ -58,7 +54,11 @@ export default function ContactoPage({ locale }: { locale: string }) {
               {t("contactForm.seo")}
             </p>
             <div className="mt-6">
-              <HubSpotForm portalId={portalId} formId={formId} />
+              <HubSpotForm
+                portalId={portalId}
+                formId={formId}
+                region={HUBSPOT_REGION}
+              />
             </div>
           </div>
 
@@ -177,26 +177,7 @@ export default function ContactoPage({ locale }: { locale: string }) {
       </section>
 
       <section className="bg-[#f7f8fb] px-4 py-10 sm:py-16 dark:bg-[#0b1220]">
-        <div className="mx-auto max-w-6xl rounded-[28px] bg-white p-6 sm:p-8 shadow-[0_16px_45px_rgba(12,59,82,0.12)] dark:bg-[#0f172a] dark:shadow-[0_16px_45px_rgba(0,0,0,0.35)]">
-          <h3 className="text-xl sm:text-2xl font-bold text-[#0c3b52] dark:text-white">
-            {t("studyForm.title")}
-          </h3>
-          <p className="mt-2 text-sm sm:text-base text-gray-700 dark:text-gray-300">
-            {t("studyForm.subtitle")}
-          </p>
-          <div className="mt-6">
-            <HubSpotForm portalId={portalId} formId={secondaryFormId} />
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-[#f7f8fb] px-4 py-10 sm:py-16 dark:bg-[#0b1220]">
         <div className="mx-auto max-w-6xl space-y-6">
-          <WorkWithUsSection
-            id="trabaja-con-nosotros"
-            fullBleed={false}
-            className="rounded-[28px] overflow-hidden"
-          />
           <div className="rounded-[28px] bg-white p-6 sm:p-8 shadow-[0_16px_45px_rgba(12,59,82,0.12)] dark:bg-[#0f172a] dark:shadow-[0_16px_45px_rgba(0,0,0,0.35)]">
             <h3 className="text-xl sm:text-2xl font-bold text-[#0c3b52] dark:text-white">
               {t("work.title")}
@@ -205,7 +186,9 @@ export default function ContactoPage({ locale }: { locale: string }) {
               {t("work.subtitle")}
             </p>
             <div className="mt-6">
-              <HubSpotForm portalId={portalId} formId={workFormId} />
+              <Button asChild className="rounded-full bg-[#D01B17] px-6 py-3 text-sm sm:text-base font-semibold text-white hover:bg-[#b01714]">
+                <a href="mailto:rrhh@geesol.com">{t("work.cta")}</a>
+              </Button>
             </div>
           </div>
         </div>

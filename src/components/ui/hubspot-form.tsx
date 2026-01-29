@@ -15,9 +15,14 @@ declare global {
 type HubSpotFormProps = {
   portalId?: string;
   formId?: string;
+  region?: string;
 };
 
-export const HubSpotForm = ({ portalId, formId }: HubSpotFormProps) => {
+export const HubSpotForm = ({
+  portalId,
+  formId,
+  region = "na1",
+}: HubSpotFormProps) => {
   const [error, setError] = useState<string | null>(null);
   const formContainerId = useId();
 
@@ -28,7 +33,7 @@ export const HubSpotForm = ({ portalId, formId }: HubSpotFormProps) => {
     const loadForm = () => {
       if (window.hbspt?.forms?.create) {
         window.hbspt.forms.create({
-          region: "eu1",
+          region,
           portalId,
           formId,
           target: `#${formContainerId}`,
@@ -60,11 +65,15 @@ export const HubSpotForm = ({ portalId, formId }: HubSpotFormProps) => {
 
   if (!portalId || !formId) {
     return (
-      <div className="rounded-2xl border border-dashed border-gray-300 bg-gray-50 p-6 text-center text-gray-600 dark:border-gray-700 dark:bg-[#0f172a] dark:text-gray-300">
+    <div className="rounded-2xl border border-dashed border-gray-300 bg-gray-50 p-6 text-center text-gray-600 break-words dark:border-gray-700 dark:bg-[#0f172a] dark:text-gray-300">
         Añade tus credenciales de HubSpot en las variables
-        <code className="mx-1 rounded bg-gray-800 px-2 py-1 text-white">NEXT_PUBLIC_HUBSPOT_PORTAL_ID</code>
+        <code className="mx-1 inline-flex max-w-full break-all rounded bg-gray-800 px-2 py-1 text-xs font-medium text-white sm:text-sm">
+          NEXT_PUBLIC_HUBSPOT_PORTAL_ID
+        </code>
         y
-        <code className="mx-1 rounded bg-gray-800 px-2 py-1 text-white">NEXT_PUBLIC_HUBSPOT_FORM_ID</code>
+        <code className="mx-1 inline-flex max-w-full break-all rounded bg-gray-800 px-2 py-1 text-xs font-medium text-white sm:text-sm">
+          NEXT_PUBLIC_HUBSPOT_FORM_ID
+        </code>
         para mostrar el formulario.
       </div>
     );

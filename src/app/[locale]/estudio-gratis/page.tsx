@@ -27,5 +27,5 @@ export default async function EstudioGratis({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  return <EstudioGratisPage locale={locale} />;
+  return <EstudioGratisPage locale={locale} variant="organic" />;
 }

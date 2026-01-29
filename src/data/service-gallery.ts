@@ -5,96 +5,236 @@ type LocalizedText = {
   en: string;
 };
 
+type GalleryImageSource = {
+  src: string;
+  alt: LocalizedText;
+  title: LocalizedText;
+};
+
 type ServiceGallerySource = {
   slug: string;
   title: LocalizedText;
   description: LocalizedText;
-  images: string[];
+  images: GalleryImageSource[];
   galleryTitle?: LocalizedText;
   galleryDescription?: LocalizedText;
+};
+
+export type ServiceGalleryImage = {
+  src: string;
+  alt: string;
+  title: string;
 };
 
 export type ServiceGallerySection = {
   slug: string;
   title: string;
   description: string;
-  images: string[];
+  images: ServiceGalleryImage[];
   galleryTitle?: string;
   galleryDescription?: string;
 };
+
+const imageWithText = (src: string, title: string): GalleryImageSource => ({
+  src,
+  alt: { es: title, en: title },
+  title: { es: title, en: title },
+});
 
 const serviceGallerySource: ServiceGallerySource[] = [
   {
     slug: "autoconsumo-domestico",
     title: {
-      es: "Autoconsumo doméstico",
-      en: "Residential solar",
+      es: "Autoconsumo doméstico con placas solares",
+      en: "Residential solar self-consumption",
     },
     description: {
-      es: "Viviendas con instalaciones optimizadas para consumo diario, máxima independencia y monitorización constante.",
-      en: "Homes with systems optimized for daily consumption, maximum independence, and constant monitoring.",
+      es: "Instalaciones residenciales que reducen la factura y elevan la independencia energética con monitorización en tiempo real.",
+      en: "Residential systems that cut bills and boost energy independence with real-time monitoring.",
     },
     galleryTitle: {
-      es: "Hogares que ya aprovechan el sol",
-      en: "Homes already harnessing the sun",
+      es: "Casos reales de autoconsumo en viviendas",
+      en: "Real residential solar case studies",
     },
     galleryDescription: {
-      es: "Instalaciones residenciales optimizadas para diferentes tipos de tejado y consumos.",
-      en: "Residential installations optimized for different roof types and consumption profiles.",
+      es: "Tejados, chalets y comunidades que ya producen su propia energía con paneles solares.",
+      en: "Rooftops, homes, and communities already generating their own solar power.",
     },
     images: [
-      "/static/servicios/autoconsumo_domestico/autoconsumo_domestico_01.webp",
-      "/static/servicios/autoconsumo_domestico/autoconsumo_domestico_02.webp",
-      "/static/servicios/autoconsumo_domestico/autoconsumo_domestico_03.webp",
-      "/static/servicios/autoconsumo_domestico/autoconsumo_domestico_04.webp",
-      "/static/servicios/autoconsumo_domestico/autoconsumo_domestico_05.webp",
+      imageWithText(
+        "/static/servicios/autoconsumo_domestico/autoconsumo_domestico_01.webp",
+        "Autoconsumo fotovoltaico en vivienda de Sotogrande (Cádiz)"
+      ),
+      imageWithText(
+        "/static/servicios/autoconsumo_domestico/autoconsumo_domestico_02.webp",
+        "Autoconsumo fotovoltaico en vivienda de Sevilla (centro)"
+      ),
+      imageWithText(
+        "/static/servicios/autoconsumo_domestico/autoconsumo_domestico_03.webp",
+        "Autoconsumo fotovoltaico en vivienda de Jerez de la Frontera (Cádiz)"
+      ),
+      imageWithText(
+        "/static/servicios/autoconsumo_domestico/autoconsumo_domestico_04.webp",
+        "Autoconsumo fotovoltaico en vivienda de Jerez de la Frontera (Cádiz)"
+      ),
+      imageWithText(
+        "/static/servicios/autoconsumo_domestico/autoconsumo_domestico_05.webp",
+        "Instalación fotovoltaica en vivienda de Alcalá del Río (Sevilla)"
+      ),
+      imageWithText(
+        "/static/servicios/autoconsumo_domestico/autoconsumo_domestico_06.webp",
+        "Autoconsumo en vivienda de Bormujos (Sevilla)"
+      ),
+      imageWithText(
+        "/static/servicios/autoconsumo_domestico/autoconsumo_domestico_07.webp",
+        "Instalación en Alcalá de Guadaíra (Sevilla)"
+      ),
+      imageWithText(
+        "/static/servicios/autoconsumo_domestico/autoconsumo_domestico_08.webp",
+        "Instalación en Carmona (Sevilla)"
+      ),
+      imageWithText(
+        "/static/servicios/autoconsumo_domestico/autoconsumo_domestico_09.webp",
+        "Instalación en Conil de la Frontera (Cádiz)"
+      ),
+      imageWithText(
+        "/static/servicios/autoconsumo_domestico/autoconsumo_domestico_10.webp",
+        "Instalación en Coria del Río (Sevilla)"
+      ),
+      imageWithText(
+        "/static/servicios/autoconsumo_domestico/autoconsumo_domestico_11.webp",
+        "Instalación en Dos Hermanas (Sevilla)"
+      ),
+      imageWithText(
+        "/static/servicios/autoconsumo_domestico/autoconsumo_domestico_12.webp",
+        "Instalación en Dos Hermanas (Sevilla)"
+      ),
+      imageWithText(
+        "/static/servicios/autoconsumo_domestico/autoconsumo_domestico_13.webp",
+        "Instalación en El Puerto de Santa María (Cádiz)"
+      ),
+      imageWithText(
+        "/static/servicios/autoconsumo_domestico/autoconsumo_domestico_14.webp",
+        "Instalación en El Puerto de Santa María (Cádiz)"
+      ),
+      imageWithText(
+        "/static/servicios/autoconsumo_domestico/autoconsumo_domestico_15.jpeg",
+        "Instalación en Espartinas (Sevilla)"
+      ),
+      imageWithText(
+        "/static/servicios/autoconsumo_domestico/autoconsumo_domestico_16.jpeg",
+        "Instalación en La Campana (Sevilla)"
+      ),
+      imageWithText(
+        "/static/servicios/autoconsumo_domestico/autoconsumo_domestico_17.jpeg",
+        "Instalación en Palomares del Río (Sevilla)"
+      ),
     ],
   },
   {
     slug: "autoconsumo-industrial",
     title: {
-      es: "Autoconsumo industrial",
-      en: "Industrial solar",
+      es: "Autoconsumo industrial para empresas",
+      en: "Industrial solar self-consumption",
     },
     description: {
-      es: "Proyectos para naves, cubiertas y centros logísticos diseñados para reducir costes energéticos.",
-      en: "Projects for warehouses, rooftops, and logistics centers designed to reduce energy costs.",
+      es: "Cubiertas industriales con diseños a medida para maximizar producción y retorno.",
+      en: "Custom industrial rooftops designed to maximize production and ROI.",
     },
     galleryTitle: {
-      es: "Cubiertas industriales en producción",
-      en: "Industrial rooftops in production",
+      es: "Proyectos industriales en funcionamiento",
+      en: "Industrial projects in operation",
     },
     galleryDescription: {
-      es: "Proyectos en naves logísticas, industria agroalimentaria y centros de distribución.",
-      en: "Projects in logistics warehouses, agri-food industry, and distribution centers.",
+      es: "Naves, fábricas y centros logísticos con energía solar integrada.",
+      en: "Warehouses, factories, and logistics centers with integrated solar power.",
     },
     images: [
-      "/static/servicios/autoconsumo_industrial/autoconsumo_industrial_01.webp",
-      "/static/servicios/autoconsumo_industrial/autoconsumo_industrial_02.webp",
-      "/static/servicios/autoconsumo_industrial/autoconsumo_industrial_03.webp",
-      "/static/servicios/autoconsumo_industrial/autoconsumo_industrial_04.webp",
+      imageWithText(
+        "/static/servicios/autoconsumo_industrial/autoconsumo_industrial_01.webp",
+        "Instalaciones para Grupo Insur (Sevilla)"
+      ),
+      imageWithText(
+        "/static/servicios/autoconsumo_industrial/autoconsumo_industrial_02.webp",
+        "Instalación en el Real Club de Golf de Sevilla"
+      ),
+      imageWithText(
+        "/static/servicios/autoconsumo_industrial/autoconsumo_industrial_03.webp",
+        "Instalación en Presmar en Villaverde del Río (Sevilla)"
+      ),
+      imageWithText(
+        "/static/servicios/autoconsumo_industrial/autoconsumo_industrial_04.webp",
+        "Instalación en nave industrial en Coria del Río (Sevilla)"
+      ),
+      imageWithText(
+        "/static/servicios/autoconsumo_industrial/autoconsumo_industrial_05.webp",
+        "Instalación en nave industrial Polígono Parsi (Sevilla)"
+      ),
+      imageWithText(
+        "/static/servicios/autoconsumo_industrial/autoconsumo_industrial_06.webp",
+        "Instalación en nave industrial en Sevilla"
+      ),
+      imageWithText(
+        "/static/servicios/autoconsumo_industrial/autoconsumo_industrial_07.webp",
+        "Instalación en nave industrial en Sevilla"
+      ),
+      imageWithText(
+        "/static/servicios/autoconsumo_industrial/autoconsumo_industrial_08.webp",
+        "Instalación en estación de servicio (Sevilla)"
+      ),
+      imageWithText(
+        "/static/servicios/autoconsumo_industrial/autoconsumo_industrial_09.webp",
+        "Instalación en estación de servicio (Jerez de la Frontera)"
+      ),
+      imageWithText(
+        "/static/servicios/autoconsumo_industrial/autoconsumo_industrial_1.webp",
+        "Instalación en Valverde del Camino (Huelva)"
+      ),
+      imageWithText(
+        "/static/servicios/autoconsumo_industrial/autoconsumo_industrial_11.webp",
+        "Instalación en Villanueva del Ariscal (Sevilla)"
+      ),
+      imageWithText(
+        "/static/servicios/autoconsumo_industrial/autoconsumo_industrial_12.webp",
+        "Instalación en San José de la Rinconada (Sevilla)"
+      ),
+      imageWithText(
+        "/static/servicios/autoconsumo_industrial/autoconsumo_industrial_13.webp",
+        "Instalación en San Juan de Aznalfarache (Sevilla)"
+      ),
+      imageWithText(
+        "/static/servicios/autoconsumo_industrial/autoconsumo_industrial_14.jpeg",
+        "Instalación en La Palma del Condado (Huelva)"
+      ),
+      imageWithText(
+        "/static/servicios/autoconsumo_industrial/autoconsumo_industrial_15.jpeg",
+        "Instalación en Mairena del Aljarafe (Sevilla)"
+      ),
     ],
   },
   {
     slug: "bombeo-solar",
     title: {
-      es: "Bombeo solar",
-      en: "Solar pumping",
+      es: "Bombeo solar para riego eficiente",
+      en: "Solar pumping for efficient irrigation",
     },
     description: {
-      es: "Instalaciones agrícolas con variadores solares, control de caudal y ahorro operativo.",
-      en: "Agricultural installations with solar drives, flow control, and operational savings.",
+      es: "Sistemas fotovoltaicos que garantizan caudal estable y ahorro en explotaciones agrícolas.",
+      en: "PV systems that deliver stable flow and savings for agricultural operations.",
     },
     galleryTitle: {
-      es: "Bombeos en marcha",
-      en: "Pumping systems in operation",
+      es: "Bombeo solar en campo",
+      en: "Solar pumping in the field",
     },
     galleryDescription: {
-      es: "Instalaciones en pozos, balsas y estaciones de bombeo para diferentes cultivos.",
-      en: "Installations in wells, ponds, and pumping stations for different crops.",
+      es: "Pozos, balsas y riegos alimentados por energía solar.",
+      en: "Wells, ponds, and irrigation systems powered by solar energy.",
     },
     images: [
-      "/static/servicios/bombeo_solar/bombeo_solar_01.webp",
+      imageWithText(
+        "/static/servicios/bombeo_solar/bombeo_solar_01.webp",
+        "Instalación en La Palma del Condado (Huelva)"
+      ),
     ],
   },
   {
@@ -108,8 +248,14 @@ const serviceGallerySource: ServiceGallerySource[] = [
       en: "Hybrid systems with batteries for off-grid areas, with autonomy and remote control.",
     },
     images: [
-      "/static/servicios/sistemas_aislados/sistemas_aislados_01.webp",
-      "/static/servicios/sistemas_aislados/sistemas_aislados_02.webp",
+      imageWithText(
+        "/static/servicios/sistemas_aislados/sistemas_aislados_01.webp",
+        "Instalación fotovoltaica aislada con baterías"
+      ),
+      imageWithText(
+        "/static/servicios/sistemas_aislados/sistemas_aislados_02.webp",
+        "Sistema fotovoltaico aislado con autonomía"
+      ),
     ],
   }
 ];
@@ -124,7 +270,11 @@ export const getServiceGallerySections = (locale: string): ServiceGallerySection
     slug: section.slug,
     title: section.title[localeKey],
     description: section.description[localeKey],
-    images: section.images,
+    images: section.images.map((image) => ({
+      src: image.src,
+      alt: image.alt[localeKey],
+      title: image.title[localeKey],
+    })),
     galleryTitle: section.galleryTitle?.[localeKey],
     galleryDescription: section.galleryDescription?.[localeKey],
   }));

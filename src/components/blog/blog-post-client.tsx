@@ -12,6 +12,8 @@ import { urlFor } from '@/lib/image';
 import Banner from '@/components/ui/banner';
 import type { BlogPost, MediaItem, Category } from './types';
 import SharePostButtons from './share-post-buttons';
+import { HubSpotForm } from '@/components/ui/hubspot-form';
+import { HUBSPOT_FORMS, HUBSPOT_PORTAL_ID, HUBSPOT_REGION } from '@/data/hubspot-forms';
 
 const tagStyles = [
   "bg-[#D01B17]/10 text-[#D01B17] hover:bg-[#D01B17]/20",
@@ -177,6 +179,23 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
             })}
           />
         </article>
+        <section className="mt-10 rounded-2xl bg-white/90 p-6 shadow-[0_16px_45px_rgba(12,59,82,0.12)] dark:bg-[#0f172a]/90 dark:shadow-[0_16px_45px_rgba(0,0,0,0.35)]">
+          <div className="text-center">
+            <h3 className="text-2xl font-bold text-[#0c3b52] dark:text-white">
+              {t("form.title")}
+            </h3>
+            <p className="mt-2 text-sm sm:text-base text-gray-700 dark:text-gray-300">
+              {t("form.subtitle")}
+            </p>
+          </div>
+          <div className="mt-6">
+            <HubSpotForm
+              portalId={HUBSPOT_PORTAL_ID}
+              formId={HUBSPOT_FORMS.blog}
+              region={HUBSPOT_REGION}
+            />
+          </div>
+        </section>
       </main>
       {/* Categories and share row - centered and evenly spaced */}
       <div className="border-t border-gray-300 dark:border-gray-700 pt-6 pb-10">

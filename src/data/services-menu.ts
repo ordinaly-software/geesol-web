@@ -23,7 +23,7 @@ const servicesMenuSource: ServicesMenuSource[] = [
   {
     slug: "autoconsumo-domestico",
     title: {
-      es: "Autoconsumo domestico",
+      es: "Autoconsumo doméstico",
       en: "Residential solar",
     },
     description: {
@@ -75,7 +75,7 @@ const servicesMenuSource: ServicesMenuSource[] = [
       en: "Off-grid solar systems",
     },
     description: {
-      es: "Energia solar para ubicaciones sin red con baterias y sistemas hibridos.",
+      es: "Energía solar para ubicaciones sin red con baterías y sistemas híbridos.",
       en: "Off-grid solar solutions with batteries and hybrid systems.",
     },
     image: "/static/servicios/sistemas_aislados.webp",

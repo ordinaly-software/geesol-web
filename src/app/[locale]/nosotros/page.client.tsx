@@ -8,6 +8,7 @@ import YoutubeEmbed from "@/components/ui/youtube-embed";
 import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
+import { Target, Eye, Lightbulb, Users, TrendingUp, Wrench, MapPin, Leaf } from "lucide-react";
 
 export default function NosotrosPage({ locale }: { locale: string }) {
   const basePath = locale === routing.defaultLocale ? "" : `/${locale}`;
@@ -96,6 +97,63 @@ export default function NosotrosPage({ locale }: { locale: string }) {
         </div>
       </section>
 
+      {/* Purpose, Mission & Vision */}
+      <section className="bg-white px-4 py-16 dark:bg-[#0b1220]">
+        <div className="mx-auto max-w-6xl">
+          <div className="text-center mb-12">
+            <p className="text-sm font-semibold uppercase tracking-[0.15em] text-[#c81618] mb-3">
+              {t("purposeMissionVision.eyebrow")}
+            </p>
+            <h2 className="text-3xl md:text-4xl font-black text-[#0c3b52] dark:text-white">
+              {t("purposeMissionVision.title")}
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="rounded-[24px] bg-gradient-to-br from-[#c81618] to-[#f25f5c] p-8 text-white shadow-[0_16px_45px_rgba(200,22,24,0.3)]">
+              <div className="h-14 w-14 rounded-full bg-white/20 backdrop-blur flex items-center justify-center mb-6">
+                <Target className="h-7 w-7 text-white" />
+              </div>
+              <h3 className="text-xl font-bold mb-4">{t("purposeMissionVision.purpose.label")}</h3>
+              <p className="text-lg font-semibold mb-3">
+                "{t("purposeMissionVision.purpose.text")}"
+              </p>
+            </div>
+
+            <div className="rounded-[24px] bg-gradient-to-br from-[#0c3b52] to-[#0c3b52]/90 p-8 text-white shadow-[0_16px_45px_rgba(12,59,82,0.3)]">
+              <div className="h-14 w-14 rounded-full bg-white/20 backdrop-blur flex items-center justify-center mb-6">
+                <Eye className="h-7 w-7 text-white" />
+              </div>
+              <h3 className="text-xl font-bold mb-4">{t("purposeMissionVision.vision.label")}</h3>
+              <p className="text-base leading-relaxed">
+                {t("purposeMissionVision.vision.text")}
+              </p>
+            </div>
+
+            <div className="rounded-[24px] bg-gradient-to-br from-[#f7f8fb] to-white dark:from-[#0f172a] dark:to-[#0b1220] p-8 border-2 border-[#0c3b52]/20 dark:border-[#0c3b52]/40 shadow-[0_16px_45px_rgba(12,59,82,0.12)] dark:shadow-[0_16px_45px_rgba(0,0,0,0.35)]">
+              <div className="h-14 w-14 rounded-full bg-[#0c3b52]/10 dark:bg-[#0c3b52]/20 flex items-center justify-center mb-6">
+                <Lightbulb className="h-7 w-7 text-[#0c3b52]" />
+              </div>
+              <h3 className="text-xl font-bold mb-4 text-[#0c3b52] dark:text-white">{t("purposeMissionVision.mission.label")}</h3>
+              <p className="text-gray-700 dark:text-gray-300 mb-4">
+                {t("purposeMissionVision.mission.text")}
+              </p>
+              <p className="text-sm text-gray-600 dark:text-gray-400">
+                {t("purposeMissionVision.mission.description")}
+              </p>
+              <ul className="mt-3 space-y-2 text-sm text-gray-700 dark:text-gray-300">
+                {(t.raw("purposeMissionVision.mission.features") as string[]).map((feature, i) => (
+                  <li key={i} className="flex items-start gap-2">
+                    <span className="text-[#c81618] mt-0.5">✓</span>
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="bg-[#f7f8fb] px-4 py-16 dark:bg-[#0f172a]">
         <div className="mx-auto max-w-6xl">
           <div className="rounded-[28px] bg-white p-8 shadow-[0_16px_45px_rgba(12,59,82,0.12)] dark:bg-[#0b1220] dark:shadow-[0_16px_45px_rgba(0,0,0,0.35)]">
@@ -122,6 +180,58 @@ export default function NosotrosPage({ locale }: { locale: string }) {
                     className="h-auto max-h-24 w-auto object-contain"
                   />
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Key Resources and Activities */}
+      <section className="bg-white px-4 py-16 dark:bg-[#0b1220]">
+        <div className="mx-auto max-w-6xl">
+          <div className="grid md:grid-cols-2 gap-12">
+            {/* Key Resources */}
+            <div>
+              <h2 className="text-3xl md:text-4xl font-black text-[#0c3b52] dark:text-white mb-8">
+                {t("keyResources.title")}
+              </h2>
+              <div className="space-y-6">
+                {(t.raw("keyResources.items") as Array<{icon: string, title: string, description: string}>).map((resource, i) => {
+                  const icons = [Users, TrendingUp, Wrench, MapPin, Leaf];
+                  const Icon = icons[i];
+                  
+                  return (
+                    <div key={i} className="flex gap-4 items-start">
+                      <div className="h-12 w-12 rounded-full bg-[#0c3b52]/10 dark:bg-[#0c3b52]/20 flex items-center justify-center flex-shrink-0">
+                        <Icon className="h-6 w-6 text-[#0c3b52]" />
+                      </div>
+                      <div>
+                        <h3 className="text-lg font-bold text-[#0c3b52] dark:text-white mb-2">{resource.title}</h3>
+                        <p className="text-gray-600 dark:text-gray-400">{resource.description}</p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Key Activities */}
+            <div className="rounded-[24px] bg-gradient-to-br from-[#c81618] to-[#f25f5c] p-8 text-white shadow-[0_16px_45px_rgba(200,22,24,0.3)]">
+              <h2 className="text-3xl md:text-4xl font-black mb-8">
+                {t("keyActivities.title")}
+              </h2>
+              <div className="space-y-6">
+                {(t.raw("keyActivities.items") as Array<{title: string, description: string}>).map((activity, i) => (
+                  <div key={i} className="flex gap-4 items-start">
+                    <div className="h-10 w-10 rounded-full bg-white/20 backdrop-blur flex items-center justify-center flex-shrink-0 font-bold text-lg">
+                      {i + 1}
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-bold mb-2">{activity.title}</h3>
+                      <p className="text-white/90">{activity.description}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
