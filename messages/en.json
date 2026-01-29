@@ -210,7 +210,7 @@
     "form": {
       "eyebrow": "Free study",
       "title": "Calculate your savings in under 24h",
-      "subtitle": "Complete the form and we’ll send a tailored study with estimated savings and available incentives.",
+      "subtitle": "Complete the form and we'll send a tailored study with estimated savings and available incentives.",
       "note": "No commitment."
     },
     "videoTestimonials": {
@@ -308,9 +308,7 @@
       "subtitle": "Tell us about your photovoltaic project and we'll arrange a free study in under 24 hours."
     },
     "contactForm": {
-      "title": "Contact form",
-      "subtitle": "Fill in your details and an advisor will reach out to calculate savings, subsidies, and installation timeline.",
-      "seo": "Experts in solar panels, self-consumption, and photovoltaic installations in Seville, Andalusia, and Spain. We help you access solar subsidies and clean, green energy."
+      "title": "Contact form"
     },
     "contactDetails": {
       "title": "Contact details",
@@ -349,7 +347,8 @@
     },
     "work": {
       "title": "Join the solar energy team",
-      "subtitle": "If you work in photovoltaic installations, self-consumption, or renewable energy, share your profile and we'll get in touch."
+      "subtitle": "Send your CV to rrhh@geesol.com and tell us about your experience in solar and self-consumption projects.",
+      "cta": "Email your CV to HR"
     },
     "ctaPhone": {
       "title": "Prefer to talk by phone?",
@@ -361,7 +360,7 @@
   "freeStudyPage": {
     "hero": {
       "title": "Free study for your solar installation",
-      "subtitle": "In under 24 hours we’ll send a proposal with estimated savings, incentives, and planning.",
+      "subtitle": "In under 24 hours we'll send a proposal with estimated savings, incentives, and planning.",
       "eyebrow": "Free study",
       "formTitle": "Request your tailored study",
       "formSubtitle": "Tell us about your usage and installation type so we can prepare the calculation.",
@@ -395,19 +394,13 @@
   "whatsapp": {
     "openLine": "Open Chatbot",
     "tooltip": "You'll be redirected to GEESOL Renovables' AI-powered customer-assistance chatbot.",
-    "title": "GEESOL Renovables Chatbot",
+    "title": "Geerman helps you!",
     "bubbleTagline": "AI assistant · 24/7",
-    "description": "This virtual assistant handles questions about solar solutions, savings, subsidies, and project follow-up.",
-    "aiNotice": "Powered by artificial intelligence to assist you in real time.",
-    "phoneNotice": "Official number: +34 621 15 14 68",
-    "canHelpWith": "It can help you with",
+    "aiNotice": "Powered by AI (Artificial Intelligence)",
     "help1": "Answering technical and commercial questions",
     "help2": "Explaining savings, financing, and subsidies",
-    "help3": "Scheduling appointments or tracking your project",
     "help4": "Clarifying requirements and regulations",
-    "help5": "Post-installation support and maintenance",
     "requestAssistance": "Open the chatbot in WhatsApp",
-    "responseTime": "Immediate replies 24/7 via our chatbot.",
     "status": "Connected via +34 621 15 14 68",
     "defaultWhatsAppMessage": "Hello, I would like to speak with the GEESOL Renovables customer-assistance chatbot."
   },
@@ -441,7 +434,7 @@
     "story": {
       "eyebrow": "Our story",
       "title": "A path of solar growth",
-      "lead": "Since our beginnings, we’ve helped homes and businesses adopt solar with safe, reliable solutions.",
+      "lead": "Since our beginnings, we've helped homes and businesses adopt solar with safe, reliable solutions.",
       "timeline": {
         "1": {
           "title": "2017 · GEESOL begins",
@@ -481,7 +474,7 @@
     "form": {
       "eyebrow": "Contact",
       "title": "Want to talk to our team?",
-      "subtitle": "Complete the form and we’ll reply with a tailored proposal."
+      "subtitle": "Complete the form and we'll reply with a tailored proposal."
     },
     "news": {
       "title": "Featured news",
@@ -495,6 +488,134 @@
       "secondary": "Contact",
       "mailSubject": "Application to work at GEESOL",
       "mailBody": "Hi GEESOL team,\n\nI'd like to apply for roles related to solar energy. I'm sharing my profile and availability.\n\nThanks."
+    },
+    "businessModel": {
+      "eyebrow": "Business Model",
+      "title": "Solutions for every customer",
+      "subtitle": "We work with different segments to offer the best self-consumption solution",
+      "segments": {
+        "residential": {
+          "title": "Residential",
+          "description": "Homes seeking to reduce costs and improve their quality of life"
+        },
+        "industrial": {
+          "title": "Industrial",
+          "description": "Industries seeking energy stability"
+        },
+        "communities": {
+          "title": "Communities",
+          "description": "Communities looking to optimize shared resources"
+        },
+        "agriculture": {
+          "title": "Agriculture",
+          "description": "Agricultural sector with agrovoltaic solutions"
+        }
+      }
+    },
+    "competitiveAdvantages": {
+      "eyebrow": "Competitive Advantages",
+      "title": "Why trust GEESOL",
+      "customerRating": {
+        "title": "Customer Rating",
+        "rating": "4.9/5.0",
+        "description": "Based on +2,600 Google reviews"
+      },
+      "warranty": {
+        "title": "Total Warranty",
+        "years": "Up to 25 years",
+        "features": [
+          "Complete installation protection",
+          "Guaranteed technical service",
+          "Preventive maintenance"
+        ]
+      },
+      "experience": {
+        "title": "Proven Experience",
+        "installations": "+7,000 Installations",
+        "description": "More than 6,000 successful photovoltaic installations"
+      },
+      "service": {
+        "title": "5-Star Service",
+        "metrics": {
+          "speed": "Response speed",
+          "quality": "Installation quality",
+          "support": "Customer support"
+        }
+      },
+      "personalizedAttention": {
+        "title": "Personalized Attention",
+        "features": [
+          "Personalized technical advice for each project",
+          "Continuous monitoring: before, during and after installation"
+        ]
+      },
+      "technology": {
+        "title": "Superior Technology",
+        "description": "We collaborate with leading brands in the sector to offer maximum quality and reliability"
+      }
+    },
+    "financialSolutions": {
+      "eyebrow": "Financial Solutions",
+      "title": "Flexible financing adapted to you",
+      "subtitle": "Different payment options so you can invest in solar energy without complications",
+      "options": {
+        "directPurchase": {
+          "title": "Direct Purchase",
+          "features": [
+            "Maximum long-term savings",
+            "Financing up to 15 years",
+            "Full system ownership"
+          ]
+        },
+        "ppa": {
+          "title": "PPA Model",
+          "features": [
+            "No initial investment",
+            "Pay only for consumption",
+            "Savings from day one"
+          ]
+        },
+        "renting": {
+          "title": "Renting",
+          "features": [
+            "Fixed monthly fees",
+            "Tax benefits",
+            "Ideal for businesses"
+          ]
+        },
+        "maintenance": {
+          "title": "Maintenance",
+          "features": [
+            "Customized plans",
+            "Maximum performance",
+            "Preventive service"
+          ]
+        }
+      },
+      "benefits": {
+        "title": "Benefits of our solutions",
+        "items": [
+          {
+            "title": "Total 25-year Warranty",
+            "description": "Maximum protection and peace of mind for your investment"
+          },
+          {
+            "title": "Attractive and predictable ROI",
+            "description": "Investment recovery in 4-6 years"
+          },
+          {
+            "title": "Positive environmental impact",
+            "description": "Significant reduction in carbon footprint"
+          },
+          {
+            "title": "Deductions and subsidies",
+            "description": "Complete advice to optimize tax benefits"
+          }
+        ],
+        "quote": "We want to be the most trusted company in the sector, with warranty extension on our installations to endorse it.",
+        "quoteSource": "GEESOL Trust",
+        "quoteLink": "www.confianzageesol.com"
+      }
     }
   },
   "services": {
@@ -579,6 +700,10 @@
     },
     "otherPosts": {
       "title": "Other posts"
+    },
+    "form": {
+      "title": "Want more solar insights?",
+      "subtitle": "Leave your details and we'll send a tailored proposal."
     },
     "share": {
       "label": "Share",
@@ -727,6 +852,79 @@
     },
     "associations": {
       "title": "Geesol is a member of the Spanish Photovoltaic Union (UNEF) and the Association of Businessmen of Southern Spain (CESUR)."
+    },
+    "purposeMissionVision": {
+      "eyebrow": "Purpose, Mission and Vision",
+      "title": "Our guide and commitment",
+      "purpose": {
+        "label": "Purpose",
+        "text": "Transform the way we live energy to improve people's lives and their environment"
+      },
+      "vision": {
+        "label": "Vision",
+        "text": "Become the best-rated company for those who want solar energy without complications, with a positive impact on their environment. Be recognized as the most reliable and humane option in the market, building long-term relationships based on technical quality and personalized attention."
+      },
+      "mission": {
+        "label": "Mission",
+        "text": "We offer accessible and reliable solar self-consumption solutions to improve people's quality of life.",
+        "description": "We facilitate access to solar energy with simplicity and without economic barriers, contributing to environmental care. Backed by:",
+        "features": [
+          "Expert technical team",
+          "Personalized attention",
+          "Collaboration with leading brands",
+          "Flexible financing"
+        ]
+      }
+    },
+    "keyResources": {
+      "title": "Key Resources",
+      "items": [
+        {
+          "title": "Highly qualified team",
+          "description": "Professionals expert in photovoltaic installations"
+        },
+        {
+          "title": "Leading brand technology",
+          "description": "Huawei, Enphase, Exiom among others"
+        },
+        {
+          "title": "Validated reputation",
+          "description": "+2,600 reviews with 4.9/5.0 rating on Google"
+        },
+        {
+          "title": "Strategic partners",
+          "description": "Energy traders and financial institutions"
+        },
+        {
+          "title": "Loyal customer network",
+          "description": "+6,000 installations and referral program"
+        }
+      ]
+    },
+    "keyActivities": {
+      "title": "Key Activities",
+      "items": [
+        {
+          "title": "Outreach and consulting",
+          "description": "Digital strategy and personalized consulting"
+        },
+        {
+          "title": "Technical visits",
+          "description": "Personalized evaluation and optimal sizing"
+        },
+        {
+          "title": "Installation with high Quality standards",
+          "description": "Certified process with Total 25-year Warranty"
+        },
+        {
+          "title": "After-sales control",
+          "description": "Monitoring, maintenance and continuous support"
+        },
+        {
+          "title": "Investment Optimization",
+          "description": "Management of tax deductions and subsidies"
+        }
+      ]
     }
   },
   "faqPage": {
@@ -889,12 +1087,12 @@
       "title": "Request your personalized study",
       "subtitle": "We calculate your production, available subsidies, and design a tailored proposal with the best conditions.",
       "primary": "Contact",
-      "secondary": "Meet the team"
+      "secondary": "Free study"
     }
   },
   "serviceHubspot": {
     "eyebrow": "Contact",
     "title": "Request your personalized study",
-    "subtitle": "Tell us about your project and we’ll prepare a proposal with savings, timelines, and incentives."
+    "subtitle": "Tell us about your project and we'll prepare a proposal with savings, timelines, and incentives."
   }
 }

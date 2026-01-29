@@ -8,6 +8,7 @@ import YoutubeEmbed from "@/components/ui/youtube-embed";
 import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
+import { Target, Eye, Lightbulb, Users, TrendingUp, Wrench, MapPin, Leaf } from "lucide-react";
 
 export default function NosotrosPage({ locale }: { locale: string }) {
   const basePath = locale === routing.defaultLocale ? "" : `/${locale}`;
@@ -70,13 +71,13 @@ export default function NosotrosPage({ locale }: { locale: string }) {
             </div>
             <div className="flex flex-wrap gap-3 pt-2">
               <Button asChild className="px-6 py-3">
-                <Link href={`${basePath}/contacto`}>{t("actions.primary")}</Link>
+                <Link href={`${basePath}/estudio-gratis`}>{t("actions.primary")}</Link>
               </Button>
               <Button
                 asChild
                 className="px-6 py-3 bg-gradient-to-r from-[#c83c3e] to-[#f25f5c] text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition"
               >
-                <Link href={`${basePath}/servicios`}>{t("actions.secondary")}</Link>
+                <Link href={`${basePath}/empresa-placas-solares`}>{t("actions.secondary")}</Link>
               </Button>
             </div>
           </div>
@@ -91,6 +92,63 @@ export default function NosotrosPage({ locale }: { locale: string }) {
             <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
             <div className="absolute bottom-6 left-6 right-6 rounded-[18px] bg-white/90 p-4 text-sm text-[#0c3b52] shadow-lg backdrop-blur">
               {t("story.caption")}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Purpose, Mission & Vision */}
+      <section className="bg-white px-4 py-16 dark:bg-[#0b1220]">
+        <div className="mx-auto max-w-6xl">
+          <div className="text-center mb-12">
+            <p className="text-sm font-semibold uppercase tracking-[0.15em] text-[#c81618] mb-3">
+              {t("purposeMissionVision.eyebrow")}
+            </p>
+            <h2 className="text-3xl md:text-4xl font-black text-[#0c3b52] dark:text-white">
+              {t("purposeMissionVision.title")}
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="rounded-[24px] bg-gradient-to-br from-[#c81618] to-[#f25f5c] p-8 text-white shadow-[0_16px_45px_rgba(200,22,24,0.3)]">
+              <div className="h-14 w-14 rounded-full bg-white/20 backdrop-blur flex items-center justify-center mb-6">
+                <Target className="h-7 w-7 text-white" />
+              </div>
+              <h3 className="text-xl font-bold mb-4">{t("purposeMissionVision.purpose.label")}</h3>
+              <p className="text-lg font-semibold mb-3">
+                "{t("purposeMissionVision.purpose.text")}"
+              </p>
+            </div>
+
+            <div className="rounded-[24px] bg-gradient-to-br from-[#0c3b52] to-[#0c3b52]/90 p-8 text-white shadow-[0_16px_45px_rgba(12,59,82,0.3)]">
+              <div className="h-14 w-14 rounded-full bg-white/20 backdrop-blur flex items-center justify-center mb-6">
+                <Eye className="h-7 w-7 text-white" />
+              </div>
+              <h3 className="text-xl font-bold mb-4">{t("purposeMissionVision.vision.label")}</h3>
+              <p className="text-base leading-relaxed">
+                {t("purposeMissionVision.vision.text")}
+              </p>
+            </div>
+
+            <div className="rounded-[24px] bg-gradient-to-br from-[#f7f8fb] to-white dark:from-[#0f172a] dark:to-[#0b1220] p-8 border-2 border-[#0c3b52]/20 dark:border-[#0c3b52]/40 shadow-[0_16px_45px_rgba(12,59,82,0.12)] dark:shadow-[0_16px_45px_rgba(0,0,0,0.35)]">
+              <div className="h-14 w-14 rounded-full bg-[#0c3b52]/10 dark:bg-[#0c3b52]/20 flex items-center justify-center mb-6">
+                <Lightbulb className="h-7 w-7 text-[#0c3b52]" />
+              </div>
+              <h3 className="text-xl font-bold mb-4 text-[#0c3b52] dark:text-white">{t("purposeMissionVision.mission.label")}</h3>
+              <p className="text-gray-700 dark:text-gray-300 mb-4">
+                {t("purposeMissionVision.mission.text")}
+              </p>
+              <p className="text-sm text-gray-600 dark:text-gray-400">
+                {t("purposeMissionVision.mission.description")}
+              </p>
+              <ul className="mt-3 space-y-2 text-sm text-gray-700 dark:text-gray-300">
+                {(t.raw("purposeMissionVision.mission.features") as string[]).map((feature, i) => (
+                  <li key={i} className="flex items-start gap-2">
+                    <span className="text-[#c81618] mt-0.5">✓</span>
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>

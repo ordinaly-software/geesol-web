@@ -29,5 +29,5 @@ export default async function SolicitudEstudioGratis({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  return <EstudioGratisPage locale={locale} />;
+  return <EstudioGratisPage locale={locale} variant="paid" />;
 }

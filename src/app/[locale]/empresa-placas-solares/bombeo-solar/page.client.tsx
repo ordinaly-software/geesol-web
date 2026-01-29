@@ -8,40 +8,42 @@ export default function BombeoSolarPage({ locale }: { locale: string }) {
     <ServiceTemplate
       locale={locale}
       heroImage="/static/servicios/bombeo_solar.webp"
-      title="Bombeo solar"
+      title="Bombeo solar fotovoltaico para riego"
       heroImageAlt={[
-        "bombeo solar",
-        "instalacion de bombeo solar",
-        "bombeo solar para riego",
+        "bombeo solar fotovoltaico para riego",
+        "instalación de bombeo solar en fincas",
+        "sistemas de bombeo solar agrícola",
+        "bombeo solar para riego eficiente",
       ]}
       featureImageAlt={[
-        "bombeo solar para riego",
-        "bombeo solar",
-        "instalacion de bombeo solar",
+        "bombeo solar para riego agrícola",
+        "sistema de bombeo fotovoltaico en campo",
+        "instalación de bombeo solar con variadores",
       ]}
       galleryImageAlt={[
-        "bombeo solar",
-        "instalacion de bombeo solar",
-        "bombeo solar para riego",
+        "casos de éxito de bombeo solar",
+        "bombeo solar para riego agrícola en fincas",
+        "instalaciones de bombeo solar fotovoltaico",
+        "bombeo solar con ahorro de combustible",
       ]}
-      subtitle="Riega y abastece con energía limpia y estable, reduciendo costes de gasoil y mantenimiento en explotaciones agrícolas."
+      subtitle="Riega y abastece con energía limpia y estable, reduciendo gasoil y mantenimiento en explotaciones agrícolas."
       badge="Agrícola"
-      seoHeadings={{
-        h2: ["Bombeo solar para riego", "Bombeo solar fotovoltaico para riego"],
-        h3: ["Instalaciones de bombeo solar"],
-      }}
+      highlightHeadingLevel="h2"
       highlights={[
         {
-          title: "Caudal constante",
-          description: "Diseños adaptados a tus horarios de riego y necesidades de presión.",
+          title: "Bombeo solar fotovoltaico para riego",
+          description:
+            "Caudal constante: diseños adaptados a tus horarios de riego y necesidades de presión.",
         },
         {
-          title: "Ahorro operativo",
-          description: "Elimina consumo de generadores y reduce costes de combustible y mantenimiento.",
+          title: "Bombeo solar para fincas y explotaciones agrícolas",
+          description:
+            "Ahorro operativo: elimina consumo de generadores y reduce costes de combustible y mantenimiento.",
         },
         {
-          title: "Equipos robustos",
-          description: "Variadores solares y bombas diseñados para trabajar en condiciones exigentes.",
+          title: "Instalaciones de bombeo solar con ahorro de combustible",
+          description:
+            "Equipos robustos: variadores solares y bombas diseñados para trabajar en condiciones exigentes.",
         },
       ]}
       features={[

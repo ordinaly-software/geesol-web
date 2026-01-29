@@ -157,12 +157,11 @@ export default function MantenimientoInstalacionesFotovoltaicasPage({
       featureImageAlt="mantenimiento instalaciones fotovoltaicas"
       galleryImageAlt="mantenimiento instalaciones fotovoltaicas"
       subtitle="Una vez finalizado el montaje y puesta en marcha de un sistema fotovoltaico, es de gran importancia su mantenimiento para el correcto funcionamiento de las instalaciones y su adecuado rendimiento."
-      badge="Solicita tu estudio gratis"
       hubspotSection={{
         eyebrow: "Contacto",
         title: "¿Te interesa? Escríbenos a través del siguiente formulario",
         subtitle:
-          "Si te interesa, escríbenos al 954 561 612, al 654 880 822 o envíanos un correo a javi@geesol.com.",
+          "Si te interesa, escríbenos al 954 561 612, al 654 880 822 o envíanos un correo a info@geesol.com.",
       }}
       highlights={[
         {

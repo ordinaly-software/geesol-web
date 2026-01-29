@@ -291,7 +291,7 @@
       },
       {
         "name": "Jose Martinez",
-        "role": "Responsable de energia",
+        "role": "Responsable de energía",
         "quote": "Equipo cercano y profesional. Optimizamos el autoconsumo en tiempo record."
       },
       {
@@ -304,13 +304,11 @@
   ,
   "contactPage": {
     "hero": {
-      "title": "Contacto: Habla con nosotros y encarga un estudio gratis",
-      "subtitle": "Cuéntanos tu proyecto de instalaciones fotovoltaicas y coordinamos un estudio gratuito en menos de 24 horas."
+      "title": "Habla con nosotros y encarga un estudio gratis",
+      "subtitle": "Especialistas en placas solares, autoconsumo e instalaciones fotovoltaicas en Sevilla, Andalucía y España. Te ayudamos a acceder a subvenciones solares y energía verde, limpia y eficiente."
     },
     "contactForm": {
-      "title": "Formulario de contacto",
-      "subtitle": "Rellena tus datos y un asesor te contactará para calcular ahorros, subvenciones y fecha de instalación.",
-      "seo": "Especialistas en placas solares, autoconsumo e instalaciones fotovoltaicas en Sevilla, Andalucía y España. Te ayudamos a acceder a subvenciones solares y energía verde, limpia y eficiente."
+      "title": "Formulario de contacto"
     },
     "contactDetails": {
       "title": "Datos de contacto",
@@ -331,9 +329,9 @@
       }
     },
     "whatsapp": {
-      "title": "Chatbot GEESOL Renovables",
+      "title": "¡Geermán te ayuda!",
       "subtitle": "Pregunta sobre ahorros, ayudas o citas con nuestro asistente AI en WhatsApp.",
-      "cta": "Abrir Chatbot AI"
+      "cta": "Abrir WhatsApp"
     },
     "map": {
       "eyebrow": "Mapa",
@@ -349,7 +347,8 @@
     },
     "work": {
       "title": "Únete al equipo de energía solar",
-      "subtitle": "Si trabajas en instalaciones fotovoltaicas, autoconsumo o energía renovable, cuéntanos tu perfil y te contactamos."
+      "subtitle": "Envía tu CV a rrhh@geesol.com y cuéntanos tu experiencia en instalaciones fotovoltaicas y autoconsumo.",
+      "cta": "Enviar CV a RRHH"
     },
     "ctaPhone": {
       "title": "¿Prefieres hablar por teléfono?",
@@ -395,19 +394,13 @@
   "whatsapp": {
     "openLine": "Abrir Chatbot",
     "tooltip": "Serás redirigido al Chatbot de asistencia al cliente potenciado por inteligencia artificial de GEESOL Renovables.",
-    "title": "Chatbot GEESOL Renovables",
+    "title": "¡Geermán te ayuda!",
     "bubbleTagline": "Asistente IA 24/7",
-    "description": "Este asistente virtual responde preguntas sobre soluciones solares, ahorros, subvenciones y el seguimiento de tu proyecto.",
-    "aiNotice": "Potenciado por inteligencia artificial para asistirte en tiempo real.",
-    "phoneNotice": "Número oficial: +34 621 15 14 68",
-    "canHelpWith": "Puede ayudarte con",
+    "aiNotice": "Powered by AI (Artificial Intelligence)",
     "help1": "Responder dudas técnicas y comerciales",
     "help2": "Explicar ahorros, financiación y ayudas",
-    "help3": "Agendar citas o seguimiento de tu instalación",
     "help4": "Aclarar trámites y normativa",
-    "help5": "Soporte post-instalación y mantenimiento",
-    "requestAssistance": "Abrir el Chatbot en WhatsApp",
-    "responseTime": "Respuestas inmediatas 24/7 vía nuestro Chatbot.",
+    "requestAssistance": "Háblanos en WhatsApp",
     "status": "Conectado al +34 621 15 14 68",
     "defaultWhatsAppMessage": "Hola, quiero hablar con el Chatbot de GEESOL Renovables para asistencia al cliente."
   },
@@ -495,6 +488,134 @@
       "secondary": "Contacto",
       "mailSubject": "Candidatura para trabajar en GEESOL",
       "mailBody": "Hola equipo GEESOL,\n\nMe gustaría participar en procesos de selección para energía solar. Comparto mi perfil y disponibilidad.\n\nGracias."
+    },
+    "businessModel": {
+      "eyebrow": "Modelo de Negocio",
+      "title": "Soluciones para cada cliente",
+      "subtitle": "Trabajamos con diferentes segmentos para ofrecer la mejor solución de autoconsumo",
+      "segments": {
+        "residential": {
+          "title": "Residencial",
+          "description": "Hogares que buscan reducir costes y mejorar su calidad de vida"
+        },
+        "industrial": {
+          "title": "Industrial",
+          "description": "Industrias que desean estabilidad energética"
+        },
+        "communities": {
+          "title": "Comunidades",
+          "description": "Comunidades que quieren optimizar recursos compartidos"
+        },
+        "agriculture": {
+          "title": "Agricultura",
+          "description": "Sector agrícola con soluciones agrovoltaicas"
+        }
+      }
+    },
+    "competitiveAdvantages": {
+      "eyebrow": "Ventajas Competitivas",
+      "title": "Por qué confiar en GEESOL",
+      "customerRating": {
+        "title": "Valoración Clientes",
+        "rating": "4.9/5.0",
+        "description": "Basado en +2,600 reseñas en Google"
+      },
+      "warranty": {
+        "title": "Garantía Total",
+        "years": "Hasta 25 años",
+        "features": [
+          "Protección instalación completa",
+          "Servicio técnico garantizado",
+          "Mantenimiento preventivo"
+        ]
+      },
+      "experience": {
+        "title": "Experiencia Comprobada",
+        "installations": "+7,000 Instalaciones",
+        "description": "Más de 6.000 instalaciones fotovoltaicas realizadas con éxito"
+      },
+      "service": {
+        "title": "Servicio 5 Estrellas",
+        "metrics": {
+          "speed": "Rapidez de respuesta",
+          "quality": "Calidad instalación",
+          "support": "Atención al cliente"
+        }
+      },
+      "personalizedAttention": {
+        "title": "Atención Personalizada",
+        "features": [
+          "Asesoramiento técnico personalizado en cada proyecto",
+          "Seguimiento continuo: antes, durante y después de la instalación"
+        ]
+      },
+      "technology": {
+        "title": "Tecnología Superior",
+        "description": "Colaboramos con las marcas líderes del sector para ofrecer la máxima calidad y fiabilidad"
+      }
+    },
+    "financialSolutions": {
+      "eyebrow": "Soluciones Financieras",
+      "title": "Financiación flexible adaptada a ti",
+      "subtitle": "Diferentes opciones de pago para que inviertas en energía solar sin complicaciones",
+      "options": {
+        "directPurchase": {
+          "title": "Compra Directa",
+          "features": [
+            "Máximo ahorro a largo plazo",
+            "Financiación hasta 15 años",
+            "Propiedad total del sistema"
+          ]
+        },
+        "ppa": {
+          "title": "Modelo PPA",
+          "features": [
+            "Sin inversión inicial",
+            "Pago solo por consumo",
+            "Ahorro desde el primer día"
+          ]
+        },
+        "renting": {
+          "title": "Renting",
+          "features": [
+            "Cuotas fijas mensuales",
+            "Beneficios fiscales",
+            "Ideal para empresas"
+          ]
+        },
+        "maintenance": {
+          "title": "Mantenimiento",
+          "features": [
+            "Planes personalizados",
+            "Máximo rendimiento",
+            "Servicio preventivo"
+          ]
+        }
+      },
+      "benefits": {
+        "title": "Ventajas de nuestras soluciones",
+        "items": [
+          {
+            "title": "Garantía Total 25 años",
+            "description": "Máxima protección y tranquilidad para su inversión"
+          },
+          {
+            "title": "ROI atractivo y predecible",
+            "description": "Recuperación de inversión en 4-6 años"
+          },
+          {
+            "title": "Impacto medioambiental positivo",
+            "description": "Reducción significativa de la huella de carbono"
+          },
+          {
+            "title": "Deducciones y subvenciones",
+            "description": "Asesoramiento completo para optimizar beneficios fiscales"
+          }
+        ],
+        "quote": "Queremos ser la empresa más confiable del sector, con extensión de garantía en nuestras instalaciones para refrendarla.",
+        "quoteSource": "Confianza GEESOL",
+        "quoteLink": "www.confianzageesol.com"
+      }
     }
   },
   "services": {
@@ -580,6 +701,10 @@
     "otherPosts": {
       "title": "Más publicaciones"
     },
+    "form": {
+      "title": "¿Quieres más información solar?",
+      "subtitle": "Déjanos tus datos y te enviamos una propuesta personalizada."
+    },
     "share": {
       "label": "Compartir",
       "whatsapp": "WhatsApp",
@@ -653,7 +778,7 @@
       "description": "Equipo especializado en diseño, instalación y mantenimiento de energía solar."
     },
     "hero": {
-      "title": "Quiénes somos",
+      "title": "Sobre nosotros",
       "subtitle": "Energía solar para hogares, empresas e industria con un equipo propio que te acompaña de principio a fin."
     },
     "story": {
@@ -727,6 +852,79 @@
     },
     "associations": {
       "title": "Geesol es miembro de la Unión Española Fotovoltaica (UNEF) y de la Asociación de Empresarios del Sur de España (CESUR)."
+    },
+    "purposeMissionVision": {
+      "eyebrow": "Propósito, Misión y Visión",
+      "title": "Nuestra guía y compromiso",
+      "purpose": {
+        "label": "Propósito",
+        "text": "Transformar la manera en que vivimos la energía para mejorar la vida de las personas y su entorno"
+      },
+      "vision": {
+        "label": "Visión",
+        "text": "Convertirnos en la empresa mejor valorada por quienes quieren energía solar sin complicaciones, con impacto positivo en su entorno. Ser reconocidos como la opción más confiable y humana del mercado, construyendo relaciones a largo plazo basadas en calidad técnica y atención personalizada."
+      },
+      "mission": {
+        "label": "Misión",
+        "text": "Ofrecemos soluciones solares de autoconsumo accesibles y confiables para mejorar la calidad de vida de las personas.",
+        "description": "Facilitamos el acceso a la energía solar con sencillez y sin barreras económicas, contribuyendo al cuidado del medio ambiente. Siendo respaldados por:",
+        "features": [
+          "Equipo técnico experto",
+          "Atención personalizada",
+          "Colaboración con marcas líderes",
+          "Financiación flexible"
+        ]
+      }
+    },
+    "keyResources": {
+      "title": "Recursos Clave",
+      "items": [
+        {
+          "title": "Equipo altamente cualificado",
+          "description": "Profesionales expertos en instalaciones fotovoltaicas"
+        },
+        {
+          "title": "Tecnología de marcas líderes",
+          "description": "Huawei, Enphase, Exiom entre otras"
+        },
+        {
+          "title": "Reputación validada",
+          "description": "+2,600 reseñas con valoración 4.9/5.0 en Google"
+        },
+        {
+          "title": "Partners estratégicos",
+          "description": "Comercializadoras y entidades financieras"
+        },
+        {
+          "title": "Red de clientes fidelizados",
+          "description": "+6,000 instalaciones y programa de referidos"
+        }
+      ]
+    },
+    "keyActivities": {
+      "title": "Actividades Clave",
+      "items": [
+        {
+          "title": "Captación y asesoramiento",
+          "description": "Estrategia digital y asesoramiento personalizado"
+        },
+        {
+          "title": "Visitas técnicas",
+          "description": "Evaluación personalizada y dimensionamiento óptimo"
+        },
+        {
+          "title": "Instalación con altos estándares de Calidad",
+          "description": "Proceso certificado con Garantía Total de 25 años"
+        },
+        {
+          "title": "Control postventa",
+          "description": "Seguimiento, mantenimiento y soporte continuo"
+        },
+        {
+          "title": "Optimización de la Inversión",
+          "description": "Gestión de deducciones fiscales y subvenciones"
+        }
+      ]
     }
   },
   "faqPage": {
@@ -829,11 +1027,11 @@
     },
     "qrCards": [
       {
-        "label": "App Store",
+        "label": "Próximamente en App Store",
         "description": "Añade aquí tu código QR para descargar la app."
       },
       {
-        "label": "Google Play",
+        "label": "Próximamente en Google Play",
         "description": "Añade aquí tu código QR para descargar la app."
       }
     ],
@@ -889,7 +1087,7 @@
       "title": "Solicita tu estudio personalizado",
       "subtitle": "Calculamos tu producción, las subvenciones disponibles y diseñamos una propuesta a medida con las mejores condiciones.",
       "primary": "Contacto",
-      "secondary": "Conoce al equipo"
+      "secondary": "Estudio gratis"
     }
   },
   "serviceHubspot": {

@@ -1,14 +1,13 @@
 "use client";
 
 import { HubSpotForm } from "@/components/ui/hubspot-form";
+import { HUBSPOT_FORMS, HUBSPOT_PORTAL_ID, HUBSPOT_REGION } from "@/data/hubspot-forms";
 import { useTranslations } from "next-intl";
 
 export const HomeHubSpotFormSection = () => {
   const t = useTranslations("home");
-  const portalId = process.env.NEXT_PUBLIC_HUBSPOT_PORTAL_ID;
-  const formId =
-    process.env.NEXT_PUBLIC_HUBSPOT_HOME_FORM_ID ||
-    process.env.NEXT_PUBLIC_HUBSPOT_FORM_ID;
+  const portalId = HUBSPOT_PORTAL_ID;
+  const formId = HUBSPOT_FORMS.footer;
 
   return (
     <section className="bg-white px-4 py-14 sm:py-16 dark:bg-[#0b1220]">
@@ -25,7 +24,7 @@ export const HomeHubSpotFormSection = () => {
           </p>
         </div>
         <div className="mt-6">
-          <HubSpotForm portalId={portalId} formId={formId} />
+          <HubSpotForm portalId={portalId} formId={formId} region={HUBSPOT_REGION} />
         </div>
         <p className="mt-4 text-xs sm:text-sm text-center text-gray-600 dark:text-gray-400">
           {t("form.note")}

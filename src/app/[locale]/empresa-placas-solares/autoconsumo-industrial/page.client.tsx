@@ -1,10 +1,11 @@
 import { ServiceTemplate } from "../../../../components/servicios/service-template";
 import { getServiceGalleryBySlug } from "@/data/service-gallery";
+import { HUBSPOT_FORMS, HUBSPOT_PORTAL_ID } from "@/data/hubspot-forms";
 
 export default function AutoconsumoIndustrialPage({ locale }: { locale: string }) {
   const gallery = getServiceGalleryBySlug(locale, "autoconsumo-industrial");
   const isEs = locale?.startsWith("es");
-  const formId = process.env.NEXT_PUBLIC_HUBSPOT_COMPANY_FORM_ID;
+  const formId = HUBSPOT_FORMS.industrial;
   const formCopy = isEs
     ? {
         eyebrow: "Empresas",
@@ -16,50 +17,50 @@ export default function AutoconsumoIndustrialPage({ locale }: { locale: string }
         eyebrow: "Businesses",
         title: "Request a study for your business",
         subtitle:
-          "Tell us about your energy usage and goals. We’ll send a proposal with ROI, incentives, and timeline.",
+          "Tell us about your energy usage and goals. We'll send a proposal with ROI, incentives, and timeline.",
       };
 
   return (
     <ServiceTemplate
       locale={locale}
       heroImage="/static/servicios/autoconsumo_industrial.webp"
-      title="Placas solares para empresas"
+      title="Placas solares para empresas: autoconsumo industrial"
       heroImageAlt={[
-        "placas solares para empresas",
-        "placa solar empresa",
-        "paneles fotovoltaicos para empresas",
+        "autoconsumo industrial para empresas",
+        "instalación fotovoltaica industrial en cubierta",
+        "paneles solares para naves industriales",
+        "energía solar para empresas con ROI rápido",
       ]}
       featureImageAlt={[
-        "placa solar empresa",
-        "paneles fotovoltaicos para empresas",
-        "placas solares para empresas",
+        "placas solares para empresas en naves industriales",
+        "autoconsumo solar empresarial con monitorización",
+        "instalación de paneles solares en cubiertas industriales",
       ]}
       galleryImageAlt={[
-        "placas solares para empresas",
-        "placa solar empresa",
-        "paneles fotovoltaicos para empresas",
+        "casos de éxito de autoconsumo industrial",
+        "instalaciones solares en cubiertas industriales",
+        "paneles solares para fábricas y naves",
+        "autoconsumo en empresas con ahorro energético",
       ]}
-      subtitle="Optimiza tus costes energéticos con instalaciones fotovoltaicas a medida para naves, cubiertas y grandes consumos."
+      subtitle="Optimiza tus costes energéticos con energía solar en cubiertas industriales y soluciones a medida para grandes consumos."
       badge="Empresas"
-      seoHeadings={{
-        h2: [
-          "Placas solares para empresas en Andalucia",
-          "Instalaciones fotovoltaicas para empresas",
-        ],
-      }}
-      hubspotSection={{ ...formCopy, formId }}
+      highlightHeadingLevel="h2"
+      hubspotSection={{ ...formCopy, formId, portalId: HUBSPOT_PORTAL_ID }}
       highlights={[
         {
-          title: "Producción estable",
-          description: "Diseños orientados a reducir picos de demanda y mejorar tu coste por kWh.",
+          title: "Autoconsumo industrial para empresas y naves",
+          description:
+            "Diseños orientados a reducir picos de demanda y mejorar tu coste por kWh.",
         },
         {
-          title: "Paradas mínimas",
-          description: "Planificamos la obra para no interrumpir tu operación y cumplir plazos.",
+          title: "Placas solares para empresas con ROI optimizado",
+          description:
+            "Reporting financiero: entregamos ROI, TIR y payback estimados para agilizar decisiones internas.",
         },
         {
-          title: "Reporting financiero",
-          description: "Te entregamos ROI, TIR y payback estimados para agilizar decisiones internas.",
+          title: "Instalaciones fotovoltaicas industriales a medida",
+          description:
+            "Planificamos la obra para no interrumpir tu operación y cumplir plazos.",
         },
       ]}
       features={[

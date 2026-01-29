@@ -8,18 +8,34 @@ import { TwoColumnFeatureSection } from "@/components/home/two-column-feature";
 import Banner from "@/components/ui/banner";
 import { Button } from "@/components/ui/button";
 import { HubSpotForm } from "@/components/ui/hubspot-form";
+import { HUBSPOT_FORMS, HUBSPOT_PORTAL_ID, HUBSPOT_REGION } from "@/data/hubspot-forms";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 
-export default function EstudioGratisPage({ locale: _locale }: { locale: string }) {
+type EstudioGratisVariant = "organic" | "paid";
+
+export default function EstudioGratisPage({
+  locale: _locale,
+  variant = "organic",
+}: {
+  locale: string;
+  variant?: EstudioGratisVariant;
+}) {
   const t = useTranslations("freeStudyPage");
-  const portalId = process.env.NEXT_PUBLIC_HUBSPOT_PORTAL_ID;
-  const headerFormId =
-    process.env.NEXT_PUBLIC_HUBSPOT_FREE_STUDY_FORM_ID ||
-    process.env.NEXT_PUBLIC_HUBSPOT_FORM_ID;
-  const footerFormId =
-    process.env.NEXT_PUBLIC_HUBSPOT_FREE_STUDY_FOOTER_FORM_ID || headerFormId;
+  const portalId = HUBSPOT_PORTAL_ID;
+  const forms =
+    variant === "paid"
+      ? {
+          header: HUBSPOT_FORMS.freeStudyPaidHeader,
+          footer: HUBSPOT_FORMS.freeStudyPaidFooter,
+        }
+      : {
+          header: HUBSPOT_FORMS.freeStudyOrganicHeader,
+          footer: HUBSPOT_FORMS.freeStudyOrganicFooter,
+        };
+  const headerFormId = forms.header;
+  const footerFormId = forms.footer;
   const benefits = t.raw("benefits.items") as Array<{ title: string; description: string }>;
 
   const [reviewMeta, setReviewMeta] = useState<{
@@ -50,7 +66,7 @@ export default function EstudioGratisPage({ locale: _locale }: { locale: string 
 
       <section id="free-study-form" className="px-4 py-10 sm:py-16 scroll-mt-24">
         <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1.05fr_0.95fr]">
-          <div className="rounded-[28px] bg-white p-6 sm:p-8 shadow-[0_16px_45px_rgba(12,59,82,0.12)] dark:bg-[#0f172a] dark:shadow-[0_16px_45px_rgba(0,0,0,0.35)]">
+          <div className="min-w-0 rounded-[28px] bg-white p-6 sm:p-8 shadow-[0_16px_45px_rgba(12,59,82,0.12)] dark:bg-[#0f172a] dark:shadow-[0_16px_45px_rgba(0,0,0,0.35)]">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#c81618]">
               {t("hero.eyebrow")}
             </p>
@@ -61,11 +77,15 @@ export default function EstudioGratisPage({ locale: _locale }: { locale: string 
               {t("hero.formSubtitle")}
             </p>
             <div className="mt-6">
-              <HubSpotForm portalId={portalId} formId={headerFormId} />
+              <HubSpotForm
+                portalId={portalId}
+                formId={headerFormId}
+                region={HUBSPOT_REGION}
+              />
             </div>
           </div>
 
-          <div className="rounded-[28px] bg-white p-6 sm:p-8 shadow-[0_16px_45px_rgba(12,59,82,0.12)] dark:bg-[#0f172a] dark:shadow-[0_16px_45px_rgba(0,0,0,0.35)]">
+          <div className="min-w-0 rounded-[28px] bg-white p-6 sm:p-8 shadow-[0_16px_45px_rgba(12,59,82,0.12)] dark:bg-[#0f172a] dark:shadow-[0_16px_45px_rgba(0,0,0,0.35)]">
             <h3 className="text-xl sm:text-2xl font-bold text-[#0c3b52] dark:text-white">
               {t("benefits.title")}
             </h3>
@@ -76,7 +96,7 @@ export default function EstudioGratisPage({ locale: _locale }: { locale: string 
               {benefits.map((item) => (
                 <div
                   key={item.title}
-                  className="rounded-[18px] bg-[#f7f8fb] px-4 py-4 text-sm text-gray-700 shadow-sm dark:bg-[#0b1220] dark:text-gray-200"
+                  className="min-w-0 rounded-[18px] bg-[#f7f8fb] px-4 py-4 text-sm text-gray-700 shadow-sm dark:bg-[#0b1220] dark:text-gray-200"
                 >
                   <p className="font-semibold text-[#0c3b52] dark:text-white">
                     {item.title}
@@ -105,8 +125,12 @@ export default function EstudioGratisPage({ locale: _locale }: { locale: string 
           <p className="mt-3 text-base sm:text-lg text-[#e9eef2]">
             {t("footerForm.subtitle")}
           </p>
-          <div className="mt-6 rounded-[24px] bg-white/10 p-6 sm:p-8 shadow-[0_18px_45px_rgba(0,0,0,0.25)]">
-            <HubSpotForm portalId={portalId} formId={footerFormId} />
+          <div className="hubspot-light mt-6 rounded-[24px] bg-white p-6 sm:p-8 text-[#0c1f2d] shadow-[0_18px_45px_rgba(0,0,0,0.25)]">
+            <HubSpotForm
+              portalId={portalId}
+              formId={footerFormId}
+              region={HUBSPOT_REGION}
+            />
           </div>
           <p className="mt-4 text-xs sm:text-sm text-[#d9e4ec]">
             {t("footerForm.note")}

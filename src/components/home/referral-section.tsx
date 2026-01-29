@@ -12,13 +12,13 @@ export const ReferralSection = () => {
     <section className="bg-white px-4 py-16 dark:bg-[#0b1220]">
       <div className="mx-auto flex max-w-6xl flex-col gap-10 rounded-[56px] bg-[#f7f8fb] p-8 shadow-[0_16px_45px_rgba(12,59,82,0.12)] dark:bg-[#0f172a] dark:shadow-[0_16px_45px_rgba(0,0,0,0.35)] lg:flex-row lg:items-center">
         <div className="relative flex-1 order-2 lg:order-1">
-          <div className="relative mx-auto h-[320px] w-[220px] overflow-hidden rounded-[28px] border border-white shadow-[0_18px_45px_rgba(12,59,82,0.2)]">
+          <div className="relative mx-auto h-[380px] w-[260px] sm:h-[420px] sm:w-[300px] lg:h-[460px] lg:w-[320px]">
             <Image
               src="static/geesol_app_on_phone.webp"
               alt={t("referral.imageAlt")}
               fill
-              className="object-cover"
-              sizes="220px"
+              className="object-contain"
+              sizes="(min-width: 1024px) 320px, (min-width: 640px) 300px, 260px"
             />
           </div>
         </div>

@@ -23,12 +23,7 @@ export default function SistemasAisladosPage({ locale }: { locale: string }) {
       ]}
       subtitle="Energía garantizada en ubicaciones sin acceso a red con soluciones híbridas de paneles, baterías e inversores de alta fiabilidad."
       badge="Autonomía"
-      seoHeadings={{
-        h2: [
-          "Instalaciones fotovoltaicas aisladas: ventajas",
-          "Instalaciones fotovoltaicas aisladas",
-        ],
-      }}
+      featuresTitle="Instalaciones fotovoltaicas aisladas: ventajas"
       highlights={[
         {
           title: "Autonomía total",
