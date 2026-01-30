@@ -29,6 +29,7 @@ export const MenuItem = ({
   children?: React.ReactNode;
 }) => {
   const pathname = usePathname();
+  const hasChildren = Boolean(children);
   // consider a link active when pathname equals href or starts with href + '/'
   const computedActive =
     href && pathname
@@ -41,6 +42,13 @@ export const MenuItem = ({
       {href ? (
         <Link
           href={href}
+          onClick={(event) => {
+            if (!hasChildren) return;
+            if (active !== item) {
+              event.preventDefault();
+              setActive(item);
+            }
+          }}
           className={`transition-all duration-200 whitespace-nowrap text-sm xl:text-base font-medium relative group hover:text-red-600 ${
             finalActive
               ? "text-red-600"

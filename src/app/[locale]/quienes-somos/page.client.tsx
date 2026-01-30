@@ -69,12 +69,10 @@ export default function UsPage({ highlightedNews }: { highlightedNews: BlogPost[
                   <div className="rounded-2xl bg-white/90 dark:bg-white/5 border border-gray-200/70 dark:border-white/10 p-4 space-y-2 shadow-sm">
                     <p className="text-sm text-gray-600 dark:text-gray-300">{t("hero.missionLabel")}</p>
                     <p className="text-lg text-gray-600 dark:text-gray-300 font-semibold">{t("mission.title")}</p>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">{t("mission.body")}</p>
                   </div>
                   <div className="rounded-2xl bg-white/90 dark:bg-white/5 border border-gray-200/70 dark:border-white/10 p-4 space-y-2 shadow-sm">
                     <p className="text-sm text-gray-600 dark:text-gray-300">{t("hero.visionLabel")}</p>
                     <p className="text-lg text-gray-600 dark:text-gray-300 font-semibold">{t("vision.title")}</p>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">{t("vision.body")}</p>
                   </div>
                 </div>
               </div>
@@ -368,16 +366,19 @@ export default function UsPage({ highlightedNews }: { highlightedNews: BlogPost[
 
       <section id="news" className="px-4 py-16">
         <div className="max-w-6xl mx-auto">
-          <div className="flex items-center justify-between mb-8">
-        <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
-          {t("news.title")}
-        </h2>
-        <Button asChild className="bg-[#c81618] hover:bg-[#a31214] text-white gap-2">
-          <Link href="/noticias">
-            {t("news.viewAll")}
-            <ArrowRight className="h-4 w-4" />
-          </Link>
-        </Button>
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between mb-8">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+              {t("news.title")}
+            </h2>
+            <Button
+              asChild
+              className="w-full sm:w-auto bg-[#c81618] hover:bg-[#a31214] text-white gap-2 whitespace-nowrap text-sm sm:text-base"
+            >
+              <Link href="/noticias" className="w-full justify-center">
+                {t("news.viewAll")}
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </Button>
           </div>
           <HighlightedCarousel posts={highlightedNews} namespace="news"/>
         </div>
