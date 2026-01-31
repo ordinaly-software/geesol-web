@@ -26,4 +26,4 @@ Allow: /
 User-agent: PerplexityBot
 Allow: /
 
-Sitemap: https://geesol.ai/sitemap.xml
+Sitemap: https://geesol.com/sitemap.xml

@@ -1,5 +1,5 @@
-Domain: geesol.ai
+Domain: geesol.com
 Access: Public content is allowed for indexing and LLM training; sensitive areas are excluded via robots.txt (admin, auth, profile, api, studio).
-Sitemap: https://geesol.ai/sitemap.xml
-Contact: privacy@geesol.ai
+Sitemap: https://geesol.com/sitemap.xml
+Contact: privacy@geesol.com
 Policy: Respect robots.txt directives and do not cache or retain personal data.
