@@ -241,7 +241,7 @@
     }
   },
   "cookie": {
-    "title": "¡Cookies!",
+    "title": "Configuración de cookies",
     "description": "Esta web utiliza cookies para que podamos ofrecerte la mejor experiencia de usuario posible. La información de las cookies se almacena en tu navegador y realiza funciones tales como reconocerte cuando vuelves a nuestra web o ayudar a nuestro equipo a comprender qué secciones de la web encuentras más interesantes y útiles.",
     "whatAre": "Cookies estrictamente necesarias",
     "whatAreDescription": "Las cookies estrictamente necesarias tienen que activarse siempre para que podamos guardar tus preferencias de ajustes de cookies.",
@@ -251,9 +251,8 @@
     "personalizeTitle": "Personalizar preferencias de cookies",
     "personalizeDescription": "Elige qué tipos de cookies quieres permitir.",
     "necessary": "Cookies estrictamente necesarias",
-    "necessaryDescription": "Estas cookies son imprescindibles para el funcionamiento básico del sitio y no se pueden desactivar.",
-    "functional": "Cookies funcionales",
-    "functionalDescription": "Permiten recordar preferencias y mejorar funciones avanzadas del sitio.",
+    "necessaryDescription": "Estas cookies permiten el funcionamiento básico del sitio y no se pueden desactivar.",
+    "functionalDescription": "Permiten recordar preferencias y otras funciones del sitio.",
     "analytics": "Cookies de analítica",
     "analyticsDescription": "Se utilizan para recopilar información anónima del uso de la web.",
     "marketing": "Cookies de terceros",
@@ -420,12 +419,10 @@
       "imageAlt": "Equipo de GEESOL trabajando en energía solar"
     },
     "mission": {
-      "title": "Hacer la energía solar simple y rentable",
-      "body": "Diseñamos e instalamos sistemas fotovoltaicos con un servicio llave en mano y resultados medibles."
+      "title": "Ofrecemos soluciones solares de autoconsumo accesibles y confiables para mejorar la calidad de vida de las personas."
     },
     "vision": {
-      "title": "Liderar la transición energética local",
-      "body": "Acompañamos a hogares y empresas con tecnología fiable, cercanía y soporte continuo."
+      "title": "Convertirnos en la empresa mejor valorada por quienes quieren energía solar sin complicaciones, con impacto positivo en su entorno."
     },
     "stats": {
       "teamLabel": "Equipo experto",
@@ -867,7 +864,7 @@
       "mission": {
         "label": "Misión",
         "text": "Ofrecemos soluciones solares de autoconsumo accesibles y confiables para mejorar la calidad de vida de las personas.",
-        "description": "Facilitamos el acceso a la energía solar con sencillez y sin barreras económicas, contribuyendo al cuidado del medio ambiente. Siendo respaldados por:",
+        "description": "Siendo respaldados por:",
         "features": [
           "Equipo técnico experto",
           "Atención personalizada",
